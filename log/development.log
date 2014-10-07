@@ -13651,3 +13651,19 @@ Started GET "/assets/home/paso4_return_items.png" for 127.0.0.1 at 2014-10-06 19
 
 
 Started GET "/assets/home/inventory_macbook.png" for 127.0.0.1 at 2014-10-06 19:18:15 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mInformationPage Load (0.3ms)[0m  SELECT `information_pages`.* FROM `information_pages` WHERE `information_pages`.`title` = 'Términos y Condiciones' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mInformationPage Exists (0.3ms)[0m  SELECT 1 AS one FROM `information_pages` WHERE (`information_pages`.`id` IS NOT NULL) AND `information_pages`.`slug` = 'terminos-y-condiciones' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `information_pages` (`created_at`, `slug`, `title`, `updated_at`) VALUES ('2014-10-07 01:18:07', 'terminos-y-condiciones', 'Términos y Condiciones', '2014-10-07 01:18:07')[0m
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36mInformationPage Load (0.3ms)[0m  [1mSELECT `information_pages`.* FROM `information_pages` WHERE `information_pages`.`title` = 'Reglas de Almacenaje' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mInformationPage Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM `information_pages` WHERE (`information_pages`.`id` IS NOT NULL) AND `information_pages`.`slug` = 'reglas-de-almacenaje' LIMIT 1[0m
+  [1m[35mSQL (30.5ms)[0m  INSERT INTO `information_pages` (`created_at`, `slug`, `title`, `updated_at`) VALUES ('2014-10-07 01:18:07', 'reglas-de-almacenaje', 'Reglas de Almacenaje', '2014-10-07 01:18:07')
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mInformationPage Load (0.3ms)[0m  SELECT `information_pages`.* FROM `information_pages` WHERE `information_pages`.`title` = 'Términos Legales y Privacidad' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mInformationPage Exists (0.2ms)[0m  SELECT 1 AS one FROM `information_pages` WHERE (`information_pages`.`id` IS NOT NULL) AND `information_pages`.`slug` = 'terminos-legales-y-privacidad' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `information_pages` (`created_at`, `slug`, `title`, `updated_at`) VALUES ('2014-10-07 01:18:07', 'terminos-legales-y-privacidad', 'Términos Legales y Privacidad', '2014-10-07 01:18:07')[0m
+  [1m[35m (0.4ms)[0m  COMMIT

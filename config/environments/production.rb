@@ -92,16 +92,16 @@ Warehouse::Application.configure do
     tls:                    true 
   }
   
-  config.action_mailer.default_url_options = { :host => "http://www.prilov.com" }
-  config.action_mailer.asset_host = "http://www.prilov.com"
+  config.action_mailer.default_url_options = { :host => "http://ec2-54-88-40-187.compute-1.amazonaws.com" }
+  config.action_mailer.asset_host = "http://ec2-54-88-40-187.compute-1.amazonaws.com"
   
-  config.action_controller.asset_host = "http://www.prilov.com"
+  config.action_controller.asset_host = "http://ec2-54-88-40-187.compute-1.amazonaws.com"
 
   config.middleware.use ExceptionNotification::Rack,
     :email => {
-      :email_prefix => "[Prilov Error] ",
-      :sender_address => %{"Prilov Error Bot" <contacto@prilov.com>},
-      :exception_recipients => %w{hans@matriclick.com}
+      :email_prefix => "[Warehouse Error] ",
+      :sender_address => %{"Warehouse Error Bot" <hhanckes@gmail.com>},
+      :exception_recipients => %w{hhanckes@gmail.com}
     }
   
 end
