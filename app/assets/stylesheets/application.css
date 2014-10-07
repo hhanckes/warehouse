@@ -60,12 +60,19 @@ h4 { font-size: 14px; line-height: 20px; font-weight:lighter }
 	font-weight:bold;
 	color:#666;
 	text-align:center;
+	margin:20px 10px 0px 10px;
+}
+.know-more {
+	font-size:14px;
+	font-weight:bold;
+	color:#cb39f5;
+	text-align:center;
 	margin-top:20px;
 }
 .we-do-the-work {
+	width:100%;
 	margin-bottom:20px;
 	margin-top:20px;
-	margin-left:80px;	
 }
 .we-do-the-work h2 {
 	font-size:34px;
@@ -79,6 +86,32 @@ h4 { font-size: 14px; line-height: 20px; font-weight:lighter }
 .we-do-the-work ul li{
 	font-size:16px;
 	color:#666;
+	margin-bottom:5px;
+}
+.pricing h2 {
+	font-size:34px;
+	margin-top:0px;
+	margin-bottom:0px;
+}
+.pricing h3 {
+	font-size:24px;
+	margin-top:0px;
+	margin-bottom:30px;
+}
+.pricing p {
+	font-size:16px;
+}
+.pricing ul li {
+	font-size:16px;
+	color:#666;
+	margin-bottom:5px;
+}
+
+.pricing-item {
+	width:958px;
+	height:180px;
+	background-color:#f7f7f7; 
+	margin:0 auto;
 }
 .faq-section p {
 	color:#999;
@@ -90,4 +123,10 @@ h4 { font-size: 14px; line-height: 20px; font-weight:lighter }
 	padding-bottom:10px;
 	margin-bottom:20px;
 	border-bottom:1px solid #eee;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
 }
