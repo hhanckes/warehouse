@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class InformationPagesController < ApplicationController
   before_action :set_information_page, only: [:show, :edit, :update, :destroy]
 

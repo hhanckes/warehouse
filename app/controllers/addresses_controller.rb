@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :edit, :update, :destroy]
 

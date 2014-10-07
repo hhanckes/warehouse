@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class StorageItemsController < ApplicationController
   before_action :set_storage_item, only: [:show, :edit, :update, :destroy]
 

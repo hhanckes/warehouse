@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class TestimoniesController < ApplicationController
   before_action :set_testimony, only: [:show, :edit, :update, :destroy]
 

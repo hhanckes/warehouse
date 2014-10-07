@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class FaqsController < ApplicationController
   before_action :set_faq, only: [:show, :edit, :update, :destroy]
 

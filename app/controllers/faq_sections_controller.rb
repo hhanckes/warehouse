@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class FaqSectionsController < ApplicationController
   before_action :set_faq_section, only: [:show, :edit, :update, :destroy]
 
