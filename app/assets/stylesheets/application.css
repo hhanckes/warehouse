@@ -33,6 +33,7 @@ body ul, li, .btn, .form-control {
 	font-size:12px;
 }
 
+
 h1 { font-size: 30px; line-height: 40px; font-weight:lighter }
 h2 { font-size: 24px; line-height: 40px; font-weight:lighter }
 h3 { font-size: 18px; line-height: 40px; font-weight:lighter }
@@ -44,6 +45,11 @@ h4 { font-size: 14px; line-height: 20px; font-weight:lighter }
 
 .introduction {
 	margin-bottom:20px;
+}
+.introduction p {
+	font-size:20px;
+	color:#888;
+	font-weight:lighter;
 }
 .how-it-works {
 	background-color:#f7f7f7; 
@@ -116,6 +122,83 @@ h4 { font-size: 14px; line-height: 20px; font-weight:lighter }
 .faq-section p {
 	color:#999;
 }
+
+.safety-col {
+	margin-bottom:20px;
+}
+.circle {
+	height:150px;
+	width:150px;
+	display: inline-block;
+  	border: 7px solid #f7f7f7;
+}
+.safety span {
+	margin-top:20px;
+	font-size:80px;
+}
+.safety p {
+	margin:0 auto;
+	width:200px;
+	margin-top:20px;
+	font-size:14px;
+}
+.testimonies {
+	
+}
+.testimonies h3, h4 {
+	margin:0px;
+	padding:0px;
+}
+.testimonies p {
+	width:270px;
+	margin:0 auto;
+	margin-top:20px;
+	font-weight:bold;
+	font-size:14px;
+}
+
+.box-details {
+	width:200px;
+	background-color:#f7f7f7; 
+	padding:20px;
+	margin:10px;
+	display:inline-block;
+}
+.box-details span.number {
+	font-weight:bold;
+	font-size:24px;
+	display:block;
+}
+
+.box-details span.text {
+	font-weight:normal;
+	font-size:14px;
+	display:block;
+}
+
+.subscribe {
+	margin:0 auto;
+	border-bottom: 1px solid #d9d9d9;
+	background-color:#f7f7f7;
+	padding-top:20px;
+	padding-bottom:20px;
+	width:1170px;
+}
+.subscribe p {
+	font-weight:bold;
+}
+.disclaimer {
+	margin:0 auto;
+	width:1170px;
+	padding:20px 20px 20px 20px;
+}
+.footer-menu{
+	margin:0 auto;
+	width:1170px;
+	text-align:center;
+	padding:20px 20px 20px 20px;
+	border-bottom: 1px solid #d9d9d9;	
+}
 .form-actions {
 	border-top:1px solid #eee;
 	padding-top:10px;
@@ -129,4 +212,8 @@ h4 { font-size: 14px; line-height: 20px; font-weight:lighter }
     display: inline-block;
     vertical-align: middle;
     float: none;
+}
+footer {
+	border-top: 1px solid #d9d9d9;
+	background-color:#f7f7f7;
 }

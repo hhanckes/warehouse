@@ -1,10 +1,25 @@
-<footer>
-	<div class="row">
-		<hr>
-	</div>
-	<div class="row" style="margin-top:20px">
-		<div class="col-md-12">
-  			<p><%= t 'brand' %> &copy; 2014</p>
+<footer class="">
+	<div class="row subscribe">
+		<div class="col-md-7 center" style="text-align:right">
+			<p style="margin-top:5px">Para recibir las últimas noticias, suscríbete a nuestro newsletter</p>
 		</div>
+		<div class="col-md-5 center">
+			<div class="input-group">
+	           <input type="text" class="form-control" placeholder="correo@dominio.com">
+	           <span class="input-group-btn">
+	              <button class="btn btn-default" type="button" style="font-size:14px">
+	                 Go!
+	              </button>
+	           </span>
+	        </div><!-- /input-group -->
+		</div>
+	</div>	
+	<div class="footer-menu">
+		<% InformationPage.all.each do |ip| %>
+			<span style="margin:0px 10px 0px 10px"><%= link_to ip.title, ip %></span>
+		<% end %>
+	</div>
+	<div class="disclaimer">
+		<b><%= t 'brand' %> &copy;</b> es la nueva forma de almacenamiento: Es la manera más fácil, cómoda, segura y asequible para almacenar todas tus cosas, incluyendo artículos voluminosos, como esquís , tablas de snowboard, bolsas de golf o bicicletas. Puedes usar Warehouse en cualquier lugar de Santiago de Chile sin necesidad de conducir a ningún lado porque solo estamos a un par de clicks de distancia. Warehouse ofrece todas las ventajas de almacenamiento y sin la molestia de tener que conducir y cargar tus artículos alrededor.
 	</div>
 </footer>

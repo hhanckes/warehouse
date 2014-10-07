@@ -1,12 +1,11 @@
 <div class="row introduction">
 	<div class="col-md-12 center">
-		<h1>Storage made Easy</h1>
-		<p>SpaceWays Does Your Self Storage.<p>
-		<p>Convenient London Storage from £6/month.</p>
+		<h1>Guardar tus cosas hecho simple</h1>
+		<p>Warehouse se encarga de almacenar tus cosas.<p>
+		<p>Almacenaje muy conveniente en Chile desde $4,990/mes.</p>
 		<p><%= link_to 'Comienza acá', '#', :class => 'btn btn-default btn-lg' %></p>
 	</div>
 </div>
-<hr />
 <div class="row center">
 	<div class="col-md-3">
 		<div class="img-rounded how-it-works">
@@ -111,6 +110,82 @@
 	</div>
 </div>
 <hr />
-
-
-
+<div class="row pricing">
+	<div class="col-md-12 center">
+		<h2>Seguridad</h2>
+		<h3>Nuestra primera prioridad es proveer bodegas seguras en Chile</h3>
+	</div>
+</div>
+<div class="row center safety">
+	<div class="col-md-4 safety-col">
+		<div class="img-circle circle">
+			<span class="glyphicon glyphicon-lock"></span>
+		</div>
+		<p class="">Nuestras bodegas están las 24 horas monitoreadas</p>
+	</div>
+	<div class="col-md-4 safety-col">
+		<div class="img-circle circle">
+			<span class="glyphicon glyphicon-road"></span>
+		</div>
+		<p class="">Nuestros conductores son profesionales</p>
+	</div>
+	<div class="col-md-4 safety-col">
+		<div class="img-circle circle">
+			<span class="glyphicon glyphicon-flash"></span>
+		</div>
+		<p class="">Nuestras cajas son durables y resistentes al agua</p>
+	</div>
+</div>
+<hr >
+<div class="row pricing">
+	<div class="col-md-12 center">
+		<h2>Solucionamos todas tus necesidades de bodegaje</h2>
+		<h3>Warehouse ofrece una forma conveniente de guardar tus cosas</h3>
+	</div>
+</div>
+<div class="row center testimonies">
+	<% Testimony.all[0..2].each do |testimony| %>
+	<div class="col-md-4 center">
+		<%= image_tag testimony.photo.url(:tiny), :class => 'img-circle' %>
+		<h3><%= testimony.name %></h3>
+		<h4><%= testimony.title %></h4>
+		<p>"<%= testimony.content %>"</p>
+		<p><%= image_tag testimony.item_photo.url(:s) %></p>
+	</div>
+	<% end %>
+</div>
+<hr >
+<div class="row pricing">
+	<div class="col-md-12 center">
+		<h2>Guardar tus cosas nunca ha sido más fácil</h2>
+		<h3>Prueba WareHouse ahora - Solo te demoras un par de clicks!</h3>
+	</div>
+</div>
+<div class="row center" style="margin-bottom:20px">
+	<%= image_tag 'home/whatfits_branded.gif' %>
+</div>
+<div class="row center" style="margin-bottom:20px">
+	<div class="col-md-12 center box-details-col">
+		<div class="box-details img-rounded">
+			<span class="number">60cms</span>
+			<span class="text">Largo</span>
+		</div>
+		<div class="box-details img-rounded">
+			<span class="number">40cms</span>
+			<span class="text">Ancho</span>
+		</div>
+		<div class="box-details img-rounded">
+			<span class="number">37cms</span>
+			<span class="text">Alto</span>
+		</div>
+		<div class="box-details img-rounded">
+			<span class="number">67lts</span>
+			<span class="text">Capacidad</span>
+		</div>
+	</div>
+</div>
+<div class="row" style="margin-bottom:20px">
+	<div class="col-md-12 center">
+		<p><%= link_to 'Comienza acá', '#', :class => 'btn btn-default btn-lg' %></p>
+	</div>
+</div>

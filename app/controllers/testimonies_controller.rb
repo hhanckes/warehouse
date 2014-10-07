@@ -63,6 +63,6 @@ class TestimoniesController < ApplicationController
     end
 
     def testimony_params
-      params.require(:testimony).permit(:name, :title, :content, :photo)
+      params.require(:testimony).permit(:name, :title, :content, :photo, :item_photo)
     end
 end

@@ -5,6 +5,9 @@
   <%= @testimony.name %>
 </p>
 <p>
+  <%= image_tag @testimony.photo.url(:s) %>
+</p>
+<p>
   <strong>Title:</strong>
   <%= @testimony.title %>
 </p>
@@ -13,8 +16,9 @@
   <%= @testimony.content %>
 </p>
 <p>
-  <%= image_tag @testimony.photo.url(:l) %>
+  <%= image_tag @testimony.item_photo.url(:m) %>
 </p>
+
 
 
 <%= link_to 'Edit', edit_testimony_path(@testimony) %> |

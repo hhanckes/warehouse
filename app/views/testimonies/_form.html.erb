@@ -12,7 +12,7 @@
   <% end %>
 
   <div style="form-group">
-	<%= f.label :photo, 'Foto (debe ser cuadrada)', :class => 'control-label' %>
+	<%= f.label :photo, 'Foto de la Persona (debe ser cuadrada)', :class => 'control-label' %>
 	<div class="row" style="margin-bottom:10px">
 		<div class="col-sm-1">
       		<%= image_tag @testimony.photo.url(:tiny) %>
@@ -35,6 +35,18 @@
     <%= f.label :content, 'Texto', :class => 'control-label' %><br>
     <%= f.text_area :content, :class => 'form-control', style: 'height:100px' %>
   </div>
+  <div style="form-group">
+	<%= f.label :item_photo, 'Foto del Item', :class => 'control-label' %>
+	<div class="row" style="margin-bottom:10px">
+		<div class="col-sm-1">
+      		<%= image_tag @testimony.item_photo.url(:tiny) %>
+		</div>
+		<div class="col-sm-11">
+			<%= f.file_field :item_photo, :class => 'btn btn-default' %>
+		</div>
+    </div>
+  </div>
+
   <div class="form-actions">
     <%= f.submit 'Guardar', :class => 'btn btn-default' %>
   </div>

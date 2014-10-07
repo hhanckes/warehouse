@@ -41,10 +41,10 @@
 	  	</ol>
 		<% end %>
       	<%= bootstrap_flash %>
-      	<%= yield %>
+		<div style="min-height:500px;">
+      		<%= yield %>
+		</div>
     </div> <!-- /container -->
-	<div class="container">
-		<%= render 'layouts/footer' %>
-	</div>
+	<%= render 'layouts/footer' %>
   </body>
 </html>
