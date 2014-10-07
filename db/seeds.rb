@@ -8,8 +8,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 puts "--> InformationPage:"
 aux = []
-aux << (InformationPage.find_by_title('Términos y Condiciones') || Privilege.create(:title => 'Términos y Condiciones'))
-aux << (InformationPage.find_by_title('Reglas de Almacenaje') || Privilege.create(:title => 'Reglas de Almacenaje'))
-aux << (InformationPage.find_by_title('Términos Legales y Privacidad') || Privilege.create(:title => 'Términos Legales y Privacidad'))
+aux << (InformationPage.find_by_title('Términos y Condiciones') || InformationPage.create(:title => 'Términos y Condiciones'))
+aux << (InformationPage.find_by_title('Reglas de Almacenaje') || InformationPage.create(:title => 'Reglas de Almacenaje'))
+aux << (InformationPage.find_by_title('Términos Legales y Privacidad') || InformationPage.create(:title => 'Términos Legales y Privacidad'))
 aux.each { |x| puts x.name }
 puts "\n"
