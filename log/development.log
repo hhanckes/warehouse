@@ -13667,3 +13667,1228 @@ Started GET "/assets/home/inventory_macbook.png" for 127.0.0.1 at 2014-10-06 19:
   [1m[35mInformationPage Exists (0.2ms)[0m  SELECT 1 AS one FROM `information_pages` WHERE (`information_pages`.`id` IS NOT NULL) AND `information_pages`.`slug` = 'terminos-legales-y-privacidad' LIMIT 1
   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `information_pages` (`created_at`, `slug`, `title`, `updated_at`) VALUES ('2014-10-07 01:18:07', 'terminos-legales-y-privacidad', 'Términos Legales y Privacidad', '2014-10-07 01:18:07')[0m
   [1m[35m (0.4ms)[0m  COMMIT
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-06 20:24:06 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by MainController#home as HTML
+  Rendered main/home.html.erb within layouts/application (8.9ms)
+  Rendered layouts/_top_menu.html.erb (10.1ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 145ms (Views: 133.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-06 20:24:06 -0500
+Processing by MainController#home as HTML
+  Rendered main/home.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_top_menu.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 57ms (Views: 56.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-06 20:24:06 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-06 20:24:06 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-06 20:24:06 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-06 20:24:06 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-06 20:24:06 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-06 20:24:06 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-06 20:24:06 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-06 20:24:06 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-06 20:24:06 -0500
+
+
+Started GET "/assets/home/paso_1_deliver_boxes.png" for 127.0.0.1 at 2014-10-06 20:24:06 -0500
+
+
+Started GET "/assets/home/paso_2_pack_items.png" for 127.0.0.1 at 2014-10-06 20:24:06 -0500
+
+
+Started GET "/assets/home/paso3_collect.png" for 127.0.0.1 at 2014-10-06 20:24:06 -0500
+
+
+Started GET "/assets/home/paso4_return_items.png" for 127.0.0.1 at 2014-10-06 20:24:06 -0500
+
+
+Started GET "/assets/home/inventory_macbook.png" for 127.0.0.1 at 2014-10-06 20:24:06 -0500
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-10-06 20:24:09 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.erb (1.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (15.8ms)
+  Rendered layouts/_top_menu.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 57ms (Views: 52.8ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-06 20:24:15 -0500
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NYjHebtV9fiD/J3hmHISXLZTHO1mNXkJS0IsTvB028U=", "user"=>{"email"=>"hans@tramanta.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Crear cuenta"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'hans@tramanta.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `users` (`created_at`, `email`, `encrypted_password`, `updated_at`) VALUES ('2014-10-07 01:24:15', 'hans@tramanta.com', '$2a$10$Zccu5dGZ/Za/5Pqy8w0mwO5olBabwSCgGaiBU.bmD/0rfOUy22XNi', '2014-10-07 01:24:15')
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (29.9ms)[0m  [1mUPDATE `users` SET `last_sign_in_at` = '2014-10-07 01:24:15', `current_sign_in_at` = '2014-10-07 01:24:15', `last_sign_in_ip` = '127.0.0.1', `current_sign_in_ip` = '127.0.0.1', `sign_in_count` = 1, `updated_at` = '2014-10-07 01:24:15' WHERE `users`.`id` = 2[0m
+  [1m[35m (0.7ms)[0m  COMMIT
+Redirected to http://localhost:3000/users
+Completed 302 Found in 137ms (ActiveRecord: 32.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-10-06 20:24:15 -0500
+
+ActionController::RoutingError (No route matches [GET] "/users"):
+  actionpack (4.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.0.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.4) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.4) lib/rails/engine.rb:511:in `call'
+  railties (4.0.4) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/hans/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/hans/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/hans/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.9ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (5.5ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (57.1ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-10-06 20:26:39 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://localhost:3000/users
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-10-06 20:26:39 -0500
+
+ActionController::RoutingError (No route matches [GET] "/users"):
+  actionpack (4.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.0.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.4) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.4) lib/rails/engine.rb:511:in `call'
+  railties (4.0.4) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/hans/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/hans/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/hans/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.4ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.8ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (34.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-06 20:26:43 -0500
+Processing by MainController#home as HTML
+  Rendered main/home.html.erb within layouts/application (0.7ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered layouts/_top_menu.html.erb (2.8ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 43ms (Views: 41.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-06 20:26:43 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-06 20:26:43 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-06 20:26:43 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-06 20:26:43 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-06 20:26:43 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-06 20:26:43 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-06 20:26:43 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-06 20:26:43 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-06 20:26:43 -0500
+
+
+Started GET "/assets/home/paso_1_deliver_boxes.png" for 127.0.0.1 at 2014-10-06 20:26:43 -0500
+
+
+Started GET "/assets/home/paso_2_pack_items.png" for 127.0.0.1 at 2014-10-06 20:26:43 -0500
+
+
+Started GET "/assets/home/paso3_collect.png" for 127.0.0.1 at 2014-10-06 20:26:43 -0500
+
+
+Started GET "/assets/home/paso4_return_items.png" for 127.0.0.1 at 2014-10-06 20:26:43 -0500
+
+
+Started GET "/assets/home/inventory_macbook.png" for 127.0.0.1 at 2014-10-06 20:26:43 -0500
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2014-10-06 20:26:48 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"NYjHebtV9fiD/J3hmHISXLZTHO1mNXkJS0IsTvB028U="}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-06 20:26:48 -0500
+Processing by MainController#home as HTML
+  Rendered main/home.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_top_menu.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 38ms (Views: 36.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-06 20:26:49 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-06 20:26:49 -0500
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-06 20:26:49 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-06 20:26:49 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-06 20:26:49 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-06 20:26:49 -0500
+
+
+Started GET "/assets/home/paso_2_pack_items.png" for 127.0.0.1 at 2014-10-06 20:26:49 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-06 20:26:49 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-06 20:26:49 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-06 20:26:49 -0500
+
+
+Started GET "/assets/home/paso_1_deliver_boxes.png" for 127.0.0.1 at 2014-10-06 20:26:49 -0500
+
+
+Started GET "/assets/home/paso4_return_items.png" for 127.0.0.1 at 2014-10-06 20:26:49 -0500
+
+
+Started GET "/assets/home/paso3_collect.png" for 127.0.0.1 at 2014-10-06 20:26:49 -0500
+
+
+Started GET "/assets/home/inventory_macbook.png" for 127.0.0.1 at 2014-10-06 20:26:49 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-06 20:26:49 -0500
+Processing by MainController#home as HTML
+  Rendered main/home.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_top_menu.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 41ms (Views: 40.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-06 20:26:50 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-06 20:26:50 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-06 20:26:50 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-06 20:26:50 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-06 20:26:50 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-06 20:26:50 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-06 20:26:50 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-06 20:26:50 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-06 20:26:50 -0500
+
+
+Started GET "/assets/home/paso_1_deliver_boxes.png" for 127.0.0.1 at 2014-10-06 20:26:50 -0500
+
+
+Started GET "/assets/home/paso_2_pack_items.png" for 127.0.0.1 at 2014-10-06 20:26:50 -0500
+
+
+Started GET "/assets/home/paso3_collect.png" for 127.0.0.1 at 2014-10-06 20:26:50 -0500
+
+
+Started GET "/assets/home/paso4_return_items.png" for 127.0.0.1 at 2014-10-06 20:26:50 -0500
+
+
+Started GET "/assets/home/inventory_macbook.png" for 127.0.0.1 at 2014-10-06 20:26:50 -0500
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-10-06 20:26:51 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.erb (0.2ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (1.7ms)
+  Rendered layouts/_top_menu.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 40ms (Views: 38.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-06 20:26:59 -0500
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VfbBNnX4IxrlaA84bdGtUDOEZaCUq0pX4u3bq+1vsYQ=", "user"=>{"email"=>"asd@asd.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Crear cuenta"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'asd@asd.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `users` (`created_at`, `email`, `encrypted_password`, `updated_at`) VALUES ('2014-10-07 01:26:59', 'asd@asd.com', '$2a$10$HgpStF1VGRImjuaxjyhNw.i5QLoCm8pZO/yVwOOVmIueWmFoiNCAG', '2014-10-07 01:26:59')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE `users` SET `last_sign_in_at` = '2014-10-07 01:26:59', `current_sign_in_at` = '2014-10-07 01:26:59', `last_sign_in_ip` = '127.0.0.1', `current_sign_in_ip` = '127.0.0.1', `sign_in_count` = 1, `updated_at` = '2014-10-07 01:26:59' WHERE `users`.`id` = 3[0m
+  [1m[35m (15.3ms)[0m  COMMIT
+Redirected to http://localhost:3000/users
+Completed 302 Found in 86ms (ActiveRecord: 16.8ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-10-06 20:26:59 -0500
+
+ActionController::RoutingError (No route matches [GET] "/users"):
+  actionpack (4.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.0.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.4) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.4) lib/rails/engine.rb:511:in `call'
+  railties (4.0.4) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/hans/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/hans/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/hans/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.9ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (32.2ms)
+
+
+Started GET "/preguntas-frecuentes" for 127.0.0.1 at 2014-10-06 20:27:08 -0500
+Processing by MainController#faqs as HTML
+  [1m[36mFaqSection Load (0.3ms)[0m  [1mSELECT `faq_sections`.* FROM `faq_sections`[0m
+  [1m[35mFaq Load (0.2ms)[0m  SELECT `faqs`.* FROM `faqs` WHERE `faqs`.`faq_section_id` = 1
+  [1m[36mFaq Load (0.4ms)[0m  [1mSELECT `faqs`.* FROM `faqs` WHERE `faqs`.`faq_section_id` = 3[0m
+  Rendered main/faqs.html.erb within layouts/application (88.3ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered layouts/_top_menu.html.erb (2.2ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 145ms (Views: 136.6ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-06 20:27:09 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:09 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:09 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-06 20:27:09 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-06 20:27:09 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:09 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:09 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:09 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:09 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-06 20:27:10 -0500
+Processing by MainController#home as HTML
+  Rendered main/home.html.erb within layouts/application (1.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered layouts/_top_menu.html.erb (2.6ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 47ms (Views: 46.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/home/paso_2_pack_items.png" for 127.0.0.1 at 2014-10-06 20:27:10 -0500
+
+
+Started GET "/assets/home/paso_1_deliver_boxes.png" for 127.0.0.1 at 2014-10-06 20:27:10 -0500
+
+
+Started GET "/assets/home/paso3_collect.png" for 127.0.0.1 at 2014-10-06 20:27:10 -0500
+
+
+Started GET "/assets/home/inventory_macbook.png" for 127.0.0.1 at 2014-10-06 20:27:10 -0500
+
+
+Started GET "/assets/home/paso4_return_items.png" for 127.0.0.1 at 2014-10-06 20:27:10 -0500
+
+
+Started GET "/preguntas-frecuentes" for 127.0.0.1 at 2014-10-06 20:27:12 -0500
+Processing by MainController#faqs as HTML
+  [1m[35mFaqSection Load (0.3ms)[0m  SELECT `faq_sections`.* FROM `faq_sections`
+  [1m[36mFaq Load (0.3ms)[0m  [1mSELECT `faqs`.* FROM `faqs` WHERE `faqs`.`faq_section_id` = 1[0m
+  [1m[35mFaq Load (0.2ms)[0m  SELECT `faqs`.* FROM `faqs` WHERE `faqs`.`faq_section_id` = 3
+  Rendered main/faqs.html.erb within layouts/application (3.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered layouts/_top_menu.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 48ms (Views: 46.6ms | ActiveRecord: 1.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2014-10-06 20:27:15 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"VfbBNnX4IxrlaA84bdGtUDOEZaCUq0pX4u3bq+1vsYQ="}
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/preguntas-frecuentes
+Completed 302 Found in 4ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/preguntas-frecuentes" for 127.0.0.1 at 2014-10-06 20:27:15 -0500
+Processing by MainController#faqs as HTML
+  [1m[36mFaqSection Load (0.3ms)[0m  [1mSELECT `faq_sections`.* FROM `faq_sections`[0m
+  [1m[35mFaq Load (0.2ms)[0m  SELECT `faqs`.* FROM `faqs` WHERE `faqs`.`faq_section_id` = 1
+  [1m[36mFaq Load (0.2ms)[0m  [1mSELECT `faqs`.* FROM `faqs` WHERE `faqs`.`faq_section_id` = 3[0m
+  Rendered main/faqs.html.erb within layouts/application (2.7ms)
+  Rendered layouts/_top_menu.html.erb (1.2ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 44ms (Views: 42.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-06 20:27:15 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:15 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:15 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-06 20:27:15 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-06 20:27:15 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:15 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:15 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:15 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:15 -0500
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-10-06 20:27:20 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.erb (0.2ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_top_menu.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 39ms (Views: 38.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-06 20:27:21 -0500
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UMfKiPXv4PZxusqB7XHTY3pNdUnVmt8PHjdFYv+K6A8=", "user"=>{"email"=>"hans@tramanta.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Crear cuenta"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'hans@tramanta.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  Rendered devise/shared/_links.erb (0.2ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (2.5ms)
+  Rendered layouts/_top_menu.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 122ms (Views: 49.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:21 -0500
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-06 20:27:21 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-06 20:27:21 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:21 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:21 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-06 20:27:21 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:21 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:21 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:21 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-06 20:27:37 -0500
+Processing by MainController#home as HTML
+  Rendered main/home.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_top_menu.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 43ms (Views: 41.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-06 20:27:37 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:37 -0500
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-06 20:27:37 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:37 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-06 20:27:37 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:37 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:37 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:37 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:37 -0500
+
+
+Started GET "/assets/home/paso_1_deliver_boxes.png" for 127.0.0.1 at 2014-10-06 20:27:37 -0500
+
+
+Started GET "/assets/home/paso_2_pack_items.png" for 127.0.0.1 at 2014-10-06 20:27:37 -0500
+
+
+Started GET "/assets/home/paso3_collect.png" for 127.0.0.1 at 2014-10-06 20:27:37 -0500
+
+
+Started GET "/assets/home/paso4_return_items.png" for 127.0.0.1 at 2014-10-06 20:27:37 -0500
+
+
+Started GET "/assets/home/inventory_macbook.png" for 127.0.0.1 at 2014-10-06 20:27:37 -0500
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-10-06 20:27:39 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.erb (0.2ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_top_menu.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 42ms (Views: 41.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-10-06 20:27:41 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (2.1ms)
+  Rendered layouts/_top_menu.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 49ms (Views: 47.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-06 20:27:48 -0500
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UMfKiPXv4PZxusqB7XHTY3pNdUnVmt8PHjdFYv+K6A8=", "user"=>{"email"=>"asdasd@asdasd.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Crear cuenta"}
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'asdasd@asdasd.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (2.8ms)
+  Rendered layouts/_top_menu.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 121ms (Views: 48.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-06 20:27:48 -0500
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-06 20:27:48 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:48 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-06 20:27:48 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:48 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:48 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:48 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:48 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:48 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-06 20:27:50 -0500
+Processing by MainController#home as HTML
+  Rendered main/home.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_top_menu.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 45ms (Views: 43.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-06 20:27:50 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:50 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-06 20:27:50 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:50 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:50 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-06 20:27:50 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:50 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:50 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-06 20:27:50 -0500
+
+
+Started GET "/assets/home/paso_1_deliver_boxes.png" for 127.0.0.1 at 2014-10-06 20:27:50 -0500
+
+
+Started GET "/assets/home/paso_2_pack_items.png" for 127.0.0.1 at 2014-10-06 20:27:50 -0500
+
+
+Started GET "/assets/home/paso3_collect.png" for 127.0.0.1 at 2014-10-06 20:27:50 -0500
+
+
+Started GET "/assets/home/paso4_return_items.png" for 127.0.0.1 at 2014-10-06 20:27:50 -0500
+
+
+Started GET "/assets/home/inventory_macbook.png" for 127.0.0.1 at 2014-10-06 20:27:50 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-06 20:28:28 -0500
+Processing by MainController#home as HTML
+  Rendered main/home.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_top_menu.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 47ms (Views: 46.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-10-06 20:28:36 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (8.5ms)
+  Rendered layouts/_top_menu.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 55ms (Views: 50.9ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-06 20:28:46 -0500
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UMfKiPXv4PZxusqB7XHTY3pNdUnVmt8PHjdFYv+K6A8=", "user"=>{"email"=>"ooo@ooo.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Crear cuenta"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'ooo@ooo.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `users` (`created_at`, `email`, `encrypted_password`, `updated_at`) VALUES ('2014-10-07 01:28:46', 'ooo@ooo.com', '$2a$10$zMri7oI1wA.5HY.AZVFmUuRiLbZH0bq2gvgVWDOhhGOF7oc8rcAuK', '2014-10-07 01:28:46')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (35.1ms)[0m  [1mUPDATE `users` SET `last_sign_in_at` = '2014-10-07 01:28:46', `current_sign_in_at` = '2014-10-07 01:28:46', `last_sign_in_ip` = '127.0.0.1', `current_sign_in_ip` = '127.0.0.1', `sign_in_count` = 1, `updated_at` = '2014-10-07 01:28:46' WHERE `users`.`id` = 4[0m
+  [1m[35m (0.5ms)[0m  COMMIT
+Redirected to http://localhost:3000/users
+Completed 302 Found in 113ms (ActiveRecord: 36.9ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-10-06 20:28:46 -0500
+
+ActionController::RoutingError (No route matches [GET] "/users"):
+  actionpack (4.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.0.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.4) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.4) lib/rails/engine.rb:511:in `call'
+  railties (4.0.4) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/hans/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/hans/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/hans/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.7ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (34.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-06 20:29:19 -0500
+Processing by MainController#home as HTML
+  Rendered main/home.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered layouts/_top_menu.html.erb (10.4ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 48ms (Views: 45.1ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-06 20:29:19 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-06 20:29:19 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-06 20:29:19 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-06 20:29:19 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-06 20:29:19 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-06 20:29:19 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-06 20:29:19 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-06 20:29:19 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-06 20:29:19 -0500
+
+
+Started GET "/assets/home/paso_1_deliver_boxes.png" for 127.0.0.1 at 2014-10-06 20:29:19 -0500
+
+
+Started GET "/assets/home/paso_2_pack_items.png" for 127.0.0.1 at 2014-10-06 20:29:19 -0500
+
+
+Started GET "/assets/home/paso3_collect.png" for 127.0.0.1 at 2014-10-06 20:29:19 -0500
+
+
+Started GET "/assets/home/paso4_return_items.png" for 127.0.0.1 at 2014-10-06 20:29:19 -0500
+
+
+Started GET "/assets/home/inventory_macbook.png" for 127.0.0.1 at 2014-10-06 20:29:19 -0500
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2014-10-06 20:29:21 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"UMfKiPXv4PZxusqB7XHTY3pNdUnVmt8PHjdFYv+K6A8="}
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-06 20:29:21 -0500
+Processing by MainController#home as HTML
+  Rendered main/home.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_top_menu.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 38ms (Views: 37.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-06 20:29:21 -0500
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-06 20:29:21 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-06 20:29:21 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-06 20:29:21 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-06 20:29:21 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-06 20:29:21 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-06 20:29:21 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-06 20:29:21 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-06 20:29:21 -0500
+
+
+Started GET "/assets/home/paso_1_deliver_boxes.png" for 127.0.0.1 at 2014-10-06 20:29:21 -0500
+
+
+Started GET "/assets/home/paso_2_pack_items.png" for 127.0.0.1 at 2014-10-06 20:29:21 -0500
+
+
+Started GET "/assets/home/paso3_collect.png" for 127.0.0.1 at 2014-10-06 20:29:21 -0500
+
+
+Started GET "/assets/home/paso4_return_items.png" for 127.0.0.1 at 2014-10-06 20:29:21 -0500
+
+
+Started GET "/assets/home/inventory_macbook.png" for 127.0.0.1 at 2014-10-06 20:29:21 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-06 20:29:22 -0500
+Processing by MainController#home as HTML
+  Rendered main/home.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_top_menu.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 48ms (Views: 47.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-10-06 20:29:23 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.5ms)
+  Rendered layouts/_top_menu.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 49ms (Views: 47.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-10-06 20:29:25 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_top_menu.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 40ms (Views: 38.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-06 20:29:34 -0500
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eOGxHw2YnrLIp4OfFeXL5dbXhIOwcOkLyhOj73ztf9I=", "user"=>{"email"=>"ppp@ppp.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Crear cuenta"}
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'ppp@ppp.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `users` (`created_at`, `email`, `encrypted_password`, `updated_at`) VALUES ('2014-10-07 01:29:34', 'ppp@ppp.com', '$2a$10$qRxEMG3Sjwa8TQXID0ly2u0paTBz8RmB0lh3Zyj59S4CwGu04Xe7q', '2014-10-07 01:29:34')[0m
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE `users` SET `last_sign_in_at` = '2014-10-07 01:29:34', `current_sign_in_at` = '2014-10-07 01:29:34', `last_sign_in_ip` = '127.0.0.1', `current_sign_in_ip` = '127.0.0.1', `sign_in_count` = 1, `updated_at` = '2014-10-07 01:29:34' WHERE `users`.`id` = 5
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/users
+Completed 302 Found in 73ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-10-06 20:29:34 -0500
+
+ActionController::RoutingError (No route matches [GET] "/users"):
+  actionpack (4.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.0.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.4) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.4) lib/rails/engine.rb:511:in `call'
+  railties (4.0.4) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/hans/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/hans/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/hans/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.6ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (35.2ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-10-06 20:30:10 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 5 ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://localhost:3000/users
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 11ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-10-06 20:30:10 -0500
+
+ActionController::RoutingError (No route matches [GET] "/users"):
+  actionpack (4.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.0.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.4) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.4) lib/rails/engine.rb:511:in `call'
+  railties (4.0.4) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/hans/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/hans/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/hans/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.7ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (40.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-06 20:30:12 -0500
+Processing by MainController#home as HTML
+  Rendered main/home.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 5 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered layouts/_top_menu.html.erb (2.2ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 59ms (Views: 56.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/home/paso_1_deliver_boxes.png" for 127.0.0.1 at 2014-10-06 20:30:12 -0500
+
+
+Started GET "/assets/home/paso3_collect.png" for 127.0.0.1 at 2014-10-06 20:30:12 -0500
+
+
+Started GET "/assets/home/inventory_macbook.png" for 127.0.0.1 at 2014-10-06 20:30:12 -0500
+
+
+Started GET "/assets/home/paso_2_pack_items.png" for 127.0.0.1 at 2014-10-06 20:30:12 -0500
+
+
+Started GET "/assets/home/paso4_return_items.png" for 127.0.0.1 at 2014-10-06 20:30:12 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-06 20:30:13 -0500
+Processing by MainController#home as HTML
+  Rendered main/home.html.erb within layouts/application (0.6ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 5 ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered layouts/_top_menu.html.erb (1.9ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 39ms (Views: 38.3ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2014-10-06 20:30:15 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"eOGxHw2YnrLIp4OfFeXL5dbXhIOwcOkLyhOj73ztf9I="}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 5 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-06 20:30:15 -0500
+Processing by MainController#home as HTML
+  Rendered main/home.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_top_menu.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 37ms (Views: 35.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-06 20:30:15 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-06 20:30:15 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-06 20:30:15 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-06 20:30:15 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-06 20:30:15 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-06 20:30:15 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-06 20:30:15 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-06 20:30:15 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-06 20:30:15 -0500
+
+
+Started GET "/assets/home/paso_1_deliver_boxes.png" for 127.0.0.1 at 2014-10-06 20:30:15 -0500
+
+
+Started GET "/assets/home/paso_2_pack_items.png" for 127.0.0.1 at 2014-10-06 20:30:15 -0500
+
+
+Started GET "/assets/home/paso3_collect.png" for 127.0.0.1 at 2014-10-06 20:30:15 -0500
+
+
+Started GET "/assets/home/paso4_return_items.png" for 127.0.0.1 at 2014-10-06 20:30:15 -0500
+
+
+Started GET "/assets/home/inventory_macbook.png" for 127.0.0.1 at 2014-10-06 20:30:15 -0500
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-10-06 20:30:17 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.0ms)
+  Rendered layouts/_top_menu.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 52ms (Views: 50.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-10-06 20:30:19 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (1.7ms)
+  Rendered layouts/_top_menu.html.erb (1.0ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 45ms (Views: 43.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-06 20:30:28 -0500
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8OaShJFVOFsDm/CB6g2nKxK5GyWbQFX+70TZ9dn09yM=", "user"=>{"email"=>"iii@iii.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Crear cuenta"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'iii@iii.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `users` (`created_at`, `email`, `encrypted_password`, `updated_at`) VALUES ('2014-10-07 01:30:28', 'iii@iii.com', '$2a$10$fkZdd/YaPHF/VfVqa/G/K.6FBkCS9HyzXUQh.RKqrZ5jo3xfgrVPe', '2014-10-07 01:30:28')
+  [1m[36m (15.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE `users` SET `last_sign_in_at` = '2014-10-07 01:30:28', `current_sign_in_at` = '2014-10-07 01:30:28', `last_sign_in_ip` = '127.0.0.1', `current_sign_in_ip` = '127.0.0.1', `sign_in_count` = 1, `updated_at` = '2014-10-07 01:30:28' WHERE `users`.`id` = 6[0m
+  [1m[35m (0.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 91ms (ActiveRecord: 17.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-06 20:30:28 -0500
+Processing by MainController#home as HTML
+  Rendered main/home.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered layouts/_top_menu.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 40ms (Views: 39.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-06 20:30:28 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-06 20:30:28 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-06 20:30:28 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-06 20:30:28 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-06 20:30:28 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-06 20:30:28 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-06 20:30:28 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-06 20:30:28 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-06 20:30:28 -0500
+
+
+Started GET "/assets/home/paso_1_deliver_boxes.png" for 127.0.0.1 at 2014-10-06 20:30:28 -0500
+
+
+Started GET "/assets/home/paso_2_pack_items.png" for 127.0.0.1 at 2014-10-06 20:30:28 -0500
+
+
+Started GET "/assets/home/paso3_collect.png" for 127.0.0.1 at 2014-10-06 20:30:28 -0500
+
+
+Started GET "/assets/home/paso4_return_items.png" for 127.0.0.1 at 2014-10-06 20:30:28 -0500
+
+
+Started GET "/assets/home/inventory_macbook.png" for 127.0.0.1 at 2014-10-06 20:30:28 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-06 20:30:37 -0500
+Processing by MainController#home as HTML
+  Rendered main/home.html.erb within layouts/application (0.6ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered layouts/_top_menu.html.erb (2.8ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 42ms (Views: 40.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-06 20:30:37 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-06 20:30:37 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-06 20:30:37 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-06 20:30:37 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-06 20:30:37 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-06 20:30:37 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-06 20:30:37 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-06 20:30:37 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-06 20:30:37 -0500
+
+
+Started GET "/assets/home/paso_1_deliver_boxes.png" for 127.0.0.1 at 2014-10-06 20:30:37 -0500
+
+
+Started GET "/assets/home/paso_2_pack_items.png" for 127.0.0.1 at 2014-10-06 20:30:37 -0500
+
+
+Started GET "/assets/home/paso3_collect.png" for 127.0.0.1 at 2014-10-06 20:30:37 -0500
+
+
+Started GET "/assets/home/paso4_return_items.png" for 127.0.0.1 at 2014-10-06 20:30:37 -0500
+
+
+Started GET "/assets/home/inventory_macbook.png" for 127.0.0.1 at 2014-10-06 20:30:37 -0500
