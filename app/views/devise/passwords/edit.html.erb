@@ -1,0 +1,18 @@
+<div style="text-align:center">
+	<h2>Cambia tu clave</h2>
+
+	<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: "form-inline", role: "form" }) do |f| %>
+	  <%= devise_error_messages! %>
+	  <%= f.hidden_field :reset_password_token %>
+	  <div class="row">
+		<div class="col-md-12">
+	  		<%= f.password_field :password, autofocus: true, autocomplete: "off", class: 'form-control input-sm', :style => 'width:20%', placeholder: 'Nueva clave' %>
+			<%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control input-sm', :style => 'width:20%', placeholder: 'Repite tu nueva clave' %>
+			<%= f.submit "Cambiar Clave", class: 'btn btn-default', style: 'vertical-align:top;' %>
+		</div>
+	  </div>
+	<% end %>
+
+	<%= render "devise/shared/links" %>
+
+</div>

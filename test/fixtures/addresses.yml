@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  receiver: MyString
+  name: MyString
+  post_code: MyString
+  area_id: 1
+  user_id: 1
+
+two:
+  receiver: MyString
+  name: MyString
+  post_code: MyString
+  area_id: 1
+  user_id: 1

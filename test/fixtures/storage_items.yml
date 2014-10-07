@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  price: 9.99
+  width: 9.99
+  height: 9.99
+  depth: 9.99
+  dimensions_measure: MyString
+  capacity: 9.99
+  capacity_measure: MyString
+
+two:
+  name: MyString
+  description: MyText
+  price: 9.99
+  width: 9.99
+  height: 9.99
+  depth: 9.99
+  dimensions_measure: MyString
+  capacity: 9.99
+  capacity_measure: MyString

@@ -1,0 +1,26 @@
+<%= form_for(@faq_section) do |f| %>
+  <% if @faq_section.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@faq_section.errors.count, "error") %> prohibited this faq_section from being saved:</h2>
+
+      <ul>
+      <% @faq_section.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, 'Nombre de la persona', :class => 'control-label' %><br>
+    <%= f.text_field :name, :class => 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description, 'Descripción', :class => 'control-label' %><br>
+    <%= f.text_area :description, :class => 'form-control' %>
+  </div>
+  <div class="form-actions">
+    <%= f.submit 'Guardar', :class => 'btn btn-default' %>
+  </div>
+<% end %>

@@ -1,0 +1,34 @@
+<h1>Listing testimonies</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Title</th>
+      <th>Content</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @testimonies.each do |testimony| %>
+      <tr>
+        <td>
+			<%= image_tag testimony.photo.url(:xs) %>
+			<%= testimony.name %>
+		</td>
+        <td><%= testimony.title %></td>
+        <td><%= testimony.content %></td>
+        <td><%= link_to 'Show', testimony %></td>
+        <td><%= link_to 'Edit', edit_testimony_path(testimony) %></td>
+        <td><%= link_to 'Destroy', testimony, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Testimony', new_testimony_path %>

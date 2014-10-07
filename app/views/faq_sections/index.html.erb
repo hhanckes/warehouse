@@ -1,0 +1,29 @@
+<h1>Listing faq_sections</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @faq_sections.each do |faq_section| %>
+      <tr>
+        <td><%= faq_section.name %></td>
+        <td><%= faq_section.description %></td>
+        <td><%= link_to 'Show', faq_section %></td>
+        <td><%= link_to 'Edit', edit_faq_section_path(faq_section) %></td>
+        <td><%= link_to 'Destroy', faq_section, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Faq section', new_faq_section_path %>

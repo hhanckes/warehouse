@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @faq_section.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @faq_section.description %>
+</p>
+
+<%= link_to 'Edit', edit_faq_section_path(@faq_section) %> |
+<%= link_to 'Back', faq_sections_path %>

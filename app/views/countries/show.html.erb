@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @country.name %>
+</p>
+
+<div style="margin-left:20px">
+	<% @country.areas.each do |area| %>
+	<p style="margin-bottom:30px">
+	  <strong>Area Name:</strong>
+	  <%= area.name %>
+	</p>
+	<% end %>
+</div>
+
+<%= link_to 'Edit', edit_country_path(@country) %> |
+<%= link_to 'Back', countries_path %>

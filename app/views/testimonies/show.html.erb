@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @testimony.name %>
+</p>
+<p>
+  <strong>Title:</strong>
+  <%= @testimony.title %>
+</p>
+<p>
+  <strong>Content:</strong>
+  <%= @testimony.content %>
+</p>
+<p>
+  <%= image_tag @testimony.photo.url(:l) %>
+</p>
+
+
+<%= link_to 'Edit', edit_testimony_path(@testimony) %> |
+<%= link_to 'Back', testimonies_path %>

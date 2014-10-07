@@ -1,0 +1,11 @@
+<%= form_tag(request.fullpath, :method => "get", :html => {class: 'form-inline'}) do %>
+	<div class="input-prepend">
+	  <span class="add-on">Desde</span>
+		<%= text_field_tag(:from, (@from.strftime("%Y-%m-%d") unless @from.blank?), class: 'datepicker') %>
+	</div>
+	<div class="input-prepend">
+	  	<span class="add-on">Hasta</span>
+		<%= text_field_tag(:to, (@to.strftime("%Y-%m-%d") unless @to.blank?), class: 'datepicker') %>
+	</div>
+	<%= submit_tag("Actualizar",  class: "btn", style: 'vertical-align:top') %>
+<% end %>

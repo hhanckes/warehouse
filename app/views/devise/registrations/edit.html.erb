@@ -1,0 +1,27 @@
+<h2>Editar usuario</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div><%= f.label :email %> <%= f.email_field :email, autofocus: true %></div>
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div><%= f.label :password, 'Nueva clave' %> <%= f.password_field :password, autocomplete: "off" %>
+	<i>(dejar en blanco si no quieres cambiarlo)</i></div>
+
+  <div><%= f.label :password_confirmation, 'Repite tu nueva clave' %> <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+
+  <div><%= f.label :current_password %> <%= f.password_field :current_password, autocomplete: "off" %>
+		<i>(necesitamos tu clave antigua para confirmar los cambios)</i>
+  </div>
+
+  <div><%= f.submit "Actualizar", class: 'btn btn-default', style: 'vertical-align:top;' %></div>
+<% end %>
+
+<h3>¿No te gustó la aplicación?</h3>
+
+<p><%= button_to "Cancela tu cuenta", registration_path(resource_name), data: { confirm: "¿Estás seguro?" }, method: :delete, class: 'btn btn-default', style: 'vertical-align:top;' %></p>
+
+<%= link_to "Volver", :back %>

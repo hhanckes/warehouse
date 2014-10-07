@@ -1,0 +1,45 @@
+<h1>Listing storage_items</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+	  <th></th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Width</th>
+      <th>Height</th>
+      <th>Depth</th>
+      <th>Dimensions measure</th>
+      <th>Capacity</th>
+      <th>Capacity measure</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @storage_items.each do |storage_item| %>
+      <tr>
+		<td><%= image_tag storage_item.photo.url(:xs) %></td>
+        <td><%= storage_item.name %></td>
+        <td><%= storage_item.description %></td>
+        <td><%= storage_item.price %></td>
+        <td><%= storage_item.width %></td>
+        <td><%= storage_item.height %></td>
+        <td><%= storage_item.depth %></td>
+        <td><%= storage_item.dimensions_measure %></td>
+        <td><%= storage_item.capacity %></td>
+        <td><%= storage_item.capacity_measure %></td>
+        <td><%= link_to 'Show', storage_item %></td>
+        <td><%= link_to 'Edit', edit_storage_item_path(storage_item) %></td>
+        <td><%= link_to 'Destroy', storage_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Storage item', new_storage_item_path %>

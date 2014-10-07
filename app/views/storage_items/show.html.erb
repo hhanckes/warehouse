@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+<%= image_tag @storage_item.photo.url(:m) %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @storage_item.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @storage_item.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @storage_item.price %>
+</p>
+
+<p>
+  <strong>Width:</strong>
+  <%= @storage_item.width %>
+</p>
+
+<p>
+  <strong>Height:</strong>
+  <%= @storage_item.height %>
+</p>
+
+<p>
+  <strong>Depth:</strong>
+  <%= @storage_item.depth %>
+</p>
+
+<p>
+  <strong>Dimensions measure:</strong>
+  <%= @storage_item.dimensions_measure %>
+</p>
+
+<p>
+  <strong>Capacity:</strong>
+  <%= @storage_item.capacity %>
+</p>
+
+<p>
+  <strong>Capacity measure:</strong>
+  <%= @storage_item.capacity_measure %>
+</p>
+
+<%= link_to 'Edit', edit_storage_item_path(@storage_item) %> |
+<%= link_to 'Back', storage_items_path %>

@@ -1,0 +1,32 @@
+<table width="722" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFF" style="font-size:12px;color:#424242;text-align:center;background-repeat:no-repeat">
+	<tbody>
+		<tr>
+			<td height="6" width="7" valign="bottom"><img src="<%= asset_url 'email/top-left.png', only_path: false %>" style="vertical-align:bottom"></td>
+			<td height="6" width="708" valign="bottom"><img src="<%= asset_url 'email/top.png', only_path: false %>" style="vertical-align:bottom"></td>
+			<td height="6" width="7" valign="bottom"><img src="<%= asset_url 'email/top-right.png', only_path: false %>" style="vertical-align:bottom"></td>
+		</tr>
+		<tr>
+			<td width="7" style="background:url(<%= asset_url 'email/left.png', only_path: false %>) 0 0 repeat-y"></td>
+			<td align="center">				
+				<table border="0" cellpadding="0" cellspacing="0">
+					<tbody>
+						<tr>
+							<td align="left">
+								<table width="708" border="0" cellpadding="0" cellspacing="0">
+									<tbody>
+										<tr>
+											<td width="30" height="81" align="left" valign="top" bgcolor="#f8f8f8"></td>
+											<td width="130" height="81" align="left" valign="middle" bgcolor="#f8f8f8">
+												<a href="www.prilov.com" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;color:#777;text-decoration:none;margin-top:27px" target="_blank">
+													<font style="font-family:Arial,Helvetica,sans-serif;font-size:18px;color:#777" face="Arial, Helvetica, sans-serif">
+														<strong>PRILOV.COM</strong>
+													</font>
+												</a>
+											</td>
+											<td height="81" align="left" valign="middle" bgcolor="#f8f8f8">
+											</td>
+											<td height="81" align="right" valign="middle" bgcolor="#f8f8f8"><font style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#ffffff" face="Arial, Helvetica, sans-serif"><a style="color:#ffffff;text-decoration:none"><font style="color:#777"><%= Date.today.strftime('%d-%m-%Y') %></font></a></font></td>
+											<td width="24" height="81" align="right" valign="top" bgcolor="#f8f8f8"></td>
+										</tr>
+									</tbody>
+								</table>

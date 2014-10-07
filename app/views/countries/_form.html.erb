@@ -1,0 +1,24 @@
+<%= nested_form_for(@country) do |f| %>
+  <% if @country.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@country.errors.count, "error") %> prohibited this country from being saved:</h2>
+
+      <ul>
+      <% @country.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, 'Nombre del País', :class => 'control-label' %><br>
+    <%= f.text_field :name, :class => 'form-control' %>
+  </div>
+  <div style="margin-left:20px">
+  	<%= render 'area_fields', :f => f %>
+  </div>
+  <div class="form-actions">
+    <%= f.submit 'Guardar', :class => 'btn btn-default' %>
+  </div>
+<% end %>

@@ -1,0 +1,28 @@
+<%= nested_form_for(@information_page) do |f| %>
+  <% if @information_page.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@information_page.errors.count, "error") %> prohibited this information_page from being saved:</h2>
+
+      <ul>
+      <% @information_page.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title, 'Título de la Página', :class => 'control-label' %><br>
+    <%= f.text_field :title, :class => 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :subtitle, 'Subtítulo de la Página', :class => 'control-label' %><br>
+    <%= f.text_field :subtitle, :class => 'form-control' %>
+  </div>
+  <div style="margin-left:20px">
+  	<%= render 'information_page_content_fields', :f => f %>
+  </div>
+  <div class="form-actions">
+    <%= f.submit 'Guardar', :class => 'btn btn-default' %>
+  </div>
+<% end %>

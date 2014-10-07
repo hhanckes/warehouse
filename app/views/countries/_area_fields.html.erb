@@ -1,0 +1,14 @@
+<%= f.fields_for :areas do |area| %>
+	<div class="form-group">
+	  <%= area.label :name, 'Nombre del área', :class => 'control-label' %><br>
+	  <%= area.text_field :name, :class => 'form-control' %>
+	</div>
+
+	<div class="form-group">
+		<%= area.link_to_remove 'Eliminar', :class => 'btn btn-danger btn-xs' %>
+	</div>
+<% end %>
+
+<div>
+	<%= f.link_to_add 'Agregar Area', :areas, :class => 'btn btn-primary' %>
+</div>

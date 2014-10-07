@@ -1,0 +1,22 @@
+<%= f.fields_for :information_page_contents do |ipc| %>
+	<div class="form-group">
+	  <%= ipc.label :title, 'Título', :class => 'control-label' %><br>
+	  <%= ipc.text_field :title, :class => 'form-control' %>
+	</div>
+	<div class="form-group">
+	  <%= ipc.label :subtitle, 'Subtítulo', :class => 'control-label' %><br>
+	  <%= ipc.text_field :subtitle, :class => 'form-control' %>
+	</div>
+	<div class="form-group">
+	  <%= ipc.label :content, 'Contenido', :class => 'control-label' %><br>
+	  <%= ipc.text_area :content, :class => 'form-control' %>
+	</div>
+
+	<div class="form-group">
+		<%= ipc.link_to_remove 'Eliminar', :class => 'btn btn-danger btn-xs' %>
+	</div>
+<% end %>
+
+<div>
+	<%= f.link_to_add 'Agregar Sección', :information_page_contents, :class => 'btn btn-primary' %>
+</div>
