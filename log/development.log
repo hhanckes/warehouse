@@ -53714,3 +53714,884 @@ Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-07 23:06:00
 
 
 Started GET "/assets/checkout/checkout.png" for 127.0.0.1 at 2014-10-07 23:06:00 -0500
+
+
+Started GET "/orders/new" for 127.0.0.1 at 2014-10-08 08:48:13 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by OrdersController#new as HTML
+  [1m[35mArea Load (0.2ms)[0m  SELECT `areas`.* FROM `areas`
+  Rendered orders/new.html.erb within layouts/application (17.1ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered layouts/_top_menu.html.erb (14.9ms)
+  [1m[35mInformationPage Load (0.3ms)[0m  SELECT `information_pages`.* FROM `information_pages`
+  Rendered layouts/_footer.html.erb (13.0ms)
+Completed 200 OK in 194ms (Views: 151.3ms | ActiveRecord: 8.6ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-08 08:48:13 -0500
+
+
+Started GET "/assets/slider.css?body=1" for 127.0.0.1 at 2014-10-08 08:48:13 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-08 08:48:13 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 08:48:13 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 08:48:13 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 08:48:13 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 08:48:13 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-08 08:48:13 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-08 08:48:13 -0500
+
+
+Started GET "/assets/bootstrap-slider.js?body=1" for 127.0.0.1 at 2014-10-08 08:48:13 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 08:48:13 -0500
+
+
+Started GET "/assets/checkout/checkout.png" for 127.0.0.1 at 2014-10-08 08:48:13 -0500
+
+
+Started GET "/orders/new" for 127.0.0.1 at 2014-10-08 08:50:56 -0500
+Processing by OrdersController#new as HTML
+  [1m[36mArea Load (0.2ms)[0m  [1mSELECT `areas`.* FROM `areas`[0m
+  Rendered orders/new.html.erb within layouts/application (2.5ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered layouts/_top_menu.html.erb (2.3ms)
+  [1m[36mInformationPage Load (0.2ms)[0m  [1mSELECT `information_pages`.* FROM `information_pages`[0m
+  Rendered layouts/_footer.html.erb (1.9ms)
+Completed 200 OK in 69ms (Views: 67.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-08 08:50:56 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-08 08:50:56 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 08:50:56 -0500
+
+
+Started GET "/assets/slider.css?body=1" for 127.0.0.1 at 2014-10-08 08:50:56 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 08:50:56 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 08:50:56 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 08:50:56 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-08 08:50:56 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-08 08:50:56 -0500
+
+
+Started GET "/assets/bootstrap-slider.js?body=1" for 127.0.0.1 at 2014-10-08 08:50:56 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 08:50:56 -0500
+
+
+Started GET "/assets/checkout/checkout.png" for 127.0.0.1 at 2014-10-08 08:50:56 -0500
+
+
+Started GET "/orders/new" for 127.0.0.1 at 2014-10-08 08:51:33 -0500
+Processing by OrdersController#new as HTML
+  [1m[35mArea Load (0.3ms)[0m  SELECT `areas`.* FROM `areas`
+  Rendered orders/new.html.erb within layouts/application (1.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered layouts/_top_menu.html.erb (1.9ms)
+  [1m[35mInformationPage Load (0.2ms)[0m  SELECT `information_pages`.* FROM `information_pages`
+  Rendered layouts/_footer.html.erb (1.2ms)
+Completed 200 OK in 65ms (Views: 63.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-08 08:51:33 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 08:51:33 -0500
+
+
+Started GET "/assets/slider.css?body=1" for 127.0.0.1 at 2014-10-08 08:51:33 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-08 08:51:33 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 08:51:33 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 08:51:33 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 08:51:33 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-08 08:51:33 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-08 08:51:33 -0500
+
+
+Started GET "/assets/bootstrap-slider.js?body=1" for 127.0.0.1 at 2014-10-08 08:51:33 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 08:51:33 -0500
+
+
+Started GET "/assets/checkout/checkout.png" for 127.0.0.1 at 2014-10-08 08:51:33 -0500
+
+
+Started GET "/orders/new" for 127.0.0.1 at 2014-10-08 08:53:05 -0500
+Processing by OrdersController#new as HTML
+  [1m[36mArea Load (0.3ms)[0m  [1mSELECT `areas`.* FROM `areas`[0m
+  Rendered orders/new.html.erb within layouts/application (3.3ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered layouts/_top_menu.html.erb (1.8ms)
+  [1m[36mInformationPage Load (0.2ms)[0m  [1mSELECT `information_pages`.* FROM `information_pages`[0m
+  Rendered layouts/_footer.html.erb (1.3ms)
+Completed 200 OK in 51ms (Views: 48.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-08 08:53:05 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-08 08:53:05 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 08:53:05 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 08:53:05 -0500
+
+
+Started GET "/assets/slider.css?body=1" for 127.0.0.1 at 2014-10-08 08:53:05 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 08:53:05 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 08:53:05 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-08 08:53:05 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-08 08:53:05 -0500
+
+
+Started GET "/assets/bootstrap-slider.js?body=1" for 127.0.0.1 at 2014-10-08 08:53:05 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 08:53:05 -0500
+
+
+Started GET "/assets/checkout/checkout.png" for 127.0.0.1 at 2014-10-08 08:53:05 -0500
+
+
+Started GET "/orders/new" for 127.0.0.1 at 2014-10-08 08:55:51 -0500
+Processing by OrdersController#new as HTML
+  [1m[35mArea Load (0.3ms)[0m  SELECT `areas`.* FROM `areas`
+  Rendered orders/new.html.erb within layouts/application (7.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered layouts/_top_menu.html.erb (1.8ms)
+  [1m[35mInformationPage Load (0.2ms)[0m  SELECT `information_pages`.* FROM `information_pages`
+  Rendered layouts/_footer.html.erb (1.5ms)
+Completed 200 OK in 52ms (Views: 50.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-08 08:55:51 -0500
+
+
+Started GET "/assets/slider.css?body=1" for 127.0.0.1 at 2014-10-08 08:55:51 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 08:55:51 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-08 08:55:51 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 08:55:51 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 08:55:51 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 08:55:51 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-08 08:55:51 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-08 08:55:51 -0500
+
+
+Started GET "/assets/bootstrap-slider.js?body=1" for 127.0.0.1 at 2014-10-08 08:55:51 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 08:55:51 -0500
+
+
+Started GET "/assets/checkout/checkout.png" for 127.0.0.1 at 2014-10-08 08:55:51 -0500
+
+
+Started GET "/orders/new" for 127.0.0.1 at 2014-10-08 08:56:56 -0500
+Processing by OrdersController#new as HTML
+  [1m[36mArea Load (0.3ms)[0m  [1mSELECT `areas`.* FROM `areas`[0m
+  Rendered orders/new.html.erb within layouts/application (2.6ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered layouts/_top_menu.html.erb (2.0ms)
+  [1m[36mInformationPage Load (0.2ms)[0m  [1mSELECT `information_pages`.* FROM `information_pages`[0m
+  Rendered layouts/_footer.html.erb (1.5ms)
+Completed 200 OK in 67ms (Views: 65.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-08 08:56:56 -0500
+
+
+Started GET "/assets/slider.css?body=1" for 127.0.0.1 at 2014-10-08 08:56:56 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 08:56:56 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-08 08:56:56 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 08:56:56 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 08:56:56 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 08:56:56 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-08 08:56:56 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-08 08:56:56 -0500
+
+
+Started GET "/assets/bootstrap-slider.js?body=1" for 127.0.0.1 at 2014-10-08 08:56:56 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 08:56:56 -0500
+
+
+Started GET "/assets/checkout/checkout.png" for 127.0.0.1 at 2014-10-08 08:56:56 -0500
+
+
+Started GET "/orders/new" for 127.0.0.1 at 2014-10-08 08:57:37 -0500
+Processing by OrdersController#new as HTML
+  [1m[35mArea Load (0.3ms)[0m  SELECT `areas`.* FROM `areas`
+  Rendered orders/new.html.erb within layouts/application (1.9ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered layouts/_top_menu.html.erb (2.4ms)
+  [1m[35mInformationPage Load (0.2ms)[0m  SELECT `information_pages`.* FROM `information_pages`
+  Rendered layouts/_footer.html.erb (1.9ms)
+Completed 200 OK in 59ms (Views: 56.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-08 08:57:37 -0500
+
+
+Started GET "/assets/slider.css?body=1" for 127.0.0.1 at 2014-10-08 08:57:37 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-08 08:57:37 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 08:57:37 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 08:57:37 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 08:57:37 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 08:57:37 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-08 08:57:37 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-08 08:57:37 -0500
+
+
+Started GET "/assets/bootstrap-slider.js?body=1" for 127.0.0.1 at 2014-10-08 08:57:37 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 08:57:37 -0500
+
+
+Started GET "/assets/checkout/checkout.png" for 127.0.0.1 at 2014-10-08 08:57:38 -0500
+
+
+Started GET "/orders/new" for 127.0.0.1 at 2014-10-08 08:59:36 -0500
+Processing by OrdersController#new as HTML
+  [1m[36mArea Load (0.2ms)[0m  [1mSELECT `areas`.* FROM `areas`[0m
+  Rendered orders/new.html.erb within layouts/application (2.0ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered layouts/_top_menu.html.erb (1.8ms)
+  [1m[36mInformationPage Load (0.2ms)[0m  [1mSELECT `information_pages`.* FROM `information_pages`[0m
+  Rendered layouts/_footer.html.erb (1.4ms)
+Completed 200 OK in 80ms (Views: 78.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-08 08:59:36 -0500
+
+
+Started GET "/assets/slider.css?body=1" for 127.0.0.1 at 2014-10-08 08:59:36 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-08 08:59:36 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 08:59:36 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 08:59:36 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 08:59:36 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 08:59:36 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-08 08:59:36 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-08 08:59:36 -0500
+
+
+Started GET "/assets/bootstrap-slider.js?body=1" for 127.0.0.1 at 2014-10-08 08:59:36 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 08:59:36 -0500
+
+
+Started GET "/assets/checkout/checkout.png" for 127.0.0.1 at 2014-10-08 08:59:36 -0500
+
+
+Started GET "/orders/new" for 127.0.0.1 at 2014-10-08 09:55:41 -0500
+Processing by OrdersController#new as HTML
+  [1m[35mArea Load (0.3ms)[0m  SELECT `areas`.* FROM `areas`
+  Rendered orders/new.html.erb within layouts/application (2.9ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered layouts/_top_menu.html.erb (2.1ms)
+  [1m[35mInformationPage Load (0.2ms)[0m  SELECT `information_pages`.* FROM `information_pages`
+  Rendered layouts/_footer.html.erb (1.5ms)
+Completed 200 OK in 58ms (Views: 56.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-08 09:55:42 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 09:55:42 -0500
+
+
+Started GET "/assets/slider.css?body=1" for 127.0.0.1 at 2014-10-08 09:55:42 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-08 09:55:42 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 09:55:42 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-08 09:55:42 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 09:55:42 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 09:55:42 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-08 09:55:42 -0500
+
+
+Started GET "/assets/bootstrap-slider.js?body=1" for 127.0.0.1 at 2014-10-08 09:55:42 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 09:55:42 -0500
+
+
+Started GET "/assets/checkout/checkout.png" for 127.0.0.1 at 2014-10-08 09:55:42 -0500
+
+
+Started GET "/orders/new" for 127.0.0.1 at 2014-10-08 09:55:57 -0500
+Processing by OrdersController#new as HTML
+  [1m[36mArea Load (0.2ms)[0m  [1mSELECT `areas`.* FROM `areas`[0m
+  Rendered orders/new.html.erb within layouts/application (2.7ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered layouts/_top_menu.html.erb (1.9ms)
+  [1m[36mInformationPage Load (0.3ms)[0m  [1mSELECT `information_pages`.* FROM `information_pages`[0m
+  Rendered layouts/_footer.html.erb (1.8ms)
+Completed 200 OK in 49ms (Views: 47.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-08 09:55:57 -0500
+
+
+Started GET "/assets/slider.css?body=1" for 127.0.0.1 at 2014-10-08 09:55:57 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-08 09:55:57 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 09:55:57 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 09:55:57 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 09:55:57 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 09:55:57 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-08 09:55:57 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-08 09:55:57 -0500
+
+
+Started GET "/assets/bootstrap-slider.js?body=1" for 127.0.0.1 at 2014-10-08 09:55:57 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 09:55:57 -0500
+
+
+Started GET "/assets/checkout/checkout.png" for 127.0.0.1 at 2014-10-08 09:55:57 -0500
+
+
+Started POST "/orders" for 127.0.0.1 at 2014-10-08 09:56:59 -0500
+Processing by OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8OaShJFVOFsDm/CB6g2nKxK5GyWbQFX+70TZ9dn09yM=", "order_area"=>{"area"=>"2"}, "count_1"=>"¿Cuántas?", "count_2"=>"¿Cuántas?", "count_3"=>"2", "count_4"=>"¿Cuántas?", "count_5"=>"¿Cuántas?", "count_6"=>"3", "count_7"=>"2", "count_8"=>"2", "commit"=>"Siguiente paso"}
+Completed 400 Bad Request in 1ms
+
+ActionController::ParameterMissing (param is missing or the value is empty: order):
+  app/controllers/orders_controller.rb:64:in `order_params'
+  app/controllers/orders_controller.rb:26:in `create'
+
+
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (24.7ms)
+
+
+Started POST "/orders" for 127.0.0.1 at 2014-10-08 09:57:26 -0500
+Processing by OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8OaShJFVOFsDm/CB6g2nKxK5GyWbQFX+70TZ9dn09yM=", "order_area"=>{"area"=>"2"}, "count_1"=>"¿Cuántas?", "count_2"=>"2", "count_3"=>"2", "count_4"=>"¿Cuántas?", "count_5"=>"¿Cuántas?", "count_6"=>"3", "count_7"=>"2", "count_8"=>"2", "commit"=>"Siguiente paso"}
+Completed 400 Bad Request in 1ms
+
+ActionController::ParameterMissing (param is missing or the value is empty: order):
+  app/controllers/orders_controller.rb:64:in `order_params'
+  app/controllers/orders_controller.rb:26:in `create'
+
+
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.2ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at 2014-10-08 09:57:32 -0500
+Processing by OrdersController#new as HTML
+  [1m[35mArea Load (0.2ms)[0m  SELECT `areas`.* FROM `areas`
+  Rendered orders/new.html.erb within layouts/application (2.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered layouts/_top_menu.html.erb (2.4ms)
+  [1m[35mInformationPage Load (0.3ms)[0m  SELECT `information_pages`.* FROM `information_pages`
+  Rendered layouts/_footer.html.erb (1.3ms)
+Completed 200 OK in 57ms (Views: 54.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-08 09:57:33 -0500
+
+
+Started GET "/assets/slider.css?body=1" for 127.0.0.1 at 2014-10-08 09:57:33 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-08 09:57:33 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 09:57:33 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 09:57:33 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 09:57:33 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 09:57:33 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-08 09:57:33 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-08 09:57:33 -0500
+
+
+Started GET "/assets/bootstrap-slider.js?body=1" for 127.0.0.1 at 2014-10-08 09:57:33 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 09:57:33 -0500
+
+
+Started GET "/assets/checkout/checkout.png" for 127.0.0.1 at 2014-10-08 09:57:33 -0500
+
+
+Started GET "/orders/new" for 127.0.0.1 at 2014-10-08 09:57:33 -0500
+Processing by OrdersController#new as HTML
+  [1m[36mArea Load (0.2ms)[0m  [1mSELECT `areas`.* FROM `areas`[0m
+  Rendered orders/new.html.erb within layouts/application (1.8ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered layouts/_top_menu.html.erb (1.7ms)
+  [1m[36mInformationPage Load (0.2ms)[0m  [1mSELECT `information_pages`.* FROM `information_pages`[0m
+  Rendered layouts/_footer.html.erb (1.2ms)
+Completed 200 OK in 51ms (Views: 49.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-08 09:57:33 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-08 09:57:33 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 09:57:33 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 09:57:33 -0500
+
+
+Started GET "/assets/slider.css?body=1" for 127.0.0.1 at 2014-10-08 09:57:34 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 09:57:34 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 09:57:34 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-08 09:57:34 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-08 09:57:34 -0500
+
+
+Started GET "/assets/bootstrap-slider.js?body=1" for 127.0.0.1 at 2014-10-08 09:57:34 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 09:57:34 -0500
+
+
+Started POST "/orders" for 127.0.0.1 at 2014-10-08 09:57:39 -0500
+Processing by OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8OaShJFVOFsDm/CB6g2nKxK5GyWbQFX+70TZ9dn09yM=", "order_area"=>{"area"=>""}, "count_1"=>"1", "count_2"=>"¿Cuántas?", "count_3"=>"¿Cuántas?", "count_4"=>"¿Cuántas?", "count_5"=>"¿Cuántas?", "count_6"=>"¿Cuántas?", "count_7"=>"¿Cuántas?", "count_8"=>"¿Cuántas?", "commit"=>"Siguiente paso"}
+Completed 400 Bad Request in 1ms
+
+ActionController::ParameterMissing (param is missing or the value is empty: order):
+  app/controllers/orders_controller.rb:64:in `order_params'
+  app/controllers/orders_controller.rb:26:in `create'
+
+
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.7ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.7ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at 2014-10-08 09:59:28 -0500
+Processing by OrdersController#new as HTML
+  [1m[35mArea Load (0.2ms)[0m  SELECT `areas`.* FROM `areas`
+  Rendered orders/new.html.erb within layouts/application (2.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered layouts/_top_menu.html.erb (1.7ms)
+  [1m[35mInformationPage Load (0.2ms)[0m  SELECT `information_pages`.* FROM `information_pages`
+  Rendered layouts/_footer.html.erb (1.2ms)
+Completed 200 OK in 44ms (Views: 42.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-08 09:59:28 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 09:59:28 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 09:59:28 -0500
+
+
+Started GET "/assets/slider.css?body=1" for 127.0.0.1 at 2014-10-08 09:59:28 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-08 09:59:28 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 09:59:28 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 09:59:28 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-08 09:59:28 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-08 09:59:28 -0500
+
+
+Started GET "/assets/bootstrap-slider.js?body=1" for 127.0.0.1 at 2014-10-08 09:59:28 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 09:59:28 -0500
+
+
+Started GET "/orders/new" for 127.0.0.1 at 2014-10-08 09:59:54 -0500
+Processing by OrdersController#new as HTML
+  [1m[36mArea Load (0.3ms)[0m  [1mSELECT `areas`.* FROM `areas`[0m
+  Rendered orders/new.html.erb within layouts/application (3.0ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered layouts/_top_menu.html.erb (2.1ms)
+  [1m[36mInformationPage Load (0.3ms)[0m  [1mSELECT `information_pages`.* FROM `information_pages`[0m
+  Rendered layouts/_footer.html.erb (1.5ms)
+Completed 200 OK in 53ms (Views: 51.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-08 09:59:54 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 09:59:54 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 09:59:54 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 09:59:54 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-08 09:59:54 -0500
+
+
+Started GET "/assets/slider.css?body=1" for 127.0.0.1 at 2014-10-08 09:59:54 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 09:59:54 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-08 09:59:54 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-08 09:59:54 -0500
+
+
+Started GET "/assets/bootstrap-slider.js?body=1" for 127.0.0.1 at 2014-10-08 09:59:54 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 09:59:54 -0500
+
+
+Started GET "/assets/checkout/checkout.png" for 127.0.0.1 at 2014-10-08 09:59:54 -0500
+
+
+Started POST "/orders" for 127.0.0.1 at 2014-10-08 10:00:02 -0500
+Processing by OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8OaShJFVOFsDm/CB6g2nKxK5GyWbQFX+70TZ9dn09yM=", "order_area"=>{"area"=>""}, "boxes"=>"11", "count_1"=>"¿Cuántas?", "count_2"=>"2", "count_3"=>"¿Cuántas?", "count_4"=>"¿Cuántas?", "count_5"=>"¿Cuántas?", "count_6"=>"¿Cuántas?", "count_7"=>"¿Cuántas?", "count_8"=>"¿Cuántas?", "commit"=>"Siguiente paso"}
+Completed 400 Bad Request in 1ms
+
+ActionController::ParameterMissing (param is missing or the value is empty: order):
+  app/controllers/orders_controller.rb:64:in `order_params'
+  app/controllers/orders_controller.rb:26:in `create'
+
+
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.9ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at 2014-10-08 10:00:05 -0500
+Processing by OrdersController#new as HTML
+  [1m[35mArea Load (0.3ms)[0m  SELECT `areas`.* FROM `areas`
+  Rendered orders/new.html.erb within layouts/application (2.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered layouts/_top_menu.html.erb (1.7ms)
+  [1m[35mInformationPage Load (0.2ms)[0m  SELECT `information_pages`.* FROM `information_pages`
+  Rendered layouts/_footer.html.erb (1.1ms)
+Completed 200 OK in 53ms (Views: 50.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-08 10:00:06 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 10:00:06 -0500
+
+
+Started GET "/assets/slider.css?body=1" for 127.0.0.1 at 2014-10-08 10:00:06 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 10:00:06 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 10:00:06 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-08 10:00:06 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 10:00:06 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-08 10:00:06 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-08 10:00:06 -0500
+
+
+Started GET "/assets/bootstrap-slider.js?body=1" for 127.0.0.1 at 2014-10-08 10:00:06 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 10:00:06 -0500
+
+
+Started GET "/orders/new" for 127.0.0.1 at 2014-10-08 10:00:07 -0500
+Processing by OrdersController#new as HTML
+  [1m[36mArea Load (0.2ms)[0m  [1mSELECT `areas`.* FROM `areas`[0m
+  Rendered orders/new.html.erb within layouts/application (1.9ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered layouts/_top_menu.html.erb (2.0ms)
+  [1m[36mInformationPage Load (0.2ms)[0m  [1mSELECT `information_pages`.* FROM `information_pages`[0m
+  Rendered layouts/_footer.html.erb (1.6ms)
+Completed 200 OK in 50ms (Views: 48.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/slider.css?body=1" for 127.0.0.1 at 2014-10-08 10:00:07 -0500
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-08 10:00:07 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-08 10:00:07 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 10:00:07 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 10:00:07 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 10:00:07 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 10:00:07 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-08 10:00:07 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-08 10:00:07 -0500
+
+
+Started GET "/assets/bootstrap-slider.js?body=1" for 127.0.0.1 at 2014-10-08 10:00:07 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 10:00:07 -0500
+
+
+Started POST "/orders" for 127.0.0.1 at 2014-10-08 10:00:10 -0500
+Processing by OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8OaShJFVOFsDm/CB6g2nKxK5GyWbQFX+70TZ9dn09yM=", "order_area"=>{"area"=>""}, "boxes"=>"", "count_1"=>"¿Cuántas?", "count_2"=>"¿Cuántas?", "count_3"=>"¿Cuántas?", "count_4"=>"¿Cuántas?", "count_5"=>"¿Cuántas?", "count_6"=>"2", "count_7"=>"¿Cuántas?", "count_8"=>"¿Cuántas?", "commit"=>"Siguiente paso"}
+Completed 400 Bad Request in 1ms
+
+ActionController::ParameterMissing (param is missing or the value is empty: order):
+  app/controllers/orders_controller.rb:64:in `order_params'
+  app/controllers/orders_controller.rb:26:in `create'
+
+
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.9ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at 2014-10-08 10:00:19 -0500
+Processing by OrdersController#new as HTML
+  [1m[35mArea Load (0.3ms)[0m  SELECT `areas`.* FROM `areas`
+  Rendered orders/new.html.erb within layouts/application (3.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered layouts/_top_menu.html.erb (2.0ms)
+  [1m[35mInformationPage Load (0.2ms)[0m  SELECT `information_pages`.* FROM `information_pages`
+  Rendered layouts/_footer.html.erb (1.6ms)
+Completed 200 OK in 60ms (Views: 58.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-08 10:00:20 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-08 10:00:20 -0500
+
+
+Started GET "/assets/slider.css?body=1" for 127.0.0.1 at 2014-10-08 10:00:20 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 10:00:20 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 10:00:20 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 10:00:20 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 10:00:20 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-08 10:00:20 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-08 10:00:20 -0500
+
+
+Started GET "/assets/bootstrap-slider.js?body=1" for 127.0.0.1 at 2014-10-08 10:00:20 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 10:00:20 -0500
+
+
+Started POST "/orders" for 127.0.0.1 at 2014-10-08 10:00:24 -0500
+Processing by OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8OaShJFVOFsDm/CB6g2nKxK5GyWbQFX+70TZ9dn09yM=", "order_area"=>{"area"=>""}, "boxes"=>"5", "count_1"=>"¿Cuántas?", "count_2"=>"2", "count_3"=>"¿Cuántas?", "count_4"=>"¿Cuántas?", "count_5"=>"¿Cuántas?", "count_6"=>"¿Cuántas?", "count_7"=>"¿Cuántas?", "count_8"=>"¿Cuántas?", "commit"=>"Siguiente paso"}
+Completed 400 Bad Request in 1ms
+
+ActionController::ParameterMissing (param is missing or the value is empty: order):
+  app/controllers/orders_controller.rb:64:in `order_params'
+  app/controllers/orders_controller.rb:26:in `create'
+
+
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.1ms)

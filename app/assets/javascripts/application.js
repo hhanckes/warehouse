@@ -27,6 +27,34 @@ $(document).ready(function() {
 	    if ($(e.target).is('select')) return;
 	    update_selected_item('div_count_1', 'count_1');
 	});
+	$('#div_count_2').click(function(e){
+	    if ($(e.target).is('select')) return;
+	    update_selected_item('div_count_2', 'count_2');
+	});
+	$('#div_count_3').click(function(e){
+	    if ($(e.target).is('select')) return;
+	    update_selected_item('div_count_3', 'count_3');
+	});
+	$('#div_count_4').click(function(e){
+	    if ($(e.target).is('select')) return;
+	    update_selected_item('div_count_4', 'count_4');
+	});
+	$('#div_count_5').click(function(e){
+	    if ($(e.target).is('select')) return;
+	    update_selected_item('div_count_5', 'count_5');
+	});
+	$('#div_count_6').click(function(e){
+	    if ($(e.target).is('select')) return;
+	    update_selected_item('div_count_6', 'count_6');
+	});
+	$('#div_count_7').click(function(e){
+	    if ($(e.target).is('select')) return;
+	    update_selected_item('div_count_7', 'count_7');
+	});
+	$('#div_count_8').click(function(e){
+	    if ($(e.target).is('select')) return;
+	    update_selected_item('div_count_8', 'count_8');
+	});
 })
 
 

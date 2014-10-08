@@ -10,28 +10,63 @@
 		<h1>¿Cuántas cajas necesitas?</h1>
 		<h2>El precio es simple: almacenar una caja por mes cuesta solo $4,990</h2>		  
 		<div class="boxes-count">5</div>
-		<input class="slider" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="30" data-slider-step="1" data-slider-value="5"/>
+		<%= text_field_tag :boxes, 5, :class => "slider", 'data-slider-id' => 'ex1Slider', :type => "text", 'data-slider-min' => "0", 
+							'data-slider-max' => "30", 'data-slider-step' => "1", 'data-slider-value' => "5" %>
 		<hr />
 		<h1>Selecciona los items adicionales</h1>
 		<h2>¿Quieres almacenar cosas que no caben en una caja?</h2>		  
 		<div class="row aditional-items">
 			<div id="div_count_1" class="col-md-3 aditional-item img-rounded">
-				<div class="aditional-item-image" id="BIK"></div>
+				<div class="aditional-item-image" id="bike"></div>
 				<p><b>Bicicleta</b></p>
-				<p>$9,990 /mes</p>
+				<p>$14,990 /mes</p>
 				<%= select_tag "count_1", "<option>¿Cuántas?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
 			</div>		
-			<div class="col-md-3 aditional-item img-rounded">
-				<%= select_tag "count_2", "<option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
+			<div id="div_count_2" class="col-md-3 aditional-item img-rounded">
+				<div class="aditional-item-image" id="golf"></div>
+				<p><b>Palos de Golf</b></p>
+				<p>$9,990 /mes</p>
+				<%= select_tag "count_2", "<option>¿Cuántas?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
 			</div>		
-			<div class="col-md-3 aditional-item img-rounded">
-				<%= select_tag "count_3", "<option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
+			<div id="div_count_3" class="col-md-3 aditional-item img-rounded">
+				<div class="aditional-item-image" id="ski"></div>
+				<p><b>Skis/Snowboards</b></p>
+				<p>$9,990 /mes</p>
+				<%= select_tag "count_3", "<option>¿Cuántas?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
 			</div>		
-			<div class="col-md-3 aditional-item img-rounded">
-				<%= select_tag "count_4", "<option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
+			<div id="div_count_4" class="col-md-3 aditional-item img-rounded">
+				<div class="aditional-item-image" id="ac"></div>
+				<p><b>Aire Acondicionado</b></p>
+				<p>$12,990 /mes</p>
+				<%= select_tag "count_4", "<option>¿Cuántas?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
 			</div>
 		</div>
-
+		<div class="row aditional-items">
+			<div id="div_count_5" class="col-md-3 aditional-item img-rounded">
+				<div class="aditional-item-image" id="carry-on"></div>
+				<p><b>Maleta Pequeña</b></p>
+				<p>$4,990 /mes</p>
+				<%= select_tag "count_5", "<option>¿Cuántas?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
+			</div>		
+			<div id="div_count_6" class="col-md-3 aditional-item img-rounded">
+				<div class="aditional-item-image" id="luggage"></div>
+				<p><b>Maleta Grande</b></p>
+				<p>$9,990 /mes</p>
+				<%= select_tag "count_6", "<option>¿Cuántas?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
+			</div>		
+			<div id="div_count_7" class="col-md-3 aditional-item img-rounded">
+				<div class="aditional-item-image" id="wardrobe"></div>
+				<p><b>Ropa</b></p>
+				<p>$9,990 /mes</p>
+				<%= select_tag "count_7", "<option>¿Cuántas?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
+			</div>		
+			<div id="div_count_8" class="col-md-3 aditional-item img-rounded">
+				<div class="aditional-item-image" id="other"></div>
+				<p><b>Otros</b></p>
+				<p>Precio se asigna después</p>
+				<%= select_tag "count_8", "<option>¿Cuántas?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
+			</div>
+		</div>
 		<div class="form-actions">
 		  <%= f.submit 'Siguiente paso', :class => 'btn btn-default' %>
 		</div>
