@@ -76,6 +76,7 @@ class OrdersController < ApplicationController
   end
   
   def step2
+    
   end
   
   def create

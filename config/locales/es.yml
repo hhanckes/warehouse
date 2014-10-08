@@ -38,6 +38,7 @@ es:
       long: ! '%A %d de %B de %Y'
       short: ! '%d de %b'
       short_day: '%a %d %b %Y'
+      select: '%A %d/%m/%Y'
     month_names:
     -
     - enero

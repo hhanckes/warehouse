@@ -335,7 +335,7 @@ h4 { font-size: 14px; line-height: 20px; font-weight:lighter }
 	height: 100px;
 	margin:0 auto;	
 }
-.new-order-step2 input {
+.new-order-step2 input[type="text"], input[type="password"] {
 	border: 1px solid #d9d9d9;
 	transition: all 0.1s ease-in-out;
 	padding-top:20px;
@@ -376,6 +376,13 @@ h4 { font-size: 14px; line-height: 20px; font-weight:lighter }
 	font-weight: 700;
 	margin:10px;
 }
+.new-order-step2 input[type="checkbox"] {
+	margin: 3px 15px 6px 0;
+	vertical-align: middle;
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+}
 .date-select {
 	background-image: url(<%= asset_path 'checkout/checkout.png' %>);
 	background-repeat: no-repeat;
@@ -385,6 +392,9 @@ h4 { font-size: 14px; line-height: 20px; font-weight:lighter }
 	background-image: url(<%= asset_path 'checkout/checkout.png' %>);
 	background-repeat: no-repeat;
 	background-position: 215px -4606px;
+}
+.company-information, .collect-later {
+	display:none;
 }
 .vcenter {
     display: inline-block;

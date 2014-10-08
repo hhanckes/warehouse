@@ -55,6 +55,20 @@ $(document).ready(function() {
 	    if ($(e.target).is('select')) return;
 	    update_selected_item('div_count_8', 'other-count');
 	});
+	$("#company").click(function(){
+		if($("#company").is(":checked")) {
+			$(".company-information").fadeIn();	
+		} else {
+			$(".company-information").fadeOut();
+		}
+	});
+	$("#collect_later").click(function(){
+		if($("#collect_later").is(":checked")) {
+			$(".collect-later").fadeIn();	
+		} else {
+			$(".collect-later").fadeOut();
+		}
+	});
 })
 
 
