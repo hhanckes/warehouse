@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :step2, :step3, :update, :destroy]
 
