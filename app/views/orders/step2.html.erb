@@ -1,0 +1,27 @@
+<div class="row new-order-step2 center">
+	<div class="col-md-12">
+		<%= form_for(@order, url: step1_orders_path) do |f| %>
+		<h1>¡Comencemos!</h1>
+		<h3>¿Ya estás registrado? <%= link_to 'Ingresa acá', new_user_session_path %></h3>
+		<% unless user_signed_in? %>
+			<p><%= text_field_tag :email, '', placeholder: 'Correo', :class => 'img-rounded' %></p>
+			<p><%= password_field_tag :password, '', placeholder: 'Clave' %></p>
+		<% end %>
+		<hr />
+		<h1>¿Dónde te pasamos a dejar las cajas vacías?</h1>
+		<p><%= text_field_tag :name, '', placeholder: 'Dirección', :class => 'img-rounded' %></p>
+		<p><%= password_field_tag :post_code, '', placeholder: 'Código Postal' %></p>
+		<p><%= password_field_tag :receiver, '', placeholder: 'Nombre de la persona que recibe' %></p>
+		<p><%= password_field_tag :phone_number, '', placeholder: 'Teléfono de contacto' %></p>
+		<hr>
+		<h1>¿Qué día y a qué hora pasamos?</h1>
+		<p>
+			<%= select_tag "ac-count", "<option>¿Día?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe, :class => 'date-select' %>
+			<%= select_tag "ac-count", "<option>¿Horario?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe, :class => 'hour-select' %>
+		</p>
+		<p>¿Tiene conserje tu edificio o una persona que permanentemente está que le podamos dejar las cajas?</p>
+		<p>Si nadie contesta puedes dejar las cajas con mi vecino</p>
+		<p>¿Eres una empresa?</p>
+		<% end %>
+	</div>
+</div>

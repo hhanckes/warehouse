@@ -25,35 +25,35 @@ $(document).ready(function() {
 	
 	$('#div_count_1').click(function(e){
 	    if ($(e.target).is('select')) return;
-	    update_selected_item('div_count_1', 'count_1');
+	    update_selected_item('div_count_1', 'bike-count');
 	});
 	$('#div_count_2').click(function(e){
 	    if ($(e.target).is('select')) return;
-	    update_selected_item('div_count_2', 'count_2');
+	    update_selected_item('div_count_2', 'golf-count');
 	});
 	$('#div_count_3').click(function(e){
 	    if ($(e.target).is('select')) return;
-	    update_selected_item('div_count_3', 'count_3');
+	    update_selected_item('div_count_3', 'ski-count');
 	});
 	$('#div_count_4').click(function(e){
 	    if ($(e.target).is('select')) return;
-	    update_selected_item('div_count_4', 'count_4');
+	    update_selected_item('div_count_4', 'ac-count');
 	});
 	$('#div_count_5').click(function(e){
 	    if ($(e.target).is('select')) return;
-	    update_selected_item('div_count_5', 'count_5');
+	    update_selected_item('div_count_5', 'carry-on-count');
 	});
 	$('#div_count_6').click(function(e){
 	    if ($(e.target).is('select')) return;
-	    update_selected_item('div_count_6', 'count_6');
+	    update_selected_item('div_count_6', 'luggage-count');
 	});
 	$('#div_count_7').click(function(e){
 	    if ($(e.target).is('select')) return;
-	    update_selected_item('div_count_7', 'count_7');
+	    update_selected_item('div_count_7', 'wardrobe-count');
 	});
 	$('#div_count_8').click(function(e){
 	    if ($(e.target).is('select')) return;
-	    update_selected_item('div_count_8', 'count_8');
+	    update_selected_item('div_count_8', 'other-count');
 	});
 })
 

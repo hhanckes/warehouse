@@ -1,6 +1,6 @@
 <div class="row new-order center">
 	<div class="col-md-12">
-		<%= form_for(@order) do |f| %>
+		<%= form_for(@order, url: step1_orders_path) do |f| %>
 		<h1>¿Dónde estás basado?</h1>
 		<h2>Por favor selecciona el área donde entregaremos las cajas</h2>		  
 		<div class="form-group">
@@ -20,25 +20,25 @@
 				<div class="aditional-item-image" id="bike"></div>
 				<p><b>Bicicleta</b></p>
 				<p>$14,990 /mes</p>
-				<%= select_tag "count_1", "<option>¿Cuántas?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
+				<%= select_tag "bike-count", "<option>¿Cuántas?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
 			</div>		
 			<div id="div_count_2" class="col-md-3 aditional-item img-rounded">
 				<div class="aditional-item-image" id="golf"></div>
 				<p><b>Palos de Golf</b></p>
 				<p>$9,990 /mes</p>
-				<%= select_tag "count_2", "<option>¿Cuántas?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
+				<%= select_tag "golf-count", "<option>¿Cuántas?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
 			</div>		
 			<div id="div_count_3" class="col-md-3 aditional-item img-rounded">
 				<div class="aditional-item-image" id="ski"></div>
 				<p><b>Skis/Snowboards</b></p>
 				<p>$9,990 /mes</p>
-				<%= select_tag "count_3", "<option>¿Cuántas?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
+				<%= select_tag "ski-count", "<option>¿Cuántas?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
 			</div>		
 			<div id="div_count_4" class="col-md-3 aditional-item img-rounded">
 				<div class="aditional-item-image" id="ac"></div>
 				<p><b>Aire Acondicionado</b></p>
 				<p>$12,990 /mes</p>
-				<%= select_tag "count_4", "<option>¿Cuántas?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
+				<%= select_tag "ac-count", "<option>¿Cuántas?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
 			</div>
 		</div>
 		<div class="row aditional-items">
@@ -46,25 +46,25 @@
 				<div class="aditional-item-image" id="carry-on"></div>
 				<p><b>Maleta Pequeña</b></p>
 				<p>$4,990 /mes</p>
-				<%= select_tag "count_5", "<option>¿Cuántas?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
+				<%= select_tag "carry-on-count", "<option>¿Cuántas?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
 			</div>		
 			<div id="div_count_6" class="col-md-3 aditional-item img-rounded">
 				<div class="aditional-item-image" id="luggage"></div>
 				<p><b>Maleta Grande</b></p>
 				<p>$9,990 /mes</p>
-				<%= select_tag "count_6", "<option>¿Cuántas?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
+				<%= select_tag "luggage-count", "<option>¿Cuántas?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
 			</div>		
 			<div id="div_count_7" class="col-md-3 aditional-item img-rounded">
 				<div class="aditional-item-image" id="wardrobe"></div>
 				<p><b>Ropa</b></p>
 				<p>$9,990 /mes</p>
-				<%= select_tag "count_7", "<option>¿Cuántas?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
+				<%= select_tag "wardrobe-count", "<option>¿Cuántas?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
 			</div>		
 			<div id="div_count_8" class="col-md-3 aditional-item img-rounded">
 				<div class="aditional-item-image" id="other"></div>
 				<p><b>Otros</b></p>
 				<p>Precio se asigna después</p>
-				<%= select_tag "count_8", "<option>¿Cuántas?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
+				<%= select_tag "other-count", "<option>¿Cuántas?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
 			</div>
 		</div>
 		<div class="form-actions">

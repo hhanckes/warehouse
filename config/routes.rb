@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   resources :stored_items
 
-  resources :orders
+  resources :orders do
+    post 'step1', on: :collection
+    get 'step2', on: :member
+  end
 
   resources :storage_items
 

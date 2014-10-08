@@ -20,4 +20,8 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def is_number?(object)
+    true if Integer(object) rescue false
+  end
+  
 end
