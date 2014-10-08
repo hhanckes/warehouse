@@ -1,3 +1,9 @@
+<ul class='nav nav-wizard'>
+  <li>Orden</li>
+  <li class='active'>Detalles</li>
+  <li>Confirmar y Pagar</li>
+</ul>
+
 <div class="row new-order-step2 center">
 	<div class="col-md-12">
 		<%= form_for(@order, url: step2_order_path(@order)) do |f| %>
@@ -9,7 +15,6 @@
 			<p><%= password_field_tag :password, '', placeholder: 'Clave' %></p>
 		<% end %>
 		<hr />
-		<% end %>
 		<h1>¿Dónde te pasamos a dejar las cajas vacías?</h1>
 		<p><%= text_field_tag :name, '', placeholder: 'Dirección', :class => 'img-rounded' %></p>
 		<p><%= text_field_tag :post_code, '', placeholder: 'Código Postal' %></p>

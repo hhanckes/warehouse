@@ -14,9 +14,6 @@ class OrdersController < ApplicationController
   end
 
   def new
-    add_breadcrumb "Inicio", admin_path
-    add_breadcrumb "Nueva Orden", new_order_path
-    
     @order = Order.new
   end
 
@@ -74,7 +71,7 @@ class OrdersController < ApplicationController
       count = params['other-count']
       OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, quantity: count)
     end
-    redirect_to step2_order_path(@order), notice: 'Order creada correctamente.'
+    redirect_to step2_order_path(@order)
   end
   
   #GET & POST
