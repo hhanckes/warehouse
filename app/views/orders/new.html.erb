@@ -1,0 +1,40 @@
+<div class="row new-order center">
+	<div class="col-md-12">
+		<%= form_for(@order) do |f| %>
+		<h1>¿Dónde estás basado?</h1>
+		<h2>Por favor selecciona el área donde entregaremos las cajas</h2>		  
+		<div class="form-group">
+			<%= collection_select(:order_area, :area, Area.all, :id, :name, { :prompt => 'Selecciona tu área' }, { :class => 'form-control' }) %>
+		</div>
+		<hr />
+		<h1>¿Cuántas cajas necesitas?</h1>
+		<h2>El precio es simple: almacenar una caja por mes cuesta solo $4,990</h2>		  
+		<div class="boxes-count">5</div>
+		<input class="slider" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="30" data-slider-step="1" data-slider-value="5"/>
+		<hr />
+		<h1>Selecciona los items adicionales</h1>
+		<h2>¿Quieres almacenar cosas que no caben en una caja?</h2>		  
+		<div class="row aditional-items">
+			<div id="div_count_1" class="col-md-3 aditional-item img-rounded">
+				<div class="aditional-item-image" id="BIK"></div>
+				<p><b>Bicicleta</b></p>
+				<p>$9,990 /mes</p>
+				<%= select_tag "count_1", "<option>¿Cuántas?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
+			</div>		
+			<div class="col-md-3 aditional-item img-rounded">
+				<%= select_tag "count_2", "<option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
+			</div>		
+			<div class="col-md-3 aditional-item img-rounded">
+				<%= select_tag "count_3", "<option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
+			</div>		
+			<div class="col-md-3 aditional-item img-rounded">
+				<%= select_tag "count_4", "<option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
+			</div>
+		</div>
+
+		<div class="form-actions">
+		  <%= f.submit 'Siguiente paso', :class => 'btn btn-default' %>
+		</div>
+		<% end %>
+	</div>
+</div>

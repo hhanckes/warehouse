@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141007180113) do
+ActiveRecord::Schema.define(version: 20141008002501) do
 
   create_table "addresses", force: true do |t|
     t.string   "receiver"
@@ -70,6 +70,28 @@ ActiveRecord::Schema.define(version: 20141007180113) do
 
   add_index "information_pages", ["slug"], name: "index_information_pages_on_slug", unique: true, using: :btree
 
+  create_table "order_statuses", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "order_storage_items", force: true do |t|
+    t.integer  "order_id"
+    t.integer  "storage_item_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "address_id"
+    t.integer  "order_status_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "storage_items", force: true do |t|
     t.string   "name"
     t.text     "description"
@@ -90,6 +112,15 @@ ActiveRecord::Schema.define(version: 20141007180113) do
   end
 
   add_index "storage_items", ["slug"], name: "index_storage_items_on_slug", unique: true, using: :btree
+
+  create_table "stored_items", force: true do |t|
+    t.integer  "order_storage_item_id"
+    t.string   "name"
+    t.text     "description"
+    t.decimal  "assigned_value",        precision: 10, scale: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "testimonies", force: true do |t|
     t.string   "name"

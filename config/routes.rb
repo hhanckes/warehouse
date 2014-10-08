@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :stored_items
+
+  resources :orders
+
   resources :storage_items
 
   resources :countries

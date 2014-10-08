@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require bootstrap.min
+ *= require slider
  *= require_tree .
  *= require_self
  */
@@ -207,7 +208,77 @@ h4 { font-size: 14px; line-height: 20px; font-weight:lighter }
 	margin-bottom:20px;
 	border-bottom:1px solid #eee;
 }
-
+.new-order h1 {
+	font-size:34px;
+	margin-top:20px;
+	margin-bottom:0px;
+	font-weight:normal;
+}
+.new-order h2 {
+	font-size:24px;
+	margin-top:0px;
+	margin-bottom:10px;
+}
+.new-order p {
+	font-size:16px;
+}
+.new-order hr {
+	margin:40px 0px 40px 0px;
+}
+.new-order ul li {
+	font-size:16px;
+	color:#666;
+	margin-bottom:5px;
+}
+.new-order select {
+	max-width:500px; 
+	margin:0 auto;
+	height:50px;
+	font-size:14px;
+	background-color:#f7f7f7;
+}
+.slider {
+	width:500px;	
+}
+.slider-handle {
+	opacity:1;
+	background-image:none;
+}
+.slider .slider-selection {
+	background: #BABABA;
+}
+.boxes-count {
+	font-size:24px;
+	margin:0px;
+}
+.aditional-items {
+	margin:0 auto;
+	width:900px;
+}
+.aditional-items p {
+	font-size:13px;
+}
+.aditional-item {
+	border:1px solid #eee;
+	height:210px;
+	width:200px;
+	padding:10px;
+	margin:10px;
+	cursor:pointer;
+}
+.aditional-item select {
+	display:none;
+	width:150px;
+	height:30px;
+}
+.aditional-item-image {
+	background-image: url(<%= asset_path 'checkout/checkout.png' %>);
+	background-repeat: no-repeat;
+	background-position: -25px -2575px;
+	width: 127px;
+	height: 100px;
+	margin:0 auto;
+}
 .vcenter {
     display: inline-block;
     vertical-align: middle;

@@ -1,0 +1,33 @@
+<h1>Listing stored_items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Order storage item</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Assigned value</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stored_items.each do |stored_item| %>
+      <tr>
+        <td><%= stored_item.order_storage_item_id %></td>
+        <td><%= stored_item.name %></td>
+        <td><%= stored_item.description %></td>
+        <td><%= stored_item.assigned_value %></td>
+        <td><%= link_to 'Show', stored_item %></td>
+        <td><%= link_to 'Edit', edit_stored_item_path(stored_item) %></td>
+        <td><%= link_to 'Destroy', stored_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Stored item', new_stored_item_path %>

@@ -15,4 +15,29 @@
 //= require turbolinks
 //= require jquery_nested_form
 //= require bootstrap.min
+//= require bootstrap-slider
 //= require_tree .
+
+$(document).ready(function() {
+	$('.slider').slider().on('slide', function(ev){
+		$('.boxes-count').html(ev.value);
+	  });;
+	
+	$('#div_count_1').click(function(e){
+	    if ($(e.target).is('select')) return;
+	    update_selected_item('div_count_1', 'count_1');
+	});
+})
+
+
+function update_selected_item(div_id, count_1) {
+	if($('#'+div_id).attr('selected')) {
+		$('#'+div_id).css( "background-color", "white" );
+		$('#'+count_1).css( "display", "none" );
+		$('#'+div_id).attr('selected', false)
+	} else {
+		$('#'+div_id).css( "background-color", "#0e90d2" );
+		$('#'+count_1).css( "display", "inline-block" );
+		$('#'+div_id).attr('selected', true)
+	}
+}
