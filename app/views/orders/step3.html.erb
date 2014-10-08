@@ -1,0 +1,60 @@
+<div class="row new-order-step2">
+	<div class="col-md-12">
+		<h1 class="center">Por favor confirma tu orden</h1>
+		<hr />
+		<table class="table" style="width:500px; margin:0 auto;">
+			<% @order.order_storage_items.each do |osi| %>
+			<tr>
+				<th><%= osi.quantity %> <%= osi.storage_item.name %></th>
+				<td><%= number_to_currency osi.quantity*osi.storage_item.price, precision: 0 %></td>
+			</tr>
+			<% end %>
+			<tr style="border-bottom:2px solid black;">
+				<th>Retiro de productos</th>
+				<td>Gratis!</td>
+			</tr>
+			<tr>
+				<th>Total</th>
+				<th><%= number_to_currency @order.order_storage_items.joins(:storage_item).sum('quantity*price'), precision: 0 %></th>
+			</tr>
+		</table>
+		<hr />
+		<h2 class="center">Lugar de entrega</h2>
+		<table class="table" style="width:500px; margin:0 auto;">
+			<tr>
+				<th>Nombre</th>
+				<td><%= @order.address.receiver %></td>
+			</tr>
+			<tr>
+				<th>Dirección</th>
+				<td><%= @order.address.name %></td>
+			</tr>
+			<tr>
+				<th>Código postal</th>
+				<td><%= @order.address.post_code %></td>
+			</tr>
+			<tr>
+				<th>Area</th>
+				<td><%= @order.address.area unless @order.address.blank? %></td>
+			</tr>
+			<tr>
+				<th>Teléfono</th>
+				<td><%= @order.address.phone_number %></td>
+			</tr>
+			<tr>
+				<th>Hora de entrega</th>
+				<td><%= l(@order.delivery_date, format: :medium).capitalize %> entre <%= @order.delivery_time %></td>
+			</tr>
+		</table>
+		<hr />
+		<h2 class="center">¿Cómo vas a pagar?</h2>
+		<div class="center">
+			<p>Transferencia bancaria</p>
+			<p>Pago contra entrega</p>
+			<p>Tarjeta de crédito o débito</p>
+		</div>
+		<div class="form-actions center">
+		  <%= submit_tag 'Ir a Pagar', :class => 'btn btn-default' %>
+		</div>
+	</div>
+</div>

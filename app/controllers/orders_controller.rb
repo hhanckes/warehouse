@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :step2, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :step2, :step3, :update, :destroy]
 
   def index
     add_breadcrumb "Administrador", admin_path
@@ -22,6 +22,7 @@ class OrdersController < ApplicationController
   def edit
   end
   
+  #POST
   def step1
     order_status = OrderStatus.find_by_name('Step 1')
     @order = Order.create(order_status_id: order_status.id)
@@ -75,7 +76,38 @@ class OrdersController < ApplicationController
     redirect_to step2_order_path(@order), notice: 'Order creada correctamente.'
   end
   
+  #GET & POST
   def step2
+    if request.patch? 
+      if User.find_by_email(params[:email]).blank?
+        user = User.new(:email => params[:email], :password => params[:password], :password_confirmation => params[:password])
+        user.save
+    
+        address = Address.create(user_id: user.id, name: params[:name], post_code: params[:post_code], area_id: params[:area_id], receiver: params[:receiver], phone_number: params[:phone_number])
+        @order.update_attribute :address_id, address.id
+    
+        order_status = OrderStatus.find_by_name('Step 2')
+        @order.update_attribute :user_id, user.id
+        @order.update_attribute :order_status_id, order_status.id
+        @order.update_attribute :delivery_date, params['delivery-day']
+        @order.update_attribute :delivery_time, params['delivery-time']
+        @order.update_attribute :collection_date, params['collection-day']
+        @order.update_attribute :collection_time, params['collection-time']
+        @order.update_attribute :company_name, params[:company_name]
+        @order.update_attribute :company_rut, params[:rut]
+        @order.update_attribute :concierge, params[:doorman]
+        @order.update_attribute :neighbour, params[:neighbour]
+        sign_in user
+      
+        redirect_to step3_order_path(@order), notice: '¡Estás a un paso de completar el pedido!'
+      else
+        redirect_to step2_order_path(@order), alert: '¡El usuario ya existe debes ingresar para continuar!'
+      end
+    end
+  end
+  
+  #GET
+  def step3
     
   end
   

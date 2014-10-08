@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :orders do
     post 'step1', on: :collection
     get 'step2', on: :member
+    patch 'step2', on: :member
+    get 'step3', on: :member
   end
 
   resources :storage_items

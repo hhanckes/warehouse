@@ -36,9 +36,10 @@ es:
     formats:
       default: ! '%d/%m/%Y'
       long: ! '%A %d de %B de %Y'
+      medium: ! '%A %d de %B'
       short: ! '%d de %b'
       short_day: '%a %d %b %Y'
-      select: '%A %d/%m/%Y'
+      select: ! '%A %d/%m/%Y'
     month_names:
     -
     - enero
@@ -195,6 +196,7 @@ es:
       long: ! '%A %d de %B de %Y %H:%M'
       short: ! '%d de %b %H:%M'
       short_day: '%a %d %b %Y'
+      medium: '%A %d de %B'
       month: '%B %Y'
       week: '%W/%Y'
     pm: pm

@@ -1,24 +1,26 @@
 <div class="row new-order-step2 center">
 	<div class="col-md-12">
-		<%= form_for(@order, url: step1_orders_path) do |f| %>
+		<%= form_for(@order, url: step2_order_path(@order)) do |f| %>
+		<% unless user_signed_in? %>
 		<h1>¡Comencemos!</h1>
 		<h3>¿Ya estás registrado? <%= link_to 'Ingresa acá', new_user_session_path %></h3>
-		<% unless user_signed_in? %>
+		
 			<p><%= text_field_tag :email, '', placeholder: 'Correo', :class => 'img-rounded' %></p>
 			<p><%= password_field_tag :password, '', placeholder: 'Clave' %></p>
 		<% end %>
 		<hr />
+		<% end %>
 		<h1>¿Dónde te pasamos a dejar las cajas vacías?</h1>
 		<p><%= text_field_tag :name, '', placeholder: 'Dirección', :class => 'img-rounded' %></p>
-		<p><%= password_field_tag :post_code, '', placeholder: 'Código Postal' %></p>
-		<p><%= password_field_tag :receiver, '', placeholder: 'Nombre de la persona que recibe' %></p>
-		<p><%= password_field_tag :phone_number, '', placeholder: 'Teléfono de contacto' %></p>
+		<p><%= text_field_tag :post_code, '', placeholder: 'Código Postal' %></p>
+		<p><%= text_field_tag :receiver, '', placeholder: 'Nombre de la persona que recibe' %></p>
+		<p><%= text_field_tag :phone_number, '', placeholder: 'Teléfono de contacto' %></p>
 		<hr>
 		<h1>¿Qué día y a qué hora pasamos?</h1>
 		<p>
-			<%= select_tag "collection-day", 
+			<%= select_tag "delivery-day", 
 				options_for_select((2..10).collect {|p| [l((DateTime.now.to_date + p.days), format: :select), DateTime.now.to_date + p.days] }), :class => 'date-select' %>
-			<%= select_tag "collection-time", 
+			<%= select_tag "delivery-time", 
 				options_for_select(['10:00 - 12:00','12:00 - 14:00','14:00 - 16:00','16:00 - 18:00']), :class => 'hour-select' %>
 		</p>
 		<div style="text-align:left; width:600px; margin:0 auto;">
@@ -27,10 +29,9 @@
 			<p><%= check_box_tag :company %> ¿Eres una empresa?</p>
 		</div>
 		<div class="company-information">
-			<p><%= password_field_tag :company_name, '', placeholder: 'Nombre de la empresa' %></p>
-			<p><%= password_field_tag :rut, '', placeholder: 'RUT' %></p>
+			<p><%= text_field_tag :company_name, '', placeholder: 'Nombre de la empresa' %></p>
+			<p><%= text_field_tag :rut, '', placeholder: 'RUT' %></p>
 		</div>
-		<% end %>
 		<hr>
 		<h1>¿Cuándo deberíamos ir a buscar los items?</h1>
 		<div style="text-align:left; width:600px; margin:0 auto;">
@@ -41,10 +42,14 @@
 		</div>
 		<div class="collect-later">
 			<p>
-				<%= select_tag "pick-up-day", 
+				<%= select_tag "collection-day", 
 					options_for_select((2..10).collect {|p| [l((DateTime.now.to_date + p.days), format: :select), DateTime.now.to_date + p.days] }), :class => 'date-select' %>
-				<%= select_tag "pick-up-time", 
+				<%= select_tag "collection-time", 
 					options_for_select(['10:00 - 12:00','12:00 - 14:00','14:00 - 16:00','16:00 - 18:00']), :class => 'hour-select' %>			</p>
 		</div>
+		<div class="form-actions">
+		  <%= f.submit 'Siguiente paso', :class => 'btn btn-default' %>
+		</div>
+		<% end %>
 	</div>
 </div>
