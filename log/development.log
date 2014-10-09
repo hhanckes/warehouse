@@ -65300,3 +65300,116 @@ Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 18:49:58
 
 
 Started GET "/assets/checkout/checkout.png" for 127.0.0.1 at 2014-10-08 18:49:58 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 18:52:37 -0500
+Processing by MainController#home as HTML
+  [1m[35mTestimony Load (0.4ms)[0m  SELECT `testimonies`.* FROM `testimonies`
+  Rendered main/home.html.erb within layouts/application (19.4ms)
+  Rendered layouts/_top_menu.html.erb (0.8ms)
+  [1m[36mInformationPage Load (0.3ms)[0m  [1mSELECT `information_pages`.* FROM `information_pages`[0m
+  Rendered layouts/_footer.html.erb (2.0ms)
+Completed 200 OK in 62ms (Views: 57.9ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-08 18:52:37 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-08 18:52:37 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 18:52:37 -0500
+
+
+Started GET "/assets/nav-wizard.css?body=1" for 127.0.0.1 at 2014-10-08 18:52:37 -0500
+
+
+Started GET "/assets/slider.css?body=1" for 127.0.0.1 at 2014-10-08 18:52:37 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 18:52:37 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 18:52:37 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-08 18:52:37 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-08 18:52:37 -0500
+
+
+Started GET "/assets/bootstrap-slider.js?body=1" for 127.0.0.1 at 2014-10-08 18:52:37 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 18:52:37 -0500
+
+
+Started GET "/assets/home/paso_1_deliver_boxes.png" for 127.0.0.1 at 2014-10-08 18:52:37 -0500
+
+
+Started GET "/assets/home/paso_2_pack_items.png" for 127.0.0.1 at 2014-10-08 18:52:37 -0500
+
+
+Started GET "/assets/home/paso3_collect.png" for 127.0.0.1 at 2014-10-08 18:52:37 -0500
+
+
+Started GET "/assets/home/paso4_return_items.png" for 127.0.0.1 at 2014-10-08 18:52:37 -0500
+
+
+Started GET "/assets/home/inventory_macbook.png" for 127.0.0.1 at 2014-10-08 18:52:37 -0500
+
+
+Started GET "/assets/home/warehouse_boxes.png" for 127.0.0.1 at 2014-10-08 18:52:37 -0500
+
+
+Started GET "/assets/home/warehouse_items.png" for 127.0.0.1 at 2014-10-08 18:52:37 -0500
+
+
+Started GET "/assets/home/whatfits_branded.gif" for 127.0.0.1 at 2014-10-08 18:52:37 -0500
+
+
+Started GET "/orders/new" for 127.0.0.1 at 2014-10-08 18:52:39 -0500
+Processing by OrdersController#new as HTML
+  [1m[35mArea Load (0.3ms)[0m  SELECT `areas`.* FROM `areas`
+  Rendered orders/new.html.erb within layouts/application (2.1ms)
+  Rendered layouts/_top_menu.html.erb (0.7ms)
+  [1m[36mInformationPage Load (0.2ms)[0m  [1mSELECT `information_pages`.* FROM `information_pages`[0m
+  Rendered layouts/_footer.html.erb (1.3ms)
+Completed 200 OK in 44ms (Views: 42.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-08 18:52:39 -0500
+
+
+Started GET "/assets/slider.css?body=1" for 127.0.0.1 at 2014-10-08 18:52:39 -0500
+
+
+Started GET "/assets/nav-wizard.css?body=1" for 127.0.0.1 at 2014-10-08 18:52:39 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 18:52:39 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-08 18:52:39 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 18:52:39 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 18:52:39 -0500
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-08 18:52:39 -0500
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-08 18:52:39 -0500
+
+
+Started GET "/assets/bootstrap-slider.js?body=1" for 127.0.0.1 at 2014-10-08 18:52:39 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 18:52:39 -0500
+
+
+Started GET "/assets/checkout/checkout.png" for 127.0.0.1 at 2014-10-08 18:52:39 -0500
