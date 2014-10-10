@@ -1,6 +1,6 @@
 # encoding: UTF-8
 class MainController < ApplicationController
-  before_filter :authenticate_user!, except: [:home, :faqs]
+  before_filter :authenticate_user!, :redirect_unless_is_god, except: [:home, :faqs]
   
   def home
   end
@@ -24,8 +24,19 @@ class MainController < ApplicationController
     add_breadcrumb "Administrador", admin_path
     add_breadcrumb "Administrar Ordenes", main_orders_path
     
-    order_status = OrderStatus.find_by_name('Transfer waiting approval')
-    @orders = Order.where('order_status_id = ?', order_status.id).order('created_at DESC')
+    step1 = OrderStatus.find_by_name('Step 1')
+    step2 = OrderStatus.find_by_name('Step 2')
+    @orders = Order.where('order_status_id <> ? and order_status_id <> ?', step1.id, step2.id).order('created_at DESC')
+
+    
+    @in_warehouse = OrderStorageItemStatus.find_by_name('In warehouse')
+    @return_in_progress = OrderStorageItemStatus.find_by_name('Return in progress')
+    @returned = OrderStorageItemStatus.find_by_name('Returned')
+    
+    @funds_received = OrderStatus.find_by_name('Transfer funds received')
+    @delivered = OrderStatus.find_by_name('Delivered')
+    @collected = OrderStatus.find_by_name('Collected')
+    
     render :template => "orders/index"
   end
   

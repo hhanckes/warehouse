@@ -1,7 +1,8 @@
 # encoding: UTF-8
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :step2, :step3, :transfer_confirmed, :update, :destroy]
-  before_action :authenticate_user!, only: [:index, :transfer_confirmed, :destroy]
+  before_action :set_order, only: [:show, :edit, :step2, :step3, :transfer_confirmed, :update, :destroy, :update_order_status, :update_order_storage_item_status]
+  before_action :set_order_storage_item, only: [:update_order_storage_item_status]
+  before_action :authenticate_user!, only: [:index, :transfer_confirmed, :update_order_status, :update_order_storage_item_status, :destroy]
 
   def index
     add_breadcrumb "Menú Principal", user_main_menu_path
@@ -142,6 +143,30 @@ class OrdersController < ApplicationController
     redirect_to root_path, notice: '¡Todo OK! Procederemos a validar tu transferencia dentro de las próximas horas.'
   end
   
+  #POST
+  def update_order_status
+    order_status = OrderStatus.find params[:new_order_status_id]
+    @order.order_status = order_status
+    @order.save
+    if current_user.is_god?
+      redirect_to main_orders_path, notice: 'Estado de la orden #'+@order.id.to_s+' actualizado correctamente'
+    else
+      redirect_to orders_path, notice: 'Estado de la orden #'+@order.id.to_s+' actualizado correctamente'
+    end
+  end
+
+  #POST
+  def update_order_storage_item_status
+    status = OrderStorageItemStatus.find params[:new_order_storage_item_status_id]
+    @order_storage_item.order_storage_item_status = status
+    @order_storage_item.save
+    if current_user.is_god?
+      redirect_to main_orders_path, notice: 'Estado de la orden #'+@order.id.to_s+' actualizado correctamente'
+    else
+      redirect_to orders_path, notice: 'Estado de la orden #'+@order.id.to_s+' actualizado correctamente'
+    end
+  end
+  
   def create
     @order = Order.new(order_params)
     respond_to do |format|
@@ -179,7 +204,10 @@ class OrdersController < ApplicationController
     def set_order
       @order = Order.find(params[:id])
     end
-
+    def set_order_storage_item
+      @order_storage_item = OrderStorageItem.find(params[:order_storage_item_id])
+    end
+    
     def order_params
       params.require(:order).permit(:user_id, :address_id, :order_status_id)
     end

@@ -19,6 +19,9 @@ aux = []
 aux << (OrderStatus.find_by_name('Step 1') || OrderStatus.create(:name => 'Step 1'))
 aux << (OrderStatus.find_by_name('Step 2') || OrderStatus.create(:name => 'Step 2'))
 aux << (OrderStatus.find_by_name('Transfer waiting approval') || OrderStatus.create(:name => 'Transfer waiting approval'))
+aux << (OrderStatus.find_by_name('Transfer funds received') || OrderStatus.create(:name => 'Transfer funds received'))
+aux << (OrderStatus.find_by_name('Delivered') || OrderStatus.create(:name => 'Delivered'))
+aux << (OrderStatus.find_by_name('Collected') || OrderStatus.create(:name => 'Collected'))
 aux.each { |x| puts x.name }
 puts "\n"
 

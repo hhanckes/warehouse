@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
          
   def is_god?
-    true
+    self.role_id == 1
   end
   
 end

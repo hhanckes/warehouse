@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :set_last_url
   
+  def redirect_unless_is_god
+    redirect_to((session["last_url"] || root_path), alert: 'Eeeeepa! Debes ser administrador para entrar a esta sección.') unless current_user.is_god?
+  end
+  
   def after_sign_in_path_for(resource)
     session["last_url"] || root_path
   end
