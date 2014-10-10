@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class StoredItemsController < ApplicationController
   before_action :authenticate_user!
   
