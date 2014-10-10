@@ -1,5 +1,5 @@
 <ul class='nav nav-wizard'>
-  <li class='active'>Orden</li>
+  <li class='active'>PeDIDO</li>
   <li>Detalles</li>
   <li>Confirmar y Pagar</li>
 </ul>
@@ -7,8 +7,8 @@
 <div class="row new-order center">
 	<div class="col-md-12">
 		<%= form_for(@order, url: step1_orders_path) do |f| %>
-		<h1>¿Dónde estás basado?</h1>
-		<h2>Por favor selecciona el área donde entregaremos las cajas</h2>		  
+		<h1>¿A qué sector estás?</h1>
+		<h2>Por favor selecciona el sector donde entregaremos las cajas</h2>		  
 		<div class="form-group">
 			<%= collection_select(:order_area, :area, Area.all, :id, :name, { :prompt => 'Selecciona tu área' }, { :class => 'form-control' }) %>
 		</div>
@@ -17,7 +17,7 @@
 		<h2>El precio es simple: almacenar una caja por mes cuesta solo $4,990</h2>		  
 		<div class="boxes-count">5</div>
 		<%= text_field_tag :boxes, 5, :class => "slider", 'data-slider-id' => 'ex1Slider', :type => "text", 'data-slider-min' => "0", 
-							'data-slider-max' => "30", 'data-slider-step' => "1", 'data-slider-value' => "5" %>
+							'data-slider-max' => "30", 'data-slider-step' => "1", 'data-slider-value' => "5", "data-slider-tooltip" => "hide" %>
 		<hr />
 		<h1>Selecciona los items adicionales</h1>
 		<h2>¿Quieres almacenar cosas que no caben en una caja?</h2>		  
