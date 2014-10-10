@@ -1,0 +1,25 @@
+<!-- Modal -->
+<div class="modal fade" id="detail<%= order_storage_item.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="text-align:left">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+        <h4 class="modal-title" id="myModalLabel">Items Almacenados</h4>
+      </div>
+      <div class="modal-body">
+			<ul class="nav">
+				<% order_storage_item.stored_items.each do |stored_item| %>
+					<li style="margin:20px">
+						<%= stored_item.quantity %> <%= stored_item.name %> / Valor asignado: <%= number_to_currency stored_item.assigned_value %> c/u<br />
+						<%= stored_item.description %>
+					</li>
+				<% end %>
+			</ul>
+			<%= image_tag order_storage_item.photo.url(:xl) %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

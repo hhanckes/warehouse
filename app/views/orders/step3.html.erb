@@ -9,10 +9,10 @@
 		<h1 class="center">Por favor confirma tu orden</h1>
 		<hr />
 		<table class="table" style="width:500px; margin:0 auto;">
-			<% @order.order_storage_items.each do |osi| %>
+			<% @order.storage_items.uniq.each do |si| %>
 			<tr>
-				<th><%= osi.quantity %> <%= osi.storage_item.name %></th>
-				<td><%= number_to_currency osi.quantity*osi.storage_item.price, precision: 0 %></td>
+				<th><%= @order.storage_items.where('storage_item_id = ?', si.id).size %> <%= si.name %></th>
+				<td><%= number_to_currency @order.storage_items.where('storage_item_id = ?', si.id).size*si.price %></td>
 			</tr>
 			<% end %>
 			<tr style="border-bottom:2px solid black;">
@@ -21,7 +21,7 @@
 			</tr>
 			<tr>
 				<th>Total</th>
-				<th><%= number_to_currency @order.order_storage_items.joins(:storage_item).sum('quantity*price'), precision: 0 %></th>
+				<th><%= number_to_currency @order.order_storage_items.joins(:storage_item).sum('price'), precision: 0 %></th>
 			</tr>
 		</table>
 		<hr />
@@ -55,9 +55,10 @@
 		<hr />
 		<h2 class="center">¿Cómo vas a pagar?</h2>
 		<div class="center">
-			<p>Transferencia bancaria</p>
-			<p>Pago contra entrega</p>
-			<p>Tarjeta de crédito o débito</p>
+			<p><%= link_to 'Pagar con Transferencia Bancaria', '#', :class => 'btn btn-primary', 'data-toggle' => "modal", 'data-target' => "#PaymentModal" %></p>
+			<%= render 'payment_modal', id: 'PaymentModal' %>
+			<p><%= link_to 'Pago contra entrega', '#', :class => 'btn btn-primary' %></p>
+			<p><%= link_to 'Tarjeta de crédito o débito', '#', :class => 'btn btn-primary' %></p>
 		</div>
 		<div class="form-actions center">
 		  <%= submit_tag 'Ir a Pagar', :class => 'btn btn-default' %>

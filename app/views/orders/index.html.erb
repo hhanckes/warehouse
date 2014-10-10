@@ -1,31 +1,95 @@
-<h1>Listing orders</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Address</th>
-      <th>Order status</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.user_id %></td>
-        <td><%= order.address_id %></td>
-        <td><%= order.order_status_id %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Order', new_order_path %>
+<h1><%= @h1 %></h1>
+<% @orders.each do |order| %>
+<div class="panel panel-default">
+    	<div class="panel-heading faq-section">
+      		<h2 class="panel-title">
+        		<a data-toggle="collapse" data-parent="#accordion" href="<%= '#collapse'+order.id.to_s %>">
+          			Orden # <%= order.id %> - <%= l(order.created_at, format: :medium).capitalize %>
+        		</a>
+      		</h2>
+    	</div>
+    	<div id="<%= 'collapse'+order.id.to_s %>" class="panel-collapse collapse">
+      		<div class="panel-body">
+				<h3>Detalles de la orden</h3>
+				<p>
+					Status: <b><%= order.order_status.name %></b> 
+					<%= link_to 'Fondos recibidos', '#', :class => 'btn btn-default btn-xs', style: "font-size:10px" %>
+					<%= link_to 'Cajas Entregadas', '#', :class => 'btn btn-default btn-xs', style: "font-size:10px" %> 
+					<%= link_to 'Cajas Recolectadas', '#', :class => 'btn btn-default btn-xs', style: "font-size:10px" %> 
+				</p>
+				<p>Precio total: <b><%= number_to_currency order.order_storage_items.joins(:storage_item).sum('price'), precision: 0 %></b></p>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>ID</th><th>Item</th><th>Precio</th><th>Opciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% order.order_storage_items.each do |osi| %>
+						<tr>
+							<td><%= osi.id %></td>
+							<td><%= osi.storage_item.name %></td>
+							<td><%= number_to_currency osi.storage_item.price %></td>
+							<td>
+								<%= link_to 'Ver Detalle', '#', :class => 'btn btn-primary btn-xs', style: "font-size:10px", 'data-toggle' => "modal", 'data-target' => "#detail"+osi.id.to_s %> 
+								<%= link_to 'Editar', '#', :class => 'btn btn-default btn-xs', style: "font-size:10px", 'data-toggle' => "modal", 'data-target' => "#edit"+osi.id.to_s %> 
+								<%= link_to 'Cajas en Bodega', '#', :class => 'btn btn-default btn-xs', style: "font-size:10px" %> 
+								<%= link_to 'Cajas en Devueltas', '#', :class => 'btn btn-default btn-xs', style: "font-size:10px;" %> 
+								<%= link_to 'Eliminar', destroy_order_storage_item_path(osi), :class => 'btn btn-danger btn-xs', style: "font-size:10px", 
+											method: :delete, data: { confirm: 'Are you sure?' } %>
+							</td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+				<h3>Detalles del despacho</h3>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Dirección</th>
+							<th>Código Postal</th>
+							<th>Area</th>
+							<th>¿Quién recibe?</th>
+							<th>Teléfono</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><%= order.address.name %></td>
+							<td><%= order.address.post_code %></td>
+							<td><%= order.address.area unless order.address.blank? %></td>
+							<td><%= order.address.receiver %></td>
+							<td><%= order.address.phone_number %></td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Fecha y hora de entrega</th>
+							<th>¿Concerje?</th>
+							<th>¿Dejar con vecino?</th>
+							<th>¿Esperar 20 minutos?</th>
+							<th>Fecha y hora de recolección</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><%= l(order.delivery_date, format: :medium).capitalize %> entre <%= order.delivery_time %></td>
+							<td><%= order.concierge ? 'Sí' : 'No' %></td>
+							<td><%= order.neighbour ? 'Sí' : 'No' %></td>
+							<td><%= order.collection_date.blank? ? 'Sí' : 'No' %></td>
+							<td><%= l(order.collection_date, format: :medium).capitalize %> entre <%= order.collection_time %></td>
+						</tr>
+					</tbody>
+				</table>
+     		</div>
+		</div>
+	</div>
+<% end %>
+<% @orders.each do |order| %>
+	<% order.order_storage_items.each do |osi| %>
+		<%= render 'orders/stored_items_form', order_storage_item: osi %>
+		<%= render 'orders/stored_items', order_storage_item: osi %>
+	<% end %>
+<% end %>

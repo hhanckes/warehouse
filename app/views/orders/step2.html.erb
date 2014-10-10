@@ -11,12 +11,12 @@
 		<h1>¡Comencemos!</h1>
 		<h3>¿Ya estás registrado? <%= link_to 'Ingresa acá', new_user_session_path %></h3>
 		
-			<p><%= text_field_tag :email, '', placeholder: 'Correo', :class => 'img-rounded' %></p>
+			<p><%= text_field_tag :email, '', placeholder: 'Correo' %></p>
 			<p><%= password_field_tag :password, '', placeholder: 'Clave' %></p>
 		<% end %>
 		<hr />
 		<h1>¿Dónde te pasamos a dejar las cajas vacías?</h1>
-		<p><%= text_field_tag :name, '', placeholder: 'Dirección', :class => 'img-rounded' %></p>
+		<p><%= text_field_tag :name, '', placeholder: 'Dirección' %></p>
 		<p><%= text_field_tag :post_code, '', placeholder: 'Código Postal' %></p>
 		<p><%= text_field_tag :receiver, '', placeholder: 'Nombre de la persona que recibe' %></p>
 		<p><%= text_field_tag :phone_number, '', placeholder: 'Teléfono de contacto' %></p>

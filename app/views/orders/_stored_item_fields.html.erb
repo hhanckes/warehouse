@@ -1,0 +1,29 @@
+<%= f.fields_for :stored_items do |stored_item| %>
+	<hr />
+	<div class="form-group">
+		<table style="width:100%">
+			<tr>
+				<td><%= stored_item.label :name, 'Nombre', :class => 'control-label' %></td>
+				<td><%= stored_item.label :quantity, 'Cantidad', :class => 'control-label' %><br></td>
+				<td><%= stored_item.label :assigned_value, 'Valorización Unitaria', :class => 'control-label' %><br></td>
+			</tr>
+			<tr>
+				<td style="padding:5px"><%= stored_item.text_field :name, :class => 'form-control' %></td>
+				<td style="padding:5px"><%= stored_item.text_field :quantity, :class => 'form-control' %></td>
+				<td style="padding:5px"><%= stored_item.text_field :assigned_value, :class => 'form-control' %></td>
+			</tr>
+		</table>
+	</div>
+	<div class="form-group">
+	  <%= stored_item.label :description, 'Descripción', :class => 'control-label' %>
+	  <%= stored_item.text_area :description, :class => 'form-control' %>
+	</div>
+	<div class="form-group">
+		<%= stored_item.link_to_remove 'Eliminar', :class => 'btn btn-danger btn-xs' %>
+	</div>
+	<hr />
+<% end %>
+
+<div>
+	<%= f.link_to_add 'Agregar Item', :stored_items, :class => 'btn btn-primary btn-xs' %>
+</div>

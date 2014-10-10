@@ -18,7 +18,17 @@ puts "--> OrderStatuses:"
 aux = []
 aux << (OrderStatus.find_by_name('Step 1') || OrderStatus.create(:name => 'Step 1'))
 aux << (OrderStatus.find_by_name('Step 2') || OrderStatus.create(:name => 'Step 2'))
-aux << (OrderStatus.find_by_name('Step 3') || OrderStatus.create(:name => 'Step 3'))
+aux << (OrderStatus.find_by_name('Transfer waiting approval') || OrderStatus.create(:name => 'Transfer waiting approval'))
+aux.each { |x| puts x.name }
+puts "\n"
+
+puts "--> OrderStorageItemStatuses:"
+aux = []
+aux << (OrderStorageItemStatus.find_by_name('Waiting funds confirmation') || OrderStorageItemStatus.create(:name => 'Waiting funds confirmation', :public_name => 'Esperando confirmación'))
+aux << (OrderStorageItemStatus.find_by_name('Collection in progress') || OrderStorageItemStatus.create(:name => 'Collection in progress', :public_name => 'En proceso de recolección'))
+aux << (OrderStorageItemStatus.find_by_name('In warehouse') || OrderStorageItemStatus.create(:name => 'In warehouse', :public_name => 'En bodega'))
+aux << (OrderStorageItemStatus.find_by_name('Return in progress') || OrderStorageItemStatus.create(:name => 'Return in progress', :public_name => 'En proceso de devolución'))
+aux << (OrderStorageItemStatus.find_by_name('Returned') || OrderStorageItemStatus.create(:name => 'Returned', :public_name => 'Devuelta'))
 aux.each { |x| puts x.name }
 puts "\n"
 

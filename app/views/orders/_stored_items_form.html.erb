@@ -1,0 +1,31 @@
+<!-- Modal -->
+<div class="modal fade" id="edit<%= order_storage_item.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="text-align:left">
+<%= nested_form_for(order_storage_item, url: update_order_storage_item_path(order_storage_item)) do |f| %>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+        <h4 class="modal-title" id="myModalLabel">Agregar Items Almacenados</h4>
+      </div>
+      <div class="modal-body">
+		  <div style="form-group">
+			<%= f.label :photo, 'Foto del documento', :class => 'control-label' %>
+			<div class="row" style="margin-bottom:10px">
+				<div class="col-md-2">
+		      		<%= image_tag order_storage_item.photo.url(:xs) %>
+				</div>
+				<div class="col-md-10">
+					<%= f.file_field :photo, :class => 'btn btn-default' %>
+				</div>
+		    </div>
+		  </div>
+	  	  <%= render 'orders/stored_item_fields', :f => f %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+		<%= f.submit 'Guardar', :class => 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>

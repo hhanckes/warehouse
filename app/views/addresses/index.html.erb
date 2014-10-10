@@ -1,35 +1,38 @@
-<h1>Listing addresses</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Receiver</th>
-      <th>Name</th>
-      <th>Post code</th>
-      <th>Area</th>
-      <th>User</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @addresses.each do |address| %>
-      <tr>
-        <td><%= address.receiver %></td>
-        <td><%= address.name %></td>
-        <td><%= address.post_code %></td>
-        <td><%= address.area_id %></td>
-        <td><%= address.user_id %></td>
-        <td><%= link_to 'Show', address %></td>
-        <td><%= link_to 'Edit', edit_address_path(address) %></td>
-        <td><%= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Address', new_address_path %>
+<div style="float:right">
+	<%= link_to 'Agregar Dirección', '#', :class => 'btn btn-primary', 'data-toggle' => "modal", 'data-target' => '#new_address' %>
+</div>
+<h1>Direcciones</h1>
+<div class="row">
+<% @addresses.each do |address| %>
+	<div class="col-md-4 thumbnail" style="margin:10px">
+		<table class="table">
+			<tr>
+				<th>Nombre</th>
+				<td><%= address.receiver %></td>
+			</tr>
+			<tr>
+				<th>Dirección</th>
+				<td><%= address.name %></td>
+			</tr>
+			<tr>
+				<th>Código postal</th>
+				<td><%= address.post_code %></td>
+			</tr>
+			<tr>
+				<th>Area</th>
+				<td><%= address.area.name unless address.blank? %></td>
+			</tr>
+			<tr>
+				<th>Teléfono</th>
+				<td><%= address.phone_number %></td>
+			</tr>
+		</table>
+		<div style="text-align:right">
+		<%= link_to 'Pedidos a esta dirección', '#', :class => 'btn btn-default', 'data-toggle' => "modal", 'data-target' => '#address_'+address.id.to_s %>
+		<%= link_to 'Editar', '#', :class => 'btn btn-warning', 'data-toggle' => "modal", 'data-target' => '#address_'+address.id.to_s %>
+		</div>
+		<%= render 'addresses/form', address: address, id: 'address_'+address.id.to_s %>
+	</div>
+<% end %>
+</div>
+<%= render 'addresses/form', address: @address, id: 'new_address' %>

@@ -1,37 +1,26 @@
-<%= form_for(@address) do |f| %>
-  <% if @address.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@address.errors.count, "error") %> prohibited this address from being saved:</h2>
-
-      <ul>
-      <% @address.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<!-- Modal -->
+<div class="modal fade" id="<%= id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="text-align:left">
+<%= form_for(address) do |f| %>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+        <h4 class="modal-title" id="myModalLabel">Nueva Dirección</h4>
+      </div>
+      <div class="modal-body">
+		   <%= f.hidden_field :user_id, value: current_user.id %>
+		<p><%= f.text_field :name, placeholder: 'Dirección', :class => 'form-control' %></p>
+		<p><%= f.text_field :post_code, placeholder: 'Código Postal', :class => 'form-control' %></p>
+		<p><%= f.text_field :receiver, placeholder: 'Nombre de la persona que recibe', :class => 'form-control' %></p>
+		<p><%= f.text_field :phone_number, placeholder: 'Teléfono de contacto', :class => 'form-control' %></p>
+	    <p><%= f.collection_select(:area_id, Area.all, :id, :name, { :prompt => 'Selecciona tu área' }, { :class => 'form-control' }) %></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+		<%= f.submit 'Guardar', :class => 'btn btn-primary' %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :receiver %><br>
-    <%= f.text_field :receiver %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :post_code %><br>
-    <%= f.text_field :post_code %>
-  </div>
-  <div class="field">
-    <%= f.label :area_id %><br>
-    <%= f.number_field :area_id %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
   </div>
 <% end %>
+</div>
+

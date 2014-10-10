@@ -1,19 +1,21 @@
 # encoding: UTF-8
 class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   def index
-    @addresses = Address.all
-    respond_with(@addresses)
+    add_breadcrumb "Menú Principal", user_main_menu_path
+    add_breadcrumb "Direcciones", addresses_path
+    
+    @addresses = current_user.addresses
+    @address = Address.new
   end
 
   def show
-    respond_with(@address)
   end
 
   def new
     @address = Address.new
-    respond_with(@address)
   end
 
   def edit
@@ -21,18 +23,35 @@ class AddressesController < ApplicationController
 
   def create
     @address = Address.new(address_params)
-    @address.save
-    respond_with(@address)
+    respond_to do |format|
+      if @address.save
+        format.html { redirect_to addresses_path, notice: 'Dirección creada correctamente.' }
+        format.json { render action: 'show', status: :created, location: @address }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @address.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def update
-    @address.update(address_params)
-    respond_with(@address)
+    respond_to do |format|
+      if @address.update(address_params)
+        format.html { redirect_to addresses_path, notice: 'Dirección actualizado correctamente.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @address.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
     @address.destroy
-    respond_with(@address)
+    respond_to do |format|
+      format.html { redirect_to addresses_path }
+      format.json { head :no_content }
+    end
   end
 
   private
@@ -41,6 +60,6 @@ class AddressesController < ApplicationController
     end
 
     def address_params
-      params.require(:address).permit(:receiver, :name, :post_code, :area_id, :user_id)
+      params.require(:address).permit(:receiver, :name, :post_code, :area_id, :user_id, :phone_number)
     end
 end
