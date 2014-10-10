@@ -39,63 +39,63 @@ class OrdersController < ApplicationController
       si = StorageItem.find_by_name('Regular Boxes')
       count = params[:boxes].to_i
       (0..count).each do |i|
-        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_id: osis.id)
+        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id)
       end
     end        
     if is_number?(params['bike-count'])
       si = StorageItem.find_by_name('Bike')
       count = params['bike-count'].to_i
       (0..count).each do |i|
-        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_id: osis.id)
+        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id)
       end
     end    
     if is_number?(params['golf-count'])
       si = StorageItem.find_by_name('Golf')
       count = params['golf-count'].to_i
       (0..count).each do |i|
-        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_id: osis.id)
+        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id)
       end
     end    
     if is_number?(params['ski-count'])
       si = StorageItem.find_by_name('Ski')
       count = params['ski-count'].to_i
       (0..count).each do |i|
-        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_id: osis.id)
+        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id)
       end
     end    
     if is_number?(params['ac-count'])
       si = StorageItem.find_by_name('AC')
       count = params['ac-count'].to_i
       (0..count).each do |i|
-        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_id: osis.id)
+        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id)
       end
     end    
     if is_number?(params['carry-on-count'])
       si = StorageItem.find_by_name('Carry On')
       count = params['carry-on-count'].to_i
       (0..count).each do |i|
-        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_id: osis.id)
+        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id)
       end
     end    
     if is_number?(params['luggage-count'])
       si = StorageItem.find_by_name('Luggage')
       count = params['lugagge-count'].to_i
       (0..count).each do |i|
-        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_id: osis.id)
+        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id)
       end
     end    
     if is_number?(params['wardrobe-count'])
       si = StorageItem.find_by_name('Wardrobe')
       count = params['wardrobe-count'].to_i
       (0..count).each do |i|
-        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_id: osis.id)
+        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id)
       end
     end    
     if is_number?(params['other-count'])
       si = StorageItem.find_by_name('Other')
       count = params['other-count'].to_i
       (0..count).each do |i|
-        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_id: osis.id)
+        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id)
       end
     end
     redirect_to step2_order_path(@order)
