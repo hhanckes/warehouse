@@ -1,6 +1,6 @@
 # encoding: UTF-8
 class AddressesController < ApplicationController
-  before_action :set_address, only: [:show, :edit, :update, :destroy]
+  before_action :set_address, only: [:show, :edit, :update, :destroy, :select]
   before_filter :authenticate_user!
 
   def index
@@ -9,6 +9,17 @@ class AddressesController < ApplicationController
     
     @addresses = current_user.addresses
     @address = Address.new
+    if params[:step] == 2.to_s
+      @in_purchase = true
+    end
+  end
+  
+  def select
+    Address.where('addresses.default = 1 and addresses.id <> ?', @address.id).each do |ad|
+      ad.update_attribute :default, false
+    end
+    @address.update_attribute :default, true
+    redirect_to step2_order_path(current_user.orders.last)
   end
 
   def show
@@ -23,9 +34,15 @@ class AddressesController < ApplicationController
 
   def create
     @address = Address.new(address_params)
+
+    if params[:step] == 2.to_s
+      path = addresses_path(step: 2)
+    else
+      path = addresses_path
+    end
     respond_to do |format|
       if @address.save
-        format.html { redirect_to addresses_path, notice: 'Dirección creada correctamente.' }
+        format.html { redirect_to path, notice: 'Dirección creada correctamente.' }
         format.json { render action: 'show', status: :created, location: @address }
       else
         format.html { render action: 'new' }

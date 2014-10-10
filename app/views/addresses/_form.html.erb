@@ -8,6 +8,7 @@
         <h4 class="modal-title" id="myModalLabel">Nueva Dirección</h4>
       </div>
       <div class="modal-body">
+           <%= hidden_field_tag :step, params[:step] %>
 		   <%= f.hidden_field :user_id, value: current_user.id %>
 		<p><%= f.text_field :name, placeholder: 'Dirección', :class => 'form-control' %></p>
 		<p><%= f.text_field :post_code, placeholder: 'Código Postal', :class => 'form-control' %></p>

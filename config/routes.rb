@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   resources :stored_items, only: [:index]
   resources :storage_items
   resources :countries
-  resources :addresses
+  resources :addresses do
+    get 'select', on: :member
+  end
   resources :faq_sections
   resources :faqs
   resources :information_pages

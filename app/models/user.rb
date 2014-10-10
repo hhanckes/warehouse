@@ -16,4 +16,7 @@ class User < ActiveRecord::Base
     self.role_id == 1
   end
   
+  def default_address
+    self.addresses.where(default: true).first
+  end
 end

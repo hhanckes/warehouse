@@ -20,7 +20,7 @@
 			</tr>
 			<tr>
 				<th>Area</th>
-				<td><%= address.area.name unless address.blank? %></td>
+				<td><%= address.area.name unless address.area.blank? %></td>
 			</tr>
 			<tr>
 				<th>Teléfono</th>
@@ -28,6 +28,9 @@
 			</tr>
 		</table>
 		<div style="text-align:right">
+		<% if @in_purchase %>
+			<%= link_to 'Seleccionar Dirección', select_address_path(address), :class => 'btn btn-primary' %>
+		<% end %>
 		<%= link_to 'Pedidos a esta dirección', '#', :class => 'btn btn-default', 'data-toggle' => "modal", 'data-target' => '#address_'+address.id.to_s %>
 		<%= link_to 'Editar', '#', :class => 'btn btn-warning', 'data-toggle' => "modal", 'data-target' => '#address_'+address.id.to_s %>
 		</div>

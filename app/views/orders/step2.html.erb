@@ -9,17 +9,45 @@
 		<%= form_for(@order, url: step2_order_path(@order)) do |f| %>
 		<% unless user_signed_in? %>
 		<h1>¡Comencemos!</h1>
-		<h3>¿Ya estás registrado? <%= link_to 'Ingresa acá', new_user_session_path %></h3>
-		
+		<h3>Si ya estás registrado <%= link_to 'ingresa con tu usuario y correo acá', new_user_session_path %></h3>
 			<p><%= text_field_tag :email, '', placeholder: 'Correo' %></p>
 			<p><%= password_field_tag :password, '', placeholder: 'Clave' %></p>
 		<% end %>
 		<hr />
 		<h1>¿Dónde te pasamos a dejar las cajas vacías?</h1>
-		<p><%= text_field_tag :name, '', placeholder: 'Dirección' %></p>
-		<p><%= text_field_tag :post_code, '', placeholder: 'Código Postal' %></p>
-		<p><%= text_field_tag :receiver, '', placeholder: 'Nombre de la persona que recibe' %></p>
-		<p><%= text_field_tag :phone_number, '', placeholder: 'Teléfono de contacto' %></p>
+		<% unless user_signed_in? and current_user.addresses.size > 0 %>
+			<p><%= text_field_tag :name, '', placeholder: 'Dirección' %></p>
+			<p><%= text_field_tag :post_code, '', placeholder: 'Código Postal' %></p>
+			<p><%= text_field_tag :receiver, '', placeholder: 'Nombre de la persona que recibe' %></p>
+			<p><%= text_field_tag :phone_number, '', placeholder: 'Teléfono de contacto' %></p>
+		<% else %>
+			<%= hidden_field :address_id, @address.id %>
+			<div style="margin:0 auto; max-width:500px">
+				<table class="table">
+					<tr>
+						<th>Nombre</th>
+						<td><%= @address.receiver %></td>
+					</tr>
+					<tr>
+						<th>Dirección</th>
+						<td><%= @address.name %></td>
+					</tr>
+					<tr>
+						<th>Código postal</th>
+						<td><%= @address.post_code %></td>
+					</tr>
+					<tr>
+						<th>Area</th>
+						<td><%= @address.area.name unless @address.area.blank? %></td>
+					</tr>
+					<tr>
+						<th>Teléfono</th>
+						<td><%= @address.phone_number %></td>
+					</tr>
+				</table>
+			</div>
+			<%= link_to 'Cambiar dirección', addresses_path(step: 2), :class => 'btn btn-default' %>
+		<% end %>
 		<hr>
 		<h1>¿Qué día y a qué hora pasamos?</h1>
 		<p>

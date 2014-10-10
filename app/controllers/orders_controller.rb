@@ -103,12 +103,16 @@ class OrdersController < ApplicationController
   
   #GET & POST
   def step2
+		@address = current_user.default_address if user_signed_in?
     if request.patch? 
       if User.find_by_email(params[:email]).blank?
         user = User.new(:email => params[:email], :password => params[:password], :password_confirmation => params[:password])
         user.save
-    
-        address = Address.create(user_id: user.id, name: params[:name], post_code: params[:post_code], area_id: params[:area_id], receiver: params[:receiver], phone_number: params[:phone_number])
+        if params[:address_id].blank?
+          address = Address.create(default: true, user_id: user.id, name: params[:name], post_code: params[:post_code], area_id: params[:area_id], receiver: params[:receiver], phone_number: params[:phone_number])
+        else
+          address = Address.find params[:address_id]
+        end
         @order.update_attribute :address_id, address.id
     
         order_status = OrderStatus.find_by_name('Step 2')

@@ -1,6 +1,6 @@
 # encoding: UTF-8
 class MainController < ApplicationController
-  before_filter :authenticate_user!, :redirect_unless_is_god, except: [:home, :faqs]
+  before_filter :authenticate_user!, :redirect_unless_is_god, except: [:home, :faqs, :user_main_menu]
   
   def home
   end
