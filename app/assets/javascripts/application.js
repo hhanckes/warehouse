@@ -21,6 +21,7 @@ $(document).ready(function() {
 	$('.slider').slider().on('slide', function(ev){
 		$('.boxes-count').html(ev.value);
 	  });
+	
 	$('#div_count_1').click(function(e){
 	    if ($(e.target).is('select')) return;
 	    update_selected_item('div_count_1', 'bike-count');
