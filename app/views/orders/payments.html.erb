@@ -1,0 +1,21 @@
+<h1 class="center">Pagos</h2>
+<table class="table" style="width:500px; margin:0 auto;">
+	<thead>
+		<tr>
+			<th>ID Pedido</th>
+			<th>Estado</th>
+			<th>Precio /mes</th>
+			<th>Ultimo Pago</th>
+			<th>Acciones</th>
+		</tr>
+	</thead>
+	<% @orders.each do |order| %>
+	<tr>
+		<td># <%= order.id %></td>
+		<td># <%= order.order_status.blank? ? 'No asignado' : order.order_status.name %></td>
+		<td><%= number_to_currency order.order_storage_items.joins(:storage_item).sum('price'), precision: 0 %></td>
+		<td>- completar -</td>
+		<td>- completar -</td>
+	</tr>
+	<% end %>
+</table>

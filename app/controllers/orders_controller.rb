@@ -20,6 +20,12 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
 
+  def payments
+    add_breadcrumb "Menú Principal", user_main_menu_path
+    add_breadcrumb "Pagos", payments_orders_path
+    @orders = current_user.orders
+  end
+  
   def edit
   end
   
