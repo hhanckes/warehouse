@@ -1,7 +1,7 @@
 # encoding: UTF-8
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :step2, :step3, :transfer_confirmed, :update, :destroy]
-  before_action :authenticate_user!, only: [:index]
+  before_action :authenticate_user!, only: [:index, :transfer_confirmed, :destroy]
 
   def index
     add_breadcrumb "Menú Principal", user_main_menu_path

@@ -91375,3 +91375,115 @@ Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-09 20:48:34
 
 
 Started GET "/assets/checkout/checkout.png" for 127.0.0.1 at 2014-10-09 20:48:34 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-10 09:22:41 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by MainController#home as HTML
+  [1m[35mTestimony Load (0.3ms)[0m  SELECT `testimonies`.* FROM `testimonies`
+  Rendered main/home.html.erb within layouts/application (39.2ms)
+  Rendered layouts/_top_menu.html.erb (4.4ms)
+  [1m[36mInformationPage Load (0.3ms)[0m  [1mSELECT `information_pages`.* FROM `information_pages`[0m
+  Rendered layouts/_footer.html.erb (14.4ms)
+Completed 200 OK in 180ms (Views: 159.8ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-10 09:22:41 -0300
+Processing by MainController#home as HTML
+  [1m[35mTestimony Load (0.3ms)[0m  SELECT `testimonies`.* FROM `testimonies`
+  Rendered main/home.html.erb within layouts/application (5.5ms)
+  Rendered layouts/_top_menu.html.erb (0.8ms)
+  [1m[36mInformationPage Load (0.3ms)[0m  [1mSELECT `information_pages`.* FROM `information_pages`[0m
+  Rendered layouts/_footer.html.erb (1.3ms)
+Completed 200 OK in 50ms (Views: 49.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-10-10 09:22:41 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-10 09:22:41 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-10 09:22:41 -0300
+
+
+Started GET "/assets/slider.css?body=1" for 127.0.0.1 at 2014-10-10 09:22:41 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-10 09:22:41 -0300
+
+
+Started GET "/assets/nav-wizard.css?body=1" for 127.0.0.1 at 2014-10-10 09:22:41 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-10 09:22:41 -0300
+
+
+Started GET "/assets/jquery_nested_form.js?body=1" for 127.0.0.1 at 2014-10-10 09:22:41 -0300
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-10-10 09:22:41 -0300
+
+
+Started GET "/assets/bootstrap-slider.js?body=1" for 127.0.0.1 at 2014-10-10 09:22:41 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-10 09:22:41 -0300
+
+
+Started GET "/assets/home/paso_1_deliver_boxes.png" for 127.0.0.1 at 2014-10-10 09:22:41 -0300
+
+
+Started GET "/assets/home/paso_2_pack_items.png" for 127.0.0.1 at 2014-10-10 09:22:41 -0300
+
+
+Started GET "/assets/home/paso3_collect.png" for 127.0.0.1 at 2014-10-10 09:22:41 -0300
+
+
+Started GET "/assets/home/paso4_return_items.png" for 127.0.0.1 at 2014-10-10 09:22:41 -0300
+
+
+Started GET "/assets/home/inventory_macbook.png" for 127.0.0.1 at 2014-10-10 09:22:41 -0300
+
+
+Started GET "/assets/home/warehouse_boxes.png" for 127.0.0.1 at 2014-10-10 09:22:41 -0300
+
+
+Started GET "/assets/home/warehouse_items.png" for 127.0.0.1 at 2014-10-10 09:22:41 -0300
+
+
+Started GET "/assets/home/whatfits_branded.gif" for 127.0.0.1 at 2014-10-10 09:22:41 -0300
+
+
+Started GET "/images/favicon.ico" for 127.0.0.1 at 2014-10-10 09:22:41 -0300
+
+ActionController::RoutingError (No route matches [GET] "/images/favicon.ico"):
+  actionpack (4.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.0.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.4) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.4) lib/rails/engine.rb:511:in `call'
+  railties (4.0.4) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/hans/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/hans/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/hans/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (6.3ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.9ms)
+  Rendered /Users/hans/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (53.7ms)
