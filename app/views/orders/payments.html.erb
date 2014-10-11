@@ -1,21 +1,33 @@
-<h1 class="center">Pagos</h2>
-<table class="table" style="width:500px; margin:0 auto;">
+<h1 class="">Pagos</h2>
+<hr />
+<div style="float:right"><%= link_to 'Pagar Deuda Vencida', '#', :class => 'btn btn-primary' %></div>
+<h2 class="">Pagos Pendientes</h2>
+<table class="table">
 	<thead>
 		<tr>
 			<th>ID Pedido</th>
-			<th>Estado</th>
+			<th>Status</th>
+			<th>Item</th>
 			<th>Precio /mes</th>
-			<th>Ultimo Pago</th>
-			<th>Acciones</th>
+			<th>Fecha último pago</th>
+			<th>Fecha próximo vencimiento</th>
+			<th>Fecha límite pago vencimiento</th>
 		</tr>
 	</thead>
-	<% @orders.each do |order| %>
-	<tr>
-		<td># <%= order.id %></td>
-		<td># <%= order.order_status.blank? ? 'No asignado' : order.order_status.name %></td>
-		<td><%= number_to_currency order.order_storage_items.joins(:storage_item).sum('price'), precision: 0 %></td>
-		<td>- completar -</td>
-		<td>- completar -</td>
-	</tr>
+	<tbody>
+	<% @order_storage_items.each do |osi| %>
+		<tr>
+			<td><%= osi.order.id %></td>
+			<td><%= osi.payment_status %></td>
+			<td><%= osi.storage_item.name %></td>
+			<td><%= number_to_currency osi.storage_item.price %></td>
+			<td><%= osi.payments.last.blank? ? 'No hay pagos asociados' : osi.payments.last.created_at %></td>
+			<td><%=l(osi.next_payment_date, format: :date_detail).capitalize %></td>
+			<td><%=l((osi.next_payment_date + 10.days), format: :date_detail).capitalize %></td>
+		</tr>
 	<% end %>
+	</tbody>
 </table>
+<hr />
+<h2 class="">Pagos Pagos realizados</h2>
+<hr />

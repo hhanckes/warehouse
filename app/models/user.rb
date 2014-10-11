@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :addresses
   has_many :areas, through: :addresses
   has_many :countries, through: :areas
+  has_many :payments, through: :order_storage_items
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

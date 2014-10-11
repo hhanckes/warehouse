@@ -2,14 +2,18 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :step2, :step3, :transfer_confirmed, :update, :destroy, :update_order_status, :update_order_storage_item_status]
   before_action :set_order_storage_item, only: [:update_order_storage_item_status]
-  before_action :authenticate_user!, only: [:index, :transfer_confirmed, :update_order_status, :update_order_storage_item_status, :destroy]
+  before_action :authenticate_user!, only: [:index, :transfer_confirmed, :update_order_status, :update_order_storage_item_status, :destroy, :payments]
 
   def index
     add_breadcrumb "Menú Principal", user_main_menu_path
     add_breadcrumb "Pedidos", orders_path
     
     @h1 = 'Tus Pedidos'
-    @orders = current_user.orders
+    step1 = OrderStatus.find_by_name('Step 1')
+    step2 = OrderStatus.find_by_name('Step 2')
+    
+    @orders = current_user.orders.where('order_status_id <> ? and order_status_id <> ?', step1.id, step2.id).order 'created_at DESC'
+    @return_in_progress = OrderStorageItemStatus.find_by_name('Return in progress')
   end
 
   def show
@@ -23,7 +27,12 @@ class OrdersController < ApplicationController
   def payments
     add_breadcrumb "Menú Principal", user_main_menu_path
     add_breadcrumb "Pagos", payments_orders_path
-    @orders = current_user.orders
+    @payments = current_user.payments
+    step1 = OrderStatus.find_by_name('Step 1')
+    step2 = OrderStatus.find_by_name('Step 2')
+    
+    @order_storage_items = current_user.order_storage_items.where('orders.order_status_id <> ? and orders.order_status_id <> ?', step1.id, step2.id).order 'created_at DESC'
+    
   end
   
   def edit

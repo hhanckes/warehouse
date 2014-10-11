@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141010185442) do
+ActiveRecord::Schema.define(version: 20141011172017) do
 
   create_table "addresses", force: true do |t|
     t.string   "receiver"
@@ -99,6 +99,11 @@ ActiveRecord::Schema.define(version: 20141010185442) do
     t.integer  "order_storage_item_status_id"
   end
 
+  create_table "order_storage_items_payments", id: false, force: true do |t|
+    t.integer "payment_id"
+    t.integer "order_storage_item_id"
+  end
+
   create_table "orders", force: true do |t|
     t.integer  "user_id"
     t.integer  "address_id"
@@ -113,6 +118,25 @@ ActiveRecord::Schema.define(version: 20141010185442) do
     t.string   "company_rut"
     t.boolean  "concierge"
     t.boolean  "neighbour"
+  end
+
+  create_table "payment_months", force: true do |t|
+    t.integer  "month"
+    t.integer  "year"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payments", force: true do |t|
+    t.decimal  "amount",            precision: 10, scale: 0
+    t.integer  "payment_status_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payments_payment_months", id: false, force: true do |t|
+    t.integer "payment_id"
+    t.integer "payment_month_id"
   end
 
   create_table "storage_items", force: true do |t|
