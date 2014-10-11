@@ -27,7 +27,9 @@ class OrdersController < ApplicationController
   def payments
     add_breadcrumb "Menú Principal", user_main_menu_path
     add_breadcrumb "Pagos", payments_orders_path
-    @payments = current_user.payments
+    
+    @payments = current_user.payments.uniq
+    
     step1 = OrderStatus.find_by_name('Step 1')
     step2 = OrderStatus.find_by_name('Step 2')
     
@@ -115,8 +117,13 @@ class OrdersController < ApplicationController
 		@address = current_user.default_address if user_signed_in?
     if request.patch? 
       if User.find_by_email(params[:email]).blank?
-        user = User.new(:email => params[:email], :password => params[:password], :password_confirmation => params[:password])
-        user.save
+        unless user_signed_in?
+          user = User.new(:email => params[:email], :password => params[:password], :password_confirmation => params[:password])
+          user.save
+          sign_in user
+        else
+          user = current_user
+        end
         if params[:address_id].blank?
           address = Address.create(default: true, user_id: user.id, name: params[:name], post_code: params[:post_code], area_id: params[:area_id], receiver: params[:receiver], phone_number: params[:phone_number])
         else
@@ -135,7 +142,6 @@ class OrdersController < ApplicationController
         @order.update_attribute :company_rut, params[:rut]
         @order.update_attribute :concierge, params[:doorman]
         @order.update_attribute :neighbour, params[:neighbour]
-        sign_in user
       
         redirect_to step3_order_path(@order), notice: '¡Estás a un paso de completar el pedido!'
       else
@@ -150,13 +156,20 @@ class OrdersController < ApplicationController
   end
   
   #POST
-  def transfer_confirmed
+  def transfer_confirmed    
     order_status = OrderStatus.find_by_name('Transfer waiting approval')
     @order.update_attribute :order_status_id, order_status.id
     
+    payment_status = PaymentStatus.find_by_name('Transfer waiting approval')
+    @payment = Payment.create(:payment_status_id => payment_status.id, amount: @order.order_storage_items.joins(:storage_item).sum('price'))
+
+    payment_month = (PaymentMonth.find_by_month_and_year(DateTime.now.strftime('%m'), DateTime.now.strftime('%Y')) || PaymentMonth.create(:month => DateTime.now.strftime('%m'), :year => DateTime.now.strftime('%Y')))
+    @payment.payment_months << payment_month
+    
     osis = OrderStorageItemStatus.find_by_name('Collection in progress')
     @order.order_storage_items.each do |osi|
-      osi.update_attribute :order_storage_item_id, osis.id
+      osi.update_attribute :order_storage_item_status_id, osis.id
+      @payment.order_storage_items << osi
     end
     
     redirect_to root_path, notice: '¡Todo OK! Procederemos a validar tu transferencia dentro de las próximas horas.'

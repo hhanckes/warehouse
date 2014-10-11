@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141011172017) do
+ActiveRecord::Schema.define(version: 20141011222404) do
 
   create_table "addresses", force: true do |t|
     t.string   "receiver"
@@ -127,16 +127,23 @@ ActiveRecord::Schema.define(version: 20141011172017) do
     t.datetime "updated_at"
   end
 
+  create_table "payment_months_payments", id: false, force: true do |t|
+    t.integer "payment_id"
+    t.integer "payment_month_id"
+  end
+
+  create_table "payment_statuses", force: true do |t|
+    t.string   "name"
+    t.string   "public_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "payments", force: true do |t|
     t.decimal  "amount",            precision: 10, scale: 0
     t.integer  "payment_status_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "payments_payment_months", id: false, force: true do |t|
-    t.integer "payment_id"
-    t.integer "payment_month_id"
   end
 
   create_table "storage_items", force: true do |t|

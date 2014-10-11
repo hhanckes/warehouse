@@ -25,6 +25,13 @@ aux << (OrderStatus.find_by_name('Collected') || OrderStatus.create(:name => 'Co
 aux.each { |x| puts x.name }
 puts "\n"
 
+puts "--> PaymentStatus:"
+aux = []
+aux << (PaymentStatus.find_by_name('Transfer waiting approval') || PaymentStatus.create(:name => 'Transfer waiting approval', :public_name => 'Transferencia esperando confirmación'))
+aux << (PaymentStatus.find_by_name('Transfer funds received') || PaymentStatus.create(:name => 'Transfer funds received', :public_name => 'Transferencia recibida OK'))
+aux.each { |x| puts x.name }
+puts "\n"
+
 puts "--> OrderStorageItemStatuses:"
 aux = []
 aux << (OrderStorageItemStatus.find_by_name('Waiting funds confirmation') || OrderStorageItemStatus.create(:name => 'Waiting funds confirmation', :public_name => 'Esperando confirmación'))

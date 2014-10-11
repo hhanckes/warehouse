@@ -21,7 +21,7 @@
 			<p><%= text_field_tag :receiver, '', placeholder: 'Nombre de la persona que recibe' %></p>
 			<p><%= text_field_tag :phone_number, '', placeholder: 'Teléfono de contacto' %></p>
 		<% else %>
-			<%= hidden_field :address_id, @address.id %>
+			<%= hidden_field_tag :address_id, @address.id %>
 			<div style="margin:0 auto; max-width:500px">
 				<table class="table">
 					<tr>

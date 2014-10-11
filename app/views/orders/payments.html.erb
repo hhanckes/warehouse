@@ -21,7 +21,7 @@
 			<td><%= osi.payment_status %></td>
 			<td><%= osi.storage_item.name %></td>
 			<td><%= number_to_currency osi.storage_item.price %></td>
-			<td><%= osi.payments.last.blank? ? 'No hay pagos asociados' : osi.payments.last.created_at %></td>
+			<td><%= osi.payments.last.blank? ? 'No hay pagos asociados' : l(osi.payments.last.created_at, format: :date_detail).capitalize %></td>
 			<td><%=l(osi.next_payment_date, format: :date_detail).capitalize %></td>
 			<td><%=l((osi.next_payment_date + 10.days), format: :date_detail).capitalize %></td>
 		</tr>
@@ -31,3 +31,25 @@
 <hr />
 <h2 class="">Pagos Pagos realizados</h2>
 <hr />
+<table class="table">
+	<thead>
+		<tr>
+			<th>Fecha Pago</th>
+			<th>Status Pago</th>
+			<th>Monto Pagado</th>
+			<th>Mes al que corresponde</th>
+			<th>Items Pagados</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% @payments.each do |payment| %>
+		<tr>
+			<td><%=l(payment.created_at, format: :date_detail).capitalize %></td>
+			<td><%= payment.payment_status.name %></td>
+			<td><%= number_to_currency payment.amount %></td>
+			<td><%= payment.payment_months.map { |pm| pm.month.to_s+' / '+pm.year.to_s }.join(', ') %></td>
+			<td><ul><%= payment.order_storage_items.map { |osi| '<li> (ID '+osi.id.to_s+') '+osi.storage_item.name+' (Order #'+osi.order.id.to_s+')</li>' }.join('').html_safe %></ul></td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>

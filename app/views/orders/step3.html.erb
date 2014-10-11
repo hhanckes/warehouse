@@ -41,7 +41,7 @@
 			</tr>
 			<tr>
 				<th>Area</th>
-				<td><%= @order.address.area unless @order.address.blank? %></td>
+				<td><%= @order.address.area.name unless @order.address.area.blank? %></td>
 			</tr>
 			<tr>
 				<th>Teléfono</th>
