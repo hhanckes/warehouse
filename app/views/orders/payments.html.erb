@@ -17,14 +17,15 @@
 			<% current_user.next_payment_order_storage_items.each do |osi| %>
 				<li class="list-group-item">
 					<span class="badge"><%= number_to_currency osi.price %></span>
-					ID <%= link_to osi.id.to_s, stored_items_path(q: osi.id) %> - <%= osi.storage_item.name %> (Order # <%= link_to osi.order.id.to_s, osi.order %>)
+					ID <%= link_to osi.id.to_s, '#', 'data-toggle' => "modal", 'data-target' => "#storage_item_"+osi.id.to_s %> - 
+					<%= osi.storage_item.name %> (Order # <%= link_to osi.order.id.to_s, osi.order, target: '_blank' %>)
 				</li>
+				<%= render 'storage_item_details_modal', stored_items: osi.stored_items, id: "storage_item_"+osi.id.to_s %>
 			<% end %>
 		</ul>
    	</div>
 </div>
 	
-
 <hr>
 <h2 class=""><span class="glyphicon glyphicon-ok"></span> Historial de pagos realizados</h2>
 <% if @done_payments.size == 0 %>
