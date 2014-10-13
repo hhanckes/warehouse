@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     patch 'step2', on: :member
     get 'step3', on: :member
     post 'transfer_confirmed', on: :member
+    post 'new_payment_paid', on: :collection
     post 'update_order_status/:new_order_status_id', on: :member, :action => 'update_order_status', as: 'update_order_status'
     post 'update_order_storage_item_status/:order_storage_item_id/:new_order_storage_item_status_id', on: :member, :action => 'update_order_storage_item_status', as: 'update_order_storage_item_status'
   end

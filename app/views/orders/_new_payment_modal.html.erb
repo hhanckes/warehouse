@@ -1,0 +1,55 @@
+<!-- Modal -->
+<div class="modal fade" id="new_payment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="text-align:left">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+        <h4 class="modal-title" id="myModalLabel">Generar Pago</h4>
+      </div>
+      <div class="modal-body">
+		<div class="row">
+			<div class="col-md-6">
+				<h3 style="margin:0px; padding:0px;">Selecciona meses a pagar</h3>
+				<p>Se selecciona automáticamente el próximo mes pero puedes pagar todos los que quieras</p>
+				<ul class="list-group">
+				<% (1..12).each do |i| %>
+					<li class="list-group-item">
+						<%= check_box_tag 'payment_month', (DateTime.now + i.months).strftime('%m-%Y'), (i == 1 ? true : false) %> 
+						<%=l((DateTime.now + i.months), format: :month_year).capitalize %>
+					</li>
+				<% end %>
+				</ul>
+			</div>
+			<div class="col-md-6">
+				<h3 style="margin:0px; padding:0px;">Items a pagar</h3>
+				<p>Se seleccionan automáticamente los que corresponden al próximo pago</p>
+				<ul class="list-group">
+					<% current_user.active_order_storage_items.each do |osi| %>
+						<li class="list-group-item">
+							<%= check_box_tag 'payment_order_storage_item', osi.id, (current_user.next_payment_order_storage_items.include?(osi) ? true : false) %> 
+							ID <%= osi.id.to_s %> - <%= osi.storage_item.name %> (Order# <%= osi.order.id.to_s %>)
+						</li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+		<hr />
+		<div>
+			<h3>Realiza la transferencia de a la siguiente cuenta:</h3>
+			<ul>
+				<li>Banco: XX</li>
+				<li>Nº Cuenta Corriente: XXX</li>
+				<li>Titular Cuenta: XXX</li>
+				<li>RUT: XXXX</li>
+				<li>Correo: xxxxx</li>
+			</ul>
+			<p>Una vez que ya hayas realizado la transferencia en la página de tu banco, debes hacer click en "Transferencia Realizada" y procederemos a verificar la recepción de fondos para enviarte un correo confirmando y coordinar la entrega de las cajas.</p>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+		<%= link_to 'Transferencia Realizada', '#', method: :post, :class => 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,7 +7,7 @@
 <div class="row new-order center">
 	<div class="col-md-12">
 		<%= form_for(@order, url: step1_orders_path) do |f| %>
-		<h1>¿A qué sector estás?</h1>
+		<h1>¿En qué sector estás?</h1>
 		<h2>Por favor selecciona el sector donde entregaremos las cajas</h2>		  
 		<div class="form-group">
 			<%= collection_select(:order_area, :area, Area.all, :id, :name, { :prompt => 'Selecciona tu área' }, { :class => 'form-control' }) %>

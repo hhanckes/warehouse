@@ -20,4 +20,20 @@ class User < ActiveRecord::Base
   def default_address
     self.addresses.where(default: true).first
   end
+  
+  def active_order_storage_items
+    #TODO solo devolver los que están activos
+    self.order_storage_items
+  end
+  
+  def next_payment_date
+    #TODO calcular bien la próxima fecha de pago
+    DateTime.now + 1.month
+  end
+
+  def next_payment_order_storage_items
+    #TODO calcular bien los items a pagar en la próxima fecha
+    self.active_order_storage_items
+  end
+
 end

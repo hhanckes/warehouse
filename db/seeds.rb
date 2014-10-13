@@ -32,6 +32,12 @@ aux << (PaymentStatus.find_by_name('Transfer funds received') || PaymentStatus.c
 aux.each { |x| puts x.name }
 puts "\n"
 
+puts "--> PaymentType:"
+aux = []
+aux << (PaymentType.find_by_name('Monthly payment') || PaymentType.create(:name => 'Monthly payment', :public_name => 'Mensualidad'))
+aux.each { |x| puts x.name }
+puts "\n"
+
 puts "--> OrderStorageItemStatuses:"
 aux = []
 aux << (OrderStorageItemStatus.find_by_name('Waiting funds confirmation') || OrderStorageItemStatus.create(:name => 'Waiting funds confirmation', :public_name => 'Esperando confirmación'))

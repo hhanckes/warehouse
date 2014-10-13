@@ -17,7 +17,11 @@ class OrdersController < ApplicationController
   end
 
   def show
+    add_breadcrumb "Menú Principal", user_main_menu_path
+    add_breadcrumb "Pedidos", orders_path
+    add_breadcrumb "Pedido #"+@order.id.to_s, @order
     
+    @return_in_progress = OrderStorageItemStatus.find_by_name('Return in progress')
   end
 
   def new
@@ -28,12 +32,11 @@ class OrdersController < ApplicationController
     add_breadcrumb "Menú Principal", user_main_menu_path
     add_breadcrumb "Pagos", payments_orders_path
     
-    @payments = current_user.payments.uniq
-    
-    step1 = OrderStatus.find_by_name('Step 1')
-    step2 = OrderStatus.find_by_name('Step 2')
-    
-    @order_storage_items = current_user.order_storage_items.where('orders.order_status_id <> ? and orders.order_status_id <> ?', step1.id, step2.id).order 'created_at DESC'
+    @done_payments = current_user.payments.order('created_at DESC').uniq
+  end
+  
+  #POST
+  def new_payment_paid
     
   end
   
@@ -156,20 +159,22 @@ class OrdersController < ApplicationController
   end
   
   #POST
-  def transfer_confirmed    
+  def transfer_confirmed
     order_status = OrderStatus.find_by_name('Transfer waiting approval')
     @order.update_attribute :order_status_id, order_status.id
     
     payment_status = PaymentStatus.find_by_name('Transfer waiting approval')
-    @payment = Payment.create(:payment_status_id => payment_status.id, amount: @order.order_storage_items.joins(:storage_item).sum('price'))
+    payment_type = PaymentType.find_by_name('Monthly payment')
+    
+    payment = Payment.create(:payment_status_id => payment_status.id, amount: @order.order_storage_items.joins(:storage_item).sum('price'), payment_type_id: payment_type.id)
 
     payment_month = (PaymentMonth.find_by_month_and_year(DateTime.now.strftime('%m'), DateTime.now.strftime('%Y')) || PaymentMonth.create(:month => DateTime.now.strftime('%m'), :year => DateTime.now.strftime('%Y')))
-    @payment.payment_months << payment_month
+    payment.payment_months << payment_month
     
     osis = OrderStorageItemStatus.find_by_name('Collection in progress')
     @order.order_storage_items.each do |osi|
       osi.update_attribute :order_storage_item_status_id, osis.id
-      @payment.order_storage_items << osi
+      payment.order_storage_items << osi
     end
     
     redirect_to root_path, notice: '¡Todo OK! Procederemos a validar tu transferencia dentro de las próximas horas.'

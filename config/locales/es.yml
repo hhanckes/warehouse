@@ -198,6 +198,7 @@ es:
       short_day: '%a %d %b %Y'
       medium: '%A %d de %B'
       date_detail: '%A %d de %B del %Y'
+      month_year: '%B %Y'
       month: '%B %Y'
       week: '%W/%Y'
     pm: pm

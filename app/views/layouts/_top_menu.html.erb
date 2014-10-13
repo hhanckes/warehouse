@@ -30,8 +30,8 @@
 				<li style="margin:5px"><%= link_to raw('<span class="glyphicon glyphicon-briefcase"></span> Inventario'), stored_items_path %></li>
 				<li style="margin:5px"><%= link_to raw('<span class="glyphicon glyphicon-transfer"></span> Direcciones'), addresses_path %></li>
 				<li style="margin:5px"><%= link_to raw('<span class="glyphicon glyphicon-usd"></span> Pagos'), payments_orders_path %></li>
-				<li style="margin:5px"><%= link_to raw('<span class="glyphicon glyphicon-pencil"></span> Editar Cuenta'), '#' %></li>
-				<li style="margin:5px"><%= link_to raw('<span class="glyphicon glyphicon-off"></span> Salir de')+current_user.email, destroy_user_session_path, 
+				<li style="margin:5px"><%= link_to raw('<span class="glyphicon glyphicon-pencil"></span> Editar Cuenta'), edit_user_registration_path %></li>
+				<li style="margin:5px"><%= link_to raw('<span class="glyphicon glyphicon-off"></span> Salir de ')+current_user.email, destroy_user_session_path, 
 											method: :delete, :rel => 'nofollow' %></li>
 				<li role="presentation" class="divider"></li>
 				<% if current_user.is_god? %>

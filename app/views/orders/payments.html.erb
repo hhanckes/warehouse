@@ -1,55 +1,64 @@
 <h1 class="">Pagos</h2>
 <hr />
-<div style="float:right"><%= link_to 'Pagar Deuda Vencida', '#', :class => 'btn btn-primary' %></div>
-<h2 class="">Pagos Pendientes</h2>
+<div><%= link_to 'Generar Pago', '#', :class => 'btn btn-primary', 'data-toggle' => "modal", 'data-target' => "#new_payment" %></div>
+
+<h2 class=""><span class="glyphicon glyphicon-time"></span> Próximo pago: <%= number_to_currency current_user.next_payment_order_storage_items.joins(:storage_item).sum(:price) %></h2>
+<p>Fecha próximo pago: <b><%=l current_user.next_payment_date, format: :date_detail %></b></p>
+<div class="panel panel-default" style="border:none">
+  	<div class="panel-heading faq-section">
+    	<h3 class="panel-title">
+      	<a data-toggle="collapse" data-parent="#accordion" href="#detail">
+        		<span class="glyphicon glyphicon-plus" style="font-size:12px"></span> Items a pagar en próximo pago
+      	</a>
+    	</h3>
+  	</div>
+  	<div id="detail" class="panel-collapse collapse">
+		<ul class="list-group">
+			<% current_user.next_payment_order_storage_items.each do |osi| %>
+				<li class="list-group-item">
+					<span class="badge"><%= number_to_currency osi.storage_item.price %></span>
+					ID <%= link_to osi.id.to_s, stored_items_path(q: osi.id) %> - <%= osi.storage_item.name %> (Order # <%= link_to osi.order.id.to_s, osi.order %>)
+				</li>
+			<% end %>
+		</ul>
+   	</div>
+</div>
+	
+
+<hr>
+<h2 class=""><span class="glyphicon glyphicon-ok"></span> Historial de pagos realizados</h2>
+<% if @done_payments.size == 0 %>
+<div class="well">
+	No hay pagos realizados
+</div>
+<% else %>
 <table class="table">
 	<thead>
 		<tr>
-			<th>ID Pedido</th>
-			<th>Status</th>
-			<th>Item</th>
-			<th>Precio /mes</th>
-			<th>Fecha último pago</th>
-			<th>Fecha próximo vencimiento</th>
-			<th>Fecha límite pago vencimiento</th>
-		</tr>
-	</thead>
-	<tbody>
-	<% @order_storage_items.each do |osi| %>
-		<tr>
-			<td><%= osi.order.id %></td>
-			<td><%= osi.payment_status %></td>
-			<td><%= osi.storage_item.name %></td>
-			<td><%= number_to_currency osi.storage_item.price %></td>
-			<td><%= osi.payments.last.blank? ? 'No hay pagos asociados' : l(osi.payments.last.created_at, format: :date_detail).capitalize %></td>
-			<td><%=l(osi.next_payment_date, format: :date_detail).capitalize %></td>
-			<td><%=l((osi.next_payment_date + 10.days), format: :date_detail).capitalize %></td>
-		</tr>
-	<% end %>
-	</tbody>
-</table>
-<hr />
-<h2 class="">Pagos Pagos realizados</h2>
-<hr />
-<table class="table">
-	<thead>
-		<tr>
-			<th>Fecha Pago</th>
+			<th>ID Pago</th>
+			<th>Tipo de Pago</th>
 			<th>Status Pago</th>
-			<th>Monto Pagado</th>
+			<th>Monto a pagar</th>
 			<th>Mes al que corresponde</th>
 			<th>Items Pagados</th>
 		</tr>
 	</thead>
 	<tbody>
-	<% @payments.each do |payment| %>
+	<% @done_payments.each do |payment| %>
 		<tr>
-			<td><%=l(payment.created_at, format: :date_detail).capitalize %></td>
-			<td><%= payment.payment_status.name %></td>
+			<td><%= payment.id %></td>
+			<td><%= payment.payment_type.public_name unless payment.payment_type.blank? %></td>
+			<td><%= payment.payment_status.public_name %></td>
 			<td><%= number_to_currency payment.amount %></td>
 			<td><%= payment.payment_months.map { |pm| pm.month.to_s+' / '+pm.year.to_s }.join(', ') %></td>
-			<td><ul><%= payment.order_storage_items.map { |osi| '<li> (ID '+osi.id.to_s+') '+osi.storage_item.name+' (Order #'+osi.order.id.to_s+')</li>' }.join('').html_safe %></ul></td>
+			<td>
+				<ul style="padding-left:15px">
+					<%= payment.order_storage_items.map { |osi| '<li> (ID '+osi.id.to_s+') '+osi.storage_item.name+' (Order #'+osi.order.id.to_s+')</li>' }.join('').html_safe %>
+				</ul>
+			</td>
 		</tr>
 	<% end %>
 	</tbody>
 </table>
+<% end %>
+<%= render 'new_payment_modal' %>
