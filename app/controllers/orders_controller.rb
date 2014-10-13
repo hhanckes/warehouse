@@ -33,10 +33,6 @@ class OrdersController < ApplicationController
     add_breadcrumb "Pagos", payments_orders_path
     
     @done_payments = current_user.payments.order('created_at DESC').uniq
-    
-    OrderStorageItem.all.each do |osi|
-      osi.update_attribute :price, osi.storage_item.price
-    end
   end
   
   #POST

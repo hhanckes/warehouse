@@ -42,13 +42,14 @@
 									update_order_storage_item_status_order_path(order, order_storage_item_id: osi.id, new_order_storage_item_status_id: @return_in_progress.id), method: :post, 
 									:class => 'btn btn-default btn-xs', style: "font-size:10px;" %> 
 								<% if current_user.is_god? and params[:controller] == 'main' %>
+									<%= link_to 'Agregar Detalle', '#', :class => 'btn btn-primary btn-xs', style: "font-size:10px", 'data-toggle' => "modal", 'data-target' => "#edit"+osi.id.to_s %> 
 									<%= link_to 'Marcar caja en Bodega', 
 										update_order_storage_item_status_order_path(order, order_storage_item_id: osi.id, new_order_storage_item_status_id: @in_warehouse.id), method: :post, 
 										:class => 'btn btn-default btn-xs', style: "font-size:10px" %> 
 									<%= link_to 'Marcar caja como devueltas', 
 										update_order_storage_item_status_order_path(order, order_storage_item_id: osi.id, new_order_storage_item_status_id: @returned.id), method: :post, 
 										:class => 'btn btn-default btn-xs', style: "font-size:10px;" %> 
-									<%= link_to 'Editar', '#', :class => 'btn btn-default btn-xs', style: "font-size:10px", 'data-toggle' => "modal", 'data-target' => "#edit"+osi.id.to_s %> 
+									<%= link_to 'Cambiar Precio', '#', :class => 'btn btn-default btn-xs', style: "font-size:10px", 'data-toggle' => "modal", 'data-target' => "#edit"+osi.id.to_s %> 
 									<%= link_to 'Eliminar', destroy_order_storage_item_path(osi), :class => 'btn btn-danger btn-xs', style: "font-size:10px", 
 												method: :delete, data: { confirm: 'Are you sure?' } %>
 								<% end %>
