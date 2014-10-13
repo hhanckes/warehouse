@@ -7,7 +7,7 @@
         <h4 class="modal-title" id="myModalLabel">Generar Pago</h4>
       </div>
       <div class="modal-body">
-		<p>Realiza la transferencia de <b><%= number_to_currency @order.order_storage_items.joins(:storage_item).sum('price'), precision: 0 %></b> a la siguiente cuenta:</p>
+		<p>Realiza la transferencia de <b><%= number_to_currency @order.order_storage_items.sum('price'), precision: 0 %></b> a la siguiente cuenta:</p>
 		<ul>
 			<li>Banco: XX</li>
 			<li>Nº Cuenta Corriente: XXX</li>

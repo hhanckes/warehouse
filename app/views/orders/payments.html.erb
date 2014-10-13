@@ -16,7 +16,7 @@
 		<ul class="list-group">
 			<% current_user.next_payment_order_storage_items.each do |osi| %>
 				<li class="list-group-item">
-					<span class="badge"><%= number_to_currency osi.storage_item.price %></span>
+					<span class="badge"><%= number_to_currency osi.price %></span>
 					ID <%= link_to osi.id.to_s, stored_items_path(q: osi.id) %> - <%= osi.storage_item.name %> (Order # <%= link_to osi.order.id.to_s, osi.order %>)
 				</li>
 			<% end %>

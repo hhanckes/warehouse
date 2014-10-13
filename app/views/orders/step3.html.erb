@@ -21,7 +21,7 @@
 			</tr>
 			<tr>
 				<th>Total</th>
-				<th><%= number_to_currency @order.order_storage_items.joins(:storage_item).sum('price'), precision: 0 %></th>
+				<th><%= number_to_currency @order.order_storage_items.sum('price'), precision: 0 %></th>
 			</tr>
 		</table>
 		<hr />

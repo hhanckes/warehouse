@@ -33,6 +33,10 @@ class OrdersController < ApplicationController
     add_breadcrumb "Pagos", payments_orders_path
     
     @done_payments = current_user.payments.order('created_at DESC').uniq
+    
+    OrderStorageItem.all.each do |osi|
+      osi.update_attribute :price, osi.storage_item.price
+    end
   end
   
   #POST
@@ -53,63 +57,63 @@ class OrdersController < ApplicationController
       si = StorageItem.find_by_name('Regular Boxes')
       count = params[:boxes].to_i
       (0..count).each do |i|
-        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id)
+        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
       end
     end        
     if is_number?(params['bike-count'])
       si = StorageItem.find_by_name('Bike')
       count = params['bike-count'].to_i
       (0..count).each do |i|
-        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id)
+        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
       end
     end    
     if is_number?(params['golf-count'])
       si = StorageItem.find_by_name('Golf')
       count = params['golf-count'].to_i
       (0..count).each do |i|
-        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id)
+        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
       end
     end    
     if is_number?(params['ski-count'])
       si = StorageItem.find_by_name('Ski')
       count = params['ski-count'].to_i
       (0..count).each do |i|
-        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id)
+        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
       end
     end    
     if is_number?(params['ac-count'])
       si = StorageItem.find_by_name('AC')
       count = params['ac-count'].to_i
       (0..count).each do |i|
-        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id)
+        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
       end
     end    
     if is_number?(params['carry-on-count'])
       si = StorageItem.find_by_name('Carry On')
       count = params['carry-on-count'].to_i
       (0..count).each do |i|
-        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id)
+        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
       end
     end    
     if is_number?(params['luggage-count'])
       si = StorageItem.find_by_name('Luggage')
       count = params['lugagge-count'].to_i
       (0..count).each do |i|
-        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id)
+        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
       end
     end    
     if is_number?(params['wardrobe-count'])
       si = StorageItem.find_by_name('Wardrobe')
       count = params['wardrobe-count'].to_i
       (0..count).each do |i|
-        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id)
+        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
       end
     end    
     if is_number?(params['other-count'])
       si = StorageItem.find_by_name('Other')
       count = params['other-count'].to_i
       (0..count).each do |i|
-        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id)
+        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
       end
     end
     redirect_to step2_order_path(@order)
@@ -166,7 +170,7 @@ class OrdersController < ApplicationController
     payment_status = PaymentStatus.find_by_name('Transfer waiting approval')
     payment_type = PaymentType.find_by_name('Monthly payment')
     
-    payment = Payment.create(:payment_status_id => payment_status.id, amount: @order.order_storage_items.joins(:storage_item).sum('price'), payment_type_id: payment_type.id)
+    payment = Payment.create(:payment_status_id => payment_status.id, amount: @order.order_storage_items.sum('price'), payment_type_id: payment_type.id)
 
     payment_month = (PaymentMonth.find_by_month_and_year(DateTime.now.strftime('%m'), DateTime.now.strftime('%Y')) || PaymentMonth.create(:month => DateTime.now.strftime('%m'), :year => DateTime.now.strftime('%Y')))
     payment.payment_months << payment_month

@@ -35,7 +35,7 @@
 							<td><%= osi.id %></td>
 							<td><%= osi.order_storage_item_status.blank? ? 'No asignado' : osi.order_storage_item_status.public_name %></td>
 							<td><%= osi.storage_item.name %></td>
-							<td><%= number_to_currency osi.storage_item.price %></td>
+							<td><%= number_to_currency osi.price %></td>
 							<td>
 								<%= link_to 'Ver Detalle', '#', :class => 'btn btn-primary btn-xs', style: "font-size:10px", 'data-toggle' => "modal", 'data-target' => "#detail"+osi.id.to_s %> 
 								<%= link_to 'Pedir devolución de cajas', 
