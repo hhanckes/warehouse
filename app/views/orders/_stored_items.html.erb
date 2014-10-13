@@ -7,11 +7,14 @@
         <h4 class="modal-title" id="myModalLabel">Items Almacenados</h4>
       </div>
       <div class="modal-body">
-			<ul class="nav">
+			<ul class="list-group">
 				<% order_storage_item.stored_items.each do |stored_item| %>
-					<li style="margin:20px">
-						<%= stored_item.quantity %> <%= stored_item.name %> / Valor asignado: <%= number_to_currency stored_item.assigned_value %> c/u<br />
-						<%= stored_item.description %>
+					<li class="list-group-item">
+						<h4 class="list-group-item-heading" style="font-weight:normal">
+							<%= stored_item.quantity %> <%= stored_item.name %>
+						</h4>
+						<p class="list-group-item-text">Valor asignado: <%= number_to_currency stored_item.assigned_value %> c/u</p>
+						<p class="list-group-item-text" style="color:#666;"><%= stored_item.description %></p>
 					</li>
 				<% end %>
 			</ul>
