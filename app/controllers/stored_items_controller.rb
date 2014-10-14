@@ -8,7 +8,7 @@ class StoredItemsController < ApplicationController
     
     unless params[:q].blank?
       @q = params[:q]
-      @stored_items = current_user.stored_items.where('stored_items.order_storage_item_id = '+@q+' or stored_items.name like "%'+@q+'%" or stored_items.description like "%'+@q+'%"').uniq
+      @stored_items = current_user.stored_items.where('stored_items.order_storage_item_id = "'+@q+'" or stored_items.name like "%'+@q+'%" or stored_items.description like "%'+@q+'%"').uniq
       @in_box = true if is_number? @q
     else
       @stored_items = current_user.stored_items
