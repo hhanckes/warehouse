@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class UpdatePublicNames < ActiveRecord::Migration
   def change
     OrderStatus.find_by_name('Step 1').update_attribute :public_name, 'Paso 1'
