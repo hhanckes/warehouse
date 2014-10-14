@@ -15,7 +15,7 @@
   <tbody>
     <% @faqs.each do |faq| %>
       <tr>
-        <td><%= faq.faq_section.name %></td>
+        <td><%= faq.faq_section.name unless faq.faq_section.blank? %></td>
         <td><%= faq.question %></td>
         <td><%= faq.answer %></td>
         <td><%= link_to 'Show', faq %></td>
