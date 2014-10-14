@@ -1,8 +1,12 @@
 class OrderStorageItem < ActiveRecord::Base
+  before_save :notify
+  before_save :update_in_warehouse_date
+  
   belongs_to :order
   belongs_to :storage_item
   belongs_to :order_storage_item_status
-  has_many :stored_items
+  has_many :stored_items, dependent: :destroy
+  has_one :user, through: :order
   has_and_belongs_to_many :payments
   
   has_attached_file :photo, :styles => { :xl => "500x", :l => "400x", :m => "300x", :s => "200x", :xs => "100x" }
@@ -19,4 +23,19 @@ class OrderStorageItem < ActiveRecord::Base
   def payment_status
     'Por Pagar'
   end
+
+  private
+  
+    def notify
+      unless self.order_storage_item_status.blank?
+        Notification.item_in_warehouse(self).deliver if self.order_storage_item_status.name == 'In warehouse'
+        Notification.item_return_request(self).deliver if self.order_storage_item_status.name == 'Return in progress'
+        Notification.item_returned(self).deliver if self.order_storage_item_status.name == 'Returned'
+      end
+    end
+    
+    def update_in_warehouse_date
+      self.in_warehouse_date = DateTime.now if self.order_storage_item_status.name == 'In warehouse'
+    end
+  
 end

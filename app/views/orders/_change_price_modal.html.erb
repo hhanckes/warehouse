@@ -1,0 +1,25 @@
+<!-- Modal -->
+<div class="modal fade" id="edit_price<%= order_storage_item.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="text-align:left">
+  <%= form_tag(main_change_price_path, :html => {class: 'form-inline'}) do %>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+        <h4 class="modal-title" id="myModalLabel">Cambiar Precio</h4>
+      </div>
+      <div class="modal-body">
+		<%= hidden_field_tag :id, order_storage_item.id %>
+		<div class="row">
+			<div class="col-md-12">
+		  		<%= text_field_tag :price, '', :class => 'form-control', placeholder: 'Nuevo Precio (sin puntos ni comas)' %>
+			</div>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+		<%= submit_tag 'Cambiar Precio', :class => 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

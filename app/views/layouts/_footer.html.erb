@@ -1,19 +1,21 @@
 <footer class="">
+	<%= form_for(Subscriber.new) do |f| %>
 	<div class="row subscribe">
 		<div class="col-md-7 center" style="text-align:right">
 			<p style="margin-top:5px">Para recibir las últimas noticias, suscríbete a nuestro newsletter</p>
 		</div>
 		<div class="col-md-5 center">
 			<div class="input-group">
-	           <input type="text" class="form-control" placeholder="correo@dominio.com">
+		       <%= f.text_field :email, :class => "form-control", :placeholder => "correo@dominio.com" %>
 	           <span class="input-group-btn">
-	              <button class="btn btn-default" type="button" style="font-size:14px">
+	              <button class="btn btn-default" type="submit" style="font-size:14px">
 	                 Go!
 	              </button>
 	           </span>
 	        </div><!-- /input-group -->
 		</div>
 	</div>	
+	<% end %>
 	<div class="footer-menu">
 		<% InformationPage.all.each do |ip| %>
 			<span style="margin:0px 10px 0px 10px"><%= link_to ip.title, ip %></span>

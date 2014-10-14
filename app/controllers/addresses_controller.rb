@@ -1,7 +1,8 @@
 # encoding: UTF-8
 class AddressesController < ApplicationController
+  before_action :authenticate_user!
+  
   before_action :set_address, only: [:show, :edit, :update, :destroy, :select]
-  before_filter :authenticate_user!
 
   def index
     add_breadcrumb "Menú Principal", user_main_menu_path

@@ -6,4 +6,10 @@
   </div>
 <% end %>
 
-<%= render 'stored_items_details', stored_items: @stored_items %>
+<% if @stored_items.size == 0 %>
+	<div style="margin-top:20px">
+		<%= render 'orders/no_orders_well' %>
+	</div>
+<% else %>
+	<%= render 'stored_items_details', stored_items: @stored_items %>
+<% end %>

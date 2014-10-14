@@ -1,3 +1,3 @@
 class PaymentStatus < ActiveRecord::Base
-  has_many :payments
+  has_many :payments, dependent: :destroy
 end

@@ -1,5 +1,6 @@
 # encoding: UTF-8
 class FaqsController < ApplicationController
+  before_action :authenticate_user!, :redirect_unless_is_god
   before_action :set_faq, only: [:show, :edit, :update, :destroy]
 
   def index

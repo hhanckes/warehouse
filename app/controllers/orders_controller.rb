@@ -2,7 +2,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :step2, :step3, :transfer_confirmed, :update, :destroy, :update_order_status, :update_order_storage_item_status]
   before_action :set_order_storage_item, only: [:update_order_storage_item_status]
-  before_action :authenticate_user!, only: [:index, :transfer_confirmed, :update_order_status, :update_order_storage_item_status, :destroy, :payments]
+  before_action :authenticate_user!, except: [:new, :step1, :step2, :step3]
 
   def index
     add_breadcrumb "Menú Principal", user_main_menu_path
@@ -11,9 +11,11 @@ class OrdersController < ApplicationController
     @h1 = 'Tus Pedidos'
     step1 = OrderStatus.find_by_name('Step 1')
     step2 = OrderStatus.find_by_name('Step 2')
+
+    @in_warehouse = OrderStorageItemStatus.find_by_name('In warehouse')
+    @return_in_progress = OrderStorageItemStatus.find_by_name('Return in progress')
     
     @orders = current_user.orders.where('order_status_id <> ? and order_status_id <> ?', step1.id, step2.id).order 'created_at DESC'
-    @return_in_progress = OrderStorageItemStatus.find_by_name('Return in progress')
   end
 
   def show
@@ -21,6 +23,7 @@ class OrdersController < ApplicationController
     add_breadcrumb "Pedidos", orders_path
     add_breadcrumb "Pedido #"+@order.id.to_s, @order
     
+    @in_warehouse = OrderStorageItemStatus.find_by_name('In warehouse')
     @return_in_progress = OrderStorageItemStatus.find_by_name('Return in progress')
   end
 
@@ -37,7 +40,21 @@ class OrdersController < ApplicationController
   
   #POST
   def new_payment_paid
+    status = PaymentStatus.find_by_name('Transfer waiting approval')
+    type = PaymentType.find_by_name('Monthly payment')
+    payment = Payment.new(amount: current_user.in_warehouse_order_storage_items.sum(:price), payment_status_id: status.id, payment_type_id: type.id)
     
+    params[:payment_month].each do |month_year|
+      aux = month_year.split('-')
+      payment.payment_months << (PaymentMonth.find_by_month_and_year(aux[0], aux[1]) || PaymentMonth.create(:month => aux[0], :year => aux[1]))
+    end
+    
+    current_user.in_warehouse_order_storage_items.each do |osi|
+      payment.order_storage_items << osi
+    end
+    payment.save
+    
+    redirect_to payments_orders_path, notice: 'Pago creado exitosamente. Pronto validaremos la recepción de fondos y te llegará un correo confirmando.'
   end
   
   def edit
@@ -48,71 +65,71 @@ class OrdersController < ApplicationController
     order_status = OrderStatus.find_by_name('Step 1')
     @order = Order.create(order_status_id: order_status.id)
     osis = OrderStorageItemStatus.find_by_name('Waiting funds confirmation')
-    params[:order_area][:area]
+
     if is_number?(params[:boxes])
       si = StorageItem.find_by_name('Regular Boxes')
       count = params[:boxes].to_i
-      (0..count).each do |i|
+      (1..count).each do |i|
         OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
       end
     end        
     if is_number?(params['bike-count'])
       si = StorageItem.find_by_name('Bike')
       count = params['bike-count'].to_i
-      (0..count).each do |i|
+      (1..count).each do |i|
         OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
       end
     end    
     if is_number?(params['golf-count'])
       si = StorageItem.find_by_name('Golf')
       count = params['golf-count'].to_i
-      (0..count).each do |i|
+      (1..count).each do |i|
         OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
       end
     end    
     if is_number?(params['ski-count'])
       si = StorageItem.find_by_name('Ski')
       count = params['ski-count'].to_i
-      (0..count).each do |i|
+      (1..count).each do |i|
         OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
       end
     end    
     if is_number?(params['ac-count'])
       si = StorageItem.find_by_name('AC')
       count = params['ac-count'].to_i
-      (0..count).each do |i|
+      (1..count).each do |i|
         OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
       end
     end    
     if is_number?(params['carry-on-count'])
       si = StorageItem.find_by_name('Carry On')
       count = params['carry-on-count'].to_i
-      (0..count).each do |i|
+      (1..count).each do |i|
         OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
       end
     end    
     if is_number?(params['luggage-count'])
       si = StorageItem.find_by_name('Luggage')
       count = params['lugagge-count'].to_i
-      (0..count).each do |i|
+      (1..count).each do |i|
         OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
       end
     end    
     if is_number?(params['wardrobe-count'])
       si = StorageItem.find_by_name('Wardrobe')
       count = params['wardrobe-count'].to_i
-      (0..count).each do |i|
+      (1..count).each do |i|
         OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
       end
     end    
     if is_number?(params['other-count'])
       si = StorageItem.find_by_name('Other')
       count = params['other-count'].to_i
-      (0..count).each do |i|
+      (1..count).each do |i|
         OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
       end
     end
-    redirect_to step2_order_path(@order)
+    redirect_to step2_order_path(id: @order.id, area: params[:order_area][:area])
   end
   
   #GET & POST
@@ -128,7 +145,7 @@ class OrdersController < ApplicationController
           user = current_user
         end
         if params[:address_id].blank?
-          address = Address.create(default: true, user_id: user.id, name: params[:name], post_code: params[:post_code], area_id: params[:area_id], receiver: params[:receiver], phone_number: params[:phone_number])
+          address = Address.create(default: true, area_id: params[:area], user_id: user.id, name: params[:name], post_code: params[:post_code], receiver: params[:receiver], phone_number: params[:phone_number])
         else
           address = Address.find params[:address_id]
         end
@@ -148,7 +165,7 @@ class OrdersController < ApplicationController
       
         redirect_to step3_order_path(@order), notice: '¡Estás a un paso de completar el pedido!'
       else
-        redirect_to step2_order_path(@order), alert: '¡El usuario ya existe debes ingresar para continuar!'
+        redirect_to step2_order_path(id: @order.id, area: params[:area]), alert: '¡El usuario ya existe debes ingresar para continuar!'
       end
     end
   end
@@ -177,6 +194,8 @@ class OrdersController < ApplicationController
       payment.order_storage_items << osi
     end
     
+    Notification.new_order(@order).deliver
+    
     redirect_to root_path, notice: '¡Todo OK! Procederemos a validar tu transferencia dentro de las próximas horas.'
   end
   
@@ -186,9 +205,9 @@ class OrdersController < ApplicationController
     @order.order_status = order_status
     @order.save
     if current_user.is_god?
-      redirect_to main_orders_path, notice: 'Estado de la orden #'+@order.id.to_s+' actualizado correctamente'
+      redirect_to main_order_details_path(@order), notice: 'Estado de la orden #'+@order.id.to_s+' actualizado correctamente'
     else
-      redirect_to orders_path, notice: 'Estado de la orden #'+@order.id.to_s+' actualizado correctamente'
+      redirect_to @order, notice: 'Estado de la orden #'+@order.id.to_s+' actualizado correctamente'
     end
   end
 
@@ -198,9 +217,9 @@ class OrdersController < ApplicationController
     @order_storage_item.order_storage_item_status = status
     @order_storage_item.save
     if current_user.is_god?
-      redirect_to main_orders_path, notice: 'Estado de la orden #'+@order.id.to_s+' actualizado correctamente'
+      redirect_to main_order_details_path(@order_storage_item.order), notice: 'Estado de la orden #'+@order.id.to_s+' actualizado correctamente'
     else
-      redirect_to orders_path, notice: 'Estado de la orden #'+@order.id.to_s+' actualizado correctamente'
+      redirect_to @order_storage_item.order, notice: 'Estado de la orden #'+@order.id.to_s+' actualizado correctamente'
     end
   end
   
@@ -241,6 +260,7 @@ class OrdersController < ApplicationController
     def set_order
       @order = Order.find(params[:id])
     end
+    
     def set_order_storage_item
       @order_storage_item = OrderStorageItem.find(params[:order_storage_item_id])
     end

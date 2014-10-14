@@ -1,5 +1,6 @@
 # encoding: UTF-8
 class InformationPagesController < ApplicationController
+  before_action :authenticate_user!, :redirect_unless_is_god, except: [:show]
   before_action :set_information_page, only: [:show, :edit, :update, :destroy]
 
   def index

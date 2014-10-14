@@ -1,0 +1,35 @@
+<table class="table">
+	<thead>
+		<tr>
+			<th>ID Pago</th>
+			<th>Status</th>
+			<th>Usuario</th>
+			<th>Monto Pagado</th>
+			<th>Meses Pagados</th>
+			<th>Items Pagados</th>
+			<th>Acciones</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @payments.each do |payment| %>
+		<tr class=<%= payment.payment_status ==  @funds_received ? 'success' : 'danger' %>>
+			<td><%= payment.id %></td>
+			<td><%= payment.payment_status.name unless payment.payment_status.blank? %></td>
+			<td><%= payment.user.email unless payment.user.blank? %></td>
+			<td><%= number_to_currency payment.amount %></td>
+			<td>
+				<ul style="padding-left:15px">
+					<%= payment.payment_months.map { |pm| '<li>'+pm.month.to_s+' / '+pm.year.to_s+'</li>' }.join('').html_safe %>
+				</ul>
+			</td>
+			<td>
+				<ul style="padding-left:15px">
+					<%= payment.order_storage_items.map { |osi| '<li> (ID '+osi.id.to_s+') '+osi.storage_item.name+' (Order #'+osi.order.id.to_s+')</li>' }.join('').html_safe %>
+				</ul>
+			</td>
+			<td><%= link_to 'Fondos Recibidos', update_payment_status_path(payment_id: payment.id, status_id: @funds_received.id), method: :put,  
+					:class => 'btn btn-primary btn-xs', style: 'font-size:10px' %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

@@ -8,76 +8,7 @@
    	</div>
    	<div id="<%= 'collapse'+@order.id.to_s %>" class="panel-collapse">
      	<div class="panel-body">
-			<h3>Detalles de la orden</h3>
-			<p>
-				Status: <b><%= @order.order_status.name %></b> 
-			</p>
-			<p>Precio total: <b><%= number_to_currency @order.order_storage_items.joins(:storage_item).sum('price'), precision: 0 %></b></p>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>ID</th><th>Status</th><th>Item</th><th>Precio</th><th>Opciones</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% @order.order_storage_items.each do |osi| %>
-					<tr>
-						<td><%= osi.id %></td>
-						<td><%= osi.order_storage_item_status.blank? ? 'No asignado' : osi.order_storage_item_status.public_name %></td>
-						<td><%= osi.storage_item.name %></td>
-						<td><%= number_to_currency osi.price %></td>
-						<td>
-							<%= link_to 'Ver Detalle', '#', :class => 'btn btn-primary btn-xs', style: "font-size:10px", 'data-toggle' => "modal", 'data-target' => "#detail"+osi.id.to_s %> 
-							<%= link_to 'Pedir devolución de cajas', 
-								update_order_storage_item_status_order_path(@order, order_storage_item_id: osi.id, new_order_storage_item_status_id: @return_in_progress.id), method: :post, 
-								:class => 'btn btn-default btn-xs', style: "font-size:10px;" %> 
-
-						</td>
-					</tr>
-					<% end %>
-				</tbody>
-			</table>
-			<h3>Detalles del despacho</h3>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Dirección</th>
-						<th>Código Postal</th>
-						<th>Area</th>
-						<th>¿Quién recibe?</th>
-						<th>Teléfono</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><%= @order.address.name %></td>
-						<td><%= @order.address.post_code %></td>
-						<td><%= @order.address.area.name unless @order.address.area.blank? %></td>
-						<td><%= @order.address.receiver %></td>
-						<td><%= @order.address.phone_number %></td>
-					</tr>
-				</tbody>
-			</table>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Fecha y hora de entrega</th>
-						<th>¿Concerje?</th>
-						<th>¿Dejar con vecino?</th>
-						<th>¿Esperar 20 minutos?</th>
-						<th>Fecha y hora de recolección</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><%= l(@order.delivery_date, format: :medium).capitalize %> entre <%= @order.delivery_time %></td>
-						<td><%= @order.concierge ? 'Sí' : 'No' %></td>
-						<td><%= @order.neighbour ? 'Sí' : 'No' %></td>
-						<td><%= @order.collection_date.blank? ? 'Sí' : 'No' %></td>
-						<td><%= l(@order.collection_date, format: :medium).capitalize %> entre <%= @order.collection_time %></td>
-					</tr>
-				</tbody>
-			</table>
+			<%= render 'orders/order_details', order: @order %>
    		</div>
 	</div>
 </div>

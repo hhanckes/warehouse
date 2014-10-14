@@ -5,4 +5,6 @@ class InformationPage < ActiveRecord::Base
   has_many :information_page_contents
   
   accepts_nested_attributes_for :information_page_contents, :reject_if => proc { |a| a[:title].blank? }, :allow_destroy => true
+  
+  validates :title, presence: true
 end

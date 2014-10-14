@@ -16,12 +16,12 @@ puts "\n"
 
 puts "--> OrderStatuses:"
 aux = []
-aux << (OrderStatus.find_by_name('Step 1') || OrderStatus.create(:name => 'Step 1'))
-aux << (OrderStatus.find_by_name('Step 2') || OrderStatus.create(:name => 'Step 2'))
-aux << (OrderStatus.find_by_name('Transfer waiting approval') || OrderStatus.create(:name => 'Transfer waiting approval'))
-aux << (OrderStatus.find_by_name('Transfer funds received') || OrderStatus.create(:name => 'Transfer funds received'))
-aux << (OrderStatus.find_by_name('Delivered') || OrderStatus.create(:name => 'Delivered'))
-aux << (OrderStatus.find_by_name('Collected') || OrderStatus.create(:name => 'Collected'))
+aux << (OrderStatus.find_by_name('Step 1') || OrderStatus.create(:name => 'Step 1', public_name: 'Paso 1'))
+aux << (OrderStatus.find_by_name('Step 2') || OrderStatus.create(:name => 'Step 2', public_name: 'Paso 2'))
+aux << (OrderStatus.find_by_name('Transfer waiting approval') || OrderStatus.create(:name => 'Transfer waiting approval', public_name: 'Esperando confirmación de pago'))
+aux << (OrderStatus.find_by_name('Transfer funds received') || OrderStatus.create(:name => 'Transfer funds received', public_name: 'Pago confirmado'))
+aux << (OrderStatus.find_by_name('Delivered') || OrderStatus.create(:name => 'Delivered', public_name: 'Cajas entregadas al cliente'))
+aux << (OrderStatus.find_by_name('Collected') || OrderStatus.create(:name => 'Collected', public_name: 'Recolectado para llevar a la bodega'))
 aux.each { |x| puts x.name }
 puts "\n"
 
@@ -50,14 +50,14 @@ puts "\n"
 
 puts "--> StorageItem:"
 aux = []
-aux << (StorageItem.find_by_name('Regular Boxes') || StorageItem.create(:name => 'Regular Boxes', price: 4990))
-aux << (StorageItem.find_by_name('Bike') || StorageItem.create(:name => 'Bike', price: 14990))
-aux << (StorageItem.find_by_name('Golf') || StorageItem.create(:name => 'Golf', price: 9990))
-aux << (StorageItem.find_by_name('Ski') || StorageItem.create(:name => 'Ski', price: 9990))
-aux << (StorageItem.find_by_name('AC') || StorageItem.create(:name => 'AC', price: 12990))
-aux << (StorageItem.find_by_name('Carry On') || StorageItem.create(:name => 'Carry On', price: 4990))
-aux << (StorageItem.find_by_name('Luggage') || StorageItem.create(:name => 'Luggage', price: 9990))
-aux << (StorageItem.find_by_name('Wardrobe') || StorageItem.create(:name => 'Wardrobe', price: 9990))
-aux << (StorageItem.find_by_name('Other') || StorageItem.create(:name => 'Other', price: 9990))
+aux << (StorageItem.find_by_name('Regular Boxes') || StorageItem.create(:name => 'Regular Boxes', price: 4990, public_name: 'Caja'))
+aux << (StorageItem.find_by_name('Bike') || StorageItem.create(:name => 'Bike', price: 14990, public_name: 'Bicicleta'))
+aux << (StorageItem.find_by_name('Golf') || StorageItem.create(:name => 'Golf', price: 9990, public_name: 'Palos de Golf'))
+aux << (StorageItem.find_by_name('Ski') || StorageItem.create(:name => 'Ski', price: 9990, public_name: 'Ski'))
+aux << (StorageItem.find_by_name('AC') || StorageItem.create(:name => 'AC', price: 12990, public_name: 'Aire Acondicionado'))
+aux << (StorageItem.find_by_name('Carry On') || StorageItem.create(:name => 'Carry On', price: 4990, public_name: 'Maleta de mano'))
+aux << (StorageItem.find_by_name('Luggage') || StorageItem.create(:name => 'Luggage', price: 9990, public_name: 'Maleta'))
+aux << (StorageItem.find_by_name('Wardrobe') || StorageItem.create(:name => 'Wardrobe', price: 9990, public_name: 'Ropa'))
+aux << (StorageItem.find_by_name('Other') || StorageItem.create(:name => 'Other', price: 9990, public_name: 'Otros'))
 aux.each { |x| puts x.name }
 puts "\n"

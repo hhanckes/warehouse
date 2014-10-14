@@ -6,7 +6,7 @@
 
 <div class="row new-order-step2 center">
 	<div class="col-md-12">
-		<%= form_for(@order, url: step2_order_path(@order)) do |f| %>
+		<%= form_for(@order, url: step2_order_path(id: @order.id)) do |f| %>
 		<% unless user_signed_in? %>
 		<h1>¡Comencemos!</h1>
 		<h3>Si ya estás registrado <%= link_to 'ingresa con tu usuario y correo acá', new_user_session_path %></h3>
@@ -15,7 +15,7 @@
 		<% end %>
 		<hr />
 		<h1>¿Dónde te pasamos a dejar las cajas vacías?</h1>
-		<% unless user_signed_in? or @address.blank? %>
+		<% unless user_signed_in? and !@address.blank? %>
 			<p><%= text_field_tag :name, '', placeholder: 'Dirección' %></p>
 			<p><%= text_field_tag :post_code, '', placeholder: 'Código Postal' %></p>
 			<p><%= text_field_tag :receiver, '', placeholder: 'Nombre de la persona que recibe' %></p>

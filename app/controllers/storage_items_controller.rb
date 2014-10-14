@@ -1,5 +1,6 @@
 # encoding: UTF-8
 class StorageItemsController < ApplicationController
+  before_action :authenticate_user!, :redirect_unless_is_god
   before_action :set_storage_item, only: [:show, :edit, :update, :destroy]
 
   def index
