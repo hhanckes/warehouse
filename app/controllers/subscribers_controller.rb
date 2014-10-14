@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class SubscribersController < ApplicationController
   before_action :authenticate_user!, :redirect_unless_is_god, except: [:create]
   before_action :set_subscriber, only: [:show, :edit, :update, :destroy]
