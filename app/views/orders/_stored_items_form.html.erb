@@ -1,6 +1,6 @@
 <!-- Modal -->
 <div class="modal fade" id="edit<%= order_storage_item.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="text-align:left">
-<%= nested_form_for(order_storage_item, url: update_order_storage_item_path(order_storage_item)) do |f| %>
+<%= nested_form_for(order_storage_item, url: update_order_storage_item_path(order_storage_item), :html => { :multipart => true }) do |f| %>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
