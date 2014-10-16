@@ -15,7 +15,7 @@ class Order < ActiveRecord::Base
         Notification.new_order(self).deliver if order_status.name == 'Transfer waiting approval'
         Notification.order_funds_received(self).deliver if order_status.name == 'Transfer funds received'
         Notification.order_delivered(self).deliver if order_status.name == 'Delivered'
-        Notification.order_collected(self).deliver if order_status.name == 'Collected' 
+        Notification.order_collected(self).deliver if order_status.name == 'Collected'
       end
     end
 

@@ -1,6 +1,4 @@
-class Payment < ActiveRecord::Base
-  before_save :notify
-  
+class Payment < ActiveRecord::Base  
   has_and_belongs_to_many :order_storage_items
   has_and_belongs_to_many :payment_months
   belongs_to :payment_status
@@ -11,11 +9,11 @@ class Payment < ActiveRecord::Base
     self.users.first
   end
   
-  private
-    def notify
-      unless self.payment_status.blank?
-        Notification.payment_submitted(self).deliver if self.payment_status.name == 'Transfer waiting approval'
-        Notification.payment_paid(self).deliver if self.payment_status.name == 'Transfer funds received'
-      end
+  def notify
+    unless self.payment_status.blank?
+      Notification.payment_submitted(self).deliver if self.payment_status.name == 'Transfer waiting approval'
+      Notification.payment_paid(self).deliver if self.payment_status.name == 'Transfer funds received'
     end
+  end
+
 end

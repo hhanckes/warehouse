@@ -40,6 +40,7 @@ class MainController < ApplicationController
     payment = Payment.find params[:payment_id]
     payment.payment_status = status
     payment.save
+    payment.notify
     redirect_to main_payments_path, notice: 'Pago actualizado correctamente'
   end
   

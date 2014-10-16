@@ -53,7 +53,7 @@ class OrdersController < ApplicationController
       payment.order_storage_items << osi
     end
     payment.save
-    
+    payment.notify
     redirect_to payments_orders_path, notice: 'Pago creado exitosamente. Pronto validaremos la recepción de fondos y te llegará un correo confirmando.'
   end
   
@@ -193,8 +193,6 @@ class OrdersController < ApplicationController
       osi.update_attribute :order_storage_item_status_id, osis.id
       payment.order_storage_items << osi
     end
-    
-    Notification.new_order(@order).deliver
     
     redirect_to root_path, notice: '¡Todo OK! Procederemos a validar tu transferencia dentro de las próximas horas.'
   end
