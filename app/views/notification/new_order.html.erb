@@ -1,0 +1,24 @@
+<% content_for :content do %>
+	<h1>Bienvenido a Warehouse.com</h1>
+	<h2>¡Gracias por generar tu primera orden! Estamos muy contentos de que te unas y comiences a guardar tus cosas con nosotros.</h2>
+	<h3>4 pasos para guardar tus cosas</h3>
+	<table>
+		<tr>
+			<td>Entregamos cajas a tu domicilio gratis</td>
+			<td width="210px" style="background:url(<%= asset_url 'home/paso_1_deliver_boxes.png', only_path: false %>) 0 0 repeat-y"></td>
+		</tr>
+		<tr>
+			<td>Llena las cajas con los objetos que quieras guardar</td>
+			<td width="210px" style="background:url(<%= asset_url 'home/paso_2_pack_items.png', only_path: false %>) 0 0 repeat-y"></td>
+		</tr>
+		<tr>
+			<td>Pasamos a buscar las cajas</td>
+			<td width="210px" style="background:url(<%= asset_url 'home/paso3_collect.png', only_path: false %>) 0 0 repeat-y"></td>	
+		</tr>
+		<tr>
+			<td>Devolvemos las cajas cuando las necesites</td>
+			<td width="210px" style="background:url(<%= asset_url 'home/paso4_return_items.png', only_path: false %>) 0 0 repeat-y"></td>
+		</tr>
+	</table>
+<% end %>
+<%= render "layouts/email" %>
