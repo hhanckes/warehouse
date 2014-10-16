@@ -43,6 +43,15 @@ class MainController < ApplicationController
     redirect_to main_payments_path, notice: 'Pago actualizado correctamente'
   end
   
+  def storage_items_waiting_to_be_returned
+    add_breadcrumb "Administrador", admin_path
+    add_breadcrumb "Devoluciones Solicitadas", storage_items_waiting_to_be_returned_path
+    
+    @return_in_progress = OrderStorageItemStatus.find_by_name('Return in progress')
+    @order_storage_items = @return_in_progress.order_storage_items
+    @storage_item_return_proof = StorageItemReturnProof.new
+  end
+  
   #GET
   def orders
     add_breadcrumb "Administrador", admin_path

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141014154721) do
+ActiveRecord::Schema.define(version: 20141016032112) do
 
   create_table "addresses", force: true do |t|
     t.string   "receiver"
@@ -107,6 +107,11 @@ ActiveRecord::Schema.define(version: 20141014154721) do
     t.integer "order_storage_item_id"
   end
 
+  create_table "order_storage_items_storage_item_return_proofs", id: false, force: true do |t|
+    t.integer "order_storage_item_id"
+    t.integer "storage_item_return_proof_id"
+  end
+
   create_table "orders", force: true do |t|
     t.integer  "user_id"
     t.integer  "address_id"
@@ -155,6 +160,16 @@ ActiveRecord::Schema.define(version: 20141014154721) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "payment_type_id"
+  end
+
+  create_table "storage_item_return_proofs", force: true do |t|
+    t.text     "comments"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "storage_items", force: true do |t|

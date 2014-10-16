@@ -1,0 +1,35 @@
+<h1>Listing storage_item_return_proofs</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Fecha de creación</th>
+      <th>Items devueltos</th>	
+	  <th>Imagen</th>
+      <th>Comments</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @storage_item_return_proofs.each do |storage_item_return_proof| %>
+      <tr>
+		<td><%= l storage_item_return_proof.created_at, format: :date_detail %></td>
+		<td>
+			<ul style="padding-left:15px">
+				<%= storage_item_return_proof.order_storage_items.map { |osi| '<li> (ID '+osi.id.to_s+') '+osi.storage_item.name+' (Order #'+osi.order.id.to_s+')</li>' }.join('').html_safe %>
+			</ul>
+		</td>
+		<td><%= image_tag storage_item_return_proof.photo.url(:s) %></td>
+        <td><%= storage_item_return_proof.comments %></td>
+        <td><%= link_to 'Ver', storage_item_return_proof %></td>
+        <td><%= link_to 'Editar', edit_storage_item_return_proof_path(storage_item_return_proof) %></td>
+        <td><%= link_to 'Eliminar', storage_item_return_proof, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'Nuevo', storage_items_waiting_to_be_returned_path, :class => 'btn btn-primary' %>

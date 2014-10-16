@@ -1,0 +1,21 @@
+<p><strong>Fecha de creación:</strong> <%= l @storage_item_return_proof.created_at, format: :date_detail %></p>
+<p>
+  	<strong>Items devueltos:</strong>
+	<ul style="padding-left:15px">
+		<%= @storage_item_return_proof.order_storage_items.map { |osi| '<li> (ID '+osi.id.to_s+') '+osi.storage_item.name+' (Order #'+osi.order.id.to_s+')</li>' }.join('').html_safe %>
+	</ul>
+</p>
+<% unless @storage_item_return_proof.comments.blank? %>
+<p>
+  <strong>Comments:</strong>
+  <%= @storage_item_return_proof.comments %>
+</p>
+<% end %>
+<p>
+	<%= image_tag @storage_item_return_proof.photo.url %>
+</p>
+
+<%= link_to 'Editar', edit_storage_item_return_proof_path(@storage_item_return_proof) %> |
+<%= link_to 'Agregar nuevo', storage_items_waiting_to_be_returned_path %> |
+<%= link_to 'Ver todos los comprobantes de devolución', storage_item_return_proofs_path %> |
+<%= link_to 'Eliminar', @storage_item_return_proof, method: :delete, data: { confirm: 'Are you sure?' } %>

@@ -1,3 +1,3 @@
 class OrderStorageItemStatus < ActiveRecord::Base
-  has_many :order_storage_item
+  has_many :order_storage_items
 end

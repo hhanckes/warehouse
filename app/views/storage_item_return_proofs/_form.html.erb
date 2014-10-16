@@ -1,0 +1,32 @@
+<%= form_for(@storage_item_return_proof) do |f| %>
+  <% if @storage_item_return_proof.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@storage_item_return_proof.errors.count, "error") %> prohibited this storage_item_return_proof from being saved:</h2>
+
+      <ul>
+      <% @storage_item_return_proof.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="form-group">
+	<%= f.label :photo, 'Foto del documento de prueba', :class => 'control-label' %>
+	<div class="row" style="margin-bottom:10px">
+		<div class="col-md-2">
+      		<%= image_tag @storage_item_return_proof.photo.url(:xs) %>
+		</div>
+		<div class="col-md-10">
+			<%= f.file_field :photo, :class => 'btn btn-default' %>
+		</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :comments, :class => 'control-label' %>
+    <%= f.text_area :comments, :class => 'form-control' %>
+  </div>
+  <div class="form-actions">
+    <%= f.submit 'Guardar', :class => 'btn btn-primary' %>
+  </div>
+<% end %>

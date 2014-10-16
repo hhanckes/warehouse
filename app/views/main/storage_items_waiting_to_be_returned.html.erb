@@ -1,0 +1,25 @@
+<%= form_for(@storage_item_return_proof) do |f| %>
+<h1>Items esperando ser devueltos</h1>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Order ID</th><th>Item ID</th><th>Item</th><th>Precio</th><th>Status</th>
+			<th><%= link_to 'Agregar Prueba de Entrega', '#', :class => 'btn btn-primary btn-xs', :style => 'font-size:10px', 
+					'data-toggle' => "modal", 'data-target' => "#new_proof" %></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @order_storage_items.each do |osi| %>
+		<tr>
+			<td><%= osi.order.id %></td>
+			<td><%= osi.id %></td>
+			<td><%= osi.storage_item.public_name %></td>
+			<td><%= number_to_currency osi.price %></td>
+			<td><%= osi.order_storage_item_status.blank? ? 'No asignado' : osi.order_storage_item_status.public_name %></td>
+			<td><%= check_box_tag 'order_storage_item_ids[]', osi.id %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<%= render 'main/return_proof_modal', f: f %>
+<% end %>

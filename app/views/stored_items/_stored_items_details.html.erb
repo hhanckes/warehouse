@@ -20,7 +20,12 @@
 	        <td><%= stored_item.quantity %></td>
 	        <td><%= number_to_currency stored_item.assigned_value %> c/u</td>
 	        <td><%= stored_item.description %></td>
-	        <td><%= link_to 'Recolectar', '#', :class => 'btn btn-default btn-xs' %></td>
+	        <td>
+				<%= link_to 'Pedir devolución de cajas', 
+					update_order_storage_item_status_order_path(stored_item.order, order_storage_item_id: stored_item.order_storage_item.id, 
+					new_order_storage_item_status_id: @return_in_progress.id), method: :post, :class => 'btn btn-default btn-xs', style: "font-size:10px;",
+					disabled: (stored_item.order_storage_item.order_storage_item_status == @return_in_progress ? true : false) %> 	
+			</td>
 	      </tr>
 	    <% end %>
 	  </tbody>

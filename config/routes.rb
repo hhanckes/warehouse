@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :storage_item_return_proofs
+
   resources :orders do
     post 'step1', on: :collection
     get 'payments', on: :collection
@@ -34,7 +36,8 @@ Rails.application.routes.draw do
   delete 'destroy_order_storage_item/:id' => 'main#destroy_order_storage_item', as: 'destroy_order_storage_item'
   patch 'update_order_storage_item/:id' => 'main#update_order_storage_item', as: 'update_order_storage_item'
   post 'admin/change_price' => 'main#change_price', as: 'main_change_price'
-
+  get 'admin/storage_items_waiting_to_be_returned' => 'main#storage_items_waiting_to_be_returned', as: 'storage_items_waiting_to_be_returned'
+  
   devise_for :users
   root 'main#home'
 end

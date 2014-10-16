@@ -31,8 +31,9 @@ class Notification < ActionMailer::Base
     mail to: order_storage_item.order.user.email, subject: 'item_return_request'
   end
   
-  def item_returned(order_storage_item)
-    mail to: order_storage_item.order.user.email, subject: 'item_returned'
+  def item_returned(storage_item_return_proof)
+    email = storage_item_return_proof.order_storage_items.last.order.user.email
+    mail to: email, subject: 'items_returned_proof'
   end
   
   def payment_reminder

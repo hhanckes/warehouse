@@ -8,6 +8,7 @@ class OrderStorageItem < ActiveRecord::Base
   has_many :stored_items, dependent: :destroy
   has_one :user, through: :order
   has_and_belongs_to_many :payments
+  has_and_belongs_to_many :storage_item_return_proofs
   
   has_attached_file :photo, :styles => { :xl => "500x", :l => "400x", :m => "300x", :s => "200x", :xs => "100x" }
 
@@ -30,7 +31,6 @@ class OrderStorageItem < ActiveRecord::Base
       unless self.order_storage_item_status.blank?
         Notification.item_in_warehouse(self).deliver if self.order_storage_item_status.name == 'In warehouse'
         Notification.item_return_request(self).deliver if self.order_storage_item_status.name == 'Return in progress'
-        Notification.item_returned(self).deliver if self.order_storage_item_status.name == 'Returned'
       end
     end
     
