@@ -41,10 +41,10 @@ class Notification < ActionMailer::Base
   end
   
   def payment_submitted(payment)
-    mail to: '', subject: 'payment_reminder'
+    mail to: payment.users.first.email, subject: 'payment_reminder'
   end
   
   def payment_paid(payment)
-    mail to: '', subject: 'payment_reminder'
+    mail to: payment.users.first.email, subject: 'payment_reminder'
   end
 end
