@@ -52,7 +52,8 @@
 		<h1>¿Qué día y a qué hora pasamos?</h1>
 		<p>
 			<%= select_tag "delivery-day", 
-				options_for_select((2..10).collect {|p| [l((DateTime.now.to_date + p.days), format: :select), DateTime.now.to_date + p.days] }), :class => 'date-select' %>
+				options_for_select((2..10).collect {|p| [l((DateTime.now.to_date + p.days), format: :select), DateTime.now.to_date + p.days] }), 
+						:class => 'date-select', :onchange => 'update_collection_day()' %>
 			<%= select_tag "delivery-time", 
 				options_for_select(['10:00 - 12:00','12:00 - 14:00','14:00 - 16:00','16:00 - 18:00']), :class => 'hour-select' %>
 		</p>
@@ -76,7 +77,7 @@
 		<div class="collect-later">
 			<p>
 				<%= select_tag "collection-day", 
-					options_for_select((2..10).collect {|p| [l((DateTime.now.to_date + p.days), format: :select), DateTime.now.to_date + p.days] }), :class => 'date-select' %>
+					options_for_select((4..14).collect {|p| [l((DateTime.now.to_date + p.days), format: :select), DateTime.now.to_date + p.days] }), :class => 'date-select' %>
 				<%= select_tag "collection-time", 
 					options_for_select(['10:00 - 12:00','12:00 - 14:00','14:00 - 16:00','16:00 - 18:00']), :class => 'hour-select' %>			</p>
 		</div>

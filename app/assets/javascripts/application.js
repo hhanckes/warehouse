@@ -82,3 +82,13 @@ function update_selected_item(div_id, count_1) {
 		$('#'+div_id).attr('selected', true)
 	}
 }
+
+function update_collection_day() {
+	selected_delivery_date = $('#delivery-day').val()
+	$("#collection-day > option").each(function() {
+	    if(this.value <= selected_delivery_date) {
+			$("#collection-day option[value='"+this.value+"']").remove();
+		}
+	});
+	
+}
