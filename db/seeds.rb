@@ -21,7 +21,7 @@ aux << (OrderStatus.find_by_name('Step 2') || OrderStatus.create(:name => 'Step 
 aux << (OrderStatus.find_by_name('Transfer waiting approval') || OrderStatus.create(:name => 'Transfer waiting approval', public_name: 'Esperando confirmación de pago'))
 aux << (OrderStatus.find_by_name('Transfer funds received') || OrderStatus.create(:name => 'Transfer funds received', public_name: 'Pago confirmado'))
 aux << (OrderStatus.find_by_name('Delivered') || OrderStatus.create(:name => 'Delivered', public_name: 'Cajas entregadas al cliente'))
-aux << (OrderStatus.find_by_name('Collected') || OrderStatus.create(:name => 'Collected', public_name: 'Recolectado para llevar a la bodega'))
+aux << (OrderStatus.find_by_name('Collected') || OrderStatus.create(:name => 'Collected', public_name: 'Items y cajas recolectadas'))
 aux.each { |x| puts x.name }
 puts "\n"
 
@@ -43,7 +43,9 @@ aux = []
 aux << (OrderStorageItemStatus.find_by_name('Waiting funds confirmation') || OrderStorageItemStatus.create(:name => 'Waiting funds confirmation', :public_name => 'Esperando confirmación'))
 aux << (OrderStorageItemStatus.find_by_name('Collection in progress') || OrderStorageItemStatus.create(:name => 'Collection in progress', :public_name => 'En proceso de recolección'))
 aux << (OrderStorageItemStatus.find_by_name('In warehouse') || OrderStorageItemStatus.create(:name => 'In warehouse', :public_name => 'En bodega'))
+aux << (OrderStorageItemStatus.find_by_name('Wating funds confirmation for return') || OrderStorageItemStatus.create(:name => 'Wating funds confirmation for return', :public_name => 'Validando recepción de fondos para devolución de item'))
 aux << (OrderStorageItemStatus.find_by_name('Return in progress') || OrderStorageItemStatus.create(:name => 'Return in progress', :public_name => 'En proceso de devolución'))
+aux << (OrderStorageItemStatus.find_by_name('Shipped from Warehouse') || OrderStorageItemStatus.create(:name => 'Shipped from Warehouse', :public_name => 'Salió de la bodega'))
 aux << (OrderStorageItemStatus.find_by_name('Returned') || OrderStorageItemStatus.create(:name => 'Returned', :public_name => 'Devuelta'))
 aux.each { |x| puts x.name }
 puts "\n"

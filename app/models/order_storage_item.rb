@@ -35,7 +35,7 @@ class OrderStorageItem < ActiveRecord::Base
     end
     
     def update_in_warehouse_date
-      self.in_warehouse_date = DateTime.now if self.order_storage_item_status.name == 'In warehouse'
+      self.in_warehouse_date = DateTime.now if !self.order_storage_item_status.blank? and self.order_storage_item_status.name == 'In warehouse'
     end
   
 end

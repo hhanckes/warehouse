@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141018011619) do
+ActiveRecord::Schema.define(version: 20141018151240) do
 
   create_table "addresses", force: true do |t|
     t.string   "receiver"
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 20141018011619) do
     t.decimal  "price",                        precision: 10, scale: 0
     t.datetime "in_warehouse_date"
     t.text     "details"
+    t.decimal  "return_price",                 precision: 10, scale: 0
   end
 
   create_table "order_storage_items_payments", id: false, force: true do |t|
@@ -191,6 +192,7 @@ ActiveRecord::Schema.define(version: 20141018011619) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.string   "public_name"
+    t.decimal  "return_price",       precision: 10, scale: 0
   end
 
   add_index "storage_items", ["slug"], name: "index_storage_items_on_slug", unique: true, using: :btree

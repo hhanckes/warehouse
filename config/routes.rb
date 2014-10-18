@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     patch 'step2/:area', on: :member, :action => 'step2'
     get 'step3', on: :member
     post 'transfer_confirmed', on: :member
+    post 'transfer_confirmed_return_osi/:osi_id', on: :member, :action => 'transfer_confirmed_return_osi', as: 'transfer_confirmed_return_osi'
     post 'new_payment_paid', on: :collection
     post 'update_order_status/:new_order_status_id', on: :member, :action => 'update_order_status', as: 'update_order_status'
     post 'update_order_storage_item_status/:order_storage_item_id/:new_order_storage_item_status_id', on: :member, :action => 'update_order_storage_item_status', as: 'update_order_storage_item_status'

@@ -27,25 +27,20 @@ class StorageItemReturnProofsController < ApplicationController
   end
 
   def create
-    @storage_item_return_proof = StorageItemReturnProof.new(storage_item_return_proof_params)
-    @returned = OrderStorageItemStatus.find_by_name('Returned')
+    @new_status = OrderStorageItemStatus.find_by_name('Shipped from Warehouse') if params[:commit] == 'Items Despachados'
+    @new_status = OrderStorageItemStatus.find_by_name('Return in progress') if params[:commit] == 'Fondos Recibidos'
+    @new_status = OrderStorageItemStatus.find_by_name('Returned') if params[:commit] == 'Guardar'
+    @storage_item_return_proof = StorageItemReturnProof.new if params[:commit] == 'Guardar'
     
     params[:order_storage_item_ids].each do |osi_id|
       osi = OrderStorageItem.find(osi_id)
-      osi.update_attribute :order_storage_item_status_id, @returned.id
-      @storage_item_return_proof.order_storage_items << osi
+      osi.order_storage_item_status = @new_status
+      osi.save
+      (@storage_item_return_proof.order_storage_items << osi) if params[:commit] == 'Guardar'
     end
-    
-    respond_to do |format|
-      if @storage_item_return_proof.save
-        format.html { redirect_to storage_items_waiting_to_be_returned_path, notice: 'Storage Item Return Proof creada correctamente.' }
-        format.json { render action: 'show', status: :created, location: @storage_item_return_proof }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @storage_item_return_proof.errors, status: :unprocessable_entity }
-      end
-    end
-    
+    @storage_item_return_proof.save if params[:commit] == 'Guardar'
+
+    redirect_to storage_items_waiting_to_be_returned_path, notice: 'Item actualizado correctamente.'
   end
 
   def update

@@ -1,0 +1,18 @@
+<!-- Modal -->
+<div class="modal fade" id="items_shipped" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="text-align:left">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+        <h4 class="modal-title" id="myModalLabel">Marcar como items despachados</h4>
+      </div>
+      <div class="modal-body">
+		<p>Marcaras que los items que seleccionaste salieron de la bodega</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+		<%= f.submit 'Items Despachados', :class => 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+</div>

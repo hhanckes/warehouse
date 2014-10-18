@@ -43,10 +43,6 @@
 				<td><%= @order.address.name %></td>
 			</tr>
 			<tr>
-				<th>Código postal</th>
-				<td><%= @order.address.post_code %></td>
-			</tr>
-			<tr>
 				<th>Area</th>
 				<td><%= @order.address.area.name unless @order.address.area.blank? %></td>
 			</tr>
@@ -61,14 +57,11 @@
 		</table>
 		<hr />
 		<h2 class="center">¿Cómo vas a pagar?</h2>
-		<div class="center">
+		<div class="form-actions center">
 			<p><%= link_to 'Pagar con Transferencia Bancaria', '#', :class => 'btn btn-primary', 'data-toggle' => "modal", 'data-target' => "#PaymentModal" %></p>
 			<%= render 'payment_modal', id: 'PaymentModal' %>
 			<p><%= link_to 'Pago contra entrega', '#', :class => 'btn btn-primary' %></p>
 			<p><%= link_to 'Tarjeta de crédito o débito', '#', :class => 'btn btn-primary' %></p>
-		</div>
-		<div class="form-actions center">
-		  <%= submit_tag 'Ir a Pagar', :class => 'btn btn-default' %>
 		</div>
 	</div>
 </div>

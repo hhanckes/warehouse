@@ -49,10 +49,13 @@ class MainController < ApplicationController
     add_breadcrumb "Devoluciones Solicitadas", storage_items_waiting_to_be_returned_path
     
     @return_in_progress = OrderStorageItemStatus.find_by_name('Return in progress')
-    @order_storage_items = @return_in_progress.order_storage_items
+    @shipped = OrderStorageItemStatus.find_by_name('Shipped from Warehouse')
+    @funds_received = OrderStorageItemStatus.find_by_name('Wating funds confirmation for return') 
+    
+    @order_storage_items = OrderStorageItem.where('order_storage_item_status_id in (?)', [@return_in_progress.id, @shipped.id, @funds_received.id])
     @storage_item_return_proof = StorageItemReturnProof.new
   end
-  
+    
   #GET
   def orders
     add_breadcrumb "Administrador", admin_path

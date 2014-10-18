@@ -1,0 +1,49 @@
+<!-- Modal -->
+<div class="modal fade" id="<%= osi.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="text-align:left">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+        <h4 class="modal-title" id="myModalLabel">Solicitar devolución de Item</h4>
+      </div>
+      <div class="modal-body">
+		<p>Estás pidiendo la devolución de <%= osi.storage_item.public_name %> (ID <%= osi.id %>) donde tienes guardado:</p>
+		<ul>
+			<% osi.stored_items.each do |si| %>
+			<li><%= si.quantity %> <%= si.name %></li>
+			<% end %>
+		</ul>
+		<h3>Selecciona la dirección donde lo enviaremos:</h3>
+		<ul class="list-group">
+		<% current_user.addresses.each do |address| %>
+		  	<li class="list-group-item">
+				<%= radio_button_tag 'address_id', address.id.to_s, true %> 
+				<span style="padding-left:10px"><%= address.name %>, <%= address.area.name %> | Nombre de contacto <%= address.receiver %> | Teléfono <%= address.phone_number %></span>
+			</li>
+		<% end %>
+		</ul>
+		<p id='add_new_address' onclick="show_hide_address()"><span class="glyphicon glyphicon-plus"></span>Agregar nueva dirección</p>
+		<div id="new_address_fields">
+			<p><%= text_field_tag :name, '', placeholder: 'Dirección', :class => 'form-control' %></p>
+			<p><%= collection_select(:order_area, :area, Area.all, :id, :name, { :prompt => 'Selecciona tu área' }, { :class => 'form-control' }) %></p>
+			<p><%= text_field_tag :receiver, '', placeholder: 'Nombre de la persona que recibe', :class => 'form-control' %></p>
+			<p><%= text_field_tag :phone_number, '', placeholder: 'Teléfono de contacto', :class => 'form-control' %></p>
+		</div>
+		<p>48 horas después de que hayamos confirmado la recepción de los fondos, enviaremos el item a la dirección seleccionada.</p>
+		<p>Realiza la transferencia de <b><%= number_to_currency osi.return_price, precision: 0 %></b> a la siguiente cuenta:</p>
+		<ul>
+			<li>Banco: XX</li>
+			<li>Nº Cuenta Corriente: XXX</li>
+			<li>Titular Cuenta: XXX</li>
+			<li>RUT: XXXX</li>
+			<li>Correo: xxxxx</li>
+		</ul>
+		<p>Una vez que ya hayas realizado la transferencia en la página de tu banco, debes hacer click en "Transferencia Realizada" y procederemos a verificar la recepción de fondos.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+		<%= link_to 'Transferencia Realizada', transfer_confirmed_return_osi_order_path(id: osi.order.id, osi_id: osi.id), method: :post, :class => 'btn btn-primary btn-loading' %>
+      </div>
+    </div>
+  </div>
+</div>

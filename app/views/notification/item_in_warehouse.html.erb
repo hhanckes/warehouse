@@ -1,7 +1,7 @@
 <% content_for :content do %>
 	<p>Hola <%= @user.name %>!</p>
-	<p>Te confirmamos que <%= @order_storage_item.sotrage_item.public_name %> con el ID <%= @order_storage_item.id %> llegó a nuestra bodegas. Contamos con cámaras de seguridad las 24 horas por lo que tus cosas están seguras.</p>
-	<p>Recuerda que puedes acceder a tu inventario ingresando a tu cuenta en <%= link_to 'www.warehouse.com', root_url %>. En el caso que quieras la devolución de <%= @order_storage_item.sotrage_item.public_name %> con ID <%= @order_storage_item.id %> solo tienes que ingresar a tu cuenta > Ir a Inventario > y hacer click en Pedir Devolución.</p>
+	<p>Te confirmamos que <%= @order_storage_item.storage_item.public_name %> con el ID <%= @order_storage_item.id %> llegó a nuestra bodegas. Contamos con cámaras de seguridad las 24 horas por lo que tus cosas están seguras.</p>
+	<p>Recuerda que puedes acceder a tu inventario ingresando a tu cuenta en <%= link_to 'www.warehouse.com', root_url %>. En el caso que quieras la devolución de <%= @order_storage_item.storage_item.public_name %> con ID <%= @order_storage_item.id %> solo tienes que ingresar a tu cuenta > Ir a Inventario > y hacer click en Pedir Devolución.</p>
 	<p>Si tienes alguna duda, por favor contáctanos a contacto@warehouse.com</p>
 <% end %>
 <%= render "layouts/email" %>

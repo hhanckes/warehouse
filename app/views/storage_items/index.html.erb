@@ -4,9 +4,10 @@
   <thead>
     <tr>
 	  <th></th>
+      <th>Code (do not change)</th>
       <th>Name</th>
-      <th>Description</th>
       <th>Price</th>
+      <th>Return Price</th>
       <th>Width</th>
       <th>Height</th>
       <th>Depth</th>
@@ -24,8 +25,9 @@
       <tr>
 		<td><%= image_tag storage_item.photo.url(:xs) %></td>
         <td><%= storage_item.name %></td>
-        <td><%= storage_item.description %></td>
-        <td><%= storage_item.price %></td>
+        <td><%= storage_item.public_name %></td>
+        <td><%= number_to_currency storage_item.price %></td>
+        <td><%= number_to_currency storage_item.return_price %></td>
         <td><%= storage_item.width %></td>
         <td><%= storage_item.height %></td>
         <td><%= storage_item.depth %></td>

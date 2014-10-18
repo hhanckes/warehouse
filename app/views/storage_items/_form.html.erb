@@ -23,8 +23,8 @@
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :name, 'Nombre', :class => 'control-label' %><br>
-    <%= f.text_field :name, :class => 'form-control' %>
+    <%= f.label :public_name, 'Nombre', :class => 'control-label' %><br>
+    <%= f.text_field :public_name, :class => 'form-control' %>
   </div>
   <div class="form-group">
     <%= f.label :description, 'Descripción', :class => 'control-label' %><br>
@@ -33,6 +33,10 @@
   <div class="form-group">
     <%= f.label :price, 'Precio', :class => 'control-label' %><br>
     <%= f.text_field :price, :class => 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :return_price, 'Precio Devolución', :class => 'control-label' %><br>
+    <%= f.text_field :return_price, :class => 'form-control' %>
   </div>
   <div class="form-group">
     <%= f.label :width, 'Ancho', :class => 'control-label' %><br>

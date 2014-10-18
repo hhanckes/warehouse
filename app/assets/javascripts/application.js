@@ -18,6 +18,11 @@
 //= require_tree .
 
 $(document).ready(function() {
+	$('.btn-loading').on('click', function () {
+	  	$(this).attr("data-loading-text","Espera por favor...");
+	  	$(this).button('loading');
+	});
+	
 	$('.slider').slider().on('slide', function(ev){
 		$('.boxes-count').html(ev.value);
 	  });
@@ -95,5 +100,9 @@ function update_collection_day() {
 			$("#collection-day option[value='"+this.value+"']").remove();
 		}
 	});
-	
 }
+
+function show_hide_address() {
+	alert($('#new_address_fields').css('display'));
+}
+

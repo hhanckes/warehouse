@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   
   def set_last_url
     blacklist = [new_user_session_path, user_session_path, destroy_user_session_path, user_registration_path, new_user_registration_path, edit_user_password_path, new_user_password_path, user_password_path]
-    unless blacklist.include? request.path
+    unless blacklist.include?(request.path) or ['transfer_confirmed_return_osi'].include?(action_name)
       session["last_url"] = request.path
     end
   end
