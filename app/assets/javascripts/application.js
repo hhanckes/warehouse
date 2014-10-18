@@ -101,8 +101,3 @@ function update_collection_day() {
 		}
 	});
 }
-
-function show_hide_address() {
-	alert($('#new_address_fields').css('display'));
-}
-

@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="<%= osi.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="text-align:left">
+<div class="modal fade return_request" id="<%= osi.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="text-align:left">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -22,13 +22,7 @@
 			</li>
 		<% end %>
 		</ul>
-		<p id='add_new_address' onclick="show_hide_address()"><span class="glyphicon glyphicon-plus"></span>Agregar nueva dirección</p>
-		<div id="new_address_fields">
-			<p><%= text_field_tag :name, '', placeholder: 'Dirección', :class => 'form-control' %></p>
-			<p><%= collection_select(:order_area, :area, Area.all, :id, :name, { :prompt => 'Selecciona tu área' }, { :class => 'form-control' }) %></p>
-			<p><%= text_field_tag :receiver, '', placeholder: 'Nombre de la persona que recibe', :class => 'form-control' %></p>
-			<p><%= text_field_tag :phone_number, '', placeholder: 'Teléfono de contacto', :class => 'form-control' %></p>
-		</div>
+		<p><%= link_to raw('<span class="glyphicon glyphicon-plus"></span> Agregar nueva dirección'), addresses_path %></p>
 		<p>48 horas después de que hayamos confirmado la recepción de los fondos, enviaremos el item a la dirección seleccionada.</p>
 		<p>Realiza la transferencia de <b><%= number_to_currency osi.return_price, precision: 0 %></b> a la siguiente cuenta:</p>
 		<ul>

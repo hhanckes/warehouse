@@ -213,6 +213,7 @@ class OrdersController < ApplicationController
   def transfer_confirmed_return_osi
     osi = OrderStorageItem.find params[:osi_id]
     funds_return = OrderStorageItemStatus.find_by_name('Wating funds confirmation for return')
+    
     osi.order_storage_item_status = funds_return
     osi.save
     redirect_to (session["last_url"] || root_path), notice: '¡Todo OK! Devolución de '+osi.storage_item.public_name+' (ID '+osi.id.to_s+') en proceso'
