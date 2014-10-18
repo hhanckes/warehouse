@@ -19,7 +19,7 @@
 		<% current_user.addresses.each do |address| %>
 		  	<li class="list-group-item">
 				<%= radio_button_tag 'address_id', address.id.to_s, true %> 
-				<span style="padding-left:10px"><%= address.name %>, <%= address.area.name %> | Nombre de contacto <%= address.receiver %> | Teléfono <%= address.phone_number %></span>
+				<span style="padding-left:10px"><%= address.name %>, <%= address.area.name unless address.area.blank? %> | Nombre de contacto <%= address.receiver %> | Teléfono <%= address.phone_number %></span>
 			</li>
 		<% end %>
 		</ul>
