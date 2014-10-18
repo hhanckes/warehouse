@@ -1,4 +1,8 @@
 <% content_for :content do %>
-order_collected
+	<p>Hola <%= @user.name %>!</p>
+	<p>Te confirmamos que pasamos a buscar tus cosas en la dirección Hermanos Cabot 7393, Las Condes el día <%= l(@order.collection_date, format: :medium).capitalize %>. </p>
+	<p>Nuestro conductor está en camino a la bodega. Te seguiremos informando sobre el estado de tus cosas. Lo más importante para nosotros es que estés tranquilo y disfrutes de tu tiempo =)
+	</p>
+	<p>Tus cosas estarán llegando a la bodega de Warehouse durante el día. Nuestro equipo está muy pendiente de tus cosas.</p>
 <% end %>
 <%= render "layouts/email" %>

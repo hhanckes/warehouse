@@ -5,7 +5,12 @@
 	  <%= devise_error_messages! %>
 	  <div class="row" style="margin:10px">
 		<div class="col-md-12">
-	  		<%= f.email_field :email, placeholder: 'Correo', autofocus: true, :class => "form-control input-sm", :style => 'width:20%' %>
+	  		<%= f.text_field :name, placeholder: 'Nombre', autofocus: true, :class => "form-control input-sm", :style => 'width:20%' %>
+		</div>
+	  </div>
+	  <div class="row" style="margin:10px">
+		<div class="col-md-12">
+	  		<%= f.email_field :email, placeholder: 'Correo', autofocus: false, :class => "form-control input-sm", :style => 'width:20%' %>
 		</div>
 	  </div>
 	  <div class="row" style="margin:10px">

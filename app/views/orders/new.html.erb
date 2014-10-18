@@ -1,5 +1,5 @@
 <ul class='nav nav-wizard'>
-  <li class='active'>Pedido</li>
+  <li class='active'><%= link_to 'Nuevo Pedido', new_order_path %></li>
   <li>Detalles</li>
   <li>Confirmar y Pagar</li>
 </ul>
@@ -16,7 +16,7 @@
 		<h1>¿Cuántas cajas necesitas?</h1>
 		<h2>El precio es simple: almacenar una caja por mes cuesta solo $4,990</h2>		  
 		<div class="boxes-count">5</div>
-		<%= text_field_tag :boxes, 5, :class => "slider", 'data-slider-id' => 'ex1Slider', :type => "text", 'data-slider-min' => "0", 
+		<%= text_field_tag :boxes, 5, :class => "slider", 'data-slider-id' => 'ex1Slider', :type => "text", 'data-slider-min' => "1", 
 							'data-slider-max' => "30", 'data-slider-step' => "1", 'data-slider-value' => "5", "data-slider-tooltip" => "hide" %>
 		<hr />
 		<h1>Selecciona los items adicionales</h1>
@@ -71,6 +71,11 @@
 				<p><b>Otros</b></p>
 				<p>Precio se asigna después</p>
 				<%= select_tag "other-count", "<option>¿Cuántas?</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
+			</div>
+		</div>
+		<div class="row other-details">
+			<div class="col-md-12">
+				<%= text_area_tag :other_details, '', placeholder: 'Escribe el detalle de todos los items que guardaras' %>
 			</div>
 		</div>
 		<div class="form-actions">

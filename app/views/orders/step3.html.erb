@@ -1,8 +1,9 @@
 <ul class='nav nav-wizard'>
-  <li>Pedido</li>
-  <li>Detalles</li>
+  <li><%= link_to 'Nuevo Pedido', new_order_path %></li>
+  <li><%= link_to 'Detalles', step2_order_path(id: @order.id, area: @order.address.area.id)%></li>
   <li class='active'>Confirmar y Pagar</li>
 </ul>
+
 
 <div class="row new-order-step2">
 	<div class="col-md-12">
@@ -11,7 +12,7 @@
 		<table class="table" style="width:500px; margin:0 auto;">
 			<% @order.storage_items.uniq.each do |si| %>
 			<tr>
-				<th><%= @order.storage_items.where('storage_item_id = ?', si.id).size %> <%= si.name %></th>
+				<th><%= @order.storage_items.where('storage_item_id = ?', si.id).size %> <%= si.public_name %></th>
 				<td><%= number_to_currency @order.storage_items.where('storage_item_id = ?', si.id).size*si.price %></td>
 			</tr>
 			<% end %>
@@ -24,6 +25,12 @@
 				<th><%= number_to_currency @order.order_storage_items.sum('price'), precision: 0 %></th>
 			</tr>
 		</table>
+		<% if @order.storage_items.include? StorageItem.find_by_name('other') %>
+		<p class="center">
+			* Los items "Otros" se cobrarán una vez se defina el precio.<br />
+			Te contactaremos antes para enviarte la cotización.<br />
+			Si no estás conforme con algo te devolveremos el dinero de inmediato</p>
+		<% end %>
 		<hr />
 		<h2 class="center">Lugar de entrega</h2>
 		<table class="table" style="width:500px; margin:0 auto;">

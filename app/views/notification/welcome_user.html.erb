@@ -1,0 +1,40 @@
+<% content_for :content do %>
+<p>Hola <%= @user.name %>!</p>
+<p>Muchas gracias por registrarte en Warehouse <%= link_to '(www.warehouse.com)', root_url %>. Estamos muy contentos de que te unas y comiences a guardar tus cosas con nosotros.</p>
+<p>Warehouse es la la forma más conveniente para guardar tus cosas en Chile por solo 4,900. Solo tienes que seguir los siguientes pasos:</p>
+<ul>
+	<li>Ingresa a <%= link_to 'www.warehouse.com', root_url %></li>
+	<li>Sigue los 3 pasos!</li>
+	<li>Disfruta de la comodidad de guardar tus cosas sin moverte de tu casa.</li>
+</ul>
+<table>
+	<tr>
+		<td width="310px" height="165px" style="background:url(<%= asset_url 'home/paso_1_deliver_boxes.png', only_path: false %>) 0 0 repeat-y"></td>
+		<td width="210px" height="165px" style="background:url(<%= asset_url 'home/paso_2_pack_items.png', only_path: false %>) 0 0 repeat-y"></td>
+	</tr>
+	<tr>
+		<td width="310px">Entregamos cajas a tu domicilio gratis</td>
+		<td width="210px">Llena las cajas con los objetos que quieras guardar</td>
+	</tr>
+	<tr>
+		<td width="310px" height="165px" style="background:url(<%= asset_url 'home/paso4_return_items.png', only_path: false %>) 0 0 repeat-y"></td>
+		<td width="210px" height="165px" style="background:url(<%= asset_url 'home/paso3_collect.png', only_path: false %>) 0 0 repeat-y"></td>	
+	</tr>
+	<tr>
+		<td width="310px">Pasamos a buscar las cajas</td>
+		<td width="210px">Devolvemos las cajas cuando las necesites</td>
+	</tr>
+</table>
+<hr />
+<h3 style="color:#5e5e5e">Consejos para comenzar</h3>
+<ul>
+	<li>Recuerda: Nosotros hacemos el trabajo sin que te muevas de tu casa</li>
+	<li>Revisa tu Inventario para que nunca olvides lo que guardaste</li>
+	<li>Paga a tiempo para que no tengas multas. Lo mejor es pagar varios meses por anticipado</li>
+	<li>Revisa los términos y condiciones para que todo funcione súper bien</li>
+</ul>
+<hr />
+<h3 style="color:#5e5e5e">Estemos en contacto</h3>
+<p>Nuestro equipo está aquí para responder cualquier pregunta que tengas y para asegurar que tengas una experiencia increíble.</p> 
+<% end %>
+<%= render "layouts/email" %>

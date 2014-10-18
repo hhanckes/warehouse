@@ -70,16 +70,21 @@ $(document).ready(function() {
 	});
 })
 
-
 function update_selected_item(div_id, count_1) {
 	if($('#'+div_id).attr('selected')) {
 		$('#'+div_id).css( "background-color", "white" );
 		$('#'+count_1).css( "display", "none" );
-		$('#'+div_id).attr('selected', false)
+		$('#'+div_id).attr('selected', false);
+		if(count_1 == 'other-count') {
+			$(".other-details").fadeOut();
+		}
 	} else {
 		$('#'+div_id).css( "background-color", "#0e90d2" );
 		$('#'+count_1).css( "display", "inline-block" );
-		$('#'+div_id).attr('selected', true)
+		$('#'+div_id).attr('selected', true);
+		if(count_1 == 'other-count') {
+			$(".other-details").fadeIn();
+		}
 	}
 }
 

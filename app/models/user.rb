@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  after_create :notify
+  
   has_many :orders, dependent: :destroy
   has_many :order_storage_items, through: :orders
   has_many :storage_items, through: :order_storage_items
@@ -37,5 +39,11 @@ class User < ActiveRecord::Base
       DateTime.now
     end
   end
+
+  private
+  
+    def notify
+      Notification.welcome_user(self).deliver
+    end
 
 end

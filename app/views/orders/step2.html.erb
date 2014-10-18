@@ -1,6 +1,6 @@
 <ul class='nav nav-wizard'>
-  <li>Pedido</li>
-  <li class='active'>Detalles</li>
+  <li><%= link_to 'Nuevo Pedido', new_order_path %></li>
+  <li class='active'><%= link_to 'Detalles', step2_order_path(id: @order.id, area: params[:area])%></li>
   <li>Confirmar y Pagar</li>
 </ul>
 
@@ -9,7 +9,9 @@
 		<%= form_for(@order, url: step2_order_path(id: @order.id)) do |f| %>
 		<% unless user_signed_in? %>
 		<h1>¡Comencemos!</h1>
-		<h3>Si ya estás registrado <%= link_to 'ingresa con tu usuario y correo acá', new_user_session_path %></h3>
+		<h3 style="max-width:500px; margin:0 auto; line-height:30px;">
+			Si ya te hiciste una cuenta, entonces <%= link_to 'ingresa con tu usuario y correo acá', new_user_session_path %>, de lo contrario continúa completando la información abajo y automáticamente crearemos tu cuenta</h3>
+			<p><%= text_field_tag :name, '', placeholder: 'Nombre' %></p>
 			<p><%= text_field_tag :email, '', placeholder: 'Correo' %></p>
 			<p><%= password_field_tag :password, '', placeholder: 'Clave' %></p>
 		<% end %>
@@ -17,7 +19,7 @@
 		<h1>¿Dónde te pasamos a dejar las cajas vacías?</h1>
 		<% unless user_signed_in? and !@address.blank? %>
 			<p><%= text_field_tag :name, '', placeholder: 'Dirección' %></p>
-			<p><%= text_field_tag :post_code, '', placeholder: 'Código Postal' %></p>
+			<p><%= text_field_tag :area, @area.name, placeholder: 'Area', disabled: true %></p>
 			<p><%= text_field_tag :receiver, '', placeholder: 'Nombre de la persona que recibe' %></p>
 			<p><%= text_field_tag :phone_number, '', placeholder: 'Teléfono de contacto' %></p>
 		<% else %>
@@ -59,7 +61,7 @@
 		</p>
 		<div style="text-align:left; width:600px; margin:0 auto;">
 			<p><%= check_box_tag :doorman %> ¿Tiene conserje tu edificio o una persona que permanentemente está que le podamos dejar las cajas?</p>
-			<p><%= check_box_tag :neighbour %> Si nadie contesta puedes dejar las cajas con mi vecino</p>
+			<p><%= check_box_tag :neighbour %> ¿Si nadie contesta podemos dejar las cajas con tu vecino?</p>
 			<p><%= check_box_tag :company %> ¿Eres una empresa?</p>
 		</div>
 		<div class="company-information">

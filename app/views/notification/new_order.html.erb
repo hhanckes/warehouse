@@ -1,36 +1,17 @@
 <% content_for :content do %>
-	<h1 style="color:#5e5e5e">Bienvenido a Warehouse.com</h1>
-	<h2 style="color:#5e5e5e">¡Gracias por generar tu primera orden! Estamos muy contentos de que te unas y comiences a guardar tus cosas con nosotros.</h2>
-	<h3 style="color:#5e5e5e">4 pasos para guardar tus cosas</h3>
-	<table>
-		<tr>
-			<td width="310px" height="165px" style="background:url(<%= asset_url 'home/paso_1_deliver_boxes.png', only_path: false %>) 0 0 repeat-y"></td>
-			<td width="210px" height="165px" style="background:url(<%= asset_url 'home/paso_2_pack_items.png', only_path: false %>) 0 0 repeat-y"></td>
-		</tr>
-		<tr>
-			<td width="310px">Entregamos cajas a tu domicilio gratis</td>
-			<td width="210px">Llena las cajas con los objetos que quieras guardar</td>
-		</tr>
-		<tr>
-			<td width="310px" height="165px" style="background:url(<%= asset_url 'home/paso4_return_items.png', only_path: false %>) 0 0 repeat-y"></td>
-			<td width="210px" height="165px" style="background:url(<%= asset_url 'home/paso3_collect.png', only_path: false %>) 0 0 repeat-y"></td>	
-		</tr>
-		<tr>
-			<td width="310px">Pasamos a buscar las cajas</td>
-			<td width="210px">Devolvemos las cajas cuando las necesites</td>
-		</tr>
-	</table>
-	<hr />
-	<h3 style="color:#5e5e5e">Consejos para comenzar</h3>
+	<p>Hola <%= @order.user.name %>!</p>
+	<% if @order.user.orders.size == 1 %>
+		<p>¡Gracias por generar tu primera orden! Estamos muy contentos de que te unas y comiences a guardar tus cosas con nosotros.</p>
+	<% end %>
+	<p>Es muy importante que estés tranquilo que estés tus cosas estén seguras. Es por eso que te enviaremos en breve e-mails confirmando que hemos:</p>
 	<ul>
-		<li>Recuerda: Nosotros hacemos el trabajo sin que te muevas de tu casa</li>
-		<li>Revisa tu Inventario para que nunca olvides lo que guardaste</li>
-		<li>Paga a tiempo para que no tengas multas. Lo mejor es pagar varios meses por anticipado</li>
-		<li>Revisa los términos y condiciones para que todo funcione súper bien</li>
+		<li>Confirmado tu pago</li>
+		<li>Entregado las cajas</li>
+		<li>Pasado a buscar las cajas e items sueltos</li>
+		<li>Guardado tus cosas en nuestra bodega</li>
 	</ul>
-	<hr />
-	<h3 style="color:#5e5e5e">Estemos en contacto</h3>
-	<p>Nuestro equipo está aquí para responder cualquier pregunta que tengas y para asegurar que tengas una experiencia increíble.</p> 
-	<p>Para comunicarte, simplemente envíanos un correo a contacto@warehouse.com o llámanos al +56 9 9986 1213</p>
+	<p>
+		Recuerda que puedes acceder a tus pedidos y tu inventario a través de tu cuenta ingresando en <%= link_to 'www.warehouse.com', root_url %>. 
+		Solo tienes que ingresar con tu usuario y contraseña e ir al menú que se encuentre en el vértice derecho de tu pantalla.</p>
 <% end %>
 <%= render "layouts/email" %>

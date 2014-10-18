@@ -58,6 +58,6 @@ aux << (StorageItem.find_by_name('AC') || StorageItem.create(:name => 'AC', pric
 aux << (StorageItem.find_by_name('Carry On') || StorageItem.create(:name => 'Carry On', price: 4990, public_name: 'Maleta de mano'))
 aux << (StorageItem.find_by_name('Luggage') || StorageItem.create(:name => 'Luggage', price: 9990, public_name: 'Maleta'))
 aux << (StorageItem.find_by_name('Wardrobe') || StorageItem.create(:name => 'Wardrobe', price: 9990, public_name: 'Ropa'))
-aux << (StorageItem.find_by_name('Other') || StorageItem.create(:name => 'Other', price: 9990, public_name: 'Otros'))
+aux << (StorageItem.find_by_name('Other') || StorageItem.create(:name => 'Other', price: 0, public_name: 'Otros'))
 aux.each { |x| puts x.name }
 puts "\n"

@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_filter :set_last_url
+  before_action :configure_permitted_parameters, if: :devise_controller?
   
   def redirect_unless_is_god
     redirect_to((session["last_url"] || root_path), alert: 'Eeeeepa! Debes ser administrador para entrar a esta sección.') unless current_user.is_god?
@@ -27,5 +28,11 @@ class ApplicationController < ActionController::Base
   def is_number?(object)
     true if Integer(object) rescue false
   end
+  
+  protected
+
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.for(:sign_up) << :name
+    end
   
 end

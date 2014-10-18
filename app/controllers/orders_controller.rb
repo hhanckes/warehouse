@@ -62,110 +62,122 @@ class OrdersController < ApplicationController
   
   #POST
   def step1
-    order_status = OrderStatus.find_by_name('Step 1')
-    @order = Order.create(order_status_id: order_status.id)
-    osis = OrderStorageItemStatus.find_by_name('Waiting funds confirmation')
+    if params[:order_area][:area].blank?
+      redirect_to new_order_path, alert: 'Debes seleccionar el sector donde entregaremos las cajas'
+    else  
+      order_status = OrderStatus.find_by_name('Step 1')
+      @order = Order.create(order_status_id: order_status.id)
+      osis = OrderStorageItemStatus.find_by_name('Waiting funds confirmation')
 
-    if is_number?(params[:boxes])
-      si = StorageItem.find_by_name('Regular Boxes')
-      count = params[:boxes].to_i
-      (1..count).each do |i|
-        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
+      if is_number?(params[:boxes])
+        si = StorageItem.find_by_name('Regular Boxes')
+        count = params[:boxes].to_i
+        (1..count).each do |i|
+          OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
+        end
+      end        
+      if is_number?(params['bike-count'])
+        si = StorageItem.find_by_name('Bike')
+        count = params['bike-count'].to_i
+        (1..count).each do |i|
+          OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
+        end
+      end    
+      if is_number?(params['golf-count'])
+        si = StorageItem.find_by_name('Golf')
+        count = params['golf-count'].to_i
+        (1..count).each do |i|
+          OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
+        end
+      end    
+      if is_number?(params['ski-count'])
+        si = StorageItem.find_by_name('Ski')
+        count = params['ski-count'].to_i
+        (1..count).each do |i|
+          OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
+        end
+      end    
+      if is_number?(params['ac-count'])
+        si = StorageItem.find_by_name('AC')
+        count = params['ac-count'].to_i
+        (1..count).each do |i|
+          OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
+        end
+      end    
+      if is_number?(params['carry-on-count'])
+        si = StorageItem.find_by_name('Carry On')
+        count = params['carry-on-count'].to_i
+        (1..count).each do |i|
+          OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
+        end
+      end    
+      if is_number?(params['luggage-count'])
+        si = StorageItem.find_by_name('Luggage')
+        count = params['lugagge-count'].to_i
+        (1..count).each do |i|
+          OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
+        end
+      end    
+      if is_number?(params['wardrobe-count'])
+        si = StorageItem.find_by_name('Wardrobe')
+        count = params['wardrobe-count'].to_i
+        (1..count).each do |i|
+          OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
+        end
+      end    
+      if is_number?(params['other-count'])
+        si = StorageItem.find_by_name('Other')
+        count = params['other-count'].to_i
+        (1..count).each do |i|
+          OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price, details: params[:other_details])
+        end
       end
-    end        
-    if is_number?(params['bike-count'])
-      si = StorageItem.find_by_name('Bike')
-      count = params['bike-count'].to_i
-      (1..count).each do |i|
-        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
-      end
-    end    
-    if is_number?(params['golf-count'])
-      si = StorageItem.find_by_name('Golf')
-      count = params['golf-count'].to_i
-      (1..count).each do |i|
-        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
-      end
-    end    
-    if is_number?(params['ski-count'])
-      si = StorageItem.find_by_name('Ski')
-      count = params['ski-count'].to_i
-      (1..count).each do |i|
-        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
-      end
-    end    
-    if is_number?(params['ac-count'])
-      si = StorageItem.find_by_name('AC')
-      count = params['ac-count'].to_i
-      (1..count).each do |i|
-        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
-      end
-    end    
-    if is_number?(params['carry-on-count'])
-      si = StorageItem.find_by_name('Carry On')
-      count = params['carry-on-count'].to_i
-      (1..count).each do |i|
-        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
-      end
-    end    
-    if is_number?(params['luggage-count'])
-      si = StorageItem.find_by_name('Luggage')
-      count = params['lugagge-count'].to_i
-      (1..count).each do |i|
-        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
-      end
-    end    
-    if is_number?(params['wardrobe-count'])
-      si = StorageItem.find_by_name('Wardrobe')
-      count = params['wardrobe-count'].to_i
-      (1..count).each do |i|
-        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
-      end
-    end    
-    if is_number?(params['other-count'])
-      si = StorageItem.find_by_name('Other')
-      count = params['other-count'].to_i
-      (1..count).each do |i|
-        OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price)
-      end
+      redirect_to step2_order_path(id: @order.id, area: params[:order_area][:area])
     end
-    redirect_to step2_order_path(id: @order.id, area: params[:order_area][:area])
   end
   
   #GET & POST
   def step2
 		@address = current_user.default_address if user_signed_in?
+		@area = Area.find params[:area]
+		
     if request.patch? 
-      if User.find_by_email(params[:email]).blank?
-        unless user_signed_in?
-          user = User.new(:email => params[:email], :password => params[:password], :password_confirmation => params[:password])
-          user.save
-          sign_in user
-        else
-          user = current_user
-        end
-        if params[:address_id].blank?
-          address = Address.create(default: true, area_id: params[:area], user_id: user.id, name: params[:name], post_code: params[:post_code], receiver: params[:receiver], phone_number: params[:phone_number])
-        else
-          address = Address.find params[:address_id]
-        end
-        @order.update_attribute :address_id, address.id
-    
-        order_status = OrderStatus.find_by_name('Step 2')
-        @order.update_attribute :user_id, user.id
-        @order.update_attribute :order_status_id, order_status.id
-        @order.update_attribute :delivery_date, params['delivery-day']
-        @order.update_attribute :delivery_time, params['delivery-time']
-        @order.update_attribute :collection_date, params['collection-day']
-        @order.update_attribute :collection_time, params['collection-time']
-        @order.update_attribute :company_name, params[:company_name]
-        @order.update_attribute :company_rut, params[:rut]
-        @order.update_attribute :concierge, params[:doorman]
-        @order.update_attribute :neighbour, params[:neighbour]
-      
-        redirect_to step3_order_path(@order), notice: '¡Estás a un paso de completar el pedido!'
+      if ((params['collection-day'].blank? or params['collection-time'].blank?) and params['right_away'].blank?) or params['right_away'].blank?
+        redirect_to step2_order_path(id: @order.id, area: params[:area]), alert: 'Debes seleccionar cuando vamos a buscar las cajas'
+      elsif !params[:company].blank? and (params[:company_name].blank? or params[:rut].blank?)
+        redirect_to step2_order_path(id: @order.id, area: params[:area]), alert: 'Debes agregar los datos de la empresa (RUT y Nombre)'
       else
-        redirect_to step2_order_path(id: @order.id, area: params[:area]), alert: '¡El usuario ya existe debes ingresar para continuar!'
+        if User.find_by_email(params[:email]).blank?
+          unless user_signed_in?
+            user = User.new(:email => params[:email], :password => params[:password], :password_confirmation => params[:password], :name => params[:name])
+            user.save
+            sign_in user
+          else
+            user = current_user
+          end
+          if params[:address_id].blank?
+            address = Address.create(default: true, area_id: params[:area], user_id: user.id, name: params[:name], post_code: params[:post_code], receiver: params[:receiver], phone_number: params[:phone_number])
+          else
+            address = Address.find params[:address_id]
+          end
+          @order.update_attribute :address_id, address.id
+    
+          order_status = OrderStatus.find_by_name('Step 2')
+          @order.update_attribute :user_id, user.id
+          @order.update_attribute :order_status_id, order_status.id
+          @order.update_attribute :delivery_date, params['delivery-day']
+          @order.update_attribute :delivery_time, params['delivery-time']
+          @order.update_attribute :collection_date, params['collection-day']
+          @order.update_attribute :collection_time, params['collection-time']
+          @order.update_attribute :company_name, params[:company_name]
+          @order.update_attribute :company_rut, params[:rut]
+          @order.update_attribute :concierge, params[:doorman]
+          @order.update_attribute :neighbour, params[:neighbour]
+      
+          redirect_to step3_order_path(@order), notice: '¡Estás a un paso de completar el pedido!'
+        else
+          redirect_to step2_order_path(id: @order.id, area: params[:area]), alert: '¡El usuario ya existe debes ingresar para continuar!'
+        end
       end
     end
   end

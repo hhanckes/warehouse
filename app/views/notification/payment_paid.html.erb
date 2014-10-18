@@ -1,4 +1,19 @@
 <% content_for :content do %>
-payment_paid
+	<p>Hola <%= @user.name %>!</p>
+	<p>Te confirmado que hemos recibido tu pago de <%= number_to_currency @payment.amount %> por:</p>
+	<ul>
+		<% @payment.order_storage_items.each do |osi| %>
+			<li>
+				<%= osi.storage_item.public_name %> (identificador #<%= osi.id %>)
+			</li>
+		<% end %>
+	</ul>
+	<p>Este es el primer paso! Sigamos adelante! 48 horas antes de la entrega de nuestras cajas estarás recibiendo un e-mail recordatorio donde encontrarás un detalle de:</p>
+	<ul>
+		<li>Dirección</li>
+		<li>Horario</li>
+		<li>Nombre del conductor encargado de tu pedido</li>
+	</ul>
+	<p>En el caso que quieras cambiar alguno de los datos anteriores solo tienes que escribir a contacto@warehouse.com y un representante de nuestro servicio de atención al cliente se contactará contigo.</p>
 <% end %>
 <%= render "layouts/email" %>
