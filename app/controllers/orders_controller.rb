@@ -142,14 +142,19 @@ class OrdersController < ApplicationController
 		@area = Area.find params[:area]
 		
     if request.patch? 
-      if ((params['collection-day'].blank? or params['collection-time'].blank?) and params['right_away'].blank?) or params['right_away'].blank?
-        redirect_to step2_order_path(id: @order.id, area: params[:area]), alert: 'Debes seleccionar cuando vamos a buscar las cajas'
+      if @address.blank? and (params[:area].blank? or params[:name].blank? or params[:receiver].blank? or params[:phone_number].blank?)
+        flash[:alert] = "Debes ingresar la información completa para poder ir a dejarte las cajas y recoger los items!"
+        render :template => "orders/step2"
       elsif !params[:company].blank? and (params[:company_name].blank? or params[:rut].blank?)
-        redirect_to step2_order_path(id: @order.id, area: params[:area]), alert: 'Debes agregar los datos de la empresa (RUT y Nombre)'
+        flash[:alert] = "Debes agregar los datos de la empresa (RUT y Nombre)!"
+        render :template => "orders/step2"
+      elsif ((params['collection-day'].blank? or params['collection-time'].blank?) and params['right_away'].blank?) or params['right_away'].blank?
+        flash[:alert] = "Debes seleccionar cuando vamos a buscar las cajas!"
+        render :template => "orders/step2"
       else
         if User.find_by_email(params[:email]).blank?
           unless user_signed_in?
-            user = User.new(:email => params[:email], :password => params[:password], :password_confirmation => params[:password], :name => params[:name])
+            user = User.new(:email => params[:email], :password => params[:password], :password_confirmation => params[:password], :name => params[:username])
             user.save
             sign_in user
           else

@@ -11,17 +11,17 @@
 		<h1>¡Comencemos!</h1>
 		<h3 style="max-width:500px; margin:0 auto; line-height:30px;">
 			Si ya te hiciste una cuenta, entonces <%= link_to 'ingresa con tu usuario y correo acá', new_user_session_path %>, de lo contrario continúa completando la información abajo y automáticamente crearemos tu cuenta</h3>
-			<p><%= text_field_tag :name, '', placeholder: 'Nombre' %></p>
-			<p><%= text_field_tag :email, '', placeholder: 'Correo' %></p>
-			<p><%= password_field_tag :password, '', placeholder: 'Clave' %></p>
+			<p><%= text_field_tag :username, params[:username], placeholder: 'Nombre' %></p>
+			<p><%= text_field_tag :email, params[:email], placeholder: 'Correo' %></p>
+			<p><%= password_field_tag :password, params[:password], placeholder: 'Clave' %></p>
 		<% end %>
 		<hr />
 		<h1>¿Dónde te pasamos a dejar las cajas vacías?</h1>
 		<% unless user_signed_in? and !@address.blank? %>
-			<p><%= text_field_tag :name, '', placeholder: 'Dirección' %></p>
+			<p><%= text_field_tag :name, params[:name], placeholder: 'Dirección' %></p>
 			<p><%= text_field_tag :area, @area.name, placeholder: 'Area', disabled: true %></p>
-			<p><%= text_field_tag :receiver, '', placeholder: 'Nombre de la persona que recibe' %></p>
-			<p><%= text_field_tag :phone_number, '', placeholder: 'Teléfono de contacto' %></p>
+			<p><%= text_field_tag :receiver, params[:receiver], placeholder: 'Nombre de la persona que recibe' %></p>
+			<p><%= text_field_tag :phone_number, params[:phone_number], placeholder: 'Teléfono de contacto' %></p>
 		<% else %>
 			<%= hidden_field_tag :address_id, @address.id %>
 			<div style="margin:0 auto; max-width:500px">
@@ -65,8 +65,8 @@
 			<p><%= check_box_tag :company %> ¿Eres una empresa?</p>
 		</div>
 		<div class="company-information">
-			<p><%= text_field_tag :company_name, '', placeholder: 'Nombre de la empresa' %></p>
-			<p><%= text_field_tag :rut, '', placeholder: 'RUT' %></p>
+			<p><%= text_field_tag :company_name, params[:company_name], placeholder: 'Nombre de la empresa' %></p>
+			<p><%= text_field_tag :rut, params[:rut], placeholder: 'RUT' %></p>
 		</div>
 		<hr>
 		<h1>¿Cuándo deberíamos ir a buscar los items?</h1>
