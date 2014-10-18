@@ -5,6 +5,7 @@ class OrderStorageItem < ActiveRecord::Base
   belongs_to :order
   belongs_to :storage_item
   belongs_to :order_storage_item_status
+  belongs_to :address #Return Address
   has_many :stored_items, dependent: :destroy
   has_one :user, through: :order
   has_and_belongs_to_many :payments

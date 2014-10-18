@@ -1,5 +1,6 @@
 <!-- Modal -->
 <div class="modal fade return_request" id="<%= osi.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="text-align:left">
+  <%= form_tag(transfer_confirmed_return_osi_order_path(id: osi.order.id, osi_id: osi.id), :method => "post", :html => {class: 'form-inline'}) do %>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -36,8 +37,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-		<%= link_to 'Transferencia Realizada', transfer_confirmed_return_osi_order_path(id: osi.order.id, osi_id: osi.id), method: :post, :class => 'btn btn-primary btn-loading' %>
+		<%= submit_tag("Transferencia Realizada", :class => 'btn btn-primary btn-loading') %>
       </div>
     </div>
   </div>
+  <% end %>
 </div>
