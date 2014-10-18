@@ -6,7 +6,7 @@
 	<p>Usuario: <%= order.user.email %></p>
 <% end %>
 <p>
-	Status: <b><%= order.order_status.public_name %></b> 
+	Status de la orden: <b><%= order.order_status.public_name %></b> 
 	<% if current_user.is_god? and params[:controller] == 'main' %>
 		<%= link_to 'Marcar Fondos recibidos', update_order_status_order_path(order, new_order_status_id: @funds_received.id), method: :post, 
 					:class => 'btn btn-default btn-xs', style: "font-size:10px", disabled: (order.order_status == @waiting_approval ? false : true) %>

@@ -142,7 +142,7 @@ class OrdersController < ApplicationController
 		@area = Area.find params[:area]
 		
     if request.patch? 
-      if ((params['collection-day'].blank? or params['collection-time'].blank?) and params['right_away'].blank?) or params['right_away'].blank?
+      if ((params['collection-day'].blank? or params['collection-time'].blank?) and params['right_away'].blank?) or !params['right_away'].blank?
         redirect_to step2_order_path(id: @order.id, area: params[:area]), alert: 'Debes seleccionar cuando vamos a buscar las cajas'
       elsif !params[:company].blank? and (params[:company_name].blank? or params[:rut].blank?)
         redirect_to step2_order_path(id: @order.id, area: params[:area]), alert: 'Debes agregar los datos de la empresa (RUT y Nombre)'
@@ -206,7 +206,7 @@ class OrdersController < ApplicationController
       payment.order_storage_items << osi
     end
     
-    redirect_to root_path, notice: '¡Todo OK! Procederemos a validar tu transferencia dentro de las próximas horas.'
+    redirect_to @order, notice: '¡Todo OK! Procederemos a validar tu pago dentro de las próximas horas. En esta página encontrarás el detalle de tu orden'
   end
   
   #POST
