@@ -70,4 +70,4 @@
 	</tbody>
 </table>
 <% end %>
-<%= render 'new_payment_modal' %>
+<%= render 'new_payment_modal', to_pay: current_user.in_warehouse_order_storage_items.sum(:price) %>

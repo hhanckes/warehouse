@@ -8,14 +8,15 @@
         <h4 class="modal-title" id="myModalLabel">Generar Pago</h4>
       </div>
       <div class="modal-body">
-		<div class="row">
+		<div class="row" style="margin-top:10px">
 			<div class="col-md-6">
 				<h3 style="margin:0px; padding:0px;">Selecciona meses a pagar</h3>
 				<p>Se selecciona automáticamente el próximo mes pero puedes pagar todos los que quieras</p>
 				<ul class="list-group">
 				<% (0..6).each do |i| %>
 					<li class="list-group-item">
-						<%= check_box_tag 'payment_month[]', (current_user.next_payment_date + i.months).strftime('%m-%Y'), (i == 0 ? true : false) %> 
+						<%= check_box_tag 'payment_month[]', (current_user.next_payment_date + i.months).strftime('%m-%Y'), (i == 0 ? true : false), 
+							onchange: 'update_total_to_pay(this, '+to_pay.to_s+')' %> 
 						<%=l((current_user.next_payment_date + i.months), format: :month_year).capitalize %>
 					</li>
 				<% end %>
@@ -35,6 +36,11 @@
 			</div>
 		</div>
 		<hr />
+		<div class="row">
+			<div class="well" style="width:95%; margin:0 auto;">
+				Total a pagar: <span class="total_to_pay"><%= number_to_currency to_pay %></span>
+			</div>
+		</div>
 		<div>
 			<h3>Realiza la transferencia de a la siguiente cuenta:</h3>
 			<ul>
