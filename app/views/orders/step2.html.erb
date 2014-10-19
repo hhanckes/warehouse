@@ -35,10 +35,6 @@
 						<td><%= @address.name %></td>
 					</tr>
 					<tr>
-						<th>Código postal</th>
-						<td><%= @address.post_code %></td>
-					</tr>
-					<tr>
 						<th>Area</th>
 						<td><%= @address.area.name unless @address.area.blank? %></td>
 					</tr>
@@ -71,7 +67,7 @@
 		<hr>
 		<h1>¿Cuándo deberíamos ir a buscar los items?</h1>
 		<div style="text-align:left; width:600px; margin:0 auto;">
-			<p><%= check_box_tag :right_away %> <b>De inmediato.</b> Nuestro conductor te esperará 20 minutos mientras guardas las cosas en las cajas.</p>
+			<p><%= check_box_tag :collect_immediately %> <b>De inmediato.</b> Nuestro conductor te esperará 20 minutos mientras guardas las cosas en las cajas.</p>
 		</div>
 		<div style="text-align:left; width:600px; margin:0 auto;">		
 			<p><%= check_box_tag :collect_later %> <b>Más tarde</b> Volvemos otro día a buscar las cosas <b>gratis.</b></p>

@@ -9,11 +9,11 @@
 	Status de la orden: <b><%= order.order_status.public_name %></b> 
 	<% if current_user.is_god? and params[:controller] == 'main' %>
 		<%= link_to 'Marcar Fondos recibidos', update_order_status_order_path(order, new_order_status_id: @funds_received.id), method: :post, 
-					:class => 'btn btn-default btn-xs', style: "font-size:10px", disabled: (order.order_status == @waiting_approval ? false : true) %>
+					:class => 'btn btn-default btn-xs btn-loading', style: "font-size:10px", disabled: (order.order_status == @waiting_approval ? false : true) %>
 		<%= link_to 'Marcar Cajas Entregadas', update_order_status_order_path(order, new_order_status_id: @delivered.id), method: :post, 
-					:class => 'btn btn-default btn-xs', style: "font-size:10px", disabled: (order.order_status == @funds_received ? false : true) %> 
+					:class => 'btn btn-default btn-xs btn-loading', style: "font-size:10px", disabled: (order.order_status == @funds_received ? false : true) %> 
 		<%= link_to 'Marcar Cajas Recolectadas', update_order_status_order_path(order, new_order_status_id: @collected.id), method: :post, 
-					:class => 'btn btn-default btn-xs', style: "font-size:10px", disabled: (order.order_status == @delivered ? false : true) %> 
+					:class => 'btn btn-default btn-xs btn-loading', style: "font-size:10px", disabled: (order.order_status == @delivered ? false : true) %> 
 	<% end %>
 </p>
 <p>Precio total: <b><%= number_to_currency order.order_storage_items.joins(:storage_item).sum('price'), precision: 0 %></b></p>
@@ -41,11 +41,11 @@
 						'data-target' => "#edit"+osi.id.to_s, disabled: (order.order_status == @collected ? false : true) %> 
 					<%= link_to 'Marcar caja en Bodega', 
 						update_order_storage_item_status_order_path(order, order_storage_item_id: osi.id, new_order_storage_item_status_id: @in_warehouse.id), method: :post, 
-						:class => 'btn btn-default btn-xs', style: "font-size:10px", 
+						:class => 'btn btn-default btn-xs btn-loading', style: "font-size:10px", 
 						disabled: (order.order_status == @collected and osi.order_storage_item_status != @in_warehouse ? false : true) %> 
 					<%= link_to 'Marcar caja como devueltas', 
 						update_order_storage_item_status_order_path(order, order_storage_item_id: osi.id, new_order_storage_item_status_id: @returned.id), method: :post, 
-						:class => 'btn btn-default btn-xs', style: "font-size:10px;", disabled: (osi.order_storage_item_status == @in_warehouse ? false : true) %> 
+						:class => 'btn btn-default btn-xs btn-loading', style: "font-size:10px;", disabled: (osi.order_storage_item_status == @in_warehouse ? false : true) %> 
 					<%= link_to 'Cambiar Precio', '#', :class => 'btn btn-default btn-xs', style: "font-size:10px", 'data-toggle' => "modal", 'data-target' => "#edit_price"+osi.id.to_s %> 
 					<%= link_to 'Eliminar', destroy_order_storage_item_path(osi), :class => 'btn btn-danger btn-xs', style: "font-size:10px", 
 								method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -90,8 +90,8 @@
 			<td><%= l(order.delivery_date, format: :medium).capitalize %> entre <%= order.delivery_time %></td>
 			<td><%= order.concierge ? 'Sí' : 'No' %></td>
 			<td><%= order.neighbour ? 'Sí' : 'No' %></td>
-			<td><%= order.collection_date.blank? ? 'Sí' : 'No' %></td>
-			<td><%= l(order.collection_date, format: :medium).capitalize %> entre <%= order.collection_time %></td>
+			<td><%= order.collect_immediately? ? 'Sí' : 'No' %></td>
+			<td><%= order.collect_immediately ? 'n/a' : l(order.collection_date, format: :medium).capitalize+' entre '+order.collection_time %></td>
 		</tr>
 	</tbody>
 </table>

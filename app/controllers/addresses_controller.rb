@@ -20,7 +20,7 @@ class AddressesController < ApplicationController
       ad.update_attribute :default, false
     end
     @address.update_attribute :default, true
-    redirect_to step2_order_path(current_user.orders.last)
+    redirect_to step2_order_path(current_user.orders.last, area: @address.area.id, address_changed: 1)
   end
 
   def show

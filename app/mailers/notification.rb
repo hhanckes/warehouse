@@ -6,20 +6,9 @@ class Notification < ActionMailer::Base
     mail to: user.email, subject: 'Bienvenido a Warehouse'
   end
   
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.notification.new_order.subject
-  #
   def new_order(order)
     @order = order
     mail to: order.user.email, subject: 'Felicitaciones por tu nueva orden'
-  end
-
-  def order_funds_received(order)
-    @user = order.user
-    @order = order
-    mail to: order.user.email, subject: 'order_funds_received'
   end
   
   def order_delivered(order)
@@ -60,6 +49,6 @@ class Notification < ActionMailer::Base
   def payment_paid(payment)
     @payment = payment
     @user = payment.users.first
-    mail to: @user.email, subject: 'payment_reminder'
+    mail to: @user.email, subject: '¡Fondos recibidos exitosamente!'
   end
 end

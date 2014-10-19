@@ -18,16 +18,8 @@ class OrderStorageItem < ActiveRecord::Base
   
   accepts_nested_attributes_for :stored_items, :reject_if => proc { |a| a[:name].blank? or a[:quantity].blank? }, :allow_destroy => true
   
-  def next_payment_date
-    DateTime.now
-  end
-  
-  def payment_status
-    'Por Pagar'
-  end
-
   private
-  
+    
     def notify
       unless self.order_storage_item_status.blank?
         Notification.item_in_warehouse(self).deliver if self.order_storage_item_status.name == 'In warehouse'

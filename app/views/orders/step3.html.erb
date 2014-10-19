@@ -7,7 +7,7 @@
 
 <div class="row new-order-step2">
 	<div class="col-md-12">
-		<h1 class="center">Por favor confirma tu orden</h1>
+		<h1 class="center">Por favor confirma tu pedido</h1>
 		<hr />
 		<table class="table" style="width:500px; margin:0 auto;">
 			<% @order.storage_items.uniq.each do |si| %>
@@ -55,9 +55,11 @@
 				<td><%= l(@order.delivery_date, format: :medium).capitalize %> entre <%= @order.delivery_time %></td>
 			</tr>
 		</table>
-		<hr />
-		<h2 class="center">¿Cómo vas a pagar?</h2>
+		<div class="center">
+			<%= link_to 'Editar Pedido', step2_order_path(@order, area: @order.address.area.id, address_changed: 1), :class => 'btn btn-default' %>
+		</div>
 		<div class="form-actions center">
+			<h2 class="">¿Cómo vas a pagar?</h2>
 			<p><%= link_to 'Pagar con Transferencia Bancaria', '#', :class => 'btn btn-primary', 'data-toggle' => "modal", 'data-target' => "#PaymentModal" %></p>
 			<%= render 'payment_modal', id: 'PaymentModal' %>
 		</div>
