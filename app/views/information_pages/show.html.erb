@@ -1,31 +1,17 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @information_page.title %>
-</p>
-
-<p>
-  <strong>Subtitle:</strong>
-  <%= @information_page.subtitle %>
-</p>
-
-<div style="margin-left:20px">
-	<% @information_page.information_page_contents.each do |ipc| %>
-	<p>
-	  <strong>Title:</strong>
-	  <%= ipc.title %>
-	</p>
-	<p>
-	  <strong>Subtitle:</strong>
-	  <%= ipc.subtitle %>
-	</p>
-	<p style="margin-bottom:30px">
-	  <strong>Content:</strong>
-	  <%= ipc.content.html_safe %>
-	</p>
-	<% end %>
+<div class="well center">
+	<h1 style="margin:0px; font-weight:normal;"><%= @information_page.title %></h1>
 </div>
+<div style="max-width:700px; margin:0 auto;">
+<h2 style="margin:0px; padding:0px; font-weight:normal"><%= @information_page.subtitle %></h2>
+<% @information_page.information_page_contents.each do |ipc| %>
+	<h3 style="margin:0px; padding:0px; font-weight:normal"><%= ipc.title %></h3>
+	<h4 style="margin:0px; padding:0px"><%= ipc.subtitle %></h4>
+	<p><%= ipc.content.html_safe %></p>
+<% end %>
 
-<%= link_to 'Edit', edit_information_page_path(@information_page) %> |
-<%= link_to 'Back', information_pages_path %>
+<% if user_signed_in? and current_user.is_god? %>
+	<%= link_to 'Edit', edit_information_page_path(@information_page), :class => 'btn btn-primary' %> |
+	<%= link_to 'Back', information_pages_path, :class => 'btn btn-default' %>
+<% end %>
+</div>

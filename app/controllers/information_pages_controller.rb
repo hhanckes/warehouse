@@ -10,11 +10,7 @@ class InformationPagesController < ApplicationController
     @information_pages = InformationPage.all
   end
 
-  def show
-    add_breadcrumb "Administrador", admin_path
-    add_breadcrumb "Páginas Informativas", information_pages_path
-    add_breadcrumb @information_page.title, @information_page
-    
+  def show    
   end
 
   def new
