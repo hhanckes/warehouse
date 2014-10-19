@@ -1,0 +1,85 @@
+<style>
+	/* Uncomment everything commented to CSS for the hide/show */
+	.gallery {
+	    width: 25em;
+	    margin: 2em auto;
+	}
+	.gallery-item {
+	    height: auto;
+	    float: left;
+	    margin-bottom: 2em;
+	    position: relative;
+	}
+    .gallery-item:first-child {
+        margin-right: 2.762430939%;
+    }
+
+	.gallery-item img {
+	    width: 100%;
+	}
+
+	.gallery-item:hover .img-title {
+	    /*opacity: 1;*/
+	}
+
+	.img-title {
+	    position: absolute;
+	    top: 0;
+	    margin: 0;
+	    height: 100%;
+	    width: 100%;
+	    text-align: center;
+	    /*opacity: 0;*/
+	    display: none; /* comment this out for CSS hover */
+	    background-color: #333;
+		opacity:0.9;
+	    /*transition: all 0.5s ease;*/
+	}
+  	.img-title h5 {
+		padding-top:20px;
+		margin:auto;
+	    color: #fff;
+	    width: 90%;
+	    text-align: center;
+	}
+	.img-title h5 a {
+	    color: white;
+	}
+	.img-title h6 {
+		padding-top:20px;
+		margin:auto;
+	    color: #fff;
+	    width: 90%;
+	    text-align: center;
+	}
+	.img-title h6 a {
+	    color: white;
+	}
+</style>
+
+<script>
+	$(document).ready( function() {
+	    $('.gallery-item').hover( function() {
+	        $(this).find('.img-title').fadeIn(300);
+	    }, function() {
+	        $(this).find('.img-title').fadeOut(100);
+	    });
+	});
+</script>
+
+<p><%= image_tag 'logos/logo_blog.png' %></p>
+<div class="row">
+	<div class="wrapper clearfix">
+		<% @blog_posts.each do |post| %>
+			<div class="col-md-4">
+				<figure class="gallery-item">
+			        <%= link_to image_tag(post.photo.url(:m)), post %>
+			        <figcaption class="img-title">
+			            <h5><%= link_to post.title, post %></h5>
+			 			<h6><%= link_to post.subtitle, post %></h6>
+			        </figcaption>
+			    </figure>
+			</div>
+		<% end %>
+	</div>
+</div>

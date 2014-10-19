@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141018204056) do
+ActiveRecord::Schema.define(version: 20141019170419) do
 
   create_table "addresses", force: true do |t|
     t.string   "receiver"
@@ -31,6 +31,33 @@ ActiveRecord::Schema.define(version: 20141018204056) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "blog_post_contents", force: true do |t|
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.integer  "blog_post_id"
+  end
+
+  create_table "blog_posts", force: true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "subtitle"
+    t.string   "hashtags"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "slug"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+  end
+
+  add_index "blog_posts", ["slug"], name: "index_blog_posts_on_slug", unique: true, using: :btree
 
   create_table "countries", force: true do |t|
     t.string   "name"

@@ -1,0 +1,46 @@
+<%= nested_form_for(@blog_post) do |f| %>
+  <% if @blog_post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@blog_post.errors.count, "error") %> prohibited this blog_post from being saved:</h2>
+
+      <ul>
+      <% @blog_post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <% if @blog_post.user.blank? %>
+  	<%= f.hidden_field :user_id, :value => current_user.id %>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :title, 'Título (debe ser corto y algo que alguien buscaría en Google)', :class => 'control-label' %><br>
+    <%= f.text_field :title, :class => 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :subtitle, 'Subtítulo (descripción del post, importante para Google)', :class => 'control-label' %><br>
+    <%= f.text_field :subtitle, :class => 'form-control' %>
+  </div>
+  <div class="form-group">
+      <%= f.label :photo, 'Foto Blog que solo se muestra cuando una persona mira todos los blogs (debe ser cuadrada)', :class => 'control-label' %><br>
+	  <div class="row" style="margin-bottom:5px">
+		<div class="col-sm-1">
+			<%= image_tag f.object.photo.url(:tiny) %>
+		</div>
+		<div class="col-sm-6">
+			<%= f.file_field :photo, :class => 'btn btn-default' %>
+		</div>
+	  </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :hashtags, :class => 'control-label' %><br>
+    <%= f.text_field :hashtags, :class => 'form-control' %>
+  </div>
+  <div class="form-group">
+  	<%= render 'blog_post_content_fields', :f => f %>
+  </div>
+  <div class="form-actions">
+    <%= f.submit 'Guardar', :class => 'btn btn-primary' %>
+  </div>
+<% end %>

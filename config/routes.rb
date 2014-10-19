@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :blog_posts
+  get 'blog' => 'blog_posts#blog', as: 'blog'
+  
   resources :storage_item_return_proofs
 
   resources :orders do

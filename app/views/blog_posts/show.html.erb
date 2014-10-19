@@ -1,0 +1,58 @@
+<% content_for :title do %><%= @blog_post.title %><% end %>
+<div class="row">
+	<div class="col-md-8">
+		<div style="text-align:center">
+			<p><%= image_tag 'logos/logo_blog.png' %></p>
+			<h1><%= @blog_post.title %></h1>
+			<h2><%= @blog_post.subtitle %></h2>
+			<p><%=l @blog_post.created_at, format: :short_day %> <%= ('por '+@blog_post.user.name) unless @blog_post.user.blank? or @blog_post.user.name.blank? %></p>
+			<h3><%= @blog_post.hashtags %></h3>
+			<% @blog_post.blog_post_contents.each do |bpc| %>
+				<p><%= image_tag bpc.photo.url(:xl) %></p>
+				<p style="font-size:18px; font-weight:lighter; width:500px; margin:auto; padding:10px 0px 20px 0px;"><%= bpc.content.gsub(/\n/, '<br />').html_safe %></p>
+			<% end %>
+			<% if user_signed_in? and current_user.is_god? %>
+				<%= link_to 'Edit', edit_blog_post_path(@blog_post) %> |
+				<%= link_to 'Back', blog_posts_path %>
+			<% end %>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<% unless user_signed_in? %>
+		<div>
+			<h4>NEWSLETTER</h4>
+			<p>
+				<%= link_to '¡Inscríbete!', new_user_registration_path, :class => 'btn btn-primary' %> 
+			</p>
+		</div>
+		<hr />
+		<% end %>
+		<div>
+			<h4>SOCIAL</h4>
+			<div class="list-group">
+				<%= link_to image_tag('footer/social-black-facebook.jpg'), 'https://www.facebook.com/prilovcom', :target => '_blank', :class => "list-group-item" %> 
+				<%= link_to image_tag('footer/social-black-twitter.jpg'), 'https://twitter.com/prilovchile', :target => '_blank', :class => "list-group-item" %>
+				<%= link_to image_tag('footer/social-black-pinterest.jpg'), 'http://instagram.com/prilovchile', :target => '_blank', :class => "list-group-item" %>
+			</div>
+		</div>
+		<hr />
+		<div>
+			<h4>GUARDA</h4>
+			<div class="list-group">
+			<% StorageItem.all.each do |si| %>
+				<%= link_to si.public_name, new_order_path, :class => "list-group-item" %>
+			<% end %>
+			</div>
+		</div>
+		<hr />
+		<div>
+			<h4>RELACIONADOS</h4>
+			<div class="list-group">
+			<% BlogPost.where('id <> ?', @blog_post.id).each do |post| %>
+				<%= link_to post.title, post, :class => "list-group-item" %>
+			<% end %>
+			</div>
+		</div>
+		<hr />
+	</div>
+</div>

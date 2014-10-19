@@ -1,0 +1,29 @@
+<%= f.fields_for :blog_post_contents do |bpc| %>
+  <div class="form-group">
+        <%= bpc.label :photo, 'Foto en el cuerpo del blog', :class => 'control-label' %><br>
+	<div class="row" style="margin-bottom:5px">
+		<div class="col-sm-1">
+			<%= image_tag bpc.object.photo.url(:tiny) %>
+		</div>
+		<div class="col-sm-6">
+			<%= bpc.file_field :photo, :class => 'btn btn-default' %>
+		</div>
+		<div class="col-sm-2">
+			<%= bpc.link_to_remove 'Eliminar', :class => 'btn btn-danger btn-xs' %>
+		</div>
+	</div>
+  </div>
+	<div class="row" style="margin-bottom:15px">
+		<div class="col-sm-12">
+		  <div class="form-group">
+		    <%= bpc.label :content, :class => 'control-label' %><br>
+		    <%= bpc.text_area :content, :class => 'form-control', style: 'height:150px' %>
+		  </div>
+		</div>
+	</div>
+	
+<% end %>
+
+<div>
+	<%= f.link_to_add 'Agregar Contenido', :blog_post_contents, :class => 'btn btn-warning btn-xs' %>
+</div>
