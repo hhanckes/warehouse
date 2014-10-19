@@ -1,4 +1,16 @@
 <h1><%= @h1 %></h1>
+<% if params[:controller] != 'main' %>
+<div class="well" style="padding-bottom:5px">
+	<p>En esta sección encontrarás el detalle de los pedidos que has generado. Recuerda:</p>
+	<ul class="list-group">
+		<li class="list-group-item">Cada pedido tiene que hagas tiene un número identificador único.</li>
+		<li class="list-group-item">Cada item que pides en cada pedido también tiene un identificador único.</li>
+		<li class="list-group-item">Un pedido pasa por distintos estados desde que generas la solicitud hasta que recogemos los productos y los llevamos a la bodega.</li>
+		<li class="list-group-item">Cada item también pasa por distintos estados desde que entra a la bodega hasta que pidas que te devolvamos el item.</li>
+		<li class="list-group-item">Te notificaremos por correo cada vez que ocurra un cambio de estado par que estés 100% informado y tranquilo con tus cosas.</li>
+	</ul>
+</div>
+<% end %>
 <% if @orders.size == 0 %>
 	<%= render 'orders/no_orders_well' %>
 <% else %>
@@ -7,7 +19,7 @@
 	    	<div class="panel-heading faq-section">
 	      		<h2 class="panel-title">
 	        		<a data-toggle="collapse" data-parent="#accordion" href="<%= '#collapse'+order.id.to_s %>">
-	          			Orden # <%= order.id %> - <%= l(order.created_at, format: :medium).capitalize %>
+	          			Pedido # <%= order.id %> - <%= l(order.created_at, format: :medium).capitalize %>
 	        		</a>
 	      		</h2>
 	    	</div>

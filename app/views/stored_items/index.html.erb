@@ -1,4 +1,12 @@
 <h1>Inventario <%= @in_box ? 'en caja ID '+@q : '' %></h1>
+<div class="well" style="padding-bottom:5px">
+	<p>En esta sección encontrarás el detalle de los productos que registraste como guardados en la bodega.</p>
+	<ul class="list-group">
+		<li class="list-group-item">Cada ves que te dejamos una caja recibes un formulario que debes completar con el detalle de lo que estás guardando.</li>
+		<li class="list-group-item">La información que tu completas es ingresada al sistema para que puedas tener tu inventario online.</li>
+		<li class="list-group-item">Esta información aparecerá acá una vez la caja llegue a la bodega.</li>
+	</ul>
+</div>
 <%= form_tag(request.fullpath, :method => "get", :class => 'form-inline', role: 'form') do %>
   <div class="form-group" style="width:100%">
 	<%= text_field_tag(:q, @q, class: "form-control input-sm", placeholder: "Busca por ID de la caja o por el nombre o la descripción de un producto específico", style: 'width:80%' ) %>

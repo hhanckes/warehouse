@@ -2,6 +2,13 @@
 	<%= link_to 'Agregar Dirección', '#', :class => 'btn btn-primary', 'data-toggle' => "modal", 'data-target' => '#new_address' %>
 </div>
 <h1>Direcciones</h1>
+<div class="well" style="padding-bottom:5px">
+	<p>En esta sección encontrarás el detalle de todas las direcciones que has agregado.</p>
+	<ul class="list-group">
+		<li class="list-group-item">Recuerda agregar con todo el detalle necesario y de la forma más precisa posible tu dirección.</li>
+		<li class="list-group-item">Estas direcciones las podrás usar para que vayamos a buscar las coas que quieres guardar y devolverte tus cosas.</li>
+	</ul>
+</div>
 <% if @addresses.size == 0 %>
 	<%= render 'orders/no_orders_well' %>
 <% else %>

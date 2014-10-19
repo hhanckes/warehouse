@@ -1,35 +1,33 @@
 <h1 class="">Pagos</h2>
-<hr />
-<div><%= link_to 'Generar Pago', '#', :class => 'btn btn-primary', 'data-toggle' => "modal", 'data-target' => "#new_payment" %></div>
-
-<h2 class=""><span class="glyphicon glyphicon-time"></span> Próximo pago: <%= number_to_currency current_user.in_warehouse_order_storage_items.sum(:price) %></h2>
-<p>Fecha máxima próximo pago: <b><%=l current_user.next_payment_date, format: :date_detail %></b></p>
-
+<div class="well" style="padding-bottom:5px">
+	<p>En esta sección encontrarás el detalle de lo que tienes que pagar y lo que has pagado por el servicio.</p>
+	<ul class="list-group">
+		<li class="list-group-item">Se te enviarña un correo de recordatorio 5 días antes de que el pago expire.</li>
+		<li class="list-group-item">Haz click en generar pago para hacer la transferencia por el dinero que corresponde.</li>
+		<li class="list-group-item">Puedes pagar desde 1 hasta 6 meses. Te recomendamos pagar varios meses por adelantado para tu facilidad.</li>
+	</ul>
+</div>
+<h2 class="">
+	<span class="glyphicon glyphicon-time"></span> 
+	Próximo pago: <%= number_to_currency current_user.in_warehouse_order_storage_items.sum(:price) %>
+	<%= link_to 'Generar Pago', '#', :class => 'btn btn-primary', 'data-toggle' => "modal", 'data-target' => "#new_payment" %>
+</h2>
+<ul class="list-group" style="margin-top:20px">
+  <li class="list-group-item list-group-item-success">Fecha máxima próximo pago: <b><%=l current_user.next_payment_date, format: :date_detail %></b></li>
+</ul>
 <% if current_user.in_warehouse_order_storage_items.size == 0 %>
 	<%= render 'orders/no_orders_well' %>
 <% else %>
-	<div class="panel panel-default" style="border:none">
-	  	<div class="panel-heading faq-section">
-	    	<h3 class="panel-title">
-	      	<a data-toggle="collapse" data-parent="#accordion" href="#detail">
-	        		<span class="glyphicon glyphicon-plus" style="font-size:12px"></span> Items a pagar en próximo pago
-	      	</a>
-	    	</h3>
-	  	</div>
-	  	<div id="detail" class="panel-collapse collapse">
-			<ul class="list-group">
-				<% current_user.in_warehouse_order_storage_items.each do |osi| %>
-					<li class="list-group-item">
-						<span class="badge"><%= number_to_currency osi.price %></span>
-						ID <%= link_to osi.id.to_s, '#', 'data-toggle' => "modal", 'data-target' => "#storage_item_"+osi.id.to_s %> - 
-						<%= osi.storage_item.public_name %> (Order # <%= link_to osi.order.id.to_s, osi.order, target: '_blank' %>)
-					</li>
-					<%= render 'storage_item_details_modal', stored_items: osi.stored_items, id: "storage_item_"+osi.id.to_s %>
-				<% end %>
-			</ul>
-	   	</div>
-	</div>
-	<hr>
+<h3>Items a pagar en próximo pago</h3>
+<% current_user.in_warehouse_order_storage_items.each do |osi| %>
+	<li class="list-group-item">
+		<span class="badge"><%= number_to_currency osi.price %></span>
+		ID <%= link_to osi.id.to_s, '#', 'data-toggle' => "modal", 'data-target' => "#storage_item_"+osi.id.to_s %> - 
+		<%= osi.storage_item.public_name %> (Order # <%= link_to osi.order.id.to_s, osi.order, target: '_blank' %>)
+	</li>
+	<%= render 'storage_item_details_modal', stored_items: osi.stored_items, id: "storage_item_"+osi.id.to_s %>
+<% end %>
+<hr>
 <% end %>
 <h2 class=""><span class="glyphicon glyphicon-ok"></span> Historial de pagos realizados</h2>
 <% if @done_payments.size == 0 %>
