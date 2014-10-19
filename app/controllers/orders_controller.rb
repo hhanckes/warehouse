@@ -1,6 +1,6 @@
 # encoding: UTF-8
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :step2, :step3, :transfer_confirmed, :update, :destroy, :update_order_status, :update_order_storage_item_status, :transfer_confirmed_return_osi]
+  before_action :set_order, only: [:show, :edit, :step2, :step3, :transfer_confirmed, :update, :destroy, :update_order_status, :update_order_storage_item_status, :transfer_confirmed_return_osi, :order_success]
   before_action :set_order_storage_item, only: [:update_order_storage_item_status]
   before_action :authenticate_user!, except: [:new, :step1, :step2, :step3]
 
@@ -181,7 +181,7 @@ class OrdersController < ApplicationController
       
           redirect_to step3_order_path(@order), notice: '¡Estás a un paso de completar el pedido!'
         else
-          redirect_to step2_order_path(id: @order.id, area: params[:area]), alert: '¡El usuario ya existe debes ingresar para continuar!'
+          redirect_to step2_order_path(id: @order.id, area: params[:area]), alert: '¡El usuario ya existe debes ingresar con tu cuenta para continuar!'
         end
       end
     end
@@ -190,6 +190,9 @@ class OrdersController < ApplicationController
   #GET
   def step3
     
+  end
+  
+  def order_success
   end
   
   #POST
@@ -211,7 +214,7 @@ class OrdersController < ApplicationController
       payment.order_storage_items << osi
     end
     
-    redirect_to @order, notice: '¡Todo OK! Procederemos a validar tu pago dentro de las próximas horas. En esta página encontrarás el detalle de tu orden'
+    redirect_to order_success_order_path(@order), notice: '¡Todo OK! Procederemos a validar tu pago dentro de las próximas horas. En esta página encontrarás el detalle de tu orden'
   end
   
   #POST

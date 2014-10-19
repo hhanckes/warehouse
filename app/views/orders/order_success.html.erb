@@ -1,0 +1,53 @@
+<div class="row">
+	<div class="col-md-4 center">
+		<%= image_tag 'orders/order_success.png', :class => "img-responsive" %>
+	</div>
+	<div class="col-md-6">
+		<h1>Felicitaciones por tu orden</h1>
+		<p>Procederemos a validar la recepción de fondos.</p>
+		<p>Una vez esté OK te llegará un correo confirmando la visita.</p>
+		<p>Tu orden consite en:</p>
+		<ul class="list-group">
+		<% @order.storage_items.uniq.each do |si| %>
+			<li class="list-group-item">
+				<span class="badge"><%= number_to_currency @order.storage_items.where('storage_item_id = ?', si.id).size*si.price %></span>
+				<%= @order.storage_items.where('storage_item_id = ?', si.id).size %> <%= si.public_name %>
+			</li>
+		<% end %>
+		</ul>
+		<p>Que llevaremos a <%= @order.address.receiver %> a la dirección <b><%= @order.address.name %> <%= @order.address.area.name %></b> el día <b><%= l(@order.delivery_date, format: :medium).capitalize %> entre <%= @order.delivery_time %></b></p>
+	</div>
+</div>
+<hr />
+<div class="row">
+	<div class="col-md-12">
+		<h1>Opciones para administrar tu cuenta</h1>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-6">
+		<h2><%= link_to 'Pedidos', orders_path %></h2>
+		<p>El detalle de todos los pedidos que has hecho.</p>
+		<p>Puedes revisar el estado en que se encuentra cada uno.</p>
+		<p>También puedes ver el detalle de lo almacenado en cada orden.</p>
+	</div>
+	<div class="col-md-6">
+		<h2><%= link_to 'Inventario', stored_items_path %></h2>
+		<p>El detalle de lo que tienes guardado en la bodega.</p>
+		<p>Acá puedes pedir recoger items, ver qué tienes guardado y dónde.</p>
+		<p>También puedes buscar las cosas usando el buscador que armamos para ti.</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<h2><%= link_to 'Direcciones', addresses_path %></h2>
+		<p>El detalle de las direcciones que has ingresado.</p>
+		<p>Puedes modificarla y agregar nuevas.</p>
+	</div>
+	<div class="col-md-6">
+		<h2><%= link_to 'Pagos', payments_orders_path %></h2>
+		<p>El detalle de los pagos que has hecho.</p>
+		<p>También puedes mirar cuándo se te van a generar nuevos cobros.</p>
+	</div>
+</div>

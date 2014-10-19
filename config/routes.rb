@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get 'step2/:area', on: :member, :action => 'step2', as: 'step2'
     patch 'step2/:area', on: :member, :action => 'step2'
     get 'step3', on: :member
+    get 'order_success', on: :member
     post 'transfer_confirmed', on: :member
     post 'transfer_confirmed_return_osi/:osi_id', on: :member, :action => 'transfer_confirmed_return_osi', as: 'transfer_confirmed_return_osi'
     post 'new_payment_paid', on: :collection
