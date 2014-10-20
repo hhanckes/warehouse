@@ -31,7 +31,9 @@ class Notification < ActionMailer::Base
   end
   
   def item_return_request(order_storage_item)
-    mail to: order_storage_item.order.user.email, subject: 'item_return_request'
+    @user = order_storage_item.order.user
+    @order_storage_item = order_storage_item
+    mail to: @user.email, subject: 'Recibimos los fondos para devolver tus cosas guardadas con el identificador #'+@order_storage_item.id.to_s
   end
   
   def item_returned(storage_item_return_proof)

@@ -1,4 +1,12 @@
 <% content_for :content do %>
-item_return_request
+<p>Hola <%= @user.name %>!</p>
+<p>Te confirmado que hemos recibido tu pago de <%= number_to_currency @order_storage_item.return_price %> para generar la devolución de tus cosas bajo 
+	el identificador #<%= @order_storage_item.id.to_s %>.</p>
+<p>El detalle de las cosas guardadas que devolveremos es:</p>
+<ul>
+	<% @order_storage_item.stored_items.each do |si| %>
+	<li><%= si.quantity %> <%= si.name %></li>
+	<% end %>
+</ul>
 <% end %>
 <%= render "layouts/email" %>
