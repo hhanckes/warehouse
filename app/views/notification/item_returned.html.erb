@@ -1,4 +1,16 @@
 <% content_for :content do %>
-item_returned
+	<p>Hola <%= @user.name %>!</p>
+	<p>Te confirmado que hemos finalizado el proceso de devolución que solicitaste.</p>
+	<p>El detalle de lo que devolvimos es el siguiente:</p>
+	<% @storage_item_return_proof.order_storage_items.each do |osi| %>
+	<p><b>Item con identificador #<%= osi.id.to_s %></b></p>
+		<ul>
+			<% osi.stored_items.each do |si| %>
+			<li><%= si.quantity %> <%= si.name %></li>
+			<% end %>
+		</ul>
+	<% end %>
+	<p>¡Cuéntanos de tu experiencia para obtener descuentos en tus próximos pedidos!</p>
+	<p>¡Gracias! Fue una experiencia increíble para nosotros poder ayudarte a guardar tus cosas. ¡Esperamos verte pronto!</p>
 <% end %>
 <%= render "layouts/email" %>

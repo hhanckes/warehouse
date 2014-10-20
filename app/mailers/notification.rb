@@ -33,7 +33,7 @@ class Notification < ActionMailer::Base
   def item_left_warehouse(order_storage_item)
     @user = order_storage_item.order.user
     @order_storage_item = order_storage_item
-    mail to: @user.email, subject: 'Tu cosas guardad bajo el identificador #'+@order_storage_item.id.to_s+' han salido de nuestra bodega para ser devueltas'
+    mail to: @user.email, subject: 'Tu cosas con el identificador #'+@order_storage_item.id.to_s+' han salido de nuestra bodega para ser devueltas'
   end
   
   def item_return_request(order_storage_item)
@@ -43,8 +43,9 @@ class Notification < ActionMailer::Base
   end
   
   def item_returned(storage_item_return_proof)
-    email = storage_item_return_proof.order_storage_items.last.order.user.email
-    mail to: email, subject: 'items_returned_proof'
+    @storage_item_return_proof = storage_item_return_proof
+    @user = storage_item_return_proof.order_storage_items.last.order.user
+    mail to: @user.email, subject: 'Hemos finalizado el proceso de devolución que solicitaste'
   end
   
   def payment_reminder
