@@ -84,7 +84,7 @@ function update_selected_item(div_id, count_1) {
 			$(".other-details").fadeOut();
 		}
 	} else {
-		$('#'+div_id).css( "background-color", "#0e90d2" );
+		$('#'+div_id).css( "background-color", "#FFAA00" );
 		$('#'+count_1).css( "display", "inline-block" );
 		$('#'+div_id).attr('selected', true);
 		if(count_1 == 'other-count') {

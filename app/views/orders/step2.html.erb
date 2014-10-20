@@ -1,9 +1,3 @@
-<ul class='nav nav-wizard'>
-  <li><%= link_to 'Nuevo Pedido', new_order_path %></li>
-  <li class='active'><%= link_to 'Detalles', step2_order_path(id: @order.id, area: params[:area])%></li>
-  <li>Confirmar y Pagar</li>
-</ul>
-
 <div class="row new-order-step2 center">
 	<div class="col-md-12">
 		<%= form_for(@order, url: step2_order_path(id: @order.id)) do |f| %>
@@ -80,7 +74,7 @@
 					options_for_select(['10:00 - 12:00','12:00 - 14:00','14:00 - 16:00','16:00 - 18:00']), :class => 'hour-select' %>			</p>
 		</div>
 		<div class="form-actions">
-		  <%= f.submit 'Siguiente paso', :class => 'btn btn-default' %>
+		  <%= f.submit 'Siguiente paso', :class => 'btn btn-primary' %>
 		</div>
 		<% end %>
 	</div>
