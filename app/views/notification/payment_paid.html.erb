@@ -1,6 +1,6 @@
 <% content_for :content do %>
 	<p>Hola <%= @user.name %>!</p>
-	<p>Te confirmado que hemos recibido tu pago de <%= number_to_currency @payment.amount %> por:</p>
+	<p>Te confirmamos que hemos recibido tu pago de <%= number_to_currency @payment.amount %> por:</p>
 	<ul>
 		<% @payment.order_storage_items.each do |osi| %>
 			<li>
