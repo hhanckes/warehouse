@@ -1,4 +1,20 @@
 <% content_for :content do %>
-payment_submitted
+	<p>Hola <%= @user.name %>!</p>
+	<p>Has indicado que realizaste la transferencia por <%= number_to_currency @payment.amount %> pagando:</p>
+	<ul>
+		<% @payment.order_storage_items.each do |osi| %>
+			<li>
+				<%= osi.storage_item.public_name %> identificador #<%= osi.id %> (pedido #<%= osi.order.id %>)
+			</li>
+		<% end %>
+	</ul>
+	El/los meses de pago corresponden a:
+	<ul>
+	<% @payment.payment_months.each do |pm| %>
+		<li><%= pm.month.to_s+' - '+pm.year.to_s %></li>
+	<% end %>
+	</ul>
+	<p>Estamos validando la recepción de los fondos. Pronto te llegará un correo confirmando que está todo OK.</p>
+	<p>¡Muchas gracias! Tus cosas siguen sanas y salvas.</p>
 <% end %>
 <%= render "layouts/email" %>

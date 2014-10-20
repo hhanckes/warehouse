@@ -53,7 +53,9 @@ class Notification < ActionMailer::Base
   end
   
   def payment_submitted(payment)
-    mail to: payment.users.first.email, subject: 'payment_reminder'
+    @payment = payment
+    @user = payment.users.first
+    mail to: @user.email, subject: 'El pago que realizaste está en proceso de validación'
   end
   
   def payment_paid(payment)
