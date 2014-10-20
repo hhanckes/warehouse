@@ -30,7 +30,7 @@ class StorageItemReturnProofsController < ApplicationController
     @new_status = OrderStorageItemStatus.find_by_name('Shipped from Warehouse') if params[:commit] == 'Items Despachados'
     @new_status = OrderStorageItemStatus.find_by_name('Return in progress') if params[:commit] == 'Fondos Recibidos'
     @new_status = OrderStorageItemStatus.find_by_name('Returned') if params[:commit] == 'Guardar'
-    @storage_item_return_proof = StorageItemReturnProof.new if params[:commit] == 'Guardar'
+    @storage_item_return_proof = StorageItemReturnProof.new(storage_item_return_proof_params) if params[:commit] == 'Guardar'
     
     params[:order_storage_item_ids].each do |osi_id|
       osi = OrderStorageItem.find(osi_id)
@@ -38,7 +38,6 @@ class StorageItemReturnProofsController < ApplicationController
       osi.save
       (@storage_item_return_proof.order_storage_items << osi) if params[:commit] == 'Guardar'
     end
-    @storage_item_return_proof.comments = params[:comments] if params[:commit] == 'Guardar'
     @storage_item_return_proof.save if params[:commit] == 'Guardar'
 
     redirect_to storage_items_waiting_to_be_returned_path, notice: 'Item actualizado correctamente.'
