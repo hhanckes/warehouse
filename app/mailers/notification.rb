@@ -15,19 +15,19 @@ class Notification < ActionMailer::Base
   def order_delivered(order)
     @user = order.user
     @order = order
-    mail to: order.user.email, subject: 'order_delivered'
+    mail to: order.user.email, subject: 'Hemos entregado tu pedido'
   end
   
   def order_collected(order)
     @user = order.user
     @order = order
-    mail to: order.user.email, subject: 'order_collected'
+    mail to: order.user.email, subject: 'Hemos recogido tu pedido'
   end
   
   def item_in_warehouse(order_storage_item)
     @user = order_storage_item.order.user
     @order_storage_item = order_storage_item
-    mail to: @user.email, subject: 'item_in_warehouse'
+    mail to: @user.email, subject: 'Han llegado tus cosas guardadas con el identificador '+@order_storage_item.id.to_s+' a la bodega'
   end
   
   def item_return_request(order_storage_item)

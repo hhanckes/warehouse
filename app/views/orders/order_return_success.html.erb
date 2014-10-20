@@ -1,0 +1,50 @@
+<div class="row">
+	<div class="col-md-4 center">
+		<%= image_tag 'orders/order_success.png', :class => "img-responsive" %>
+	</div>
+	<div class="col-md-6">
+		<h1>¡Felicitaciones!</h1>
+		<p>Procederemos a validar la recepción de fondos.</p>
+		<p>Una vez esté OK te llegará un correo confirmando que procederemos con la devolución de tus cosas almacenadas con identificador #<%= @order_storage_item.id.to_s %>.</p>
+		<p>Las cosas que te vamos a devolver son:</p>
+		<ul class="list-group">
+		<% @order_storage_item.stored_items.each do |si| %>
+			<li class="list-group-item"><%= si.quantity %> <%= si.name %></li>
+		<% end %>
+		</ul>
+		<p>Las llevaremos a <%= @order_storage_item.address.receiver %> a la dirección <b><%= @order_storage_item.address.name %> <%= @order_storage_item.address.area.name %></b>.</p>
+	</div>
+</div>
+<hr />
+<div class="row">
+	<div class="col-md-12">
+		<h1>Opciones para administrar tu cuenta</h1>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-6">
+		<h2><%= link_to 'Pedidos', orders_path %></h2>
+		<p>El detalle de todos los pedidos que has hecho.</p>
+		<p>Puedes revisar el estado en que se encuentra cada uno.</p>
+		<p>También puedes ver el detalle de lo almacenado en cada orden.</p>
+	</div>
+	<div class="col-md-6">
+		<h2><%= link_to 'Inventario', stored_items_path %></h2>
+		<p>El detalle de lo que tienes guardado en la bodega.</p>
+		<p>Acá puedes pedir recoger items, ver qué tienes guardado y dónde.</p>
+		<p>También puedes buscar las cosas usando el buscador que armamos para ti.</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<h2><%= link_to 'Direcciones', addresses_path %></h2>
+		<p>El detalle de las direcciones que has ingresado.</p>
+		<p>Puedes modificarla y agregar nuevas.</p>
+	</div>
+	<div class="col-md-6">
+		<h2><%= link_to 'Pagos', payments_orders_path %></h2>
+		<p>El detalle de los pagos que has hecho.</p>
+		<p>También puedes mirar cuándo se te van a generar nuevos cobros.</p>
+	</div>
+</div>

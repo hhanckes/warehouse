@@ -1,7 +1,7 @@
 # encoding: UTF-8
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :step2, :step3, :transfer_confirmed, :update, :destroy, :update_order_status, :update_order_storage_item_status, :transfer_confirmed_return_osi, :order_success]
-  before_action :set_order_storage_item, only: [:update_order_storage_item_status]
+  before_action :set_order, only: [:show, :edit, :step2, :step3, :transfer_confirmed, :update, :destroy, :update_order_status, :update_order_storage_item_status, :transfer_confirmed_return_osi, :order_success, :order_return_success]
+  before_action :set_order_storage_item, only: [:update_order_storage_item_status, :order_return_success]
   before_action :authenticate_user!, except: [:new, :step1, :step2, :step3]
 
   def index
@@ -111,6 +111,9 @@ class OrdersController < ApplicationController
   def order_success
   end
   
+  def order_return_success  
+  end
+  
   #POST
   def transfer_confirmed
     order_status = OrderStatus.find_by_name('Transfer waiting approval')
@@ -126,7 +129,7 @@ class OrdersController < ApplicationController
     osi.address_id = params[:address_id]
     osi.order_storage_item_status = funds_return
     osi.save
-    redirect_to (session["last_url"] || root_path), notice: '¡Todo OK! Devolución de '+osi.storage_item.public_name+' (ID '+osi.id.to_s+') en proceso'
+    redirect_to order_return_success_path(osi.order, order_storage_item_id: osi.id), notice: '¡Todo OK! Devolución de '+osi.storage_item.public_name+' (ID '+osi.id.to_s+') en proceso'
   end
   
   #POST
