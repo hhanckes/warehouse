@@ -10,6 +10,9 @@
 			<% end %>
 		</ul>
 	<% end %>
+	<% unless @storage_item_return_proof.comments.blank? %>
+		<p><b>Comentarios de la entrega:</b> <%= @storage_item_return_proof.comments %></p>
+	<% end %>
 	<p>¡Cuéntanos de tu experiencia para obtener descuentos en tus próximos pedidos!</p>
 	<p>¡Gracias! Fue una experiencia increíble para nosotros poder ayudarte a guardar tus cosas. ¡Esperamos verte pronto!</p>
 <% end %>
