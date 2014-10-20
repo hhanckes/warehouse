@@ -129,7 +129,7 @@ class OrdersController < ApplicationController
     osi.address_id = params[:address_id]
     osi.order_storage_item_status = funds_return
     osi.save
-    redirect_to order_return_success_path(osi.order, order_storage_item_id: osi.id), notice: '¡Todo OK! Devolución de '+osi.storage_item.public_name+' (ID '+osi.id.to_s+') en proceso'
+    redirect_to order_return_success_order_path(osi.order, order_storage_item_id: osi.id), notice: '¡Todo OK! Devolución de '+osi.storage_item.public_name+' (ID '+osi.id.to_s+') en proceso'
   end
   
   #POST
