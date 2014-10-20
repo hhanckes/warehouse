@@ -24,6 +24,7 @@ class OrderStorageItem < ActiveRecord::Base
       unless self.order_storage_item_status.blank?
         Notification.item_in_warehouse(self).deliver if self.order_storage_item_status.name == 'In warehouse'
         Notification.item_return_request(self).deliver if self.order_storage_item_status.name == 'Return in progress'
+        Notification.item_left_warehouse(self).deliver if self.order_storage_item_status.name == 'Shipped from Warehouse'
       end
     end
     

@@ -30,6 +30,12 @@ class Notification < ActionMailer::Base
     mail to: @user.email, subject: 'Han llegado tus cosas guardadas con el identificador '+@order_storage_item.id.to_s+' a la bodega'
   end
   
+  def item_left_warehouse(order_storage_item)
+    @user = order_storage_item.order.user
+    @order_storage_item = order_storage_item
+    mail to: @user.email, subject: 'Tu cosas guardad bajo el identificador #'+@order_storage_item.id.to_s+' han salido de nuestra bodega para ser devueltas'
+  end
+  
   def item_return_request(order_storage_item)
     @user = order_storage_item.order.user
     @order_storage_item = order_storage_item
