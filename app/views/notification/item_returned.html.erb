@@ -1,6 +1,6 @@
 <% content_for :content do %>
 	<p>Hola <%= @user.name %>!</p>
-	<p>Te confirmado que hemos finalizado el proceso de devolución que solicitaste.</p>
+	<p>Te confirmamos que hemos finalizado el proceso de devolución que solicitaste.</p>
 	<p>El detalle de lo que devolvimos es el siguiente:</p>
 	<% @storage_item_return_proof.order_storage_items.each do |osi| %>
 	<p><b>Item con identificador #<%= osi.id.to_s %></b></p>

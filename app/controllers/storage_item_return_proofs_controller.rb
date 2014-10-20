@@ -38,6 +38,7 @@ class StorageItemReturnProofsController < ApplicationController
       osi.save
       (@storage_item_return_proof.order_storage_items << osi) if params[:commit] == 'Guardar'
     end
+    @storage_item_return_proof.comments = params[:comments] if params[:commit] == 'Guardar'
     @storage_item_return_proof.save if params[:commit] == 'Guardar'
 
     redirect_to storage_items_waiting_to_be_returned_path, notice: 'Item actualizado correctamente.'
