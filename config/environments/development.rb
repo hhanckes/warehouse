@@ -33,9 +33,9 @@ Warehouse::Application.configure do
   config.action_mailer.smtp_settings = {  
     address:                'smtp.gmail.com',  
     port:                    465,  
-    user_name:              'hhanckes@gmail.com',  
+    user_name:              'dnocioni1@gmail.com',  
     domain:                 'gmail.com',  
-    password:               'lasgaviotas',
+    password:               'Monday123G',
     authentication:         :plain,
     ssl:                    true,
     tls:                    true 
