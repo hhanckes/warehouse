@@ -92,10 +92,10 @@ Warehouse::Application.configure do
     tls:                    true 
   }
   
-  config.action_mailer.default_url_options = { :host => "http://www.myplacetostore.com/" }
-  config.action_mailer.asset_host = "http://www.myplacetostore.com/"
+  config.action_mailer.default_url_options = { :host => "http://www.myplacetostore.com" }
+  config.action_mailer.asset_host = "http://www.myplacetostore.com"
   
-  config.action_controller.asset_host = "http://www.myplacetostore.com/"
+  config.action_controller.asset_host = "http://www.myplacetostore.com"
 
   config.middleware.use ExceptionNotification::Rack,
     :email => {
