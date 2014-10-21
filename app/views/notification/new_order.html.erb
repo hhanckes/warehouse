@@ -1,17 +1,56 @@
 <% content_for :content do %>
 	<p>Hola <%= @order.user.name %>!</p>
 	<% if @order.user.orders.size == 1 %>
-		<p>¡Gracias por generar tu primera orden! Estamos muy contentos de que te unas y comiences a guardar tus cosas con nosotros.</p>
+		<p>Gracias por usar MyPlaceToStore!</p>
 	<% end %>
-	<p>Es muy importante que estés tranquilo que estés tus cosas estén seguras. Es por eso que te enviaremos en breve e-mails confirmando que hemos:</p>
+	<p>Te informamos que tu pago se encuentra en proceso de validación. Una vez que validemos el pago, te enviaremos un e-mail con la confirmación y los datos de despacho.</p>
+	<p>El detalle del pedido que generaste es el siguiente:</p>
 	<ul>
-		<li>Confirmado tu pago</li>
-		<li>Entregado las cajas</li>
-		<li>Pasado a buscar las cajas e items sueltos</li>
-		<li>Guardado tus cosas en nuestra bodega</li>
+		<% @order.storage_items.uniq.each do |si| %>
+		<li>
+			<b><%= @order.storage_items.where('storage_item_id = ?', si.id).size %> <%= si.public_name %></b>
+			<%= number_to_currency @order.storage_items.where('storage_item_id = ?', si.id).size*si.price %>
+		</li>
+		<% end %>
+		<li>
+			<b>Retiro de productos:</b> Gratis!
+		<li>
 	</ul>
-	<p>
-		Recuerda que puedes acceder a tus pedidos y tu inventario a través de tu cuenta ingresando en <%= link_to 'www.warehouse.com', root_url %>. 
-		Solo tienes que ingresar con tu usuario y contraseña e ir al menú que se encuentre en el vértice derecho de tu pantalla.</p>
+	<p><b>Total: <%= number_to_currency @order.order_storage_items.sum('price'), precision: 0 %></b></p>
+	<% if @order.storage_items.include? StorageItem.find_by_name('other') %>
+	<p class="center">
+		* Los items "Otros" se cobrarán una vez se defina el precio. Te contactaremos antes para enviarte la cotización. Si no estás conforme con algo te devolveremos el dinero de inmediato
+	</p>
+	<% end %>
+	<p>Los datos para generar la recolección y entrega de los items son los sigueintes:</p>
+	<ul>
+		<li>Dirección: <%= @order.address.name %>, <%= @order.address.area.name %></li>
+		<li>Fecha/hora de entrega: <%= l(@order.delivery_date, format: :medium).capitalize %> entre <%= @order.delivery_time %></li>
+		<li>Nombre contacto: <%= @order.address.receiver %></li>
+		<li>Teléfono contacto: <%= @order.address.phone_number %></li>
+	</ul>
+	<p>Puedes hacer seguimiento de tu pedido a través de nuestra página web MyPlaceToStore.com o en los siguientes links.</p>
+	<p><b><%= link_to 'Pedidos', orders_url %></b></p>
+	<ul>
+		<li>Acá puedes administrar el detalle de todos los pedidos que has hecho.</li>
+		<li>Puedes revisar el estado en que se encuentra cada uno.</li>
+		<li>También puedes ver el detalle de lo almacenado en cada orden.</li>
+	</ul>
+	<p><b><%= link_to 'Inventario', stored_items_url %></b></p>
+	<ul>
+		<li>Acá puedes revisar detalle de lo que tienes guardado en la bodega.</li>
+		<li>Puedes pedir recoger items, ver qué tienes guardado y dónde.</li>
+		<li>También puedes buscar las cosas usando el buscador que armamos para ti.</li>
+	</ul>
+	<p><b><%= link_to 'Direcciones', addresses_url %></b></p>
+	<ul>
+		<li>Acá puedes administrar el detalle de las direcciones que has ingresado.</li>
+		<li>Puedes modificarla y agregar nuevas.</li>
+	</ul>
+	<p><b><%= link_to 'Pagos', payments_orders_url %></b></p>
+	<ul>
+		<li>Acá puedes administrar y revisar los pagos que has hecho.</li>
+		<li>También puedes mirar cuándo se te van a generar nuevos cobros y pagar lo que debas.</li>
+	</ul>
 <% end %>
 <%= render "layouts/email" %>
