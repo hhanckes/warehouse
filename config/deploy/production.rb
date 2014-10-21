@@ -17,7 +17,7 @@
 
 set :application, 'warehouse'
 
-server 'ec2-54-88-40-187.compute-1.amazonaws.com', user: 'ubuntu', roles: %w{web app}
+server 'www.myplacetostore.com', user: 'ubuntu', roles: %w{web app}
 
 
 # Custom SSH Options
