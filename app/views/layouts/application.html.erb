@@ -34,7 +34,7 @@
   </head>
   <body>
 	<%= render 'layouts/top_menu' %>
-    <div class="container" id="main-content">
+    <div class="<%= params[:action] == 'home' ? '' : 'container' %>">
 		<% if @breadcrumbs %>
 	  	<ol class="breadcrumb">
 	    	<%= render_breadcrumbs :tag => :li, :separator => "" %>

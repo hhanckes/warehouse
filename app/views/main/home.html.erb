@@ -1,190 +1,195 @@
-<div class="row introduction">
-	<div class="col-md-12 center">
-		<h1>Guardar tus cosas es más fácil</h1>
-		<p>Warehouse se encarga de guardar tus cosas.<p>
-		<p>Almacenaje conveniente en Chile desde $4,990/mes.</p>
-		<p><%= link_to 'Comienza acá', new_order_path, :class => 'btn btn-primary btn-lg', :style => 'width:200px; font-size:16px' %></p>
-	</div>
-</div>
-<div class="row center">
-	<div class="col-md-3">
-		<div class="img-rounded how-it-works">
-			<%= image_tag 'home/paso_1_deliver_boxes.png', :class => 'how-it-works-image img-responsive' %>
-			<p class="how-it-works-text">Entregamos cajas a tu domicilio gratis</p>
+<div class="background-landing">
+	<div class="row introduction">
+		<div class="col-md-12 center">
+			<h1 style="font-weight:normal">Guardar tus cosas es más fácil</h1>
+			<p>Warehouse se encarga de guardar tus cosas.<p>
+			<p>Almacenaje conveniente en Chile desde $4,990/mes.</p>
+			<p><%= link_to 'Comienza acá', new_order_path, :class => 'btn btn-primary btn-lg', :style => 'width:200px; font-size:16px' %></p>
 		</div>
 	</div>
-	<div class="col-md-3">
-		<div class="img-rounded how-it-works">
-			<%= image_tag 'home/paso_2_pack_items.png', :class => 'how-it-works-image img-responsive' %>
-			<p class="how-it-works-text">Llena las cajas con los items que quieras guardar</p>
+	<div class="row center">
+		<div class="col-md-3">
+			<div class="img-rounded how-it-works" style="margin:0 auto;">
+				<%= image_tag 'home/paso_1_deliver_boxes.png', :class => 'how-it-works-image img-responsive' %>
+				<p class="how-it-works-text">Entregamos cajas a tu domicilio gratis</p>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="img-rounded how-it-works" style="margin:0 auto;">
+				<%= image_tag 'home/paso_2_pack_items.png', :class => 'how-it-works-image img-responsive' %>
+				<p class="how-it-works-text">Llena las cajas con los items que quieras guardar</p>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="img-rounded how-it-works" style="margin:0 auto;">
+				<%= image_tag 'home/paso3_collect.png', :class => 'how-it-works-image img-responsive' %>
+				<p class="how-it-works-text">Buscamos las cajas y las guardamos en nuestras bodegas</p>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="img-rounded how-it-works" style="margin:0 auto;">
+				<%= image_tag 'home/paso4_return_items.png', :class => 'how-it-works-image img-responsive' %>
+				<p class="how-it-works-text">Devolvemos las cajas cuando las necesites</p>
+			</div>
 		</div>
 	</div>
-	<div class="col-md-3">
-		<div class="img-rounded how-it-works">
-			<%= image_tag 'home/paso3_collect.png', :class => 'how-it-works-image img-responsive' %>
-			<p class="how-it-works-text">Buscamos las cajas y las guardamos en nuestras bodegas</p>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 know-more">
+	 		<p>¡Conoce más!</p>
+			<p><span class="glyphicon glyphicon-chevron-down" style="font-size:20px"></span></p>
 		</div>
 	</div>
-	<div class="col-md-3">
-		<div class="img-rounded how-it-works">
-			<%= image_tag 'home/paso4_return_items.png', :class => 'how-it-works-image img-responsive' %>
-			<p class="how-it-works-text">Devolvemos las cajas cuando las necesites</p>
-		</div>
-	</div>
-</div>
-<hr />
-<div class="row">
-	<div class="col-md-12 know-more">
- 		<p>¡Conoce más!</p>
-		<p><span class="glyphicon glyphicon-chevron-down" style="font-size:20px"></span></p>
-	</div>
-</div>
-<hr />
-<div class="row we-do-the-work">
-	<div class="col-md-6">
-		<h2>Nosotros hacemos el trabajo,<br />
-		sin que te muevas de tu casa</h2>
-		<ul>
-			<li>Guardamos tus items desde $ 4,990 /mes</li>
-			<li>Pasamos a buscar las cajas gratis</li>
-			<li>Nuestra bodega cuenta con cámaras de seguridad</li>
-			<li>Inventario online de tus cajas e items</li>
-			<li>Necesitas algo de vuelta? Podemos entregar en 48 horas</li>
-		</ul>
-	</div>
-	<div class="col-md-6">
- 		<p><%= image_tag 'home/inventory_macbook.png', :class => 'img-responsive' %></p>
-	</div>
-</div>
-<hr />
-<div class="row pricing" id="pricing">
-	<div class="col-md-12 center">
-		<h2>Precios</h2>
-		<h3>Paga solo por el espacio que ocupas</h3>
-	</div>
-</div>
-<div class="row pricing" style="margin-bottom:50px;">
-	<div class="img-rounded pricing-item img-responsive" style="border:1px solid #999;">
-		<div class="col-md-3 vcenter">
-			<%= image_tag 'home/warehouse_boxes.png', :class => 'img-responsive', style: 'margin:0 auto; margin-top:-20px;' %>
-			<p class="center" style="margin-top:5px">Cajas Warehouse</p>
-		</div><!--
-		--><div class="col-md-7 vcenter">
+	<hr />
+	<div class="row we-do-the-work">
+		<div class="col-md-6">
+			<h2>Nosotros hacemos el trabajo,<br />
+			sin que te muevas de tu casa</h2>
 			<ul>
-				<li>Entregamos cajas de excelente calidad gratis</li>
-				<li>Pasamos a buscar tus cajas llenas</li>
-				<li>Bodegas seguras y aseguradas</li>
-				<li>Contrato mínimo de tres meses</li>
+				<li>Guardamos tus items desde $ 4,990 /mes</li>
+				<li>Pasamos a buscar las cajas gratis</li>
+				<li>Nuestra bodega cuenta con cámaras de seguridad</li>
+				<li>Inventario online de tus cajas e items</li>
+				<li>Necesitas algo de vuelta? Podemos entregar en 48 horas</li>
 			</ul>
-		</div><!--
-		--><div class="col-md-2 vcenter">
-			<h2 style="font-weight:bold; color:#FF5252">$ 4,990</h2>
-			<p class="center">por caja / mes</p>
+		</div>
+		<div class="col-md-6">
+	 		<p><%= image_tag 'home/inventory_macbook.png', :class => 'img-responsive' %></p>
 		</div>
 	</div>
 </div>
-<div class="row pricing" style="margin-bottom:20px;">
-	<div class="img-rounded pricing-item img-responsive" style="border:1px solid #999;">
-		<div class="col-md-3 vcenter">
-			<%= image_tag 'home/warehouse_items.png', :class => 'img-responsive', style: 'margin:0 auto; margin-top:-20px;' %>
-			<p class="center" style="margin-top:20px">Warehouse Items</p>
-		</div><!--
-		--><div class="col-md-7 vcenter">
-			<ul>
-				<li>Pasamos a buscar tus items sueltos</li>
-				<li>Bodegas seguras y aseguradas</li>
-				<li>Contrato mínimo de tres meses</li>
-			</ul>
-		</div><!--
-		--><div class="col-md-2 vcenter">
-			<p class="center" style="margin:0px; padding:0px">Desde</p>
-			<h2 style="font-weight:bold; color:#FF5252">$ 4,990</h2>
-			<p class="center">por item / mes</p>
+<div class="background-landing-2">
+	<div class="row pricing" id="pricing">
+		<div class="col-md-12 center">
+			<h2 style="font-weight:normal">Precios</h2>
+			<h3>Paga solo por el espacio que ocupas</h3>
+		</div>
+	</div>
+	<div class="row pricing" style="margin-bottom:50px;">
+		<div class="img-rounded pricing-item img-responsive" style="border:1px solid #999;">
+			<div class="col-md-3 vcenter">
+				<%= image_tag 'home/warehouse_boxes.png', :class => 'img-responsive', style: 'margin:0 auto; margin-top:-20px;' %>
+				<p class="center" style="margin-top:5px">Cajas Warehouse</p>
+			</div><!--
+			--><div class="col-md-7 vcenter">
+				<ul>
+					<li>Entregamos cajas de excelente calidad gratis</li>
+					<li>Pasamos a buscar tus cajas llenas</li>
+					<li>Bodegas seguras y aseguradas</li>
+					<li>Contrato mínimo de tres meses</li>
+				</ul>
+			</div><!--
+			--><div class="col-md-2 vcenter">
+				<h2 style="font-weight:bold; color:#FF5252">$ 4,990</h2>
+				<p class="center">por caja / mes</p>
+			</div>
+		</div>
+	</div>
+	<div class="row pricing" style="margin-bottom:20px;">
+		<div class="img-rounded pricing-item img-responsive" style="border:1px solid #999;">
+			<div class="col-md-3 vcenter">
+				<%= image_tag 'home/warehouse_items.png', :class => 'img-responsive', style: 'margin:0 auto; margin-top:-20px;' %>
+				<p class="center" style="margin-top:20px">Warehouse Items</p>
+			</div><!--
+			--><div class="col-md-7 vcenter">
+				<ul>
+					<li>Pasamos a buscar tus items sueltos</li>
+					<li>Bodegas seguras y aseguradas</li>
+					<li>Contrato mínimo de tres meses</li>
+				</ul>
+			</div><!--
+			--><div class="col-md-2 vcenter">
+				<p class="center" style="margin:0px; padding:0px">Desde</p>
+				<h2 style="font-weight:bold; color:#FF5252">$ 4,990</h2>
+				<p class="center">por item / mes</p>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 center">
+			<p><%= link_to 'Comienza acá', new_order_path, :class => 'btn btn-primary btn-lg', :style => 'width:200px; font-size:16px' %></p>
 		</div>
 	</div>
 </div>
-<div class="row">
-	<div class="col-md-12 center">
-		<p><%= link_to 'Comienza acá', new_order_path, :class => 'btn btn-primary btn-lg', :style => 'width:200px; font-size:16px' %></p>
-	</div>
-</div>
-<hr />
-<div class="row pricing">
-	<div class="col-md-12 center">
-		<h2>Seguridad</h2>
-		<h3>Nuestra prioridad es otorgar seguridad a nuestros clientes</h3>
-	</div>
-</div>
-<div class="row center safety">
-	<div class="col-md-4 safety-col">
-		<div class="img-circle circle">
-			<span class="glyphicon glyphicon-lock"></span>
-		</div>
-		<p class="">Nuestras bodegas están las 24 horas monitoreadas</p>
-	</div>
-	<div class="col-md-4 safety-col">
-		<div class="img-circle circle">
-			<span class="glyphicon glyphicon-road"></span>
-		</div>
-		<p class="">Nuestros conductores son profesionales</p>
-	</div>
-	<div class="col-md-4 safety-col">
-		<div class="img-circle circle">
-			<span class="glyphicon glyphicon-flash"></span>
-		</div>
-		<p class="">Nuestras cajas son durables y resistentes al agua</p>
-	</div>
-</div>
-<hr >
-<div class="row pricing">
-	<div class="col-md-12 center">
-		<h2>Solucionamos todas tus necesidades de bodegaje</h2>
-		<h3>Warehouse ofrece una forma conveniente de guardar tus cosas</h3>
-	</div>
-</div>
-<div class="row center testimonies">
-	<% Testimony.all[0..2].each do |testimony| %>
-	<div class="col-md-4 center">
-		<%= image_tag testimony.photo.url(:tiny), :class => 'img-circle' %>
-		<h3><%= testimony.name %></h3>
-		<h4><%= testimony.title %></h4>
-		<p>"<%= testimony.content %>"</p>
-		<p><%= image_tag testimony.item_photo.url(:s) %></p>
-	</div>
-	<% end %>
-</div>
-<hr >
-<div class="row pricing">
-	<div class="col-md-12 center">
-		<h2>Guardar tus cosas nunca ha sido más fácil</h2>
-		<h3>Prueba WareHouse ahora - Solo te demoras un par de clicks!</h3>
-	</div>
-</div>
-<div class="row center" style="margin-bottom:20px">
-	<%= image_tag 'home/whatfits_branded.gif' %>
-</div>
-<div class="row center" style="margin-bottom:20px">
-	<div class="col-md-12 center box-details-col">
-		<div class="box-details img-rounded">
-			<span class="number">60cms</span>
-			<span class="text">Largo</span>
-		</div>
-		<div class="box-details img-rounded">
-			<span class="number">40cms</span>
-			<span class="text">Ancho</span>
-		</div>
-		<div class="box-details img-rounded">
-			<span class="number">37cms</span>
-			<span class="text">Alto</span>
-		</div>
-		<div class="box-details img-rounded">
-			<span class="number">67lts</span>
-			<span class="text">Capacidad</span>
+<div class="container">
+	<div class="row pricing">
+		<div class="col-md-12 center">
+			<h2>Seguridad</h2>
+			<h3>Nuestra prioridad es otorgar seguridad a nuestros clientes</h3>
 		</div>
 	</div>
-</div>
-<div class="row" style="margin-bottom:20px">
-	<div class="col-md-12 center">
-		<p><%= link_to 'Comienza acá', new_order_path, :class => 'btn btn-primary btn-lg', :style => 'width:200px; font-size:16px' %></p>
+	<div class="row center safety">
+		<div class="col-md-4 safety-col">
+			<div class="img-circle circle">
+				<span class="glyphicon glyphicon-lock"></span>
+			</div>
+			<p class="">Nuestras bodegas están las 24 horas monitoreadas</p>
+		</div>
+		<div class="col-md-4 safety-col">
+			<div class="img-circle circle">
+				<span class="glyphicon glyphicon-road"></span>
+			</div>
+			<p class="">Nuestros conductores son profesionales</p>
+		</div>
+		<div class="col-md-4 safety-col">
+			<div class="img-circle circle">
+				<span class="glyphicon glyphicon-flash"></span>
+			</div>
+			<p class="">Nuestras cajas son durables y resistentes al agua</p>
+		</div>
+	</div>
+	<hr >
+	<div class="row pricing">
+		<div class="col-md-12 center">
+			<h2>Solucionamos todas tus necesidades de bodegaje</h2>
+			<h3>Warehouse ofrece una forma conveniente de guardar tus cosas</h3>
+		</div>
+	</div>
+	<div class="row center testimonies">
+		<% Testimony.all[0..2].each do |testimony| %>
+		<div class="col-md-4 center">
+			<%= image_tag testimony.photo.url(:tiny), :class => 'img-circle' %>
+			<h3><%= testimony.name %></h3>
+			<h4><%= testimony.title %></h4>
+			<p>"<%= testimony.content %>"</p>
+			<p><%= image_tag testimony.item_photo.url(:s) %></p>
+		</div>
+		<% end %>
+	</div>
+	<hr >
+	<div class="row pricing">
+		<div class="col-md-12 center">
+			<h2>Guardar tus cosas nunca ha sido más fácil</h2>
+			<h3>Prueba WareHouse ahora - Solo te demoras un par de clicks!</h3>
+		</div>
+	</div>
+	<div class="row center" style="margin-bottom:20px">
+		<%= image_tag 'home/whatfits_branded.gif' %>
+	</div>
+	<div class="row center" style="margin-bottom:20px">
+		<div class="col-md-12 center box-details-col">
+			<div class="box-details img-rounded">
+				<span class="number">60cms</span>
+				<span class="text">Largo</span>
+			</div>
+			<div class="box-details img-rounded">
+				<span class="number">40cms</span>
+				<span class="text">Ancho</span>
+			</div>
+			<div class="box-details img-rounded">
+				<span class="number">37cms</span>
+				<span class="text">Alto</span>
+			</div>
+			<div class="box-details img-rounded">
+				<span class="number">67lts</span>
+				<span class="text">Capacidad</span>
+			</div>
+		</div>
+	</div>
+	<div class="row" style="margin-bottom:20px">
+		<div class="col-md-12 center">
+			<p><%= link_to 'Comienza acá', new_order_path, :class => 'btn btn-primary btn-lg', :style => 'width:200px; font-size:16px' %></p>
+		</div>
 	</div>
 </div>
