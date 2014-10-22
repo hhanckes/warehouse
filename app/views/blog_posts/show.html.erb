@@ -2,7 +2,6 @@
 <div class="row">
 	<div class="col-md-8">
 		<div style="text-align:center">
-			<p><%= image_tag 'logos/logo_blog.png' %></p>
 			<h1><%= @blog_post.title %></h1>
 			<h2><%= @blog_post.subtitle %></h2>
 			<p><%=l @blog_post.created_at, format: :short_day %> <%= ('por '+@blog_post.user.name) unless @blog_post.user.blank? or @blog_post.user.name.blank? %></p>
