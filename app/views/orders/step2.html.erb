@@ -4,7 +4,7 @@
 		<% unless user_signed_in? %>
 		<h1>¡Comencemos!</h1>
 		<h3 style="max-width:500px; margin:0 auto; line-height:30px;">
-			Si ya te hiciste una cuenta, entonces <%= link_to 'ingresa con tu usuario y correo acá', new_user_session_path %>, de lo contrario continúa completando la información abajo y automáticamente crearemos tu cuenta</h3>
+			Si ya te hiciste una cuenta, entonces <%= link_to 'ingresa con tu usuario y correo aquí', new_user_session_path %>, de lo contrario continúa completando la información abajo y automáticamente crearemos tu cuenta</h3>
 			<p><%= text_field_tag :username, params[:username], placeholder: 'Nombre' %></p>
 			<p><%= text_field_tag :email, params[:email], placeholder: 'Correo' %></p>
 			<p><%= password_field_tag :password, params[:password], placeholder: 'Clave' %></p>
@@ -41,7 +41,7 @@
 			<%= link_to 'Cambiar dirección', addresses_path(step: 2), :class => 'btn btn-default' %>
 		<% end %>
 		<hr>
-		<h1>¿Qué día y a qué hora pasamos?</h1>
+		<h1>¿Qué día y a qué hora pasamos a dejar las cajas?</h1>
 		<p>
 			<%= select_tag "delivery-day", 
 				options_for_select((2..10).collect {|p| [l((DateTime.now.to_date + p.days), format: :select), DateTime.now.to_date + p.days] }), 
@@ -59,12 +59,12 @@
 			<p><%= text_field_tag :rut, params[:rut], placeholder: 'RUT' %></p>
 		</div>
 		<hr>
-		<h1>¿Cuándo deberíamos ir a buscar los items?</h1>
+		<h1>¿Qué día y a qué hora volvemos a buscar las cajas?</h1>
 		<div style="text-align:left; width:600px; margin:0 auto;">
-			<p><%= check_box_tag :collect_immediately %> <b>De inmediato.</b> Nuestro conductor te esperará 20 minutos mientras guardas las cosas en las cajas.</p>
+			<p><%= check_box_tag :collect_immediately %> <b>De inmediato.</b> Nuestro conductor te esperará 20 minutos mientras guardas tus cosas en las cajas.</p>
 		</div>
 		<div style="text-align:left; width:600px; margin:0 auto;">		
-			<p><%= check_box_tag :collect_later %> <b>Más tarde</b> Volvemos otro día a buscar las cosas <b>gratis.</b></p>
+			<p><%= check_box_tag :collect_later %> <b>Más tarde</b> Volvemos otro día a buscar tus cosas <b>gratis.</b></p>
 		</div>
 		<div class="collect-later">
 			<p>

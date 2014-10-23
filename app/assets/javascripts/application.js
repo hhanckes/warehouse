@@ -18,6 +18,8 @@
 //= require_tree .
 
 $(document).ready(function() {
+	$('#myButton').tooltip();
+	
 	$('.btn-loading').on('click', function () {
 	  	$(this).attr("data-loading-text","Espera por favor...");
 	  	$(this).button('loading');
