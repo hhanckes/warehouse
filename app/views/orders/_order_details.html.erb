@@ -98,10 +98,17 @@
 	<tbody>
 		<tr>
 			<td><%= l(order.delivery_date, format: :medium).capitalize %> entre <%= order.delivery_time %></td>
+			<% if order.storage_items.include?(@regular_boxes) %>
 			<td><%= order.concierge ? 'Sí' : 'No' %></td>
 			<td><%= order.neighbour ? 'Sí' : 'No' %></td>
-			<td><%= order.collect_immediately? ? 'Sí' : 'No' %></td>
+			<td><%= order.collect_immediately ? 'Sí' : 'No' %></td>
 			<td><%= order.collect_immediately ? 'n/a' : l(order.collection_date, format: :medium).capitalize+' entre '+order.collection_time %></td>
+			<% else %>
+			<td>No aplica</td>
+			<td>No aplica</td>
+			<td>No aplica</td>
+			<td>No aplica</td>
+			<% end %>
 		</tr>
 	</tbody>
 </table>

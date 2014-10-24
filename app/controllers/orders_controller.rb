@@ -16,6 +16,8 @@ class OrdersController < ApplicationController
     @return_in_progress = OrderStorageItemStatus.find_by_name('Return in progress')
     @returned = OrderStorageItemStatus.find_by_name('Returned')
     
+    @regular_boxes = StorageItem.find_by_name('Regular Boxes')
+
     @orders = current_user.orders.where('order_status_id <> ? and order_status_id <> ?', step1.id, step2.id).order 'created_at DESC'
   end
 

@@ -66,6 +66,7 @@ class MainController < ApplicationController
     step2 = OrderStatus.find_by_name('Step 2')
     @orders = Order.where('order_status_id <> ? and order_status_id <> ?', step1.id, step2.id).order('created_at DESC')
 
+    @regular_boxes = StorageItem.find_by_name('Regular Boxes')
     
     @in_warehouse = OrderStorageItemStatus.find_by_name('In warehouse')
     @return_in_progress = OrderStorageItemStatus.find_by_name('Return in progress')
