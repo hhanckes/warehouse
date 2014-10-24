@@ -1,0 +1,33 @@
+<h1>Items agregados para devolver</h1>
+<table class="table">
+	<thead>
+		<tr>
+			<th>ID Item</th><th style="width:200px">Status</th><th>Item</th><th sxtyle="max-width:200px">Nombre</th><th>Precio</th><th>Opciones</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @order_return.order_storage_items.each do |osi| %>
+		<tr>
+			<td><%= osi.id %></td>
+			<td><%= osi.order_storage_item_status.blank? ? 'No asignado' : osi.order_storage_item_status.public_name %></td>
+			<td><%= osi.storage_item.public_name %></td>
+			<td><%= osi.name.blank? ? 'No asignado' : osi.name %></td>
+			<td><%= number_to_currency osi.price %></td>
+			<td>
+				<%= link_to 'Ver Detalle', '#', :class => 'btn btn-primary btn-xs', style: "font-size:10px", 'data-toggle' => "modal", 
+					'data-target' => "#detail"+osi.id.to_s %> 
+				<button class='btn btn-xs <%= osi.order_return.blank? ? 'btn-default' : 'btn-primary' %>' style= "font-size:10px;" 
+					onclick='add_to_osi_to_return(<%= osi.order.id.to_s %>, <%= osi.id.to_s %>)' id='return_<%= osi.id.to_s%>'>
+					<%= osi.order_return.blank? ? 'Agregar a items para devolver' : 'Eliminar de items a devolver' %>
+				</button>
+			</td>
+			<%= render 'orders/stored_items', order_storage_item: osi %>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<p class="center">
+	<%= link_to 'Pedir Devolución', '#', :class => 'btn btn-primary btn-lg', :style => 'width:200px; font-size:16px;', 
+		'data-toggle' => "modal", 'data-target' => "#pay_return" %>
+</p>
+<%= render 'pay_return_modal' %>

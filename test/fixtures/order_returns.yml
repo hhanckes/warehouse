@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  return_delivery_day: 2014-10-24 01:12:38
+  return_delivery_time: MyString
+  address_id: 1
+  order_return_status_id: 1
+  comments: MyText
+
+two:
+  return_delivery_day: 2014-10-24 01:12:38
+  return_delivery_time: MyString
+  address_id: 1
+  order_return_status_id: 1
+  comments: MyText

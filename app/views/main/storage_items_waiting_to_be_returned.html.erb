@@ -3,9 +3,9 @@
 <table class="table">
 	<thead>
 		<tr>
-			<th>Order ID</th><th>Item ID</th><th>Item</th><th>Precio</th><th>Status</th>
+			<th>#Order</th><th>#Item</th><th>Item</th>
+			<th>Precio</th><th style="width:200px">Status Item</th>
 			<th style="text-align:center">
-			
 			<%= link_to 'Fondos Recibidos', '#', :class => 'btn btn-success btn-xs', :style => 'font-size:10px', 
 						'data-toggle' => "modal", 'data-target' => "#funds_received" %>
 			<%= link_to 'Salida de Bodega', '#', :class => 'btn btn-primary btn-xs', :style => 'font-size:10px', 
@@ -15,15 +15,24 @@
 		</tr>
 	</thead>
 	<tbody>
-		<% @order_storage_items.each do |osi| %>
-		<tr>
-			<td><%= osi.order.id %></td>
-			<td><%= osi.id %></td>
-			<td><%= osi.storage_item.public_name %></td>
-			<td><%= number_to_currency osi.price %></td>
-			<td><%= osi.order_storage_item_status.blank? ? 'No asignado' : osi.order_storage_item_status.public_name %></td>
-			<td style="text-align:center"><%= check_box_tag 'order_storage_item_ids[]', osi.id %></td>
-		</tr>
+		<% @order_return_requested_status.order_returns.each do |order_return| %>
+			<% unless order_return.order_storage_items.where('order_storage_item_status_id in (?)', [@return_in_progress.id, @shipped.id, @funds_received.id]).size == 0 %>
+			<tr>
+				<th colspan="8" style="background-color:#eee">Return ID <%= order_return.id %> - Devolución el 
+					<%= l(order_return.return_delivery_day, format: :date_detail) %> <%= order_return.return_delivery_time %>
+				</th>
+			</tr>
+				<% order_return.order_storage_items.where('order_storage_item_status_id in (?)', [@return_in_progress.id, @shipped.id, @funds_received.id]).each do |osi| %>
+				<tr>
+					<td><%= osi.order.id %></td>
+					<td><%= osi.id %></td>
+					<td><%= osi.storage_item.public_name %></td>
+					<td><%= number_to_currency osi.price %></td>
+					<td><%= osi.order_storage_item_status.blank? ? 'No asignado' : osi.order_storage_item_status.public_name %></td>
+					<td style="text-align:center"><%= check_box_tag 'order_storage_item_ids[]', osi.id %></td>
+				</tr>
+				<% end %>
+			<% end %>
 		<% end %>
 	</tbody>
 </table>

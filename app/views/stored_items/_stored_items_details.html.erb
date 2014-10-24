@@ -2,12 +2,12 @@
 	<table class="table">
 	  <thead>
 	    <tr>
-	      <th>ID Caja</th>
-	      <th>Status</th>
+	      <th>ID Item</th>
+	      <th>Nombre Item</th>
+	      <th style="width:200px">Status</th>
 	      <th>Nombre producto</th>
 	      <th>Cantidad</th>
 	      <th>Valor asignado</th>
-	      <th>Descripción</th>
 	      <th>Acciones</th>
 	    </tr>
 	  </thead>
@@ -15,11 +15,11 @@
 	    <% stored_items.each do |stored_item| %>
 	      <tr>
 	        <td><%= stored_item.order_storage_item.id %></td>
+	        <td><%= stored_item.order_storage_item.name.blank? ? 'No asignado' : stored_item.order_storage_item.name %></td>
 	        <td><%= stored_item.order_storage_item.order_storage_item_status.public_name unless stored_item.order_storage_item.order_storage_item_status.blank? %></td>
 	        <td><%= stored_item.name %></td>
 	        <td><%= stored_item.quantity %></td>
 	        <td><%= number_to_currency stored_item.assigned_value %> c/u</td>
-	        <td><%= stored_item.description %></td>
 	        <td>
 				<%= link_to 'Pedir devolución de cajas', '#', 'data-toggle' => "modal", 'data-target' => "#"+stored_item.order_storage_item.id.to_s, 
 					:class => 'btn btn-default btn-xs', style: "font-size:10px;",

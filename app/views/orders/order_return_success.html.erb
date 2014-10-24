@@ -5,14 +5,33 @@
 	<div class="col-md-6">
 		<h1>¡Felicitaciones!</h1>
 		<p>Procederemos a validar la recepción de fondos.</p>
-		<p>Una vez esté OK te llegará un correo confirmando que procederemos con la devolución de tus cosas almacenadas con identificador #<%= @order_storage_item.id.to_s %>.</p>
+		<p>Una vez esté OK te llegará un correo confirmando que procederemos con la devolución de tus cosas.</p>
 		<p>Las cosas que te vamos a devolver son:</p>
-		<ul class="list-group">
-		<% @order_storage_item.stored_items.each do |si| %>
-			<li class="list-group-item"><%= si.quantity %> <%= si.name %></li>
-		<% end %>
-		</ul>
-		<p>Las llevaremos a <%= @order_storage_item.address.receiver %> a la dirección <b><%= @order_storage_item.address.name %> <%= @order_storage_item.address.area.name %></b>.</p>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>ID Item</th><th style="width:200px">Status</th><th>Item</th><th sxtyle="max-width:200px">Nombre</th><th>Precio</th><th>Opciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @order_return.order_storage_items.each do |osi| %>
+				<tr>
+					<td><%= osi.id %></td>
+					<td><%= osi.order_storage_item_status.blank? ? 'No asignado' : osi.order_storage_item_status.public_name %></td>
+					<td><%= osi.storage_item.public_name %></td>
+					<td><%= osi.name.blank? ? 'No asignado' : osi.name %></td>
+					<td><%= number_to_currency osi.price %></td>
+					<td>
+						<%= link_to 'Ver Detalle', '#', :class => 'btn btn-primary btn-xs', style: "font-size:10px", 'data-toggle' => "modal", 
+							'data-target' => "#detail"+osi.id.to_s %> 
+					</td>
+					<%= render 'orders/stored_items', order_storage_item: osi %>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<p>El día <b><%= l(@order_return.return_delivery_day, format: :date_detail) %></b> alrededor de las <b><%= @order_return.return_delivery_time %></b> las llevaremos a 
+			<%= @order_return.address.receiver %> a la dirección <b><%= @order_return.address.name %> <%= @order_return.address.area.name %></b>.</p>
 	</div>
 </div>
 <hr />

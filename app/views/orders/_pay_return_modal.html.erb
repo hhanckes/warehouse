@@ -1,0 +1,47 @@
+<!-- Modal -->
+<div class="modal fade return_request" id="pay_return" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="text-align:left">
+  <%= form_tag(transfer_confirmed_return_order_orders_path(order_return_id: @order_return.id), :method => "post", :html => {class: 'form-inline'}) do %>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+        <h4 class="modal-title" id="myModalLabel">Confirmar y pagar devolución de Items</h4>
+      </div>
+      <div class="modal-body">
+		<h3 style="margin-top:0px; padding-top:0px">¿Dónde devolvemos tu cosas?</h3>
+		<ul class="list-group">
+		<% current_user.addresses.each do |address| %>
+		  	<li class="list-group-item">
+				<%= radio_button_tag 'address_id', address.id.to_s, true %> 
+				<span style="padding-left:10px"><%= address.name %>, <%= address.area.name unless address.area.blank? %></span><br />
+				<span style="padding-left:25px">Nombre de contacto <%= address.receiver %> | Teléfono <%= address.phone_number %></span>
+			</li>
+		<% end %>
+		</ul>
+		<p><%= link_to raw('<span class="glyphicon glyphicon-plus"></span> Agregar nueva dirección'), addresses_path %></p>
+		<h3>¿Qué día y en qué horario pasamos a dejar las cosas?</h3>
+		<p class="return-order">
+			<%= select_tag "delivery-day", 
+				options_for_select((2..10).collect {|p| [l((DateTime.now.to_date + p.days), format: :select), DateTime.now.to_date + p.days] }), 
+						:class => 'return-date-select', :onchange => 'update_collection_day()' %>
+			<%= select_tag "delivery-time", 
+				options_for_select(['10:00 - 12:00','12:00 - 14:00','14:00 - 16:00','16:00 - 18:00']), :class => 'return-hour-select', style: 'width:200px' %>
+		</p>
+		<p>Realiza la transferencia de <b><%= number_to_currency @order_return.return_price, precision: 0 %></b> a la siguiente cuenta:</p>
+		<ul>
+			<li>Banco: XX</li>
+			<li>Nº Cuenta Corriente: XXX</li>
+			<li>Titular Cuenta: XXX</li>
+			<li>RUT: XXXX</li>
+			<li>Correo: xxxxx</li>
+		</ul>
+		<p>Una vez que ya hayas realizado la transferencia en la página de tu banco, debes hacer click en "Transferencia Realizada" y procederemos a verificar la recepción de fondos.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+		<%= submit_tag("Transferencia Realizada", :class => 'btn btn-primary btn-loading') %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

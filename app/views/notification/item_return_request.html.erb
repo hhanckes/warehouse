@@ -8,5 +8,6 @@
 	<li><%= si.quantity %> <%= si.name %></li>
 	<% end %>
 </ul>
+<p>El día <b><%= l(@order_storage_item.order_return.return_delivery_day, format: :date_detail) %></b> alrededor de las <b><%= @order_storage_item.order_return.return_delivery_time %></b> las llevaremos a <%= @order_storage_item.order_return.address.receiver %> a la dirección <b><%= @order_storage_item.order_return.address.name %> <%= @order_storage_item.order_return.address.area.name %></b>.</p>
 <% end %>
 <%= render "layouts/email" %>

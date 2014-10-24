@@ -1,0 +1,30 @@
+<%= form_for(@contact) do |f| %>
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact.errors.count, "error") %> no permitieron que enviemos tu mensaje:</h2>
+
+      <ul>
+      <% @contact.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.text_field :name, :class => 'form-control', placeholder: '¿Cómo te llamas?' %>
+  </div>
+  <div class="form-group">
+    <%= f.text_field :email, :class => 'form-control', placeholder: '¿Cuál es tu correo?' %>
+  </div>
+
+  <div class="form-group">
+	<%= f.select :contact_type, options_for_select(["Preguntas Generales", "Agregar Ciudad", "Tarifas Corporativas"]), {:prompt => "¿Cuál es el motivo de tu contacto?"}, { :class => 'form-control' } %>
+  </div>
+  <div class="form-group">
+    <%= f.text_area :content, :class => 'form-control', placeholder: 'Déjanos tu mensaje', rows: 10 %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Enviar', :class => 'btn btn-primary btn-loading' %>
+  </div>
+<% end %>

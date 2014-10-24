@@ -1,0 +1,23 @@
+<h1>Listing contacts</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Type</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.name %></td>
+        <td><%= contact.email %></td>
+        <td><%= contact.contact_type %></td>
+        <td><%= link_to 'Show', contact %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

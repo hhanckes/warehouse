@@ -32,6 +32,13 @@ aux << (PaymentStatus.find_by_name('Transfer funds received') || PaymentStatus.c
 aux.each { |x| puts x.name }
 puts "\n"
 
+puts "--> OrderReturnStatus:"
+aux = []
+aux << (OrderReturnStatus.find_by_name('Adding items') || OrderReturnStatus.create(:name => 'Adding items', :public_name => 'Agregando items para devolver'))
+aux << (OrderReturnStatus.find_by_name('Return requested') || OrderReturnStatus.create(:name => 'Return requested', :public_name => 'Devolución solicitada'))
+aux.each { |x| puts x.name }
+puts "\n"
+
 puts "--> PaymentType:"
 aux = []
 aux << (PaymentType.find_by_name('Monthly payment') || PaymentType.create(:name => 'Monthly payment', :public_name => 'Mensualidad'))

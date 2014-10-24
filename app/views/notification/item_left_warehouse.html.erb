@@ -3,14 +3,14 @@
 <p>Te confirmado que tus cosas guardadas con el identificador #<%= @order_storage_item.id.to_s %> han salido de nuestra bodega.</p>
 <p>Los datos del despacho son:</p>
 <ul>
-	<li>Dirección: <%= @order_storage_item.address.name %>, <%= @order_storage_item.address.area.name %></li>
-	<li>Nombre contacto: <%= @order_storage_item.address.receiver %></li>
-	<li>Teléfono contacto: <%= @order_storage_item.address.phone_number %></li>
+	<li>Dirección: <%= @order_storage_item.order_return.address.name %>, <%= @order_storage_item.order_return.address.area.name %></li>
+	<li>Nombre contacto: <%= @order_storage_item.order_return.address.receiver %></li>
+	<li>Teléfono contacto: <%= @order_storage_item.order_return.address.phone_number %></li>
 </ul>
 <p>El detalle de las cosas guardadas que devolveremos es:</p>
 <ul>
 	<% @order_storage_item.stored_items.each do |si| %>
-	<li><%= si.quantity %> <%= si.name %></li>
+		<li><%= si.quantity %> <%= si.name %></li>
 	<% end %>
 </ul>
 <p>¡Nos vemos pronto!</p>

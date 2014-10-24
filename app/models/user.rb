@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :countries, through: :areas
   has_many :payments, through: :order_storage_items
   has_many :payment_months, through: :payments
+  has_many :order_returns
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -18,6 +19,12 @@ class User < ActiveRecord::Base
          
   def is_god?
     self.role_id == 1
+  end
+  
+  def current_order_return_size
+    order_return_status = OrderReturnStatus.find_by_name('Adding items')
+    order_return = self.order_returns.where('order_return_status_id = ?', order_return_status.id.to_s).first.blank? ? OrderReturn.create(order_return_status_id: order_return_status.id, user_id: self.id) : self.order_returns.where('order_return_status_id = ?', order_return_status.id.to_s).first
+    order_return.order_storage_items.size
   end
   
   def default_address

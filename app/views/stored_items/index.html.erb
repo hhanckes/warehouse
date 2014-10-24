@@ -9,7 +9,7 @@
 </div>
 <%= form_tag(request.fullpath, :method => "get", :class => 'form-inline', role: 'form') do %>
   <div class="form-group" style="width:100%">
-	<%= text_field_tag(:q, @q, class: "form-control input-sm", placeholder: "Busca por ID de la caja o por el nombre o la descripción de un producto específico", style: 'width:80%' ) %>
+	<%= text_field_tag(:q, @q, class: "form-control input-sm", placeholder: "Busca por ID del item, por el nombre o por la descripción de un producto específico", style: 'width:80%' ) %>
 	<%= submit_tag 'Buscar', class: "btn btn-default" %>
   </div>
 <% end %>

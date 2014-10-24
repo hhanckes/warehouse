@@ -38,6 +38,12 @@ body ul, li, .btn, .form-control {
 input[type="text"] {
 	border-color:#FF5252;
 }
+textarea.form-control {
+	border-color:#FF5252;
+}
+select.form-control {
+	border-color:#FF5252;
+}
 
 .background-landing {
 	display: table;
@@ -440,6 +446,37 @@ h2 a:hover {
     display: inline-block;
     vertical-align: middle;
     float: none;
+}
+.return-order select {
+	border: 1px solid #d9d9d9;
+	padding: 5px 5px;
+	margin: 0;
+	line-height: 27px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	text-indent: 1px;
+	text-overflow: ellipsis;
+	height: 72px;
+	position: relative;
+	display: inline-block;
+	background-color: #f7f7f7;
+	font-size: 18px;
+	border-radius: 6px;
+	width: 280px;
+	color: #666;;
+	padding: 20px;
+	font-weight: 700;
+	margin:10px;
+}
+.return-date-select {
+	background-image: url(<%= asset_path 'checkout/checkout.png' %>);
+	background-repeat: no-repeat;
+	background-position: 200px -2170px;
+}
+.return-hour-select {
+	background-image: url(<%= asset_path 'checkout/checkout.png' %>);
+	background-repeat: no-repeat;
+	background-position: 125px -4606px;
 }
 footer {
 	margin-top:20px;

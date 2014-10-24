@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :contacts, only: [:index, :show, :new, :create]
   resources :blog_posts
   get 'blog' => 'blog_posts#blog', as: 'blog'
   
@@ -7,11 +8,15 @@ Rails.application.routes.draw do
   resources :orders do
     post 'step1', on: :collection
     get 'payments', on: :collection
+    get 'return_items', on: :collection
+    post 'transfer_confirmed_return_order/:order_return_id', on: :collection, :action => 'transfer_confirmed_return_order', as: 'transfer_confirmed_return_order'
+    get 'order_return_success/:order_return_id', on: :collection, :action => 'order_return_success', as: 'order_return_success'
     get 'step2/:area', on: :member, :action => 'step2', as: 'step2'
     patch 'step2/:area', on: :member, :action => 'step2'
     get 'step3', on: :member
     get 'order_success', on: :member
     get 'order_return_success', on: :member
+    post 'add_osi_to_return_list/:osi_id', on: :member, :action => 'add_osi_to_return_list'
     post 'transfer_confirmed', on: :member
     post 'transfer_confirmed_return_osi/:osi_id', on: :member, :action => 'transfer_confirmed_return_osi', as: 'transfer_confirmed_return_osi'
     post 'new_payment_paid', on: :collection

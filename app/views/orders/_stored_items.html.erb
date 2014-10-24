@@ -7,6 +7,8 @@
         <h4 class="modal-title" id="myModalLabel">Items Almacenados</h4>
       </div>
       <div class="modal-body">
+		<% if order_storage_item.stored_items.size > 0 %>
+			<h2 style="margin:0px 0px 10px 0px; padding:0px;"><%= order_storage_item.name %></h2>
 			<ul class="list-group">
 				<% order_storage_item.stored_items.each do |stored_item| %>
 					<li class="list-group-item">
@@ -19,6 +21,11 @@
 				<% end %>
 			</ul>
 			<%= image_tag order_storage_item.photo.url(:xl) %>
+		<% else %>
+			<div class="well">
+				<p>La información de tus productos aún no ha sido cargada.</p><p>Por favor revisa nuevamente en un par de horas.</p>
+			</div>
+		<% end %>	
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

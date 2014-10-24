@@ -10,7 +10,11 @@
 			<p><%= password_field_tag :password, params[:password], placeholder: 'Clave' %></p>
 		<% end %>
 		<hr />
-		<h1>¿Dónde te pasamos a dejar las cajas vacías?</h1>
+		<% if @boxes_in_order %>
+			<h1>¿Dónde te pasamos a dejar las cajas vacías?</h1>
+		<% else %>
+			<h1>¿Dónde pasamos a recoger tus cosas?</h1>
+		<% end %>
 		<% unless user_signed_in? and !@address.blank? %>
 			<p><%= text_field_tag :name, params[:name], placeholder: 'Dirección' %></p>
 			<p><%= text_field_tag :area, @area.name, placeholder: 'Area', disabled: true %></p>
@@ -41,7 +45,11 @@
 			<%= link_to 'Cambiar dirección', addresses_path(step: 2), :class => 'btn btn-default' %>
 		<% end %>
 		<hr>
-		<h1>¿Qué día y a qué hora pasamos a dejar las cajas?</h1>
+		<% if @boxes_in_order %>
+			<h1>¿Qué día y a qué hora pasamos a dejar las cajas?</h1>
+		<% else %>
+			<h1>¿Qué día y a qué hora pasamos?</h1>
+		<% end %>
 		<p>
 			<%= select_tag "delivery-day", 
 				options_for_select((2..10).collect {|p| [l((DateTime.now.to_date + p.days), format: :select), DateTime.now.to_date + p.days] }), 
@@ -50,29 +58,33 @@
 				options_for_select(['10:00 - 12:00','12:00 - 14:00','14:00 - 16:00','16:00 - 18:00']), :class => 'hour-select' %>
 		</p>
 		<div style="text-align:left; width:600px; margin:0 auto;">
-			<p><%= check_box_tag :doorman %> ¿Tiene conserje tu edificio o una persona que permanentemente está que le podamos dejar las cajas?</p>
-			<p><%= check_box_tag :neighbour %> ¿Si nadie contesta podemos dejar las cajas con tu vecino?</p>
+			<% if @boxes_in_order %>
+				<p><%= check_box_tag :doorman %> ¿Tiene conserje tu edificio o una persona que permanentemente está que le podamos dejar las cajas?</p>
+				<p><%= check_box_tag :neighbour %> ¿Si nadie contesta podemos dejar las cajas con tu vecino?</p>
+			<% end %>
 			<p><%= check_box_tag :company %> ¿Eres una empresa?</p>
 		</div>
 		<div class="company-information">
 			<p><%= text_field_tag :company_name, params[:company_name], placeholder: 'Nombre de la empresa' %></p>
 			<p><%= text_field_tag :rut, params[:rut], placeholder: 'RUT' %></p>
 		</div>
-		<hr>
-		<h1>¿Qué día y a qué hora volvemos a buscar las cajas?</h1>
-		<div style="text-align:left; width:600px; margin:0 auto;">
-			<p><%= check_box_tag :collect_immediately %> <b>De inmediato.</b> Nuestro conductor te esperará 20 minutos mientras guardas tus cosas en las cajas.</p>
-		</div>
-		<div style="text-align:left; width:600px; margin:0 auto;">		
-			<p><%= check_box_tag :collect_later %> <b>Más tarde</b> Volvemos otro día a buscar tus cosas <b>gratis.</b></p>
-		</div>
-		<div class="collect-later">
-			<p>
-				<%= select_tag "collection-day", 
-					options_for_select((4..14).collect {|p| [l((DateTime.now.to_date + p.days), format: :select), DateTime.now.to_date + p.days] }), :class => 'date-select' %>
-				<%= select_tag "collection-time", 
-					options_for_select(['10:00 - 12:00','12:00 - 14:00','14:00 - 16:00','16:00 - 18:00']), :class => 'hour-select' %>			</p>
-		</div>
+		<% if @boxes_in_order %>
+			<hr>
+			<h1>¿Qué día y a qué hora volvemos a buscar las cajas?</h1>
+			<div style="text-align:left; width:600px; margin:0 auto;">
+				<p><%= check_box_tag :collect_immediately %> <b>De inmediato.</b> Nuestro conductor te esperará 20 minutos mientras guardas tus cosas en las cajas.</p>
+			</div>
+			<div style="text-align:left; width:600px; margin:0 auto;">		
+				<p><%= check_box_tag :collect_later %> <b>Más tarde</b> Volvemos otro día a buscar tus cosas <b>gratis.</b></p>
+			</div>
+			<div class="collect-later">
+				<p>
+					<%= select_tag "collection-day", 
+						options_for_select((4..14).collect {|p| [l((DateTime.now.to_date + p.days), format: :select), DateTime.now.to_date + p.days] }), :class => 'date-select' %>
+					<%= select_tag "collection-time", 
+						options_for_select(['10:00 - 12:00','12:00 - 14:00','14:00 - 16:00','16:00 - 18:00']), :class => 'hour-select' %>			</p>
+			</div>
+		<% end %>
 		<div class="form-actions">
 		  <%= f.submit 'Siguiente paso', :class => 'btn btn-primary' %>
 		</div>

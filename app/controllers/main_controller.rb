@@ -52,7 +52,8 @@ class MainController < ApplicationController
     @shipped = OrderStorageItemStatus.find_by_name('Shipped from Warehouse')
     @funds_received = OrderStorageItemStatus.find_by_name('Wating funds confirmation for return') 
     
-    @order_storage_items = OrderStorageItem.where('order_storage_item_status_id in (?)', [@return_in_progress.id, @shipped.id, @funds_received.id])
+    @order_return_requested_status = OrderReturnStatus.find_by_name('Return requested')
+    
     @storage_item_return_proof = StorageItemReturnProof.new
   end
     
@@ -127,7 +128,7 @@ class MainController < ApplicationController
   private
   
   def order_storage_item_params
-    params.require(:order_storage_item).permit(:photo, stored_items_attributes: [:id, :name, :description, :quantity, :assigned_value, :_destroy])
+    params.require(:order_storage_item).permit(:photo, :name, stored_items_attributes: [:id, :name, :description, :quantity, :assigned_value, :_destroy])
   end
   
 end

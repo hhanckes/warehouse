@@ -1,0 +1,11 @@
+<% content_for :content do %>
+<p>Hola <%= @contact.name %>!</p>
+<p>Recibimos tu mensaje. Los detalles del contacto que hiciste son los siguientes:</p>
+<ul>
+	<li>Correo: <%= @contact.email %></li>
+	<li>Tipo de contacto: <%= @contact.contact_type %></li>
+	<li>Mensaje: <%= @contact.content %></li>
+</ul>
+<p>Nuestro equipo está aquí para responder cualquier pregunta que tengas y para asegurar que tengas una experiencia increíble. Pronto responderemos.</p>
+<% end %>
+<%= render "layouts/email" %>

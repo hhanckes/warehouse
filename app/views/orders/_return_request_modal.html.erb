@@ -8,7 +8,7 @@
         <h4 class="modal-title" id="myModalLabel">Solicitar devolución de Item</h4>
       </div>
       <div class="modal-body">
-		<p>Estás pidiendo la devolución de <%= osi.storage_item.public_name %> (ID <%= osi.id %>) donde tienes guardado:</p>
+		<p>Estás pidiendo la devolución de <%= osi.storage_item.public_name %> (ID <%= osi.id %>) <%= raw(osi.name.blank? ? '' : 'nombre <b>'+osi.name+'</b>') %> donde tienes guardado:</p>
 		<ul>
 			<% osi.stored_items.each do |si| %>
 			<li><%= si.quantity %> <%= si.name %></li>
@@ -24,6 +24,14 @@
 		<% end %>
 		</ul>
 		<p><%= link_to raw('<span class="glyphicon glyphicon-plus"></span> Agregar nueva dirección'), addresses_path %></p>
+		<h3>Selecciona en qué día y horario quieres que te llegue:</h3>
+		<p class="return-order">
+			<%= select_tag "delivery-day", 
+				options_for_select((2..10).collect {|p| [l((DateTime.now.to_date + p.days), format: :select), DateTime.now.to_date + p.days] }), 
+						:class => 'return-date-select', :onchange => 'update_collection_day()' %>
+			<%= select_tag "delivery-time", 
+				options_for_select(['10:00 - 12:00','12:00 - 14:00','14:00 - 16:00','16:00 - 18:00']), :class => 'return-hour-select', style: 'width:200px' %>
+		</p>
 		<p>48 horas después de que hayamos confirmado la recepción de los fondos, enviaremos el item a la dirección seleccionada.</p>
 		<p>Realiza la transferencia de <b><%= number_to_currency osi.return_price, precision: 0 %></b> a la siguiente cuenta:</p>
 		<ul>

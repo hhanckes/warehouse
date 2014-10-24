@@ -27,8 +27,8 @@ class StorageItemReturnProofsController < ApplicationController
   end
 
   def create
-    @new_status = OrderStorageItemStatus.find_by_name('Shipped from Warehouse') if params[:commit] == 'Items Despachados'
     @new_status = OrderStorageItemStatus.find_by_name('Return in progress') if params[:commit] == 'Fondos Recibidos'
+    @new_status = OrderStorageItemStatus.find_by_name('Shipped from Warehouse') if params[:commit] == 'Items Despachados'
     @new_status = OrderStorageItemStatus.find_by_name('Returned') if params[:commit] == 'Guardar'
     @storage_item_return_proof = StorageItemReturnProof.new(storage_item_return_proof_params) if params[:commit] == 'Guardar'
     

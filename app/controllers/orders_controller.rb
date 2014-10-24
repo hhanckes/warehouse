@@ -1,7 +1,7 @@
 # encoding: UTF-8
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :step2, :step3, :transfer_confirmed, :update, :destroy, :update_order_status, :update_order_storage_item_status, :transfer_confirmed_return_osi, :order_success, :order_return_success]
-  before_action :set_order_storage_item, only: [:update_order_storage_item_status, :order_return_success]
+  before_action :set_order, only: [:add_osi_to_return_list, :show, :edit, :step2, :step3, :transfer_confirmed, :update, :destroy, :update_order_status, :update_order_storage_item_status, :transfer_confirmed_return_osi, :order_success]
+  before_action :set_order_storage_item, only: [:update_order_storage_item_status, :add_osi_to_return_list]
   before_action :authenticate_user!, except: [:new, :step1, :step2, :step3]
 
   def index
@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
 
     @in_warehouse = OrderStorageItemStatus.find_by_name('In warehouse')
     @return_in_progress = OrderStorageItemStatus.find_by_name('Return in progress')
+    @returned = OrderStorageItemStatus.find_by_name('Returned')
     
     @orders = current_user.orders.where('order_status_id <> ? and order_status_id <> ?', step1.id, step2.id).order 'created_at DESC'
   end
@@ -64,11 +65,14 @@ class OrdersController < ApplicationController
   def step1
     if params[:order_area][:area].blank?
       redirect_to new_order_path, alert: 'Debes seleccionar el sector donde entregaremos las cajas'
-    else  
+    else
       order_status = OrderStatus.find_by_name('Step 1')
       @order = Order.create(order_status_id: order_status.id)
-      update_step1_order_attributes
-      redirect_to step2_order_path(id: @order.id, area: params[:order_area][:area])
+      if !update_step1_order_attributes
+        redirect_to(new_order_path, alert: 'Debes seleccionar el al menos un item para continuar con el proceso') 
+      else
+        redirect_to step2_order_path(id: @order.id, area: params[:order_area][:area])
+      end
     end
   end
   
@@ -76,6 +80,7 @@ class OrdersController < ApplicationController
   def step2
     step1 = OrderStatus.find_by_name('Step 1')
     unless @order.order_status_id != step1.id and params[:address_changed].blank? and !request.patch?
+      @boxes_in_order = @order.storage_items.include?(StorageItem.find_by_name('Regular Boxes'))
   		@address = current_user.default_address if user_signed_in?
   		@area = Area.find params[:area]
       if request.patch? 
@@ -85,7 +90,7 @@ class OrdersController < ApplicationController
         elsif !params[:company].blank? and (params[:company_name].blank? or params[:rut].blank?)
           flash[:alert] = "Debes agregar los datos de la empresa (RUT y Nombre)!"
           render :template => "orders/step2"
-        elsif (params['collect_later'].blank? and params['collect_immediately'].blank?)
+        elsif params['collect_later'].blank? and params['collect_immediately'].blank? and @boxes_in_order
           flash[:alert] = "Debes seleccionar cuando vamos a buscar las cajas!"
           render :template => "orders/step2"
         else
@@ -112,6 +117,7 @@ class OrdersController < ApplicationController
   end
   
   def order_return_success  
+    @order_return = OrderReturn.find params[:order_return_id]
   end
   
   #POST
@@ -122,14 +128,46 @@ class OrdersController < ApplicationController
     redirect_to order_success_order_path(@order), notice: '¡Todo OK! Procederemos a validar tu pago dentro de las próximas horas. En esta página encontrarás el detalle de tu orden'
   end
   
+  #POST CALLED VIA AJAX
+  def add_osi_to_return_list
+    user = @order.user
+    order_return_status = OrderReturnStatus.find_by_name('Adding items')
+    
+    order_return = user.order_returns.where('order_return_status_id = ?', order_return_status.id).first.blank? ? OrderReturn.create(order_return_status_id: order_return_status.id, user_id: user.id) : user.order_returns.where('order_return_status_id = ?', order_return_status.id).first
+    if @order_storage_item.order_return.blank?
+      @order_storage_item.update_attribute :order_return_id, order_return.id
+    else
+      @order_storage_item.update_attribute :order_return_id, nil
+    end
+    
+    respond_to do |format|
+      format.json  { render :json => { return_requested: !@order_storage_item.order_return.blank?, items_requested: order_return.order_storage_items.size } }
+    end
+  end
+  
+  #GET
+  def return_items
+    order_return_status = OrderReturnStatus.find_by_name('Adding items')
+    @order_return = current_user.order_returns.where('order_return_status_id = ?', order_return_status.id).first
+  end
+  
   #POST
-  def transfer_confirmed_return_osi
-    osi = OrderStorageItem.find params[:osi_id]
+  def transfer_confirmed_return_order
+    order_return = OrderReturn.find params[:order_return_id]
+    order_return_status = OrderReturnStatus.find_by_name('Return requested')
     funds_return = OrderStorageItemStatus.find_by_name('Wating funds confirmation for return')
-    osi.address_id = params[:address_id]
-    osi.order_storage_item_status = funds_return
-    osi.save
-    redirect_to order_return_success_order_path(osi.order, order_storage_item_id: osi.id), notice: '¡Todo OK! Devolución de '+osi.storage_item.public_name+' (ID '+osi.id.to_s+') en proceso'
+    
+    order_return.return_delivery_day = params['delivery-day']
+    order_return.return_delivery_time = params['delivery-time']
+    order_return.address_id = params[:address_id]
+    order_return.order_return_status = order_return_status
+          
+    order_return.order_storage_items.each do |osi|
+      osi.update_attribute :order_storage_item_status_id, funds_return.id
+    end
+    order_return.save
+    
+    redirect_to order_return_success_orders_path(order_return_id: order_return.id)
   end
   
   #POST
@@ -204,70 +242,24 @@ class OrdersController < ApplicationController
     end
 
     def update_step1_order_attributes
+      items_selected = false
       osis = OrderStorageItemStatus.find_by_name('Waiting funds confirmation')
-      if is_number?(params[:boxes])
-        si = StorageItem.find_by_name('Regular Boxes')
-        count = params[:boxes].to_i
-        (1..count).each do |i|
-          OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price, return_price: si.return_price)
-        end
-      end        
-      if is_number?(params['bike-count'])
-        si = StorageItem.find_by_name('Bike')
-        count = params['bike-count'].to_i
-        (1..count).each do |i|
-          OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price, return_price: si.return_price)
-        end
-      end    
-      if is_number?(params['golf-count'])
-        si = StorageItem.find_by_name('Golf')
-        count = params['golf-count'].to_i
-        (1..count).each do |i|
-          OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price, return_price: si.return_price)
-        end
-      end    
-      if is_number?(params['ski-count'])
-        si = StorageItem.find_by_name('Ski')
-        count = params['ski-count'].to_i
-        (1..count).each do |i|
-          OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price, return_price: si.return_price)
-        end
-      end    
-      if is_number?(params['ac-count'])
-        si = StorageItem.find_by_name('AC')
-        count = params['ac-count'].to_i
-        (1..count).each do |i|
-          OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price, return_price: si.return_price)
-        end
-      end    
-      if is_number?(params['carry-on-count'])
-        si = StorageItem.find_by_name('Carry On')
-        count = params['carry-on-count'].to_i
-        (1..count).each do |i|
-          OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price, return_price: si.return_price)
-        end
-      end    
-      if is_number?(params['luggage-count'])
-        si = StorageItem.find_by_name('Luggage')
-        count = params['lugagge-count'].to_i
-        (1..count).each do |i|
-          OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price, return_price: si.return_price)
-        end
-      end    
-      if is_number?(params['wardrobe-count'])
-        si = StorageItem.find_by_name('Wardrobe')
-        count = params['wardrobe-count'].to_i
-        (1..count).each do |i|
-          OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price, return_price: si.return_price)
-        end
-      end    
-      if is_number?(params['other-count'])
-        si = StorageItem.find_by_name('Other')
-        count = params['other-count'].to_i
-        (1..count).each do |i|
-          OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price, details: params[:other_details], return_price: si.return_price)
+      
+      param_names = ['boxes', 'bike-count', 'golf-count', 'ski-count', 'ac-count', 'carry-on-count', 'luggage-count', 'wardrobe-count', 'other-count']
+      storage_item_names = ['Regular Boxes', 'Bike', 'Golf', 'Ski', 'AC', 'Carry On', 'Luggage', 'Wardrobe', 'Other']
+      
+      param_names.each_with_index do |param_name, i|
+        if is_number?(params[param_name])
+          si = StorageItem.find_by_name(storage_item_names[i])
+          other_details = params[:other_details].blank? ? 'No aplica' : params[:other_details]
+          count = params[param_name].to_i
+          (1..count).each do |i|
+            OrderStorageItem.create(order_id: @order.id, storage_item_id: si.id, order_storage_item_status_id: osis.id, price: si.price, return_price: si.return_price, details: other_details)
+            items_selected = true
+          end
         end
       end
+      return items_selected
     end
 
     def update_step2_order_attributes

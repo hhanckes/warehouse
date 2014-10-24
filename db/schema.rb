@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141019205619) do
+ActiveRecord::Schema.define(version: 20141024113804) do
 
   create_table "addresses", force: true do |t|
     t.string   "receiver"
@@ -59,6 +59,15 @@ ActiveRecord::Schema.define(version: 20141019205619) do
 
   add_index "blog_posts", ["slug"], name: "index_blog_posts_on_slug", unique: true, using: :btree
 
+  create_table "contacts", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "contact_type"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "countries", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -99,6 +108,24 @@ ActiveRecord::Schema.define(version: 20141019205619) do
 
   add_index "information_pages", ["slug"], name: "index_information_pages_on_slug", unique: true, using: :btree
 
+  create_table "order_return_statuses", force: true do |t|
+    t.string   "name"
+    t.string   "public_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "order_returns", force: true do |t|
+    t.datetime "return_delivery_day"
+    t.string   "return_delivery_time"
+    t.integer  "address_id"
+    t.integer  "order_return_status_id"
+    t.text     "comments"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
   create_table "order_statuses", force: true do |t|
     t.string   "name"
     t.text     "description"
@@ -129,7 +156,8 @@ ActiveRecord::Schema.define(version: 20141019205619) do
     t.datetime "in_warehouse_date"
     t.text     "details"
     t.decimal  "return_price",                 precision: 10, scale: 0
-    t.integer  "address_id"
+    t.string   "name"
+    t.integer  "order_return_id"
   end
 
   create_table "order_storage_items_payments", id: false, force: true do |t|

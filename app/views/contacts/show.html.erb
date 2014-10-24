@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @contact.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @contact.email %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @contact.contact_type %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @contact.content %>
+</p>
+
+<%= link_to 'Volver', contacts_path, :class => 'btn btn-default' %>

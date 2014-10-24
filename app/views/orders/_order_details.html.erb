@@ -20,7 +20,7 @@
 <table class="table">
 	<thead>
 		<tr>
-			<th>ID Item</th><th style="width:200px">Status</th><th>Item</th><th>Precio</th><th>Opciones</th>
+			<th>ID Item</th><th style="width:200px">Status</th><th>Item</th><th sxtyle="max-width:200px">Nombre</th><th>Precio</th><th>Opciones</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -29,26 +29,36 @@
 			<td><%= osi.id %></td>
 			<td><%= osi.order_storage_item_status.blank? ? 'No asignado' : osi.order_storage_item_status.public_name %></td>
 			<td><%= osi.storage_item.public_name %></td>
+			<td><%= osi.name.blank? ? 'No asignado' : osi.name %></td>
 			<td><%= number_to_currency osi.price %></td>
 			<td>
 				<%= link_to 'Ver Detalle', '#', :class => 'btn btn-primary btn-xs', style: "font-size:10px", 'data-toggle' => "modal", 
-					'data-target' => "#detail"+osi.id.to_s, disabled: (osi.order_storage_item_status == @in_warehouse ? false : true) %> 
-				<%= link_to 'Pedir devolución de cajas', '#', 'data-toggle' => "modal", 'data-target' => "#"+osi.id.to_s, 
-						:class => 'btn btn-default btn-xs', style: "font-size:10px;",
-						disabled: (osi.order_storage_item_status == @in_warehouse ? false : true) %> 
+					'data-target' => "#detail"+osi.id.to_s %> 
+				<% if osi.order_storage_item_status == @in_warehouse %>
+				<button class='btn btn-xs <%= osi.order_return.blank? ? 'btn-default' : 'btn-primary' %>' style= "font-size:10px;" 
+					onclick='add_to_osi_to_return(<%= order.id.to_s %>, <%= osi.id.to_s %>)' id='return_<%= osi.id.to_s%>'>
+					<%= osi.order_return.blank? ? 'Agregar a items para devolver' : 'Eliminar de items a devolver' %>
+				</button>
+				<% end %>
+				<% if osi.order_storage_item_status == @returned %>
+					<%= link_to 'Ver Comprobante de Devolución', '#', :class => 'btn btn-default btn-xs', style: "font-size:10px", 'data-toggle' => "modal", 
+						'data-target' => "#return_proof_"+osi.id.to_s %> 
+				<% end %>
+				
 				<% if current_user.is_god? and params[:controller] == 'main' %>
+					<div style="margin-top:10px">
 					<%= link_to 'Agregar Detalle', '#', :class => 'btn btn-primary btn-xs', style: "font-size:10px", 'data-toggle' => "modal", 
 						'data-target' => "#edit"+osi.id.to_s, disabled: (order.order_status == @collected ? false : true) %> 
 					<%= link_to 'Marcar caja en Bodega', 
 						update_order_storage_item_status_order_path(order, order_storage_item_id: osi.id, new_order_storage_item_status_id: @in_warehouse.id), method: :post, 
 						:class => 'btn btn-default btn-xs btn-loading', style: "font-size:10px", 
 						disabled: (order.order_status == @collected and osi.order_storage_item_status != @in_warehouse ? false : true) %> 
-					<%= link_to 'Marcar caja como devueltas', 
-						update_order_storage_item_status_order_path(order, order_storage_item_id: osi.id, new_order_storage_item_status_id: @returned.id), method: :post, 
-						:class => 'btn btn-default btn-xs btn-loading', style: "font-size:10px;", disabled: (osi.order_storage_item_status == @in_warehouse ? false : true) %> 
+					</div>
+					<div style="margin-top:10px">
 					<%= link_to 'Cambiar Precio', '#', :class => 'btn btn-default btn-xs', style: "font-size:10px", 'data-toggle' => "modal", 'data-target' => "#edit_price"+osi.id.to_s %> 
 					<%= link_to 'Eliminar', destroy_order_storage_item_path(osi), :class => 'btn btn-danger btn-xs', style: "font-size:10px", 
 								method: :delete, data: { confirm: 'Are you sure?' } %>
+					</div>
 				<% end %>
 			</td>
 		</tr>
@@ -97,6 +107,9 @@
 </table>
 <% order.order_storage_items.each do |osi| %>
 	<%= render 'orders/stored_items', order_storage_item: osi %>
+	<% if osi.order_storage_item_status == @returned %>
+		<%= render 'orders/return_proof_modal', order_storage_item: osi %>	
+	<% end %>
 	<% if current_user.is_god? %>
 		<%= render 'orders/stored_items_form', order_storage_item: osi %>
 		<%= render 'orders/change_price_modal', order_storage_item: osi %>

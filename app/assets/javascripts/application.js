@@ -125,3 +125,27 @@ function addCommas(nStr) {
 	}
 	return x1 + x2;
 }
+
+function add_to_osi_to_return(order_id, osi_id) {
+	$('#return_'+osi_id).html('Espera por favor...')
+	$.ajax({
+        url: "/orders/"+order_id+"/add_osi_to_return_list/"+osi_id,
+        type: "POST",
+        dataType: "html",
+		headers: {
+		   'X-Transaction': 'POST Timezone',
+		   'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
+        data: { 'id': order_id, 'order_storage_item_id' : osi_id }, 
+		success: function(data) {
+			var json = JSON.parse(data)
+			if(json['return_requested']) {
+					$('#return_'+osi_id).html('Eliminar de items a devolver');
+					$('#return_'+osi_id).attr('class', 'btn btn-primary btn-xs');
+				} else {
+					$('#return_'+osi_id).html('Agregar a items para devolver');
+					$('#return_'+osi_id).attr('class', 'btn btn-default btn-xs');
+				}
+			$('#items_requested').html(json['items_requested']);
+        }
+    });
+}

@@ -2,6 +2,11 @@
 class Notification < ActionMailer::Base
   default from: "hhanckes@gmail.com"
 
+  def contact_created(contact)
+    @contact = contact
+    mail to: contact.email, subject: 'Hemos recibido tu mensaje'
+  end
+  
   def welcome_user(user)
     @user = user
     mail to: user.email, subject: 'Bienvenido a Warehouse'
