@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class ContactsController < ApplicationController
   before_action :authenticate_user!, :redirect_unless_is_god, except: [:new, :create]
   before_action :set_contact, only: [:show]
