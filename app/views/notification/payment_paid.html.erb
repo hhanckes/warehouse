@@ -24,11 +24,13 @@
 				<li>Nombre contacto: <%= order.address.receiver %></li>
 				<li>Teléfono contacto: <%= order.address.phone_number %></li>
 			</ul>
-			<% if order.collect_immediately %>
-				<p>Recuerda que tendrás 20 minutos para guardar tus cosas. Nuestro conductor estará esperándote ansioso de pasar a buscar otras cajas! No lo hagas esperar! Recuerda que es importante que guardes bien tus cosas.</p>
-			<% else %>
-				<p>Has decidido tomarte un tiempo para guardar tus cosas. ¡Nos parece perfecto! No hay duda que tus cosas valen mucho y quieres tomarte tu tiempo para guardarlas. Te recordamos que uno de nuestros conductores estará pasando a buscar los items que vas a guardar el <%= l(order.collection_date, format: :medium).capitalize %> entre <%= order.collection_time %></p>
-			<% end %>	
+			<% if order.storage_items.include?(@regular_boxes) %>
+				<% if order.collect_immediately %>
+					<p>Recuerda que tendrás 20 minutos para guardar tus cosas. Nuestro conductor estará esperándote ansioso de pasar a buscar otras cajas! No lo hagas esperar! Recuerda que es importante que guardes bien tus cosas.</p>
+				<% else %>
+					<p>Has decidido tomarte un tiempo para guardar tus cosas. ¡Nos parece perfecto! No hay duda que tus cosas valen mucho y quieres tomarte tu tiempo para guardarlas. Te recordamos que uno de nuestros conductores estará pasando a buscar los items que vas a guardar el <%= l(order.collection_date, format: :medium).capitalize %> entre <%= order.collection_time %></p>
+				<% end %>	
+			<% end %>
 			<p>Antes de pasar te llamaremos al teléfono que nos entregaste para confirmar el nombre del conductor que pasará a vistarte.</p>
 			<p>En el caso que quieras cambiar alguno de los datos anteriores solo tienes que escribir a contacto@MyPlaceToStore.com y un representante de nuestro servicio de atención al cliente se contactará contigo.</p>
 		<% end %>

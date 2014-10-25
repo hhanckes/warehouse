@@ -64,6 +64,7 @@ class Notification < ActionMailer::Base
   end
   
   def payment_paid(payment)
+    @regular_boxes = StorageItem.find_by_name('Regular Boxes')
     @payment = payment
     @user = payment.users.first
     mail to: @user.email, subject: '¡Fondos recibidos exitosamente!'
