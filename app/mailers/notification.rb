@@ -14,7 +14,7 @@ class Notification < ActionMailer::Base
   
   def new_order(order)
     @order = order
-    mail to: order.user.email, subject: 'Felicitaciones por tu nueva orden'
+    mail to: order.user.email, subject: 'Felicitaciones por tu nuevo pedido'
   end
   
   def order_delivered(order)

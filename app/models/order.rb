@@ -29,9 +29,10 @@ class Order < ActiveRecord::Base
     end
     
     def notify
+      boxes_in_order = self.storage_items.include?(StorageItem.find_by_name('Regular Boxes'))
       unless self.order_status.blank?
         Notification.new_order(self).deliver if order_status.name == 'Transfer waiting approval'
-        Notification.order_delivered(self).deliver if order_status.name == 'Delivered'
+        Notification.order_delivered(self).deliver if order_status.name == 'Delivered' and boxes_in_order
         Notification.order_collected(self).deliver if order_status.name == 'Collected'
       end
     end
