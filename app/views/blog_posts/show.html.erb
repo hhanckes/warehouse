@@ -1,14 +1,27 @@
+<script>
+	<script type="text/javascript">var switchTo5x=true;</script>
+	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript">stLight.options({publisher: "2660f539-d276-4334-ae67-4cf6e7697487", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+</script>
 <% content_for :title do %><%= @blog_post.title %><% end %>
 <div class="row">
 	<div class="col-md-8">
 		<div style="text-align:center">
 			<h1><%= @blog_post.title %></h1>
-			<h2><%= @blog_post.subtitle %></h2>
+			<div class="social">
+				<span class='st_facebook_hcount' displayText='Facebook'></span>
+				<span class='st_twitter_hcount' displayText='Tweet'></span>
+				<span class='st_linkedin_hcount' displayText='LinkedIn'></span>
+				<span class='st_email_hcount' displayText='Email'></span>
+			</div>
+			<h2 style="max-width:500px; margin:0 auto;"><%= @blog_post.subtitle %></h2>
 			<p><%=l @blog_post.created_at, format: :short_day %> <%= ('por '+@blog_post.user.name) unless @blog_post.user.blank? or @blog_post.user.name.blank? %></p>
 			<h3><%= @blog_post.hashtags %></h3>
 			<% @blog_post.blog_post_contents.each do |bpc| %>
 				<p><%= image_tag bpc.photo.url(:xl) %></p>
-				<p style="font-size:18px; font-weight:lighter; width:500px; margin:auto; padding:10px 0px 20px 0px;"><%= bpc.content.gsub(/\n/, '<br />').html_safe %></p>
+				<p style="font-size:18px; font-weight:lighter; max-width:500px; margin:0 auto; padding:10px 0px 20px 0px; text-align:left;">
+					<%= bpc.content.gsub(/\n/, '<br />').html_safe %>
+				</p>
 			<% end %>
 			<% if user_signed_in? and current_user.is_god? %>
 				<%= link_to 'Edit', edit_blog_post_path(@blog_post) %> |
