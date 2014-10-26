@@ -21,9 +21,12 @@
 	        <td><%= stored_item.quantity %></td>
 	        <td><%= number_to_currency stored_item.assigned_value %> c/u</td>
 	        <td>
-				<%= link_to 'Pedir devolución de cajas', '#', 'data-toggle' => "modal", 'data-target' => "#"+stored_item.order_storage_item.id.to_s, 
-					:class => 'btn btn-default btn-xs', style: "font-size:10px;",
-					disabled: (stored_item.order_storage_item.order_storage_item_status == @in_warehouse ? false : true) %> 	
+				<% if stored_item.order_storage_item.order_storage_item_status == @in_warehouse %>
+				<button class='btn btn-xs <%= stored_item.order_storage_item.order_return.blank? ? 'btn-default' : 'btn-primary' %> return_<%= stored_item.order_storage_item.id.to_s%>' 
+					style= "font-size:10px;" onclick='add_to_osi_to_return(<%= stored_item.order.id.to_s %>, <%= stored_item.order_storage_item.id.to_s %>)'>
+					<%= stored_item.order_storage_item.order_return.blank? ? 'Agregar a items para devolver' : 'Eliminar de items a devolver' %>
+				</button>
+				<% end %>
 			</td>
 	      </tr>
 		<%= render 'orders/return_request_modal', osi: stored_item.order_storage_item %>
