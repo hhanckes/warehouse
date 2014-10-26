@@ -16,8 +16,7 @@
 	</ul>
 	<% Order.where('id in (?)', @payment.order_storage_items.map { |n| n.order_id }).each do |order| %>
 		<% if order.order_status.name == 'Transfer funds received' %>
-			<p>Tu nuevo pedido tiene el identificador #<%= order.id %>! 
-				¡Sigamos adelante! Iremos a dejar las cajas y/o recoger los items según la información que nos entregaste:</p>
+			<p>Tu nuevo pedido tiene el identificador #<%= order.id %>. Los datos que le entregaremos al conductor MyPlaceToStore son:</p>
 			<ul>
 				<li>Dirección: <%= order.address.name %>, <%= order.address.area.name %></li>
 				<li>Fecha/hora: <%= l(order.delivery_date, format: :medium).capitalize %> entre <%= order.delivery_time %></li>
