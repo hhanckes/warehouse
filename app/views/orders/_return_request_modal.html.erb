@@ -32,7 +32,7 @@
 			<%= select_tag "delivery-time", 
 				options_for_select(['10:00 - 12:00','12:00 - 14:00','14:00 - 16:00','16:00 - 18:00']), :class => 'return-hour-select', style: 'width:200px' %>
 		</p>
-		<p>48 horas después de que hayamos confirmado la recepción de los fondos, enviaremos el item a la dirección seleccionada.</p>
+		<p>Una vez confirmado el pago de la devolución te enviaremos un e-mail con la confirmación de la fecha y horario de entrega. En el caso que no recibamos el pago, te contactaremos para que revisemos qué ocurrió.</p>
 		<p>Realiza la transferencia de <b><%= number_to_currency osi.return_price, precision: 0 %></b> a la siguiente cuenta:</p>
 		<ul>
 			<li>Banco: XX</li>

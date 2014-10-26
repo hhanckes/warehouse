@@ -2,14 +2,14 @@
 	<p>Hola <%= @user.name %>!</p>
 	<p>Te confirmamos que el item "<%= @order_storage_item.storage_item.public_name %>" con el identificador #<%= @order_storage_item.id %> 
 		del pedido #<%= @order_storage_item.order.id %> llegó a nuestra bodegas.</p>
-	<p>Las cosas que guardaste en este item son:</p>
+	<p>Las cosas que guardaste son:</p>
 	<ul>
 		<% @order_storage_item.stored_items.each do |si| %>
 		<li><%= si.quantity %> <%= si.name %></li>
 		<% end %>
 	</ul>
 	<p>Contamos con cámaras de seguridad las 24 horas por lo que tus cosas están seguras.</p>
-	<p>Recuerda que puedes acceder a tu inventario ingresando a tu cuenta en <%= link_to 'www.MyPlaceToStore.com', root_url %>. En el caso que quieras la devolución de <%= @order_storage_item.storage_item.public_name %> con ID <%= @order_storage_item.id %> solo tienes que ingresar a tu cuenta > Ir a Inventario > y hacer click en Pedir Devolución.</p>
+	<p>Puedes acceder a tu inventario ingresando a tu cuenta en <%= link_to 'www.MyPlaceToStore.com', root_url %>. En el caso que quieras pedir una devolución sólo tienes que ingresar a tu cuenta, ir a Inventario y hacer click en "Agregar para Devolver".</p>
 	<p>Si tienes alguna duda, por favor contáctanos a contacto@MyPlaceToStore.com</p>
 <% end %>
 <%= render "layouts/email" %>
