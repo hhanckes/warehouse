@@ -10,7 +10,7 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>ID Item</th><th style="width:200px">Status</th><th>Item</th><th sxtyle="max-width:200px">Nombre</th><th>Precio</th><th>Opciones</th>
+					<th>ID Item</th><th style="width:200px">Status</th><th>Item</th><th sxtyle="max-width:200px">Nombre</th><th>Opciones</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -20,7 +20,6 @@
 					<td><%= osi.order_storage_item_status.blank? ? 'No asignado' : osi.order_storage_item_status.public_name %></td>
 					<td><%= osi.storage_item.public_name %></td>
 					<td><%= osi.name.blank? ? 'No asignado' : osi.name %></td>
-					<td><%= number_to_currency osi.price %></td>
 					<td>
 						<%= link_to 'Ver Detalle', '#', :class => 'btn btn-primary btn-xs', style: "font-size:10px", 'data-toggle' => "modal", 
 							'data-target' => "#detail"+osi.id.to_s %> 
