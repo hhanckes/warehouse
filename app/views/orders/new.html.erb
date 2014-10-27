@@ -7,7 +7,7 @@
 			<%= collection_select(:order_area, :area, Area.all, :id, :name, { :prompt => 'Selecciona tu área' }, { :class => 'form-control' }) %>
 		</div>
 		<hr />
-		<div  id="myButton" data-toggle="tooltip" data-placement="top" title="Las dimensiones de la caja son: 37cm x 41cm x 72cm">
+		<div class="help_message" data-toggle="tooltip" data-placement="top" title="Las dimensiones de la caja son: 37cm x 41cm x 72cm">
 		<h1>¿Cuántas cajas necesitas?</h1>
 		<h2>El precio es simple: guardar una caja por mes cuesta sólo $4,990</h2>		  
 		<div class="boxes-count">5</div>

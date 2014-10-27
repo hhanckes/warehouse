@@ -18,7 +18,7 @@
 //= require_tree .
 
 $(document).ready(function() {
-	$('#myButton').tooltip();
+	$('.help_message').tooltip();
 	
 	$('.btn-loading').on('click', function () {
 	  	$(this).attr("data-loading-text","Espera por favor...");
@@ -127,7 +127,9 @@ function addCommas(nStr) {
 }
 
 function add_to_osi_to_return(order_id, osi_id) {
-	$('.return_'+osi_id).html('Espera por favor...')
+	$('.help_message').tooltip('show');
+	$('.return_'+osi_id).html('Espera por favor...');
+	class_name = 'return_'+osi_id;
 	$.ajax({
         url: "/orders/"+order_id+"/add_osi_to_return_list/"+osi_id,
         type: "POST",
@@ -140,10 +142,10 @@ function add_to_osi_to_return(order_id, osi_id) {
 			var json = JSON.parse(data)
 			if(json['return_requested']) {
 					$('.return_'+osi_id).html('Eliminar de items a devolver');
-					$('.return_'+osi_id).attr('class', 'btn btn-primary btn-xs');
+					$('.return_'+osi_id).attr('class', 'btn btn-primary btn-xs '+class_name);
 				} else {
 					$('.return_'+osi_id).html('Agregar a items para devolver');
-					$('.return_'+osi_id).attr('class', 'btn btn-default btn-xs');
+					$('.return_'+osi_id).attr('class', 'btn btn-default btn-xs '+class_name);
 				}
 			$('#items_requested').html(json['items_requested']);
         }

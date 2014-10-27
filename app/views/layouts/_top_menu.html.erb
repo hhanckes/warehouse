@@ -23,8 +23,11 @@
 	  
       <ul class="nav navbar-nav navbar-right">
 		<% if user_signed_in? %>
-			<li class=""><%= link_to raw('<span class="glyphicon glyphicon-plane"></span> (<span id="items_requested">'+current_user.current_order_return_size.to_s+'</span>)'),
-			 					return_items_orders_path %></li>
+			<li class="">
+				<%= link_to raw('<span class="glyphicon glyphicon-plane"></span> (<span id="items_requested">'+current_user.current_order_return_size.to_s+'</span>)'),
+			 					return_items_orders_path, "data-toggle" => "tooltip", "data-placement" => "bottom", :class => 'help_message', 
+								:title => "Tu lista de items para devolver" %>
+			</li>
 	       	<li class="dropdown">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="100" data-close-others="true">Cuenta <b class="caret"></b></a>
 	          <ul class="dropdown-menu">

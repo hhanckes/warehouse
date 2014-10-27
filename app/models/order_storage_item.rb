@@ -1,4 +1,6 @@
 class OrderStorageItem < ActiveRecord::Base
+  include ActiveModel::Dirty
+  
   before_save :notify
   before_save :update_in_warehouse_date
   
@@ -27,9 +29,9 @@ class OrderStorageItem < ActiveRecord::Base
     
     def notify
       unless self.order_storage_item_status.blank?
-        Notification.item_in_warehouse(self).deliver if self.order_storage_item_status.name == 'In warehouse'
-        Notification.item_return_request(self).deliver if self.order_storage_item_status.name == 'Return in progress'
-        Notification.item_left_warehouse(self).deliver if self.order_storage_item_status.name == 'Shipped from Warehouse'
+        Notification.item_in_warehouse(self).deliver if self.order_storage_item_status.name == 'In warehouse' and self.order_storage_item_status_id_changed?
+        Notification.item_return_request(self).deliver if self.order_storage_item_status.name == 'Return in progress' and self.order_storage_item_status_id_changed?
+        Notification.item_left_warehouse(self).deliver if self.order_storage_item_status.name == 'Shipped from Warehouse' and self.order_storage_item_status_id_changed?
       end
     end
     
