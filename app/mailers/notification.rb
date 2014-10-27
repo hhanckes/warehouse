@@ -18,6 +18,7 @@ class Notification < ActionMailer::Base
   end
   
   def order_delivered(order)
+    @regular_boxes = StorageItem.find_by_name('Regular Boxes')
     @user = order.user
     @order = order
     mail to: order.user.email, subject: 'Hemos entregado tu pedido'
