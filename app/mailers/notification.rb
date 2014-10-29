@@ -1,6 +1,6 @@
 # encoding: UTF-8
 class Notification < ActionMailer::Base
-  default from: "hhanckes@gmail.com"
+  default from: "notificaciones@myplacetostore.com"
 
   def contact_created(contact)
     @contact = contact

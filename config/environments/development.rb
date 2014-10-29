@@ -34,7 +34,7 @@ Warehouse::Application.configure do
     address:                'smtp.zoho.com',  
     port:                    465,  
     user_name:              'notificaciones@myplacetostore.com',  
-    domain:                 'prilov.com',  
+    domain:                 'myplacetostore.com',  
     password:               'notificaciones',
     authentication:         :plain,
     ssl:                    true,
