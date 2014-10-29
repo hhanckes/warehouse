@@ -31,11 +31,11 @@ Warehouse::Application.configure do
   config.action_mailer.delivery_method = :smtp  
   
   config.action_mailer.smtp_settings = {  
-    address:                'smtp.gmail.com',  
+    address:                'smtp.zoho.com',  
     port:                    465,  
-    user_name:              'dnocioni1@gmail.com',  
-    domain:                 'gmail.com',  
-    password:               'Monday123G',
+    user_name:              'notificaciones@myplacetostore.com',  
+    domain:                 'prilov.com',  
+    password:               'notificaciones',
     authentication:         :plain,
     ssl:                    true,
     tls:                    true 
