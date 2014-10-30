@@ -146,6 +146,7 @@ function add_to_osi_to_return(order_id, osi_id) {
 				} else {
 					$('.return_'+osi_id).html('Agregar a items para devolver');
 					$('.return_'+osi_id).attr('class', 'btn btn-default btn-xs '+class_name);
+					$('#order_row_'+osi_id).fadeOut();
 				}
 			$('#items_requested').html(json['items_requested']);
         }

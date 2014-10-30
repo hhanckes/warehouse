@@ -7,7 +7,7 @@
 	</thead>
 	<tbody>
 		<% @order_return.order_storage_items.each do |osi| %>
-		<tr>
+		<tr id="order_row_<%= osi.id %>">
 			<td><%= osi.id %></td>
 			<td><%= osi.order_storage_item_status.blank? ? 'No asignado' : osi.order_storage_item_status.public_name %></td>
 			<td><%= osi.storage_item.public_name %></td>
@@ -16,8 +16,8 @@
 			<td>
 				<%= link_to 'Ver Detalle', '#', :class => 'btn btn-primary btn-xs', style: "font-size:10px", 'data-toggle' => "modal", 
 					'data-target' => "#detail"+osi.id.to_s %> 
-				<button class='btn btn-xs <%= osi.order_return.blank? ? 'btn-default' : 'btn-primary' %>' style= "font-size:10px;" 
-					onclick='add_to_osi_to_return(<%= osi.order.id.to_s %>, <%= osi.id.to_s %>)' id='return_<%= osi.id.to_s%>'>
+				<button class='btn btn-xs <%= osi.order_return.blank? ? 'btn-default' : 'btn-primary' %> return_<%= osi.id.to_s %>' style= "font-size:10px;" 
+					onclick='add_to_osi_to_return(<%= osi.order.id.to_s %>, <%= osi.id.to_s %>)'>
 					<%= osi.order_return.blank? ? 'Agregar a items para devolver' : 'Eliminar de items a devolver' %>
 				</button>
 			</td>

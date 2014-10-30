@@ -8,4 +8,9 @@ class OrderReturn < ActiveRecord::Base
   def return_price
     self.order_storage_items.sum(:return_price)
   end
+  
+  def notify
+    Notification.item_return_request_generated(self).deliver
+  end
+  
 end

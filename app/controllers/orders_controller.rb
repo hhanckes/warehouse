@@ -168,7 +168,7 @@ class OrdersController < ApplicationController
       osi.update_attribute :order_storage_item_status_id, funds_return.id
     end
     order_return.save
-    
+    order_return.notify
     redirect_to order_return_success_orders_path(order_return_id: order_return.id)
   end
   

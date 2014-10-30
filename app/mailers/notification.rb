@@ -42,6 +42,12 @@ class Notification < ActionMailer::Base
     mail to: @user.email, subject: 'Tu cosas con el identificador #'+@order_storage_item.id.to_s+' han salido de nuestra bodega para ser devueltas'
   end
   
+  def item_return_request_generated(order_return)
+    @user = order_return.user
+    @order_return = order_return
+    mail to: @user.email, subject: 'Has pedido la devolución de algunas cosas que tienes guardadas'
+  end
+  
   def item_return_request(order_storage_item)
     @user = order_storage_item.order.user
     @order_storage_item = order_storage_item
